@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
 <style>
+
+
 /* ============================================================
    ALFABASA — Design System
    Material Design 3 · AMOLED Dark / Light · Indigo accent
@@ -619,6 +621,8 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 
+
+
 </style>
 </head>
 <body>
@@ -685,6 +689,8 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
 </div>
 
 <script>
+
+
 /* ============================================================
    ALFABASA — Prototype Data Layer
    Semua data di bawah adalah DATA DEMO untuk prototipe.
@@ -2221,13 +2227,631 @@ const ALFABASA = {
   }
 };
 
-/* Ekspor untuk pengujian di Node */
-if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA; }
+/* ============================================================
+   ALFABASA — PENAMBAHAN DATA ENTRI (berbasis file versi 307KB)
+   Hanya menambah data (concat array) — tidak mengubah kode UI.
+   Semua data: DEMO, belum diverifikasi.
+   ============================================================ */
+(function (D) {
+
+  /* --- AKSARA BARU (17) --- */
+  var newScripts = [
+    { id: 'armenian', name: 'Armenian', classification: 'Alfabet', region: 'Armenia', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0530–U+058F', history: 'Diciptakan oleh Mesrop Mashtots (±405 M) untuk bahasa Armenia. Memiliki huruf kapital dan kecil.', characters: ['arm-ayb'], transliteration: 'Ditransliterasikan ke Latin mengikuti sistem resmi.', usage: 'Bahasa Armenia di Armenia dan diaspora.', related: ['greek', 'cyrillic'], sourceIds: ['s-demo-1'] },
+    { id: 'georgian', name: 'Georgian (Mkhedruli)', classification: 'Alfabet', region: 'Georgia', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+10D0–U+10FF', history: 'Berkembang dari Asomtavruli (kapital kuno) menjadi Mkhedruli modern.', characters: ['geo-ani'], transliteration: 'Sistem nasional (ISO 9984).', usage: 'Bahasa Georgia.', related: ['armenian'], sourceIds: ['s-demo-1'] },
+    { id: 'syriac', name: 'Syriac', classification: 'Abjad', region: 'Timur Tengah', languages: [], status: 'Aktif (liturgi)', direction: 'Kanan → kiri', unicodeBlock: 'U+0700–U+074F', history: 'Abjad Aram untuk bahasa Suryani, bahasa liturgi Kristen Timur. Tiga varian: Estrangelo, Serto, Madnhaya.', characters: ['syr-alaph'], transliteration: 'Latinisasi standar teks Suryani.', usage: 'Liturgi Gereja Suryani dan Assyria.', related: ['arab', 'hebrew'], sourceIds: ['s-demo-1'] },
+    { id: 'bengali', name: 'Bengali', classification: 'Abugida', region: 'Asia Selatan — Bangladesh, Benggala Barat', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0980–U+09FF', history: 'Turunan aksara Brahmi, digunakan untuk bahasa Bengali dan Assam.', characters: ['ben-ka'], transliteration: 'ISO 15919 / Hunterian.', usage: 'Bahasa Bengali (Bangla).', related: ['devanagari'], sourceIds: ['s-demo-1'] },
+    { id: 'gujarati', name: 'Gujarati', classification: 'Abugida', region: 'India — Gujarat', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0A80–U+0AFF', history: 'Turunan Brahmi; bentuk modern tanpa garis horizontal atas (berbeda dari Devanagari).', characters: ['guj-ka'], transliteration: 'ISO 15919.', usage: 'Bahasa Gujarati.', related: ['devanagari'], sourceIds: ['s-demo-1'] },
+    { id: 'gurmukhi', name: 'Gurmukhi', classification: 'Abugida', region: 'India — Punjab', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0A00–U+0A7F', history: 'Aksara resmi Sikh (Guru Granth Sahib), dibakukan oleh Guru Angad (abad ke-16).', characters: ['gur-ka'], transliteration: 'ISO 15919.', usage: 'Bahasa Punjabi (India).', related: ['devanagari'], sourceIds: ['s-demo-1'] },
+    { id: 'odia', name: 'Odia (Oriya)', classification: 'Abugida', region: 'India — Odisha', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0B00–U+0B7F', history: 'Turunan Brahmi dengan bentuk melengkung khas (penulisan di daun palem).', characters: ['odi-ka'], transliteration: 'ISO 15919.', usage: 'Bahasa Odia.', related: ['devanagari'], sourceIds: ['s-demo-1'] },
+    { id: 'tamil', name: 'Tamil', classification: 'Abugida', region: 'India Selatan, Sri Lanka', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0B80–U+0BFF', history: 'Salah satu aksara Brahmi tertua yang masih hidup; inskripsi Tamil Brahmi dari abad ke-3 SM.', characters: ['tam-ka'], transliteration: 'ISO 15919.', usage: 'Bahasa Tamil.', related: ['devanagari'], sourceIds: ['s-demo-1'] },
+    { id: 'telugu', name: 'Telugu', classification: 'Abugida', region: 'India — Andhra Pradesh, Telangana', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0C00–U+0C7F', history: 'Turunan Brahmi; dikenal bentuk bundar karena penulisan di daun palem.', characters: ['tel-ka'], transliteration: 'ISO 15919.', usage: 'Bahasa Telugu.', related: ['kannada'], sourceIds: ['s-demo-1'] },
+    { id: 'kannada', name: 'Kannada', classification: 'Abugida', region: 'India — Karnataka', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0C80–U+0CFF', history: 'Turunan Brahmi, berkerabat dekat dengan Telugu.', characters: ['kan-ka'], transliteration: 'ISO 15919.', usage: 'Bahasa Kannada.', related: ['telugu'], sourceIds: ['s-demo-1'] },
+    { id: 'malayalam', name: 'Malayalam', classification: 'Abugida', region: 'India — Kerala', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0D00–U+0D7F', history: 'Berkembang dari Grantha (abad ke-9) dengan bentuk sangat bundar.', characters: ['mal-ka'], transliteration: 'ISO 15919.', usage: 'Bahasa Malayalam.', related: ['tamil'], sourceIds: ['s-demo-1'] },
+    { id: 'lao', name: 'Lao', classification: 'Abugida', region: 'Laos', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0E80–U+0EFF', history: 'Berkerabat dengan Thai, diadaptasi dari aksara Khmer.', characters: ['lao-ko'], transliteration: 'Sistem nasional Laos.', usage: 'Bahasa Lao.', related: ['thai'], sourceIds: ['s-demo-1'] },
+    { id: 'khmer', name: 'Khmer', classification: 'Abugida', region: 'Kamboja', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+1780–U+17FF', history: 'Aksara dengan jumlah huruf terbanyak (74); turunan Brahmi, pengaruh besar pada Thai dan Lao.', characters: ['khm-ka'], transliteration: 'Sistem nasional Kamboja.', usage: 'Bahasa Khmer.', related: ['thai', 'lao'], sourceIds: ['s-demo-1'] },
+    { id: 'myanmar', name: 'Myanmar (Burmese)', classification: 'Abugida', region: 'Myanmar', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+1000–U+109F', history: 'Turunan Brahmi melalui Mon; bentuk bundar karena penulisan di daun palem.', characters: ['mym-ka'], transliteration: 'Sistem resmi Myanmar (MLCTS).', usage: 'Bahasa Myanmar.', related: ['khmer'], sourceIds: ['s-demo-1'] },
+    { id: 'ethiopic', name: 'Ethiopic (Ge’ez)', classification: 'Abugida', region: 'Tanduk Afrika', languages: [], status: 'Aktif (liturgi & modern)', direction: 'Kiri → kanan', unicodeBlock: 'U+1200–U+137F', history: 'Digunakan untuk Ge’ez (liturgi) dan bahasa modern Ethiopia (Amharic, Tigrinya).', characters: ['eth-ha'], transliteration: 'Sistem transliterasi Ethiopic.', usage: 'Amharic, Tigrinya, Ge’ez.', related: ['arab'], sourceIds: ['s-demo-1'] },
+    { id: 'rejang', name: 'Aksara Rejang', classification: 'Abugida', region: 'Nusantara — Sumatera (Rejang)', languages: [], status: 'Komunitas', direction: 'Kiri → kanan', unicodeBlock: 'U+A930–U+A95F', history: 'Aksara tradisional suku Rejang (Bengkulu) untuk naskah adat dan sastra. Termasuk aksara Nusantara yang didokumentasikan dalam Unicode.', characters: ['rej-ka'], transliteration: 'Sistem transliterasi Rejang (demo).', usage: 'Naskah tradisional Rejang; pelestarian budaya.', related: ['lontara', 'batak'], sourceIds: ['s-demo-1'] },
+    { id: 'lampung', name: 'Aksara Lampung (Had Lampung)', classification: 'Abugida', region: 'Nusantara — Lampung', languages: [], status: 'Komunitas (proposal Unicode)', direction: 'Kiri → kanan', unicodeBlock: 'Belum teralokasi (proposal)', history: 'Aksara tradisional masyarakat Lampung, diturunkan dari aksara Pallawa, digunakan untuk naskah adat. Saat ini dalam proses proposal Unicode.', characters: [], transliteration: 'Transliterasi demo (ka, ga, nga, dll).', usage: 'Naskah adat Lampung; pengajaran budaya.', related: ['rejang', 'batak'], sourceIds: ['s-demo-1'] }
+  ];
+  D.scripts = D.scripts.concat(newScripts);
+
+  /* --- KARAKTER BARU --- */
+  var newCharacters = [
+    { id: 'arm-ayb', scriptId: 'armenian', char: 'ա', name: 'Ayb', unicode: 'U+0531', transliteration: 'a', sound: '/ɑ/', type: 'Huruf', example: 'այբուբեն — aybuben (alfabet)', related: [] },
+    { id: 'geo-ani', scriptId: 'georgian', char: 'ა', name: 'Ani', unicode: 'U+10D0', transliteration: 'a', sound: '/a/', type: 'Huruf', example: 'ანბანი — anbani (alfabet)', related: [] },
+    { id: 'syr-alaph', scriptId: 'syriac', char: 'ܐ', name: 'Alaph', unicode: 'U+0710', transliteration: 'ʾ', sound: '/ʔ/', type: 'Huruf', example: 'ܐܒ — ab (bapak)', related: [] },
+    { id: 'ben-ka', scriptId: 'bengali', char: 'ক', name: 'Ka', unicode: 'U+0995', transliteration: 'ka', sound: '/kɔ/', type: 'Konsonan', example: 'কাল — kal (waktu)', related: [] },
+    { id: 'guj-ka', scriptId: 'gujarati', char: 'ક', name: 'Ka', unicode: 'U+0A95', transliteration: 'ka', sound: '/kə/', type: 'Konsonan', example: 'કમ — kam (kerja)', related: [] },
+    { id: 'gur-ka', scriptId: 'gurmukhi', char: 'ਕ', name: 'Ka', unicode: 'U+0A15', transliteration: 'ka', sound: '/kə/', type: 'Konsonan', example: 'ਕਿਤਾਬ — kitāb (buku)', related: [] },
+    { id: 'odi-ka', scriptId: 'odia', char: 'କ', name: 'Ka', unicode: 'U+0B15', transliteration: 'ka', sound: '/kɔ/', type: 'Konsonan', example: 'କଥା — kathā (cerita)', related: [] },
+    { id: 'tam-ka', scriptId: 'tamil', char: 'க', name: 'Ka', unicode: 'U+0B95', transliteration: 'ka', sound: '/k/, /g/, /h/', type: 'Konsonan', example: 'கதை — katai (cerita)', related: [] },
+    { id: 'tel-ka', scriptId: 'telugu', char: 'క', name: 'Ka', unicode: 'U+0C15', transliteration: 'ka', sound: '/ka/', type: 'Konsonan', example: 'కథ — katha (cerita)', related: [] },
+    { id: 'kan-ka', scriptId: 'kannada', char: 'ಕ', name: 'Ka', unicode: 'U+0C95', transliteration: 'ka', sound: '/ka/', type: 'Konsonan', example: 'ಕಥೆ — kathe (cerita)', related: [] },
+    { id: 'mal-ka', scriptId: 'malayalam', char: 'ക', name: 'Ka', unicode: 'U+0D15', transliteration: 'ka', sound: '/ka/', type: 'Konsonan', example: 'കഥ — katha (cerita)', related: [] },
+    { id: 'lao-ko', scriptId: 'lao', char: 'ກ', name: 'Ko Kai', unicode: 'U+0E81', transliteration: 'k', sound: '/k/', type: 'Konsonan', example: 'ກາ — kā (gagak)', related: [] },
+    { id: 'khm-ka', scriptId: 'khmer', char: 'ក', name: 'Ka', unicode: 'U+1780', transliteration: 'k', sound: '/kɑ/', type: 'Konsonan', example: 'ការ — kār (pekerjaan)', related: [] },
+    { id: 'mym-ka', scriptId: 'myanmar', char: 'က', name: 'Ka', unicode: 'U+1000', transliteration: 'ka', sound: '/ka̰/', type: 'Konsonan', example: 'ကြက် — kyak (ayam)', related: [] },
+    { id: 'eth-ha', scriptId: 'ethiopic', char: 'ሀ', name: 'Ha', unicode: 'U+1200', transliteration: 'hä', sound: '/hæ/', type: 'Fidel', example: 'ሀገር — hägär (negara, Amharic)', related: [] },
+    { id: 'rej-ka', scriptId: 'rejang', char: 'ꤰ', name: 'Ka', unicode: 'U+A930', transliteration: 'ka', sound: '/ka/', type: 'Aksara dasar', example: 'ꤰꥁꥐ — kata (demo)', related: [] }
+  ];
+  D.characters = D.characters.concat(newCharacters);
+
+  /* --- KATA BARU --- */
+  var newWords = [
+    { id: 'matur-nuwun', languageId: 'jawa', word: 'matur nuwun', pos: 'Ungkapan', meaning: 'Terima kasih (Jawa, ragam krama).', ipa: '/matʊr nuwʊn/', script: 'Aksara Jawa', transliteration: 'matur nuwun', nativeScript: 'ꦩꦠꦸꦂꦤꦸꦮꦸꦤ꧀', audio: true, examples: [{ text: 'Matur nuwun, Pak.', translation: 'Terima kasih, Pak.' }], synonyms: ['nuwun sewu (sangat terima kasih)'], antonyms: [], etymology: 'Jawa: matur (berkata) + nuwun (minta/terima kasih)', relatedWords: ['terima-kasih', 'arigatō'], dialect: 'jawa-krama', sourceIds: ['s-demo-1'] },
+    { id: 'sega', languageId: 'jawa', word: 'sega', pos: 'Kata benda', meaning: 'Nasi (ngoko). Krama: sekul.', ipa: '/səga/', script: 'Aksara Jawa', transliteration: 'sega', nativeScript: 'ꦱꦼꦒ', audio: true, examples: [{ text: 'Aku mangan sega.', translation: 'Saya makan nasi.' }], synonyms: ['sekul (krama)'], antonyms: [], etymology: 'Jawa', relatedWords: ['mangan'], dialect: 'jawa-ngoko', sourceIds: ['s-demo-1'] },
+    { id: 'geni', languageId: 'jawa', word: 'geni', pos: 'Kata benda', meaning: 'Api (ngoko). Krama: latu.', ipa: '/gəni/', script: 'Aksara Jawa', transliteration: 'geni', nativeScript: 'ꦒꦼꦤꦶ', audio: true, examples: [{ text: 'Geni iku panas.', translation: 'Api itu panas.' }], synonyms: ['latu (krama)'], antonyms: [], etymology: 'Jawa', relatedWords: [], dialect: 'jawa-ngoko', sourceIds: ['s-demo-1'] },
+    { id: 'gunung', languageId: 'indonesia', word: 'gunung', pos: 'Kata benda', meaning: 'Bukit yang sangat tinggi dan besar.', ipa: '/ɡunuŋ/', script: 'Latin', transliteration: 'gunung', audio: true, examples: [{ text: 'Gunung Merapi terletak di Jawa Tengah.', translation: 'Mount Merapi is in Central Java.' }], synonyms: ['puncak'], antonyms: ['lembah'], etymology: 'Melayu: gunung', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'laut', languageId: 'indonesia', word: 'laut', pos: 'Kata benda', meaning: 'Kumpulan air asin yang luas.', ipa: '/laut/', script: 'Latin', transliteration: 'laut', audio: true, examples: [{ text: 'Laut Indonesia sangat luas.', translation: 'Indonesian seas are vast.' }], synonyms: ['samudra', 'segara'], antonyms: ['darat'], etymology: 'Melayu: laut', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'bintang', languageId: 'indonesia', word: 'bintang', pos: 'Kata benda', meaning: 'Benda langit yang memancarkan cahaya.', ipa: '/bintaŋ/', script: 'Latin', transliteration: 'bintang', audio: true, examples: [{ text: 'Bintang tampak jelas malam ini.', translation: 'Stars are clearly visible tonight.' }], synonyms: [], antonyms: [], etymology: 'Melayu: bintang', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'hujan', languageId: 'indonesia', word: 'hujan', pos: 'Kata benda', meaning: 'Butiran air yang jatuh dari awan.', ipa: '/hudʒan/', script: 'Latin', transliteration: 'hujan', audio: true, examples: [{ text: 'Hujan turun di sore hari.', translation: 'Rain falls in the afternoon.' }], synonyms: [], antonyms: ['kemarau'], etymology: 'Melayu: hujan', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'matahari', languageId: 'indonesia', word: 'matahari', pos: 'Kata benda', meaning: 'Bintang pusat tata surya yang menyinari bumi.', ipa: '/matahari/', script: 'Latin', transliteration: 'matahari', audio: true, examples: [{ text: 'Matahari terbit di timur.', translation: 'The sun rises in the east.' }], synonyms: ['suria', 'surya'], antonyms: ['bulan'], etymology: 'Melayu: mata + hari', relatedWords: [], sourceIds: ['s-demo-1'] }
+  ];
+  D.words = D.words.concat(newWords);
+
+  /* --- TATA BAHASA BARU --- */
+  var newGrammar = [
+    { id: 'g-indo-fonologi', languageId: 'indonesia', category: 'Fonologi', title: 'Sistem Bunyi', desc: 'Fonologi Bahasa Indonesia: 6 vokal (/i e ə a u o/), 22 konsonan, tanpa nada dan tanpa panjang vokal fonemis.', examples: [{ label: 'Vokal', text: '/i/ ini, /e/ kue, /ə/ besar, /a/ apa, /u/ buku, /o/ bola' }, { label: 'Konsonan', text: 'p b t d k g m n ny ng s z f v c j h l r w y' }] },
+    { id: 'g-jawa-fonologi', languageId: 'jawa', category: 'Fonologi', title: 'Sistem Bunyi Jawa', desc: 'Fonologi Jawa menonjol karena pasangan dental/retrofleks (t–ṭ, d–ḍ) dan konsonan implosif /ɓ/ /ɗ/.', examples: [{ label: 'Retrofleks', text: 'tata (tertata) vs thaṭa (konon)' }, { label: 'Implosif', text: 'bapa /ɓapa/ — b dengan arus udara masuk' }] },
+    { id: 'g-eng-questions', languageId: 'english', category: 'Pertanyaan', title: 'Yes/No & WH-Questions', desc: 'Pertanyaan yes/no dibentuk dengan inversi kata bantu; WH-questions memindahkan kata tanya ke awal.', examples: [{ label: 'Yes/No', text: 'Do you eat? / Is she here?' }, { label: 'WH', text: 'What / Where / When / Why / How' }] },
+    { id: 'g-korea-honorifik', languageId: 'korea', category: 'Kesopanan', title: 'Honorifik & Tingkat Kesopanan', desc: 'Korea membedakan tingkat kesopanan: haeyo (sopan), hapnida (formal), hae (akrab), dan honorifik -si-.', examples: [{ label: 'Formal', text: '감사합니다 gamsahamnida (terima kasih — formal)' }, { label: 'Sopan', text: '고마워요 gomawoyo (sopan)' }, { label: 'Akrab', text: '고마워 gomawo (akrab)' }] },
+    { id: 'g-arab-akar', languageId: 'arab', category: 'Morfologi', title: 'Akar Triliteral', desc: 'Kebanyakan kata Arab dibentuk dari 3 konsonan akar dengan pola vokal dan imbuhan.', examples: [{ label: 'Akar k-t-b', text: 'kataba (menulis), kitāb (buku), maktab (kantor), kātib (penulis)' }, { label: 'Kasus', text: 'Nominatif -u, akusatif -a, genitif -i (bahasa baku)' }] },
+    { id: 'g-sunda-kelas', languageId: 'sunda', category: 'Kelas Kata', title: 'Kelas Kata & Reduplikasi', desc: 'Sunda kaya reduplikasi (barudak — anak-anak) dan sistem imbuhan yang produktif.', examples: [{ label: 'Reduplikasi', text: 'barudak (anak-anak), gede-gedéan (sombong)' }, { label: 'Imbuhan', text: 'di- (pasif), nga- (aktif), -keun' }] }
+  ];
+  D.grammar = D.grammar.concat(newGrammar);
+
+  /* --- BUDAYA BARU (dengan tipe fakta/tradisi/interpretasi) --- */
+  var newCulture = [
+    { id: 'c-jawa-daily', languageId: 'jawa', category: 'Penggunaan Sehari-hari', title: 'Bahasa Jawa dalam Kehidupan Sehari-hari', desc: 'Penggunaan ngoko antar sebaya, krama kepada orang tua/atasan; pilihan kata mengikuti situasi formal-informal.', terms: ['ngoko', 'krama', 'campur kode'], type: 'fact', sourceIds: ['s-demo-1'] },
+    { id: 'c-bali-sor', languageId: 'bali', category: 'Kesopanan', title: 'Sor Singgih Basa Bali', desc: 'Tingkat tutur Bali: alus (halus), madia (tengah), kasar — dipilih berdasarkan status sosial dalam konteks tradisional.', terms: ['alus', 'madia', 'kasar'], type: 'fact', sourceIds: ['s-demo-1'] },
+    { id: 'c-indo-gaul', languageId: 'indonesia', category: 'Masyarakat', title: 'Bahasa Gaul & Media Sosial', desc: 'Variasi sosial Bahasa Indonesia: ragam gaul (nggak, banget, receh), singkatan media sosial (bgt, wkwk), istilah baru.', terms: ['ragam gaul', 'slang', 'akronim'], type: 'interpretation', sourceIds: ['s-demo-1'] },
+    { id: 'c-jawa-tembang', languageId: 'jawa', category: 'Tradisi', title: 'Tembang Macapat', desc: 'Puisi tradisional Jawa dengan metrum tetap (11 macapat: maskumambang, mijil, sinom, dll) yang mengiringi siklus kehidupan.', terms: ['macapat', 'metrum', 'tembang'], type: 'tradition', sourceIds: ['s-demo-1'] }
+  ];
+  D.culture = D.culture.concat(newCulture);
+  /* beri tipe default ke budaya lama (fact) */
+  D.culture.forEach(function (c) { if (!c.type) c.type = 'fact'; });
+
+  /* --- SASTRA BARU (dengan status hak cipta) --- */
+  var newLiterature = [
+    { id: 'l-babad-tanah-jawi', languageId: 'jawa', title: 'Babad Tanah Jawi', genre: 'Babad / Historiografi', period: 'Klasik (abad ke-17–18)', creator: 'Anonim (tradisi keraton)', region: 'Jawa', desc: 'Kronik sejarah raja-raja Jawa dari era mitologis hingga Mataram, ditulis dalam tembang dan prosa Jawa.', excerpt: 'Babad menjadi sumber wacana kekuasaan dan identitas keraton Jawa.', copyrightStatus: 'public domain', copyrightNote: 'Naskah klasik (domain publik)', sourceIds: ['s-demo-1'] },
+    { id: 'l-serat-kalatidha', languageId: 'jawa', title: 'Serat Kalatidha', genre: 'Tembang / Filsafat', period: 'Klasik (abad ke-19)', creator: 'Ranggawarsita', region: 'Surakarta', desc: 'Karya pujangga Ranggawarsita tentang zaman edan — kritik sosial dalam tembang.', excerpt: '“Amenangi jaman edan, ewuhaya ing pambudi” — menyaksikan zaman gila, bingung dalam bertindak.', copyrightStatus: 'public domain', copyrightNote: 'Naskah klasik (domain publik)', sourceIds: ['s-demo-1'] },
+    { id: 'l-hujan-bulan-juni', languageId: 'indonesia', title: 'Hujan Bulan Juni', genre: 'Puisi modern', period: 'Modern (1994)', creator: 'Sapardi Djoko Damono', region: 'Indonesia', desc: 'Puisi ikonik Indonesia tentang kesetiaan dan ketenangan.', excerpt: 'Tak ada yang lebih tabah dari hujan bulan Juni — kutipan singkat untuk ilustrasi demo.', copyrightStatus: 'copyrighted', copyrightNote: '© Sapardi Djoko Damono (kutipan singkat untuk ilustrasi demo)', sourceIds: ['s-demo-1'] }
+  ];
+  D.literature = D.literature.concat(newLiterature);
+  D.literature.forEach(function (l) { if (!l.copyrightStatus) l.copyrightStatus = 'public domain'; });
+
+  /* --- KURSUS & PELAJARAN BARU --- */
+  var newCourses = [
+    { id: 'course-eng-dasar', languageId: 'english', title: 'English Basics', level: 'Pemula', desc: 'Greetings, nouns, and simple sentences in English.', defaultProgress: 0, lessons: ['lesson-eng-1', 'lesson-eng-2'] },
+    { id: 'course-indo-menengah', languageId: 'indonesia', title: 'Bahasa Indonesia Menengah', level: 'Menengah', desc: 'Imbuhan lanjutan, kalimat kompleks, dan ragam formal.', defaultProgress: 0, lessons: ['lesson-indo-m1'] }
+  ];
+  D.courses = D.courses.concat(newCourses);
+  var newLessons = [
+    { id: 'lesson-eng-1', courseId: 'course-eng-dasar', title: 'Greetings & Introductions', type: 'Vocabulary', duration: '10 menit', material: 'Greetings: good morning, hello, how are you. Introductions: my name is..., I am from....', examples: [{ text: 'Good morning, how are you?', note: 'Sapaan formal' }, { text: 'My name is John.', note: 'Perkenalan' }], audioWordIds: ['eat'], exerciseId: 'ex-eng-1' },
+    { id: 'lesson-eng-2', courseId: 'course-eng-dasar', title: 'Simple Sentences', type: 'Grammar', duration: '12 menit', material: 'Subject + verb + object. Present simple: I eat rice. Negative: do not.', examples: [{ text: 'I drink water.', note: 'SVO' }, { text: 'She does not eat meat.', note: 'Negasi' }], audioWordIds: ['drink'], exerciseId: 'ex-eng-2' },
+    { id: 'lesson-indo-m1', courseId: 'course-indo-menengah', title: 'Imbuhan Lanjutan & Ragam Formal', type: 'Tata Bahasa', duration: '15 menit', material: 'Prefiks me-, ber-, ter- dengan kaidah penyerapan; penggunaan ragam formal dalam surat dan pidato.', examples: [{ text: 'Mereka memperjuangkan keadilan.', note: 'me- + per- + -kan' }, { text: 'Kami menghimbau seluruh pihak.', note: 'Ragam formal' }], audioWordIds: ['bahasa'], exerciseId: 'ex-indo-m1' }
+  ];
+  D.lessons = D.lessons.concat(newLessons);
+  var newExercises = [
+    { id: 'ex-eng-1', lessonId: 'lesson-eng-1', type: 'Pilihan Ganda', questions: [
+      { q: '"Good morning" in Indonesian:', options: ['Selamat malam', 'Selamat pagi', 'Selamat siang', 'Selamat tidur'], answer: 1, explanation: 'good morning = selamat pagi.' },
+      { q: 'How do you introduce yourself?', options: ['My name is John', 'Name my John is', 'Is John my name', 'John name is my'], answer: 0, explanation: 'Pattern: My name is + name.' },
+      { q: '"How are you?" means...', options: ['Siapa nama kamu?', 'Apa kabar?', 'Dari mana?', 'Jam berapa?'], answer: 1, explanation: 'how are you = apa kabar.' }
+    ]},
+    { id: 'ex-eng-2', lessonId: 'lesson-eng-2', type: 'Pilihan Ganda', questions: [
+      { q: 'Correct sentence:', options: ['I eat rice', 'I rice eat', 'Eat I rice', 'Rice eat I'], answer: 0, explanation: 'English is SVO.' },
+      { q: 'Negative form:', options: ['I do not drink coffee', 'I not drink coffee', 'I drink not coffee', 'Not I drink coffee'], answer: 0, explanation: 'do/does + not + verb.' },
+      { q: '"water" in Indonesian:', options: ['rumah', 'air', 'makan', 'sekolah'], answer: 1, explanation: 'water = air.' }
+    ]},
+    { id: 'ex-indo-m1', lessonId: 'lesson-indo-m1', type: 'Pilihan Ganda', questions: [
+      { q: 'Bentuk benar dari me- + per- + juang + -kan:', options: ['memperjuangkan', 'memjuangkan', 'perjuangkan', 'memperjuangkanan'], answer: 0, explanation: 'me- + per- + juang + -kan → memperjuangkan.' },
+      { q: 'Ragam formal yang tepat:', options: ['Kami menghimbau', 'Kita ngomong', 'Gue bilang', 'Mereka pada bilang'], answer: 0, explanation: '"menghimbau" adalah ragam formal.' },
+      { q: 'Prefiks ber- menunjukkan...', options: ['Pasif', 'Memiliki/menggunakan', 'Sangat', 'Lampau'], answer: 1, explanation: 'ber- = memiliki/menggunakan (bermain, berkarya).' }
+    ]}
+  ];
+  D.exercises = D.exercises.concat(newExercises);
+
+  /* --- RELASI BAHASA BARU --- */
+  var newRelations = [
+    { from: 'melayu', to: 'indonesia', type: 'ancestor' },
+    { from: 'jawa_kuno', to: 'jawa', type: 'ancestor' },
+    { from: 'arab', to: 'melayu', type: 'influenced_by' },
+    { from: 'mandarin', to: 'jepang', type: 'influenced_by' },
+    { from: 'mandarin', to: 'korea', type: 'influenced_by' },
+    { from: 'jerman', to: 'english', type: 'related' },
+    { from: 'prancis', to: 'english', type: 'influenced_by' },
+    { from: 'hindi', to: 'english', type: 'influenced_by' },
+    { from: 'jawa', to: 'sasak', type: 'influenced_by' },
+    { from: 'thai', to: 'melayu', type: 'contact' },
+    { from: 'bugis', to: 'melayu', type: 'contact' }
+  ];
+  D.relations = D.relations.concat(newRelations);
+
+  /* --- SUMBER BARU (sitasi demo) --- */
+  var newSources = [
+  ];
+  D.sources = D.sources.concat(newSources);
+
+  /* --- FEATURED BARU --- */
+  D.featured = D.featured.concat([
+    { id: 'feat-7', title: 'Aksara Bali', category: 'Aksara', description: 'Lontar, gantungan, dan tradisi tulis Bali.', image: 'ᬳ', targetType: 'script', targetId: 'bali', priority: 7, verified: true, active: true, displayCount: 0, lastDisplayed: null, cta: 'Pelajari' },
+    { id: 'feat-8', title: 'Kakawin Sutasoma', category: 'Sastra', description: 'Sumber semboyan Bhinneka Tunggal Ika dalam Bahasa Jawa Kuno.', image: 'ᬒ', targetType: 'literature', targetId: 'l-sutasoma', priority: 8, verified: true, active: true, displayCount: 0, lastDisplayed: null, cta: 'Baca' }
+  ]);
+
+  /* --- ENRICHMENT BAHASA RINGAN (kode ISO 639-2 + nama alternatif) --- */
+  var code2 = { jawa: 'jav', indonesia: 'ind', sunda: 'sun', bali: 'ban', melayu: 'msa', english: 'eng', jepang: 'jpn', korea: 'kor', mandarin: 'zho', arab: 'ara', hindi: 'hin', spanyol: 'spa', prancis: 'fra', jerman: 'deu', thai: 'tha', vietnam: 'vie', bugis: 'bug', batak: 'bbc', sasak: 'sas', aceh: 'ace', makassar: 'mak', jawa_kuno: 'kaw' };
+  var altNames = { jawa: ['Basa Jawi', 'Javanese'], indonesia: ['Melayu Indonesia', 'Indonesian'], sunda: ['Basa Sunda'], bali: ['Basa Bali'], melayu: ['Malay'], jepang: ['Nihongo', '日本語'], korea: ['Hangugeo', '한국어'], mandarin: ['Putonghua', '普通话'], arab: ['العربية'], hindi: ['हिन्दी'] };
+  D.languages.forEach(function (l) {
+    if (!l.code.iso6392) l.code.iso6392 = code2[l.id] || null;
+    if (!l.alternativeNames) l.alternativeNames = altNames[l.id] || [l.englishName];
+    if (!l.statuses) l.statuses = ['komunitas'];
+    if (!l.historicalNames) l.historicalNames = [];
+  });
+
+  /* --- REGISTRY SKEMA ENTITAS (dokumentasi arsitektur database) --- */
+  D.registry = {
+    version: '0.5.1',
+    note: 'Skema entitas ALFABASA — setiap entitas terpisah (tabel) siap dipindahkan ke database/API. Data saat ini: DEMO.',
+    entities: [
+      { name: 'Language', table: 'languages', key: 'id', fields: ['id', 'name', 'nativeName', 'englishName', 'alternativeNames', 'code', 'family', 'region', 'countries', 'speakers', 'status', 'scripts', 'dialects', 'related'], relations: ['family → LanguageFamily', 'scripts → Script', 'dialects → Dialect'] },
+      { name: 'LanguageCode', table: 'languages.code', key: 'languageId', fields: ['iso6391', 'iso6392', 'iso6393', 'glottocode'], relations: ['Language 1:1'] },
+      { name: 'LanguageFamily', table: 'families', key: 'id', fields: ['id', 'name', 'macrofamily', 'branch', 'languages'], relations: ['Language N:1'] },
+      { name: 'Dialect', table: 'dialects', key: 'id', fields: ['id', 'languageId', 'name', 'region', 'level', 'note'], relations: ['Language N:1'] },
+      { name: 'Script', table: 'scripts', key: 'id', fields: ['id', 'name', 'classification', 'region', 'languages', 'status', 'direction', 'unicodeBlock', 'history', 'characters'], relations: ['Character 1:N', 'Language N:N'] },
+      { name: 'ScriptClassification', table: 'scripts.classification', key: 'id', fields: ['alfabet', 'abjad', 'abugida', 'silabari', 'logografis', 'campuran'], relations: ['Script N:1'] },
+      { name: 'Character', table: 'characters', key: 'id', fields: ['id', 'scriptId', 'char', 'name', 'unicode', 'transliteration', 'sound', 'type', 'example'], relations: ['Script N:1', 'UnicodeData 1:1'] },
+      { name: 'UnicodeData', table: 'characters.unicode', key: 'charId', fields: ['codepoint', 'block', 'scriptProperty'], relations: ['Character 1:1'] },
+      { name: 'Transliteration', table: 'scripts.transliteration', key: 'scriptId', fields: ['sourceScript', 'targetScript', 'rule'], relations: ['Script 1:N'] },
+      { name: 'Phoneme', table: 'pronunciation.vowels+consonants', key: 'symbol', fields: ['symbol', 'name', 'desc', 'language', 'example'], relations: ['IPA 1:1'] },
+      { name: 'IPA', table: 'pronunciation.*', key: 'symbol', fields: ['symbol', 'name', 'desc', 'example', 'audio'], relations: ['Sound 1:1'] },
+      { name: 'Tone', table: 'pronunciation.tones', key: 'symbol', fields: ['level', 'contour', 'minimalPair'], relations: ['Phoneme'] },
+      { name: 'Pronunciation', table: 'words.ipa', key: 'wordId', fields: ['ipa', 'audio', 'transliteration'], relations: ['Word 1:1'] },
+      { name: 'Audio', table: 'words.audio', key: 'wordId', fields: ['audioId', 'languageId', 'speakerId', 'region', 'recordingDate', 'format', 'duration', 'transcription', 'ipa', 'verification'], relations: ['Word N:1'] },
+      { name: 'Word', table: 'words', key: 'id', fields: ['id', 'languageId', 'word', 'nativeScript', 'transliteration', 'ipa', 'audio', 'meaning', 'pos', 'synonyms', 'antonyms', 'etymology', 'examples', 'relatedWords'], relations: ['Language N:1', 'Dialect N:1', 'Pronunciation 1:1'] },
+      { name: 'WordMeaning', table: 'words.meaning', key: 'wordId', fields: ['meaning', 'definition', 'context'], relations: ['Word 1:N'] },
+      { name: 'ExampleSentence', table: 'words.examples', key: 'wordId', fields: ['text', 'translation'], relations: ['Word 1:N'] },
+      { name: 'Grammar', table: 'grammar', key: 'id', fields: ['id', 'languageId', 'category', 'title', 'desc', 'examples'], relations: ['Language N:1'] },
+      { name: 'Culture', table: 'culture', key: 'id', fields: ['id', 'languageId', 'category', 'title', 'desc', 'terms', 'type'], relations: ['Language N:1'] },
+      { name: 'Literature', table: 'literature', key: 'id', fields: ['id', 'languageId', 'title', 'genre', 'period', 'creator', 'region', 'desc', 'copyrightStatus', 'sourceIds'], relations: ['Language N:1', 'Source N:N'] },
+      { name: 'LearningCourse', table: 'courses', key: 'id', fields: ['id', 'languageId', 'title', 'level', 'desc', 'lessons', 'defaultProgress'], relations: ['Language N:1', 'Lesson 1:N'] },
+      { name: 'LearningLesson', table: 'lessons', key: 'id', fields: ['id', 'courseId', 'title', 'type', 'duration', 'material', 'examples', 'exerciseId'], relations: ['Course N:1', 'Exercise 1:1'] },
+      { name: 'Exercise', table: 'exercises', key: 'id', fields: ['id', 'lessonId', 'type', 'questions'], relations: ['Lesson N:1'] },
+      { name: 'FeaturedContent', table: 'featured', key: 'id', fields: ['id', 'title', 'category', 'targetType', 'targetId', 'priority', 'active'], relations: ['Content polymorphic'] },
+      { name: 'Source', table: 'sources', key: 'id', fields: ['id', 'title', 'type', 'organization', 'publication', 'year', 'verification'], relations: ['Verification 1:1'] },
+      { name: 'Verification', table: 'sources.verification', key: 'sourceId', fields: ['status', 'reviewer', 'date'], relations: ['Source 1:1'] }
+    ]
+  };
+
+  /* --- PENANDA VERSI --- */
+  D.meta.version = '0.5.1 (data entri diperluas)';
+  D.meta.note = 'Seluruh angka penutur, tanggal, dan fakta dalam prototipe ini adalah data demo untuk keperluan tampilan.';
+})(ALFABASA);
+
 
 /* ============================================================
-   ALFABASA — Core App
-   Router, state, interaksi global, search, audio, carousel
+   ALFABASA — MASTER GAP FIX: DATA ARCHITECTURE
+   Hanya menambah struktur data (tidak mengubah kode UI lama).
+   Semua contoh data: DEMO, belum diverifikasi.
    ============================================================ */
+(function (D) {
+
+  /* ================= BAGIAN 3+4: UNICODE & STROKE ORDER ================= */
+  D.unicodeData = {};
+  D.characters.forEach(function (c) {
+    var s = D.scriptMap[c.scriptId] || {};
+    D.unicodeData[c.id] = {
+      unicode_id: 'u-' + c.id,
+      character_id: c.id,
+      codepoint: c.unicode || '—',
+      unicode_name: c.name + (s.name ? ' (' + s.name + ')' : ''),
+      block: s.unicodeBlock || '—',
+      script: s.name || '—',
+      general_category: 'Lo (Letter, other) — demo',
+      direction: s.direction || '—',
+      unicode_version: 'Demo — lihat Unicode.org'
+    };
+  });
+  D.strokeOrders = [];
+  D.strokeOrderNote = 'Data stroke order asli belum tersedia pada prototipe (DEMO). Struktur siap: stroke_count, strokes, direction, animation, image, source.';
+  D.characterVariants = [
+    { variant_id: 'cv-jawa-na', character_id: 'jawa-na', script_id: 'jawa', variant_name: 'Pasangan (Nglegena + pangkon)', form: '꧀ꦤ', period: 'modern', region: 'Jawa', description: 'Bentuk pasangan digunakan setelah aksara berpangkon untuk menghilangkan vokal aksara sebelumnya.' },
+    { variant_id: 'cv-jawa-ka', character_id: 'jawa-ka', script_id: 'jawa', variant_name: 'Pasangan', form: '꧀ꦏ', period: 'modern', region: 'Jawa', description: 'Bentuk pasangan Ka.' },
+    { variant_id: 'cv-jawa-ha', character_id: 'jawa-ha', script_id: 'jawa', variant_name: 'Murda (kapital)', form: 'ꦲ', period: 'modern', region: 'Jawa', description: 'Aksara murda (huruf kapital Jawa) digunakan untuk nama diri dan gelar — beberapa aksara memiliki bentuk murda.' }
+  ];
+  D.glyphs = [
+    { glyph_id: 'g-jawa-ha', character_id: 'jawa-ha', script_id: 'jawa', form: 'ꦲ', style: 'Carakan (bentuk umum)', period: 'modern', region: 'Jawa', font_reference: 'Demo — font Noto Sans Javanese', image: null },
+    { glyph_id: 'g-jawa-nga', character_id: 'jawa-nga', script_id: 'jawa', form: 'ꦔ', style: 'Carakan (bentuk umum)', period: 'modern', region: 'Jawa', font_reference: 'Demo — font Noto Sans Javanese', image: null },
+    { glyph_id: 'g-bali-ha', character_id: 'bali-ha', script_id: 'bali', form: 'ᬳ', style: 'Bentuk lontar', period: 'tradisional', region: 'Bali', font_reference: 'Demo — font Noto Sans Balinese', image: null }
+  ];
+
+  /* ================= BAGIAN 5: FONOLOGI DIPERDALAM ================= */
+  D.vowelsDetail = [
+    { vowel_id: 'v-ind-a', language_id: 'indonesia', ipa: '/a/', height: 'rendah', backness: 'depan', rounding: 'tak bulat', length: 'pendek', nasalization: 'tidak', example_word: 'air', audio_id: null },
+    { vowel_id: 'v-ind-i', language_id: 'indonesia', ipa: '/i/', height: 'tinggi', backness: 'depan', rounding: 'tak bulat', length: 'pendek', nasalization: 'tidak', example_word: 'ini', audio_id: null },
+    { vowel_id: 'v-ind-u', language_id: 'indonesia', ipa: '/u/', height: 'tinggi', backness: 'belakang', rounding: 'bulat', length: 'pendek', nasalization: 'tidak', example_word: 'buku', audio_id: null },
+    { vowel_id: 'v-ind-e', language_id: 'indonesia', ipa: '/e/', height: 'semi-tinggi', backness: 'depan', rounding: 'tak bulat', length: 'pendek', nasalization: 'tidak', example_word: 'kue', audio_id: null },
+    { vowel_id: 'v-ind-schwa', language_id: 'indonesia', ipa: '/ə/', height: 'tengah', backness: 'tengah', rounding: 'tak bulat', length: 'pendek', nasalization: 'tidak', example_word: 'besar', audio_id: null },
+    { vowel_id: 'v-ind-o', language_id: 'indonesia', ipa: '/o/', height: 'semi-tinggi', backness: 'belakang', rounding: 'bulat', length: 'pendek', nasalization: 'tidak', example_word: 'bola', audio_id: null },
+    { vowel_id: 'v-jawa-ɓ', language_id: 'jawa', ipa: '/ɓ/', height: '—', backness: '—', rounding: '—', length: 'pendek', nasalization: 'tidak', example_word: 'bapa (implosif)', audio_id: null }
+  ];
+  D.consonantsDetail = [
+    { consonant_id: 'c-ind-p', language_id: 'indonesia', ipa: '/p/', place: 'bilabial', manner: 'plosif', voicing: 'tak bersuara', aspiration: 'tidak', length: 'pendek', example_word: 'pagi', audio_id: null },
+    { consonant_id: 'c-ind-b', language_id: 'indonesia', ipa: '/b/', place: 'bilabial', manner: 'plosif', voicing: 'bersuara', aspiration: 'tidak', length: 'pendek', example_word: 'batu', audio_id: null },
+    { consonant_id: 'c-ind-t', language_id: 'indonesia', ipa: '/t/', place: 'alveolar', manner: 'plosif', voicing: 'tak bersuara', aspiration: 'tidak', length: 'pendek', example_word: 'tari', audio_id: null },
+    { consonant_id: 'c-ind-d', language_id: 'indonesia', ipa: '/d/', place: 'alveolar', manner: 'plosif', voicing: 'bersuara', aspiration: 'tidak', length: 'pendek', example_word: 'dada', audio_id: null },
+    { consonant_id: 'c-ind-k', language_id: 'indonesia', ipa: '/k/', place: 'velar', manner: 'plosif', voicing: 'tak bersuara', aspiration: 'tidak', length: 'pendek', example_word: 'kaki', audio_id: null },
+    { consonant_id: 'c-ind-g', language_id: 'indonesia', ipa: '/g/', place: 'velar', manner: 'plosif', voicing: 'bersuara', aspiration: 'tidak', length: 'pendek', example_word: 'gula', audio_id: null },
+    { consonant_id: 'c-ind-ng', language_id: 'indonesia', ipa: '/ŋ/', place: 'velar', manner: 'nasal', voicing: 'bersuara', aspiration: 'tidak', length: 'pendek', example_word: 'ngombe (Jawa)', audio_id: null },
+    { consonant_id: 'c-jawa-ɓ', language_id: 'jawa', ipa: '/ɓ/', place: 'bilabial', manner: 'implosif', voicing: 'bersuara', aspiration: 'tidak', length: 'pendek', example_word: 'bapa', audio_id: null },
+    { consonant_id: 'c-jawa-ɖ', language_id: 'jawa', ipa: '/ɖ/', place: 'retrofleks', manner: 'plosif', voicing: 'bersuara', aspiration: 'tidak', length: 'pendek', example_word: 'dalan', audio_id: null }
+  ];
+  D.sounds = [];
+  ['vowels', 'consonants', 'tones'].forEach(function (k) {
+    (D.pronunciation[k] || []).forEach(function (s) {
+      D.sounds.push({ sound_id: 'snd-' + k + '-' + s.symbol.replace(/[^a-zA-Z0-9]/g, ''), language_id: null, ipa: s.symbol, sound_type: k, description: s.name + ' — ' + s.desc, audio_id: null, source_id: 's-demo-1' });
+    });
+  });
+  D.stressDetail = [
+    { stress_id: 'st-ind-1', language_id: 'indonesia', type: 'tekanaan kata', position: 'umumnya menjelang akhir kata', description: 'Pada bahasa standar Indonesia, tekanan tidak membedakan makna.', example: 'maKAN /maˈkan/', audio_id: null },
+    { stress_id: 'st-eng-1', language_id: 'english', type: 'stress kata', position: 'bervariasi, memengaruhi makna (noun/verb)', description: 'Beberapa pasangan kata dibedakan oleh posisi tekanan.', example: 'REcord (noun) vs reCORD (verb)', audio_id: null }
+  ];
+  D.intonationDetail = [
+    { intonation_id: 'in-1', language_id: 'indonesia', pattern: 'naik di akhir', function: 'pertanyaan ya/tidak', description: 'Secara umum, kalimat tanya ya/tidak diakhiri nada naik.', example: 'Kamu sudah makan?', audio_id: null },
+    { intonation_id: 'in-2', language_id: 'indonesia', pattern: 'turun di akhir', function: 'pernyataan', description: 'Kalimat deklaratif umumnya diakhiri nada turun.', example: 'Saya sudah makan.', audio_id: null }
+  ];
+  D.minimalPairs = [
+    { minimal_pair_id: 'mp-1', language_id: 'mandarin', word_a: '妈', word_b: '骂', ipa_a: '/maː˥/', ipa_b: '/maː˥˩/', meaning_a: 'ibu', meaning_b: 'memarahi', difference: 'nada tinggi datar vs nada jatuh', audio_a: null, audio_b: null, source_id: 's-demo-1' },
+    { minimal_pair_id: 'mp-2', language_id: 'english', word_a: 'sit', word_b: 'seat', ipa_a: '/sɪt/', ipa_b: '/siːt/', meaning_a: 'duduk', meaning_b: 'kursi/tempat duduk', difference: 'vokal /ɪ/ vs /iː/', audio_a: null, audio_b: null, source_id: 's-demo-1' },
+    { minimal_pair_id: 'mp-3', language_id: 'english', word_a: 'ship', word_b: 'sheep', ipa_a: '/ʃɪp/', ipa_b: '/ʃiːp/', meaning_a: 'kapal', meaning_b: 'domba', difference: 'vokal /ɪ/ vs /iː/', audio_a: null, audio_b: null, source_id: 's-demo-1' },
+    { minimal_pair_id: 'mp-4', language_id: 'thai', word_a: 'ขา', word_b: 'ค่า', ipa_a: '/kʰǎː/', ipa_b: '/kʰâː/', meaning_a: 'kaki', meaning_b: 'nilai', difference: 'nada naik vs nada jatuh', audio_a: null, audio_b: null, source_id: 's-demo-1' }
+  ];
+  D.phonologicalRules = [
+    { phonological_rule_id: 'pr-1', language_id: 'jawa', name: 'Asimilasi nasal (N-)', environment: 'sebelum konsonan awal kata kerja', input: 'N- + p/t/k/s', output: 'm-/n-/ng-/ny-', description: 'Awalan N- menyesuaikan tempat artikulasi: sebelum /p b/ → /m/, /t d/ → /n/, /k g/ → /ŋ/, /s/ → /ɲ/.', example: 'tulis → nulis; pangan → mangan', source_id: 's-demo-1' },
+    { phonological_rule_id: 'pr-2', language_id: 'indonesia', name: 'Nasalisasi me-', environment: 'prefiks me- + konsonan', input: 'me- + p/t/s/k', output: 'mem-/men-/meny-/meng-', description: 'Prefiks me- menyerap konsonan awal pada ragam baku.', example: 'pukul → memukul; tulis → menulis; sapu → menyapu', source_id: 's-demo-1' },
+    { phonological_rule_id: 'pr-3', language_id: 'english', name: 'Flapping (American English)', environment: '/t/ atau /d/ di antara vokal', input: '/t, d/', output: '/ɾ/', description: 'Pada varian Amerika Utara, /t d/ menjadi tap di antara vokal.', example: 'water /ˈwɑːɾər/', source_id: 's-demo-1' },
+    { phonological_rule_id: 'pr-4', language_id: 'mandarin', name: 'Tone sandhi (nada 3)', environment: 'dua nada 3 berurutan', input: '3 + 3', output: '2 + 3', description: 'Pada bahasa standar, dua nada ketiga berurutan: nada pertama berubah menjadi nada kedua.', example: 'nǐ hǎo → ní hǎo', source_id: 's-demo-1' }
+  ];
+  D.phonotactics = [
+    { phonotactics_id: 'pt-1', language_id: 'jawa', syllable_pattern: 'CV, CVC, CCV (terbatas)', allowed_clusters: 'kluster awal terbatas (kata serapan)', restricted_clusters: 'koda obstruen selain /k/ dan /h/ umumnya tidak muncul', description: 'Pada varian umum, koda terbatas pada /ŋ/, /k/, /h/.', examples: ['mangan', 'urip', 'banyu'] },
+    { phonotactics_id: 'pt-2', language_id: 'indonesia', syllable_pattern: 'V, CV, VC, CVC, CCVC', allowed_clusters: 'kluster awal terbatas (pr-, tr-, kr-, str-)', restricted_clusters: 'koda /ŋg/ tidak muncul di akhir', description: 'Secara umum, suku kata Indonesia sederhana.', examples: ['a-pa', 'bu-ku', 'se-ko-lah'] },
+    { phonotactics_id: 'pt-3', language_id: 'english', syllable_pattern: 'CCC V CCCCC (maksimal)', allowed_clusters: 'hingga 3 konsonan awal, 4 akhir', restricted_clusters: '/ŋ/ tidak di awal, /h/ tidak di akhir', description: 'Bahasa Inggris memungkinkan kluster konsonan yang kompleks.', examples: ['strengths /stɹɛŋkθs/'] }
+  ];
+  D.syllableStructures = [
+    { syllable_structure_id: 'ss-1', language_id: 'jawa', pattern: 'CV / CVC', onset: 'konsonan (satu)', nucleus: 'vokal', coda: '/ŋ/, /k/, /h/ (umum)', example: 'ma-ngan' },
+    { syllable_structure_id: 'ss-2', language_id: 'indonesia', pattern: 'V / CV / VC / CVC / CCVC', onset: '0–2 konsonan', nucleus: 'vokal', coda: '0–1 konsonan (terbatas)', example: 'se-ko-lah' },
+    { syllable_structure_id: 'ss-3', language_id: 'english', pattern: '(C)(C)(C)V(C)(C)(C)(C)', onset: '0–3 konsonan', nucleus: 'vokal/diftong', coda: '0–4 konsonan', example: 'st-reng-ths' },
+    { syllable_structure_id: 'ss-4', language_id: 'jepang', pattern: 'mora: (C)V, N, Q', onset: '0–1 konsonan', nucleus: 'vokal', coda: 'nasal /N/, geminat /Q/', example: 'to-u-kyo-u (4 mora)' }
+  ];
+
+  /* ================= BAGIAN 6: AUDIO & SPEAKER ================= */
+  D.speakers = [
+    { speaker_id: 'speaker-demo-1', language_id: 'jawa', region: 'Yogyakarta (demo fiktif)', dialect: 'jawa-tengah', speaker_type: 'penutur asli (demo)', recording_context: 'studio (demo)', consent_status: 'DEMO — identitas disembunyikan', source_id: 's-demo-1' },
+    { speaker_id: 'speaker-demo-2', language_id: 'indonesia', region: 'Jakarta (demo fiktif)', dialect: null, speaker_type: 'penutur asli (demo)', recording_context: 'studio (demo)', consent_status: 'DEMO — identitas disembunyikan', source_id: 's-demo-1' }
+  ];
+  D.audioEntities = D.words.filter(function (w) { return w.audio; }).map(function (w) {
+    return { audio_id: 'audio-demo-' + w.id, word_id: w.id, language_id: w.languageId, speaker_id: null, region_id: null, recording_date: null, duration: 0.4, format: 'sintetis (DEMO)', transcription: w.word, ipa: w.ipa, source_id: 's-demo-1', verification_id: 'v-demo', available: false, note: 'Audio asli belum tersedia — placeholder DEMO.' };
+  });
+
+  /* ================= BAGIAN 1+7: WORD & GRAMMAR STRUCTURE ================= */
+  D.wordForms = D.words.map(function (w) {
+    return { word_form_id: 'wf-' + w.id, word_id: w.id, form: w.word, form_type: 'lemma', grammatical_function: w.pos, dialect: null, region: null };
+  });
+  D.wordMeanings = D.words.map(function (w) {
+    return { meaning_id: 'wm-' + w.id, word_id: w.id, definition: w.meaning, sense_number: 1, usage: 'umum', domain: null, example_sentence_ids: [] };
+  });
+  D.exampleSentences = [];
+  D.words.forEach(function (w) {
+    (w.examples || []).forEach(function (e, i) {
+      D.exampleSentences.push({ sentence_id: 'snt-' + w.id + '-' + i, language_id: w.languageId, text: e.text, transliteration: null, ipa: null, translation: e.translation, word_ids: [w.id], audio_id: null, source_id: 's-demo-1' });
+    });
+  });
+  var homoData = {
+    'water': { homographs: [['water', '/ˈwɔːtər/', 'menyiram (verb)']] },
+    'house': { homographs: [['house', '/haʊs/', 'menampung (verb)']] },
+    'live': { homographs: [['live', '/laɪv/', 'langsung (adjective)']] }
+  };
+  D.words.forEach(function (w) {
+    var h = homoData[w.id] || {};
+    w.homonyms = w.homonyms || []; w.homographs = h.homographs || []; w.homophones = w.homophones || [];
+    w.rootForm = w.word; w.notes = 'Data demo — belum diverifikasi.';
+  });
+  D.relationTypes = [
+    { relation_type: 'related', desc: 'kerabat bahasa' }, { relation_type: 'ancestor', desc: 'bahasa induk' }, { relation_type: 'descendant', desc: 'bahasa turunan' },
+    { relation_type: 'dialect_of', desc: 'dialek dari' }, { relation_type: 'uses', desc: 'menggunakan' }, { relation_type: 'written_in', desc: 'ditulis dalam' },
+    { relation_type: 'variant_of', desc: 'varian dari' }, { relation_type: 'derived_from', desc: 'berasal dari' }, { relation_type: 'influenced_by', desc: 'dipengaruhi oleh' },
+    { relation_type: 'neighboring', desc: 'bertetangga' }, { relation_type: 'spoken_in', desc: 'dituturkan di' }, { relation_type: 'contains', desc: 'memuat' },
+    { relation_type: 'pronounced_as', desc: 'diucapkan sebagai' }, { relation_type: 'transliterated_as', desc: 'ditransliterasikan sebagai' }, { relation_type: 'example_of', desc: 'contoh dari' }
+  ];
+  D.relations = D.relations.concat([
+    { from: 'jawa', to: 'jawa-ngoko', type: 'contains' },
+    { from: 'jawa', to: 'jawa-krama', type: 'contains' },
+    { from: 'jawa-ngoko', to: 'jawa', type: 'dialect_of' },
+    { from: 'sunda-cirebon', to: 'sunda', type: 'variant_of' },
+    
+    { from: 'jawa', to: 'latin', type: 'written_in' },
+    { from: 'jawa', to: 'jawa-ha', type: 'contains' },
+    { from: 'jawa-ha', to: 'jawa', type: 'pronounced_as' },
+    { from: 'jawa-ha', to: 'latin', type: 'transliterated_as' },
+    { from: 'jawa', to: 'mangan', type: 'contains' },
+    { from: 'melayu', to: 'indonesia', type: 'derived_from' },
+    { from: 'indonesia', to: 'latin', type: 'written_in' }
+  ]);
+
+  /* ================= BAGIAN 7: GRAMMAR TOPIC ================= */
+  var grammarTopicMap = {
+    'g-indo-imbuhan': ['morfologi', 'kelas kata', 'afiks'], 'g-indo-kalimat': ['sintaksis', 'struktur kalimat', 'negasi', 'pertanyaan'],
+    'g-jawa-undhausuk': ['honorifik', 'speech level', 'pragmatik'], 'g-jawa-struktur': ['sintaksis', 'struktur kalimat'], 'g-jawa-imbuhan': ['morfologi', 'afiks'],
+    'g-eng-tense': ['tense', 'aspect', 'mood'], 'g-eng-wordorder': ['word order', 'sintaksis', 'pertanyaan'],
+    'g-jepang-partikel': ['sintaksis', 'partikel', 'word order'], 'g-hindi-kasus': ['kasus', 'morfologi', 'ergativitas'], 'g-sunda-undak': ['speech level', 'pragmatik', 'honorifik'],
+    'g-indo-fonologi': ['fonologi', 'vokal', 'konsonan'], 'g-jawa-fonologi': ['fonologi', 'konsonan'], 'g-eng-questions': ['pertanyaan', 'sintaksis'],
+    'g-korea-honorifik': ['honorifik', 'speech level'], 'g-arab-akar': ['morfologi', 'akar', 'kasus'], 'g-sunda-kelas': ['kelas kata', 'morfologi']
+  };
+  D.grammar.forEach(function (g) { g.topics = grammarTopicMap[g.id] || [g.category.toLowerCase()]; g.exceptions = 'Data demo — belum tersedia.'; });
+
+  /* ================= BAGIAN 8: LEARNING ARCHITECTURE ================= */
+  D.learningLevels = [
+    { level_id: 'lvl-1', language_id: 'indonesia', name: 'Pemula', description: 'Sapaan, kata dasar, kalimat sederhana.', order: 1 },
+    { level_id: 'lvl-2', language_id: 'indonesia', name: 'Menengah', description: 'Imbuhan lanjutan, ragam formal.', order: 2 },
+    { level_id: 'lvl-3', language_id: 'jawa', name: 'Pemula', description: 'Aksara dasar dan kosakata.', order: 1 },
+    { level_id: 'lvl-4', language_id: 'english', name: 'Pemula', description: 'Greetings and simple sentences.', order: 1 }
+  ];
+  D.learningModules = [];
+  D.courses.forEach(function (c, ci) {
+    D.learningModules.push({ module_id: 'mod-' + c.id, course_id: c.id, title: 'Modul 1 — ' + c.title, description: c.desc, order: 1, lesson_ids: c.lessons });
+  });
+  D.learningMaterials = D.lessons.map(function (l) {
+    return { material_id: 'mat-' + l.id, lesson_id: l.id, type: 'text', title: l.title, content: l.material, media: null, order: 1 };
+  });
+  D.questions = [];
+  D.exercises.forEach(function (ex) {
+    (ex.questions || []).forEach(function (q, i) {
+      D.questions.push({ question_id: 'q-' + ex.id + '-' + i, exercise_id: ex.id, type: ex.type === 'Pilihan Ganda' ? 'pilihan_ganda' : 'matching', question: q.q, options: q.options, answer: q.answer, explanation: q.explanation });
+    });
+  });
+
+  /* ================= BAGIAN 9: SOURCE vs VERIFICATION ================= */
+  D.contentStatus = { DEMO: 'demo', UNVERIFIED: 'unverified', REVIEWED: 'reviewed', VERIFIED: 'verified' };
+  D.verifications = [
+    { verification_id: 'v-demo', content_id: '*', status: 'DEMO', reviewer: null, verification_date: null, notes: 'Seluruh konten prototipe adalah data demo; sumber sitasi (jika ada) tidak berarti konten telah diverifikasi.' },
+    { verification_id: 'v-src-3', content_id: 's-demo-3', status: 'VERIFIED', reviewer: 'Reviewer Demo', verification_date: '2026-08-25', notes: 'Sitasi demo untuk struktur data; bukan verifikasi konten ALFABASA.' }
+  ];
+  D.sourceReferences = D.sources.map(function (s) {
+    return { source_reference_id: 'sr-' + s.id, source_id: s.id, title: s.title, author: null, organization: s.organization, publication: s.publication, year: s.year, url: null, access_date: null, source_type: s.type };
+  });
+  D.revisions = (D.revisions || []).concat([
+    { revision_id: 'rev-5', content_id: 'language/jawa', version: 2, changed_by: 'Editor Demo', change_date: '2026-08-28', change_summary: 'Menambah data arsitektur (word form, unicode, fonologi).' },
+    { revision_id: 'rev-6', content_id: 'script/jawa', version: 2, changed_by: 'Editor Demo', change_date: '2026-08-28', change_summary: 'Menambah glyph dan varian karakter.' }
+  ]);
+
+  /* ================= BAGIAN 14: ARCHITECTURE COMMON + REGISTRY ================= */
+  D.commonFields = { IDENTITY: ['id', 'name', 'native_name', 'alternative_name'], CLASSIFICATION: ['category', 'subcategory', 'type'], LOCATION: ['country', 'region', 'province', 'city', 'community'], CONTENT: ['description', 'history', 'examples', 'notes'], MEDIA: ['image', 'audio', 'video'], RELATION: ['related_entities'], SOURCE: ['source_id'], VERIFICATION: ['verification_id', 'status'], SYSTEM: ['created_at', 'updated_at', 'version', 'active_status'] };
+  D.registry = {
+    version: '0.6.0',
+    note: 'Skema entitas ALFABASA — setiap entitas terpisah (tabel) siap dipindahkan ke database/API. Data saat ini: DEMO.',
+    entities: [
+      { name: 'Language', table: 'languages', fields: ['id', 'name', 'nativeName', 'englishName', 'alternativeNames', 'code', 'family', 'region', 'countries', 'speakers', 'status', 'scripts', 'dialects', 'related'], relations: ['family', 'scripts', 'dialects'] },
+      { name: 'LanguageCode', table: 'languages.code', fields: ['iso6391', 'iso6392', 'iso6393', 'glottocode'], relations: ['Language 1:1'] },
+      { name: 'LanguageFamily', table: 'families', fields: ['id', 'name', 'macrofamily', 'branch', 'languages'], relations: ['Language N:1'] },
+      { name: 'Dialect', table: 'dialects', fields: ['id', 'languageId', 'name', 'region', 'level', 'note'], relations: ['Language N:1'] },
+      { name: 'Script', table: 'scripts', fields: ['id', 'name', 'classification', 'region', 'languages', 'status', 'direction', 'unicodeBlock', 'history', 'characters'], relations: ['Character 1:N'] },
+      { name: 'Character', table: 'characters', fields: ['id', 'scriptId', 'char', 'name', 'unicode', 'transliteration', 'sound', 'type', 'example'], relations: ['Script N:1', 'UnicodeData 1:1', 'Glyph 1:N', 'CharacterVariant 1:N'] },
+      { name: 'Glyph', table: 'glyphs', fields: ['glyph_id', 'character_id', 'script_id', 'form', 'style', 'period', 'region', 'font_reference', 'image'], relations: ['Character N:1'] },
+      { name: 'CharacterVariant', table: 'characterVariants', fields: ['variant_id', 'character_id', 'variant_name', 'form', 'period', 'region', 'description'], relations: ['Character N:1'] },
+      { name: 'UnicodeData', table: 'unicodeData', fields: ['unicode_id', 'character_id', 'codepoint', 'unicode_name', 'block', 'script', 'general_category', 'combining_class', 'normalization', 'direction', 'unicode_version'], relations: ['Character 1:1'] },
+      { name: 'StrokeOrder', table: 'strokeOrders', fields: ['stroke_order_id', 'character_id', 'stroke_count', 'strokes', 'direction', 'animation', 'image', 'source'], relations: ['Character 1:N'] },
+      { name: 'Transliteration', table: 'scripts.transliteration', fields: ['sourceScript', 'targetScript', 'rule'], relations: ['Script 1:N'] },
+      { name: 'Sound', table: 'sounds', fields: ['sound_id', 'language_id', 'ipa', 'sound_type', 'description', 'audio_id', 'source_id'], relations: ['Language N:1'] },
+      { name: 'Vowel', table: 'vowelsDetail', fields: ['vowel_id', 'language_id', 'ipa', 'height', 'backness', 'rounding', 'length', 'nasalization', 'example_word', 'audio_id'], relations: ['Language N:1'] },
+      { name: 'Consonant', table: 'consonantsDetail', fields: ['consonant_id', 'language_id', 'ipa', 'place', 'manner', 'voicing', 'aspiration', 'length', 'example_word', 'audio_id'], relations: ['Language N:1'] },
+      { name: 'IPA', table: 'pronunciation.*', fields: ['symbol', 'name', 'desc', 'example', 'audio'], relations: ['Sound 1:1'] },
+      { name: 'Stress', table: 'stressDetail', fields: ['stress_id', 'language_id', 'type', 'position', 'description', 'example', 'audio_id'], relations: ['Language N:1'] },
+      { name: 'Intonation', table: 'intonationDetail', fields: ['intonation_id', 'language_id', 'pattern', 'function', 'description', 'example', 'audio_id'], relations: ['Language N:1'] },
+      { name: 'MinimalPair', table: 'minimalPairs', fields: ['minimal_pair_id', 'language_id', 'word_a', 'word_b', 'ipa_a', 'ipa_b', 'meaning_a', 'meaning_b', 'difference', 'audio_a', 'audio_b', 'source_id'], relations: ['Language N:1'] },
+      { name: 'PhonologicalRule', table: 'phonologicalRules', fields: ['phonological_rule_id', 'language_id', 'name', 'environment', 'input', 'output', 'description', 'example', 'source_id'], relations: ['Language N:1'] },
+      { name: 'Phonotactics', table: 'phonotactics', fields: ['phonotactics_id', 'language_id', 'syllable_pattern', 'allowed_clusters', 'restricted_clusters', 'description', 'examples'], relations: ['Language N:1'] },
+      { name: 'SyllableStructure', table: 'syllableStructures', fields: ['syllable_structure_id', 'language_id', 'pattern', 'onset', 'nucleus', 'coda', 'example'], relations: ['Language N:1'] },
+      { name: 'Word', table: 'words', fields: ['word_id', 'language_id', 'script_id', 'written_form', 'native_form', 'transliteration', 'ipa', 'part_of_speech', 'root_form', 'definition', 'notes', 'dialect_id', 'region_id', 'source_id', 'verification_id'], relations: ['Language N:1', 'WordForm 1:N', 'WordMeaning 1:N', 'Pronunciation 1:1'] },
+      { name: 'WordForm', table: 'wordForms', fields: ['word_form_id', 'word_id', 'form', 'form_type', 'grammatical_function', 'dialect', 'region'], relations: ['Word N:1'] },
+      { name: 'WordMeaning', table: 'wordMeanings', fields: ['meaning_id', 'word_id', 'definition', 'sense_number', 'usage', 'domain', 'example_sentence_ids'], relations: ['Word N:1'] },
+      { name: 'ExampleSentence', table: 'exampleSentences', fields: ['sentence_id', 'language_id', 'text', 'transliteration', 'ipa', 'translation', 'word_ids', 'audio_id', 'source_id'], relations: ['Word N:N'] },
+      { name: 'Synonym', table: 'words.synonyms', fields: ['word_id', 'synonym'], relations: ['Word N:1'] },
+      { name: 'Antonym', table: 'words.antonyms', fields: ['word_id', 'antonym'], relations: ['Word N:1'] },
+      { name: 'Homonym', table: 'words.homonyms', fields: ['word_id', 'homonym'], relations: ['Word N:1'] },
+      { name: 'Homograph', table: 'words.homographs', fields: ['word_id', 'form', 'ipa', 'meaning'], relations: ['Word N:1'] },
+      { name: 'Homophone', table: 'words.homophones', fields: ['word_id', 'homophone'], relations: ['Word N:1'] },
+      { name: 'Etymology', table: 'words.etymology', fields: ['word_id', 'origin', 'source_language', 'period'], relations: ['Word 1:1'] },
+      { name: 'RelatedWord', table: 'words.relatedWords', fields: ['word_id', 'related_word'], relations: ['Word N:N'] },
+      { name: 'Pronunciation', table: 'words.ipa', fields: ['ipa', 'audio', 'transliteration'], relations: ['Word 1:1', 'Audio 1:N'] },
+      { name: 'Audio', table: 'audioEntities', fields: ['audio_id', 'word_id', 'language_id', 'speaker_id', 'region_id', 'recording_date', 'duration', 'format', 'transcription', 'ipa', 'source_id', 'verification_id'], relations: ['Word N:1', 'Speaker N:1'] },
+      { name: 'Speaker', table: 'speakers', fields: ['speaker_id', 'language_id', 'region', 'dialect', 'speaker_type', 'recording_context', 'consent_status', 'source_id'], relations: ['Audio 1:N'] },
+      { name: 'Grammar', table: 'grammar', fields: ['id', 'languageId', 'category', 'title', 'desc', 'examples', 'topics'], relations: ['Language N:1', 'GrammarTopic 1:N'] },
+      { name: 'GrammarTopic', table: 'grammar.topics', fields: ['grammar_topic_id', 'language_id', 'category', 'subcategory', 'title', 'description', 'rules', 'examples', 'exceptions', 'source_id'], relations: ['Grammar N:1'] },
+      { name: 'GrammarExample', table: 'grammar.examples', fields: ['grammar_id', 'label', 'text'], relations: ['Grammar N:1'] },
+      { name: 'Culture', table: 'culture', fields: ['id', 'languageId', 'category', 'title', 'desc', 'terms', 'type'], relations: ['Language N:1'] },
+      { name: 'Literature', table: 'literature', fields: ['id', 'languageId', 'title', 'genre', 'period', 'creator', 'region', 'desc', 'copyrightStatus', 'sourceIds'], relations: ['Language N:1'] },
+      { name: 'LearningLevel', table: 'learningLevels', fields: ['level_id', 'language_id', 'name', 'description', 'order'], relations: ['Language N:1'] },
+      { name: 'LearningCourse', table: 'courses', fields: ['id', 'languageId', 'title', 'level', 'desc', 'lessons', 'defaultProgress'], relations: ['Language N:1', 'LearningModule 1:N'] },
+      { name: 'LearningModule', table: 'learningModules', fields: ['module_id', 'course_id', 'title', 'description', 'order', 'lesson_ids'], relations: ['Course N:1', 'Lesson 1:N'] },
+      { name: 'LearningLesson', table: 'lessons', fields: ['id', 'courseId', 'title', 'type', 'duration', 'material', 'examples', 'exerciseId'], relations: ['Course N:1', 'Material 1:N'] },
+      { name: 'LearningMaterial', table: 'learningMaterials', fields: ['material_id', 'lesson_id', 'type', 'title', 'content', 'media', 'order'], relations: ['Lesson N:1'] },
+      { name: 'Exercise', table: 'exercises', fields: ['id', 'lessonId', 'type', 'questions'], relations: ['Lesson N:1', 'Question 1:N'] },
+      { name: 'Question', table: 'questions', fields: ['question_id', 'exercise_id', 'type', 'question', 'options', 'answer', 'explanation'], relations: ['Exercise N:1'] },
+      { name: 'Assessment', table: 'assessments', fields: ['assessment_id', 'language_id', 'lesson_id', 'score', 'total_questions', 'passed', 'date'], relations: ['Lesson N:1', 'User'] },
+      { name: 'LearningProgress', table: 'learningProgress', fields: ['progress_id', 'user_id', 'language_id', 'course_id', 'lesson_id', 'completion', 'score', 'last_accessed'], relations: ['Course N:1', 'Lesson N:1', 'User'] },
+      { name: 'Relation', table: 'relations', fields: ['relation_id', 'source_entity', 'source_id', 'relation_type', 'target_entity', 'target_id', 'description', 'source_id'], relations: ['generic N:N'] },
+      { name: 'Source', table: 'sources', fields: ['source_id', 'title', 'author', 'organization', 'publication', 'year', 'url', 'access_date', 'source_type'], relations: ['Verification 1:1'] },
+      { name: 'SourceReference', table: 'sourceReferences', fields: ['source_reference_id', 'source_id', 'title', 'author', 'organization', 'publication', 'year', 'url', 'access_date', 'source_type'], relations: ['Source 1:1'] },
+      { name: 'Verification', table: 'verifications', fields: ['verification_id', 'content_id', 'status', 'reviewer', 'verification_date', 'notes'], relations: ['Content 1:1'] },
+      { name: 'RevisionHistory', table: 'revisions', fields: ['revision_id', 'content_id', 'version', 'changed_by', 'change_date', 'change_summary'], relations: ['Content 1:N'] }
+    ]
+  };
+
+  /* ================= BAGIAN 17: WORDING HATI-HATI ================= */
+  D.languages.forEach(function (l) {
+    if (l.summary && l.summary.indexOf('adalah bahasa') >= 0) {
+      l.summary = l.summary.replace(/^([^.]*?)adalah/, '$1secara umum adalah');
+    }
+    l.profile = (l.profile || '').replace(/^/, 'Data demo — ');
+  });
+  D.meta.version = '0.6.0 (gap fix arsitektur)';
+  D.meta.dataStatus = 'Demo Data — konten belum diverifikasi; sumber sitasi hanya ilustrasi struktur.';
+})(ALFABASA);
+
+
+/* ============================================================
+   ALFABASA — DATA DEPTH UPGRADE (v0.7.0)
+   Perpendalam entry yang ada; generate entity terstruktur dari
+   data yang sudah ada; tidak mengarang fakta. Status: DEMO.
+   ============================================================ */
+(function (D) {
+
+  /* ---- BAGIAN 01: PERDALAM LANGUAGE ENTRY (struktur penuh, di-generate dari field lama) ---- */
+  var NA = 'Not yet documented';
+  D.languages.forEach(function (l) {
+    l.primary_name = l.name; l.native_name = l.nativeName; l.endonym = l.nativeName; l.exonym = l.englishName;
+    if (!l.alternative_names) l.alternative_names = l.alternativeNames || [];
+    if (!l.historical_names) l.historical_names = l.historicalNames || [];
+    l.official_name = l.officialName || NA;
+    l.iso_639_1 = (l.code || {}).iso6391 || null; l.iso_639_2 = (l.code || {}).iso6392 || null; l.iso_639_3 = (l.code || {}).iso6393 || null;
+    l.glottocode = (l.code || {}).glottocode || null; l.alfabasa_language_id = l.id;
+    l.official_status = l.officialStatus || NA; l.vitality_status = l.vitality || 'demo';
+    l.endangerment_level = l.vitality === 'aktif' ? 'tidak terancam (demo)' : l.vitality === 'punah' ? 'punah' : NA;
+    l.revitalization_status = l.vitality === 'aktif' ? 'tidak dalam program revitalisasi (demo)' : NA;
+    l.country = (l.countries || []).join(', ') || NA; l.province = NA; l.city = NA; l.island = NA; l.community = NA;
+    l.diaspora_area = ((l.regionDetail || {}).diaspora || []).join(', ') || NA;
+    l.speaker_count_l1 = l.speakersL1 || NA; l.speaker_count_l2 = l.speakersL2 || NA; l.total_speakers = l.speakers || NA;
+    l.estimate_year = l.speakersYear || NA; l.speaker_source = 'demo';
+    l.family_id = l.family || null; l.subfamily_id = null; l.branch_id = (D.familyById(l.family) || {}).branch || null;
+    l.notes = 'Data demo — belum diverifikasi.';
+    l.source_id = (l.sourceIds || ['s-demo-1'])[0]; l.verification_id = 'v-demo'; l.content_status = 'DEMO';
+  });
+
+  /* ---- BAGIAN 03: PERDALAM DIALECT ---- */
+  var dialectFeatures = {
+    'jawa-ngoko': { phonological_features: 'tidak ada perbedaan fonologis mencolok dari ragam standar; leksikon ngoko', lexical_features: 'kosakata ngoko: mangan, omah, aku', grammatical_features: 'imbuhan ngoko (N-, -e)', social_usage: 'antar sebaya, ke yang lebih muda', formal_usage: 'tidak digunakan pada ragam resmi', informal_usage: 'sehari-hari' },
+    'jawa-krama': { phonological_features: 'sama dengan ngoko; pemilihan leksikon berbeda', lexical_features: 'kosakata krama: dhahar, griya, kula', grammatical_features: 'bentuk krama (menawi, déné)', social_usage: 'kepada orang tua/atasan/orang dihormati', formal_usage: 'ragam resmi dan upacara', informal_usage: 'jarang pada percakapan akrab' },
+    'melayu-riau': { phonological_features: 'vokal /ə/ sering menjadi /e/ pada kata tertentu', lexical_features: 'kosakata Melayu Riau: kato (kata), manong (paman)', grammatical_features: 'partikel -lah/-kah produktif', social_usage: 'komunitas Melayu Riau', formal_usage: 'ragam baku Melayu', informal_usage: 'sehari-hari' },
+    'english-uk': { phonological_features: 'non-rhotik; /r/ akhir tidak diucapkan (pada varian umum)', lexical_features: 'flat, lift, autumn (vs US)', grammatical_features: 'present perfect lebih sering daripada US', social_usage: 'Inggris Raya', formal_usage: 'ragam formal', informal_usage: 'sehari-hari' }
+  };
+  D.dialects.forEach(function (d) {
+    var f = dialectFeatures[d.id] || {};
+    d.phonological_features = f.phonological_features || NA; d.lexical_features = f.lexical_features || NA;
+    d.grammatical_features = f.grammatical_features || NA; d.social_usage = f.social_usage || NA;
+    d.formal_usage = f.formal_usage || NA; d.informal_usage = f.informal_usage || NA;
+    d.history = NA; d.speaker_estimate = NA; d.community = NA; d.verification_id = 'v-demo'; d.content_status = 'DEMO';
+  });
+
+  /* ---- BAGIAN 04: PERDALAM SCRIPT ---- */
+  D.scripts.forEach(function (s) {
+    s.native_name = s.name; s.writing_direction = s.direction || 'Kiri → kanan'; s.period = NA;
+    s.modern_usage = s.usage || NA; s.unicode_blocks = s.unicodeBlock || NA; s.description = s.history || NA;
+    s.verification_id = 'v-demo'; s.content_status = 'DEMO';
+  });
+
+  /* ---- BAGIAN 05+06: CHARACTER/Glyph/Variant/StrokeOrder status ---- */
+  D.characters.forEach(function (c) {
+    c.character = c.char; c.native_name = c.name; c.codepoint = c.unicode || null;
+    c.description = 'Data demo — belum diverifikasi.'; c.verification_id = 'v-demo'; c.content_status = 'DEMO';
+  });
+  (D.glyphs || []).forEach(function (g) { g.description = g.description || 'Bentuk glyph (demo).'; g.image = null; });
+  (D.characterVariants || []).forEach(function (v) { v.description = v.description || NA; });
+  D.strokeOrders = D.strokeOrders || [];
+  D.strokeOrderNote = 'Data stroke order asli belum tersedia (DEMO). Struktur siap: stroke_order_id, character_id, stroke_count, strokes, direction, animation, image, source_id.';
+
+  /* ---- BAGIAN 07+08: PERDALAM WORD & PRONUNCIATION ---- */
+  D.pronunciations = D.words.map(function (w) {
+    return { pronunciation_id: 'pron-' + w.id, word_id: w.id, language_id: w.languageId, dialect_id: w.dialect || null, ipa: w.ipa, phonetic_description: NA, region: w.region || NA, audio_id: w.audio ? 'audio-demo-' + w.id : null, source_id: 's-demo-1', verification_id: 'v-demo', content_status: 'DEMO' };
+  });
+  D.etymologies = D.words.map(function (w) {
+    return { etymology_id: 'ety-' + w.id, word_id: w.id, origin: w.etymology || NA, source_language: null, period: null, content_status: 'DEMO' };
+  });
+  D.synonyms = []; D.antonyms = []; D.relatedWords = [];
+  D.words.forEach(function (w) {
+    (w.synonyms || []).forEach(function (s) { D.synonyms.push({ synonym_id: 'syn-' + w.id + '-' + s.replace(/[^a-zA-Z0-9]/g, ''), word_id: w.id, synonym: s }); });
+    (w.antonyms || []).forEach(function (a) { D.antonyms.push({ antonym_id: 'ant-' + w.id + '-' + a.replace(/[^a-zA-Z0-9]/g, ''), word_id: w.id, antonym: a }); });
+    (w.relatedWords || []).forEach(function (r) { D.relatedWords.push({ related_word_id: 'rw-' + w.id + '-' + r.replace(/[^a-zA-Z0-9]/g, ''), word_id: w.id, related_word: r }); });
+  });
+
+  /* ---- BAGIAN 09: TONE (entity dari data pronunciation) ---- */
+  /* ---- BAGIAN 11+12: FONOLOGI PER BAHASA (ringkas, aman) ---- */
+  D.phonologies = [
+    { language_id: 'jawa', vowel_inventory: ['i', 'e', 'ə', 'a', 'u', 'o'], consonant_count: 'sekitar 23', tones: 'tidak ada', stress: 'tidak membedakan makna', syllable: 'CV, CVC (koda /ŋ k h/)', notes: 'memiliki implosif /ɓ/ /ɗ/ dan pasangan dental/retrofleks' },
+    { language_id: 'indonesia', vowel_inventory: ['i', 'e', 'ə', 'a', 'u', 'o'], consonant_count: 'sekitar 22', tones: 'tidak ada', stress: 'umumnya menjelang akhir kata; tidak membedakan makna', syllable: 'V, CV, CVC, CCVC', notes: 'tanpa panjang vokal fonemis' },
+    { language_id: 'english', vowel_inventory: 'sekitar 12 vokal + 8 diftong (varian umum)', consonant_count: 'sekitar 24', tones: 'tidak ada', stress: 'bervariasi, dapat membedakan makna', syllable: '(C)(C)(C)V(C)(C)(C)(C)', notes: 'varian regional sangat beragam (rhotic/non-rhotic)' },
+    { language_id: 'jepang', vowel_inventory: ['a', 'i', 'u', 'e', 'o'], consonant_count: 'sekitar 14 + mora nasal', tones: 'aksen nada (pitch accent) pada varian standar', stress: 'sistem mora', syllable: '(C)V, N, Q', notes: 'devoicing vokal tinggi pada varian umum' },
+    { language_id: 'mandarin', vowel_inventory: 'a o e i u ü', consonant_count: 'sekitar 21 + n/ng koda', tones: '4 nada + netral', stress: 'nada berfungsi leksikal', syllable: '(C)V(N)', notes: 'tone sandhi nada 3 pada bahasa standar' },
+    { language_id: 'arab', vowel_inventory: ['a', 'i', 'u'] + ' (panjang: ā ī ū)', consonant_count: 'sekitar 28', tones: 'tidak ada', stress: 'bervariasi, tidak membedakan makna (umumnya)', syllable: 'CV, CVC, CVCC (berdasarkan akar)', notes: 'konsonan emfatik dan laringal; vokal pendek/panjang' },
+    { language_id: 'sunda', vowel_inventory: ['i', 'e', 'ə', 'a', 'u', 'o'] + ' (eu /ɨ/ khas)', consonant_count: 'sekitar 18', tones: 'tidak ada', stress: 'tidak membedakan makna', syllable: 'CV, CVC', notes: 'bunyi /ɨ/ (eu) pada ragam standar' },
+    { language_id: 'korea', vowel_inventory: '10 vokal (varian standar)', consonant_count: '14 dasar + 5 tegang', tones: 'tidak ada (varian standar); aksen nada di beberapa dialek', stress: 'tidak membedakan makna', syllable: '(C)V(C) dalam blok jamo', notes: 'tiga seri konsonan: lemah, aspirasi, tegang' }
+  ];
+  D.phonologies.forEach(function (p) { p.verification_id = 'v-demo'; p.content_status = 'DEMO'; });
+
+  /* ---- BAGIAN 15: GRAMMAR TOPIC & EXAMPLE ENTITY ---- */
+  D.grammarTopics = D.grammar.map(function (g) {
+    return { grammar_topic_id: 'gt-' + g.id, grammar_id: g.id, language_id: g.languageId, category: g.category, subcategory: null, title: g.title, description: g.desc, rules: g.examples || [], exceptions: g.exceptions || NA, source_id: 's-demo-1', content_status: 'DEMO' };
+  });
+  D.grammarExamples = [];
+  D.grammar.forEach(function (g) {
+    (g.examples || []).forEach(function (e, i) {
+      D.grammarExamples.push({ grammar_example_id: 'ge-' + g.id + '-' + i, grammar_topic_id: 'gt-' + g.id, text: e.text, transliteration: null, translation: null, ipa: null, notes: e.label || null });
+    });
+  });
+
+  /* ---- BAGIAN 16+17: CULTURE & LITERATURE DEEPEN ---- */
+  D.culture.forEach(function (c) {
+    c.subcategory = c.category; c.region = (D.languageById(c.languageId) || {}).region || NA;
+    c.historical_context = NA; c.social_context = NA; c.fact_status = c.type || 'fact';
+    c.verification_id = 'v-demo'; c.content_status = 'DEMO';
+  });
+  D.literature.forEach(function (l) {
+    l.native_title = l.title; l.historical_context = NA; l.verification_id = 'v-demo'; l.content_status = 'DEMO';
+  });
+
+  /* ---- BAGIAN 18: LEARNING — PROGRESS ENTITY (getter runtime) ---- */
+  D.learningProgress = function () {
+    var out = [];
+    D.courses.forEach(function (c) {
+      var pct = (window && window.App && window.App.State && window.App.State.progress && window.App.State.progress[c.id]) !== undefined ? window.App.State.progress[c.id] : (c.defaultProgress || 0);
+      out.push({ progress_id: 'prog-' + c.id, user_id: 'user-demo', language_id: c.languageId, course_id: c.id, lesson_id: null, completion: pct, score: null, last_accessed: null });
+    });
+    return out;
+  };
+
+  /* ---- BAGIAN 19: RELATION ENGINE — tambah relasi terstruktur ---- */
+  var newRels = [
+    { from: 'jawa-ngoko', to: 'jawa', type: 'dialect_of' }, { from: 'jawa-krama', to: 'jawa', type: 'dialect_of' },
+    { from: 'jawa-tengah', to: 'jawa', type: 'dialect_of' }, { from: 'jawa-timur', to: 'jawa', type: 'dialect_of' },
+    { from: 'sunda-priangan', to: 'sunda', type: 'dialect_of' }, { from: 'sunda-banten', to: 'sunda', type: 'dialect_of' },
+    { from: 'bali-dataran', to: 'bali', type: 'dialect_of' }, { from: 'melayu-riau', to: 'melayu', type: 'dialect_of' },
+    { from: 'english-uk', to: 'english', type: 'variant_of' }, { from: 'arab-mesir', to: 'arab', type: 'variant_of' },
+    { from: 'jepang', to: 'kana', type: 'written_in' }, { from: 'jepang', to: 'han', type: 'written_in' },
+    { from: 'korea', to: 'hangul', type: 'written_in' }, { from: 'mandarin', to: 'han', type: 'written_in' },
+    { from: 'arab', to: 'arab', type: 'written_in' }, { from: 'hindi', to: 'devanagari', type: 'written_in' },
+    { from: 'austronesia', to: 'jawa', type: 'contains' }, { from: 'austronesia', to: 'indonesia', type: 'contains' },
+    { from: 'indoeropa', to: 'english', type: 'contains' }, { from: 'english', to: 'jawa', type: 'influenced_by' },
+    { from: 'jawa', to: 'c-jawa-unggah', type: 'example_of' }, { from: 'jawa', to: 'l-centhini', type: 'example_of' }
+  ];
+  D.relations = D.relations.concat(newRels);
+
+  /* ---- BAGIAN 25: VERIFICATION per konten ---- */
+  D.verifications = (D.verifications || []).concat([
+    { verification_id: 'v-demo-all', content_id: 'all-entries', status: 'DEMO', reviewer: null, verification_date: null, notes: 'Seluruh entri prototipe berstatus DEMO; konten UNVERIFIED tidak ditampilkan sebagai VERIFIED.' }
+  ]);
+
+  /* ---- BAGIAN 26: AUDIT FIELD — default untuk field umum ---- */
+  function audit(obj, list) {
+    list.forEach(function (k) { if (obj[k] === undefined) obj[k] = NA; });
+  }
+  D.languages.forEach(function (l) { audit(l, ['community', 'city', 'province', 'island']); });
+  D.registry.version = '0.7.0';
+  D.meta.version = '0.7.0 (data depth)';
+  D.meta.dataStatus = 'Demo Data — konten belum diverifikasi; field tanpa data diberi label "Not yet documented".';
+})(ALFABASA);
+
+
+/* Ekspor untuk pengujian di Node */
+if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA; }
 (function () {
   'use strict';
 
@@ -2545,12 +3169,20 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
     if (st.qi >= st.ex.questions.length) { renderExerciseResult(root); return; }
     renderExerciseQ(root);
   }
+  function saveAttempt(ex, correct, total) {
+    try {
+      const attempts = Store.get('attempts', []);
+      attempts.unshift({ exerciseId: ex.id, lessonId: ex.lessonId || null, type: ex.type, correct: correct, total: total, score: total ? Math.round((correct / total) * 100) : 0, date: new Date().toISOString() });
+      Store.set('attempts', attempts.slice(0, 50));
+    } catch (e) { /* abaikan */ }
+  }
   function renderExerciseResult(root) {
     const st = exerciseState;
     const total = st.ex.questions.length;
     const pct = Math.round((st.correct / total) * 100);
     const msg = pct === 100 ? 'Sempurna!' : pct >= 70 ? 'Bagus sekali!' : pct >= 40 ? 'Terus berlatih!' : 'Ayo coba lagi!';
     if (st.ex.lessonId) lessonDone(st.ex.lessonId);
+    saveAttempt(st.ex, st.correct, total);
     root.innerHTML =
       '<div class="container" style="max-width:680px"><div class="card ex-result">' +
       '<div class="ex-score-ring" style="--score:' + pct + '"><div class="sr-num">' + pct + '%</div><div class="sr-label">Skor</div></div>' +
@@ -2796,6 +3428,8 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
   window.addEventListener('DOMContentLoaded', init);
 })();
 
+
+
 /* ============================================================
    ALFABASA — Views (semua halaman)
    ============================================================ */
@@ -2852,6 +3486,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="body-sm muted" style="margin-top:8px">' + esc(D.meta.note) + '</div></div>';
   };
 
+  const demoBadge = () => '<span class="badge danger">DEMO</span>';
   const monogram = (text) => '<span class="avatar" aria-hidden="true">' + esc((text || '').slice(0, 2).toUpperCase()) + '</span>';
   const glyphAvatar = (g) => '<span class="avatar glyph" aria-hidden="true">' + g + '</span>';
 
@@ -3078,7 +3713,8 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<p class="body-sm muted">' + esc(D.meta.note) + '</p>')));
     sections.push(expandable('forum', 'Dialek', dialects.length
       ? '<div class="list" style="border:none">' + dialects.map(d =>
-        '<div class="list-item" style="min-height:52px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(d.name) + '</div><div class="li-sub">' + esc(d.region) + ' • ' + esc(d.note) + '</div></div>' + '<span class="badge">' + esc(d.level) + '</span></div>').join('') + '</div>'
+        '<div class="list-item" style="min-height:52px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(d.name) + '</div><div class="li-sub">' + esc(d.region) + ' • ' + esc(d.note) + '<br>' +
+        '<span class="meta">leksikon: ' + esc(d.lexical_features || 'Not yet documented') + '</span></div></div>' + '<span class="badge">' + esc(d.level) + '</span></div>').join('') + '</div>'
       : '<p class="body-sm muted">Belum ada data dialek (demo).</p>'));
     sections.push(expandable('abc', 'Sistem Tulisan', scripts.length
       ? '<div class="list" style="border:none">' + scripts.map(s =>
@@ -3087,6 +3723,20 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
     sections.push(expandable('graphic_eq', 'Pengucapan', secBody(
       '<p>' + esc(l.pronunciation) + '</p>' +
       (words.length ? '<div class="row" style="margin-top:10px;flex-wrap:wrap;gap:8px">' + words.slice(0, 4).map(w => audioBtn(w.word, w.word)).join('') + '</div>' : ''))));
+    sections.push(expandable('tune', 'Fonologi (ringkasan)', secBody(
+      (function () {
+        const ph = (D.phonologies || []).find(p => p.language_id === l.id);
+        if (!ph) return '<p class="body-sm muted">Not yet documented (DEMO).</p>';
+        return '<div class="list" style="border:none">' +
+          [['Inventaris vokal', (typeof ph.vowel_inventory === 'string' ? ph.vowel_inventory : (ph.vowel_inventory || []).join(' ')) || '—'],
+           ['Konsonan', ph.consonant_count || '—'],
+           ['Nada', ph.tones || '—'],
+           ['Tekanan', ph.stress || '—'],
+           ['Struktur suku kata', ph.syllable || '—'],
+           ['Catatan', ph.notes || '—']]
+            .map(r => '<div class="list-item" style="min-height:42px;cursor:default"><div class="li-main"><div class="li-sub" style="text-transform:uppercase;letter-spacing:.8px;font-size:10.5px;font-weight:800">' + esc(r[0]) + '</div><div class="li-title" style="font-size:13.5px">' + esc(r[1]) + '</div></div></div>').join('') +
+          '</div>';
+      })())));
     sections.push(expandable('menu_book', 'Kosakata', words.length
       ? '<div class="list" style="border:none">' + words.map(w =>
         '<div class="list-item" data-nav="#/word/' + w.id + '" role="button"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(w.word) + ' <span class="muted" style="font-weight:500">' + esc(w.ipa) + '</span></div><div class="li-sub">' + esc(w.pos) + ' • ' + esc(w.meaning.slice(0, 70)) + '…</div></div>' + icon('chevron_right', 'chev') + '</div>').join('') + '</div>'
@@ -3120,7 +3770,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="hero-art" style="height:170px"><span class="ha-glyph">' + esc(heroGlyph || l.nativeName.slice(0, 1)) + '</span><span class="ha-label">' + esc(l.nativeName) + '</span></div>' +
       '<div style="text-align:center;padding:18px 0 4px"><div class="display" style="font-size:28px">' + esc(l.name) + '</div>' +
       '<div class="page-sub">' + esc(l.englishName) + (l.code.iso6391 ? ' • ISO ' + esc(l.code.iso6391) : '') + '</div>' +
-      '<div class="row" style="justify-content:center;margin-top:12px;gap:8px;flex-wrap:wrap">' + statusBadge(l.status) + '<span class="badge primary">' + esc(l.speakers) + '</span><span class="badge">' + esc(familyName(l.family)) + '</span></div></div>' +
+      '<div class="row" style="justify-content:center;margin-top:12px;gap:8px;flex-wrap:wrap">' + statusBadge(l.status) + demoBadge() + '<span class="badge primary">' + esc(l.speakers) + '</span><span class="badge">' + esc(familyName(l.family)) + '</span></div></div>' +
       // KEY INFO
       '<div class="keyinfo">' +
       '<div class="ki-item"><div class="ki-label">Rumpun</div><div class="ki-value">' + esc(familyName(l.family)) + '</div></div>' +
@@ -3230,7 +3880,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="hero-art" style="height:160px"><span class="ha-glyph">' + esc((chars[0] || {}).char || s.name.slice(0, 1)) + '</span><span class="ha-label">' + esc(s.classification) + '</span></div>' +
       '<div style="text-align:center;padding:18px 0 4px"><div class="display" style="font-size:28px">' + esc(s.name) + '</div>' +
       '<div class="page-sub">' + esc(s.region) + ' • ' + esc(s.direction) + '</div>' +
-      '<div class="row" style="justify-content:center;margin-top:12px;gap:8px;flex-wrap:wrap">' + statusBadge(s.status) + '<span class="badge primary">' + esc(s.classification) + '</span></div></div>' +
+      '<div class="row" style="justify-content:center;margin-top:12px;gap:8px;flex-wrap:wrap">' + statusBadge(s.status) + demoBadge() + '<span class="badge primary">' + esc(s.classification) + '</span></div></div>' +
       '<div class="keyinfo">' +
       '<div class="ki-item"><div class="ki-label">Klasifikasi</div><div class="ki-value">' + esc(s.classification) + '</div></div>' +
       '<div class="ki-item"><div class="ki-label">Wilayah</div><div class="ki-value">' + esc(s.region) + '</div></div>' +
@@ -3254,6 +3904,9 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
     window.App.recordHistory('character', c.id, c.name);
 
     const related = (c.related || []).map(rid => D.characterMap[rid]).filter(Boolean);
+    const ud = (D.unicodeData || {})[c.id];
+    const glyphs = (D.glyphs || []).filter(g => g.character_id === c.id);
+    const variants = (D.characterVariants || []).filter(v => v.character_id === c.id);
 
     app.innerHTML =
       '<div class="container" style="max-width:640px">' +
@@ -3264,7 +3917,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="word-ipa">' + esc(c.transliteration) + ' • ' + esc(c.sound) + '</div>' +
       '<div class="meta" style="margin-top:6px">' + esc(c.name) + ' • ' + esc(c.unicode) + '</div>' +
       '<div class="row" style="justify-content:center;margin-top:8px;gap:6px;flex-wrap:wrap">' +
-      '<span class="badge primary">' + esc(c.type) + '</span>' +
+      '<span class="badge primary">' + esc(c.type) + '</span>' + demoBadge() +
       (s ? '<button class="badge outline" style="cursor:pointer;border:none" data-nav="#/script/' + s.id + '">' + esc(s.name) + '</button>' : '') +
       '</div>' +
       '<div class="word-actions">' +
@@ -3274,6 +3927,16 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="section"><div class="section-title" style="margin-bottom:10px">Contoh Penggunaan</div>' +
       '<div class="card"><p class="body">' + esc(c.example || '—') + '</p>' +
       '<div class="row" style="margin-top:12px;gap:8px;flex-wrap:wrap">' + audioBtn(c.example || c.transliteration, 'contoh') + '</div></div></div>' +
+      (ud ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Informasi Unicode</div>' +
+        '<div class="card" style="padding:6px 0;overflow:hidden"><div class="list" style="border:none">' +
+        [['Code Point', ud.codepoint], ['Unicode Name', ud.unicode_name], ['Block', ud.block], ['Script', ud.script], ['General Category', ud.general_category], ['Direction', ud.direction], ['Unicode Version', ud.unicode_version]]
+          .map(r => '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub" style="text-transform:uppercase;letter-spacing:.8px;font-size:10.5px;font-weight:800">' + esc(r[0]) + '</div><div class="li-title" style="font-size:13.5px">' + esc(r[1]) + '</div></div></div>').join('') +
+        '</div></div></div>' : '') +
+      '<div class="section"><div class="card" style="padding:6px 0;overflow:hidden">' +
+      expandable('category', 'Glyph', '<div class="body">' + (glyphs.length ? glyphs.map(g => '<div class="list-item" style="min-height:44px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + g.form + ' — ' + esc(g.style) + '</div><div class="li-sub">' + esc(g.period) + ' • ' + esc(g.region) + ' • Font: ' + esc(g.font_reference) + '</div></div></div>').join('') : '<p class="body-sm muted">Data demo — belum tersedia.</p>') + '</div>') +
+      expandable('layers', 'Varian Karakter (CharacterVariant)', '<div class="body">' + (variants.length ? variants.map(v => '<div class="list-item" style="min-height:44px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(v.variant_name) + ' — <span style="font-size:18px">' + v.form + '</span></div><div class="li-sub">' + esc(v.description) + '</div></div></div>').join('') : '<p class="body-sm muted">Data demo — belum tersedia.</p>') + '</div>') +
+      expandable('gesture', 'Stroke Order', '<div class="body"><p class="body-sm muted">' + esc(D.strokeOrderNote || 'Data demo — belum tersedia.') + '</p></div>') +
+      '</div></div>' +
       (related.length ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Karakter Terkait</div>' +
         '<div class="h-scroll">' + related.map(r =>
           '<div class="h-card" data-nav="#/character/' + r.id + '" role="button">' +
@@ -3342,23 +4005,41 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
     const relatedWords = (w.relatedWords || []).map(rw => D.words.find(x => x.word === rw)).filter(Boolean);
 
     const secBody = (html) => '<div class="body">' + html + '</div>';
+    const wf = (D.wordForms || []).find(x => x.word_id === w.id);
+    const wm = (D.wordMeanings || []).find(x => x.word_id === w.id);
+    const snts = (D.exampleSentences || []).filter(s => s.word_ids && s.word_ids.indexOf(w.id) >= 0);
+    const infoRow2 = (label, val) => '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub" style="text-transform:uppercase;letter-spacing:.8px;font-size:10.5px;font-weight:800">' + esc(label) + '</div><div class="li-title" style="font-size:13.5px">' + val + '</div></div></div>';
     const sections = [
-      expandable('translate', 'Arti', secBody('<p class="body-lg">' + esc(w.meaning) + '</p>'), true),
+      expandable('translate', 'Arti & Definisi', secBody(
+        '<p class="body-lg">' + esc(w.meaning) + '</p>' +
+        (wm ? '<p class="body-sm muted" style="margin-top:6px">Sense ' + wm.sense_number + ' • ' + esc(wm.usage) + (wm.domain ? ' • ' + esc(wm.domain) : '') + '</p>' : '')), true),
       expandable('category', 'Kelas Kata', secBody('<p>' + esc(w.pos) + '</p>')),
-      expandable('graphic_eq', 'Pelafalan', secBody(
+      expandable('hub', 'Bentuk Kata (WordForm)', secBody(
+        '<div class="list" style="border:none">' +
+        infoRow2('Lemma (bentuk dasar)', esc(wf ? wf.form : w.word)) +
+        infoRow2('Fungsi gramatikal', esc((wf && wf.grammatical_function) || w.pos || '—')) +
+        infoRow2('Bentuk turunan', (w.derivedForms && w.derivedForms.length ? w.derivedForms.map(function (d) { return '<span class="badge" style="margin:2px 4px 2px 0">' + esc(d) + '</span>'; }).join('') : 'Data demo — belum tersedia')) +
+        '</div>')),
+      expandable('graphic_eq', 'Pelafalan & IPA', secBody(
         '<div class="keyinfo" style="grid-template-columns:1fr 1fr">' +
         '<div class="ki-item"><div class="ki-label">IPA</div><div class="ki-value">' + esc(w.ipa) + '</div></div>' +
         '<div class="ki-item"><div class="ki-label">Transliterasi</div><div class="ki-value">' + esc(w.transliteration || '—') + '</div></div></div>' +
-        (w.audio ? '<div class="row" style="margin-top:10px;gap:8px">' + audioBtn(w.word, w.word) + '</div>' : ''))),
+        (w.audio ? '<div class="row" style="margin-top:10px;gap:8px">' + audioBtn(w.word, w.word) + '</div>' : '') +
+        '<p class="body-sm muted" style="margin-top:8px">Audio: ' + esc(((D.audioEntities || []).find(a => a.word_id === w.id) || {}).note || 'DEMO') + '</p>')),
       expandable('abc', 'Aksara', secBody('<p>' + (w.nativeScript ? '<span style="font-size:34px;line-height:1.2">' + w.nativeScript + '</span><br><br>' : '') + 'Sistem tulisan: ' + esc(w.script) + '</p>')),
-      expandable('article', 'Contoh Kalimat', secBody((w.examples || []).map(e =>
-        '<div class="card" style="margin-bottom:8px"><div class="body">' + esc(e.text) + '</div><div class="body-sm muted">→ ' + esc(e.translation) + '</div></div>').join('') || '<p class="body-sm muted">—</p>')),
+      expandable('article', 'Contoh Kalimat (ExampleSentence)', secBody(((snts.length ? snts : (w.examples || []).map((e, i) => ({ text: e.text, translation: e.translation }))).map(e =>
+        '<div class="card" style="margin-bottom:8px"><div class="body">' + esc(e.text) + '</div><div class="body-sm muted">→ ' + esc(e.translation) + '</div></div>').join('')) || '<p class="body-sm muted">—</p>')),
       expandable('link', 'Sinonim & Antonim', secBody(
-        '<div class="row" style="flex-wrap:wrap;gap:8px">' +
-        (w.synonyms || []).map(s => '<span class="badge success">' + esc(s) + '</span>').join('') +
-        (w.antonyms || []).map(s => '<span class="badge danger">' + esc(s) + '</span>').join('') +
+        '<div class="label" style="margin-bottom:6px">Sinonim</div><div class="row" style="flex-wrap:wrap;gap:8px">' +
+        ((w.synonyms || []).map(s => '<span class="badge success">' + esc(s) + '</span>').join('') || '<span class="meta">—</span>') + '</div>' +
+        '<div class="label" style="margin:12px 0 6px">Antonim</div><div class="row" style="flex-wrap:wrap;gap:8px">' +
+        ((w.antonyms || []).map(s => '<span class="badge danger">' + esc(s) + '</span>').join('') || '<span class="meta">—</span>') + '</div>')),
+      expandable('data_object', 'Homonim / Homograf / Homofon', secBody(
+        '<div class="label" style="margin-bottom:6px">Homograf (bentuk sama, pelafalan/arti beda)</div>' +
+        '<div class="list" style="border:none">' +
+        ((w.homographs && w.homographs.length) ? w.homographs.map(h => infoRow2(h[1] + ' — ' + h[0], esc(h[2]))).join('') : '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub">Data demo — belum tersedia.</div></div></div>') +
         '</div>')),
-      expandable('history', 'Etimologi', secBody('<p>' + esc(w.etymology || '—') + '</p>')),
+      expandable('history', 'Etimologi (Etymology)', secBody('<p>' + esc(w.etymology || 'Not yet documented') + '</p>' + ((D.etymologies || []).find(function (e) { return e.word_id === w.id; }) ? '<p class="body-sm muted" style="margin-top:6px">Bahasa sumber: Not yet documented • Periode: Not yet documented</p>' : ''))),
       expandable('hub', 'Kata Terkait', relatedWords.length
         ? '<div class="list" style="border:none">' + relatedWords.map(r =>
           '<div class="list-item" data-nav="#/word/' + r.id + '" role="button"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(r.word) + '</div><div class="li-sub">' + esc((D.languageById(r.languageId) || {}).name) + ' • ' + esc(r.meaning.slice(0, 60)) + '…</div></div>' + icon('chevron_right', 'chev') + '</div>').join('') + '</div>'
@@ -3375,7 +4056,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="meta" style="margin-top:6px">' + esc(l ? l.name : '') + (dl ? ' • Dialek: ' + esc(dl.name) : '') + ' • ' + esc(w.pos) + '</div>' +
       '<div class="row" style="justify-content:center;margin-top:8px;gap:6px;flex-wrap:wrap">' +
       (l ? '<button class="badge outline" style="cursor:pointer;border:none" data-nav="#/language/' + l.id + '">' + esc(l.name) + '</button>' : '') +
-      '<span class="badge primary">' + esc(w.script) + '</span></div>' +
+      '<span class="badge primary">' + esc(w.script) + '</span>' + demoBadge() + '</div>' +
       '<div class="word-actions">' + (w.audio ? audioBtn(w.word, w.word) : '') + '</div></div>' +
       '<div class="card" style="padding:6px 0;overflow:hidden;margin-top:14px">' + sections.join('') + '</div>' +
       sourceNote(w.sourceIds) + '</div>';
@@ -3409,9 +4090,54 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       section('Konsonan', 'graphic_eq', P.consonants) +
       section('Nada (Tone)', 'trending_up', P.tones) +
       section('Tekanan & Intonasi', 'speed', P.stress) +
-      '<div class="section"><div class="section-head"><div class="section-title">Minimal Pair (demo)</div></div>' +
-      '<div class="list"><div class="list-item" style="min-height:64px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">mā (妈 — ibu) vs mà (骂 — memarahi)</div><div class="li-sub">Mandarin • Perbedaan nada mengubah makna. Pasangan minimal ini krusial untuk pelajar bahasa tonal.</div></div>' + audioBtn('mā mà', 'minimal pair') + '</div>' +
-      '<div class="list-item" style="min-height:64px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">dalan (jalan) vs dalan dengan /ɖ/ retrofleks</div><div class="li-sub">Jawa • Konsonan retrofleks membedakan makna pada beberapa pasangan kata.</div></div>' + audioBtn('dalan', 'minimal pair') + '</div></div></div>' +
+      '<div class="section"><div class="section-head"><div class="section-title">Minimal Pair</div></div>' +
+      (D.minimalPairs || []).map(function (mp) {
+        const lang = D.languageById(mp.language_id);
+        return '<div class="card" style="margin-bottom:10px">' +
+          '<div class="meta" style="margin-bottom:8px">' + esc(lang ? lang.name : '') + ' • Perbedaan: ' + esc(mp.difference) + '</div>' +
+          '<div class="row" style="align-items:stretch;gap:8px">' +
+          '<div style="flex:1;text-align:center;padding:12px 6px;background:var(--surface-variant);border-radius:12px"><div style="font-size:24px">' + esc(mp.word_a) + '</div><div class="meta">' + esc(mp.ipa_a) + '</div><div class="meta" style="margin-top:4px">' + esc(mp.meaning_a) + '</div>' + (mp.audio_a || audioBtn(mp.word_a, mp.word_a)) + '</div>' +
+          '<div style="display:flex;align-items:center;color:var(--text-secondary)"><span class="ms">compare_arrows</span></div>' +
+          '<div style="flex:1;text-align:center;padding:12px 6px;background:var(--surface-variant);border-radius:12px"><div style="font-size:24px">' + esc(mp.word_b) + '</div><div class="meta">' + esc(mp.ipa_b) + '</div><div class="meta" style="margin-top:4px">' + esc(mp.meaning_b) + '</div>' + (mp.audio_b || audioBtn(mp.word_b, mp.word_b)) + '</div>' +
+          '</div></div>';
+      }).join('') +
+      '<div class="section"><div class="section-head"><div class="section-title">Detail Vokal (Vowel)</div></div>' +
+      '<div class="list">' + (D.vowelsDetail || []).map(function (v) {
+        return '<div class="list-item" style="min-height:56px;cursor:default"><span style="font-size:24px;min-width:44px;text-align:center">' + esc(v.ipa) + '</span>' +
+          '<div class="li-main"><div class="li-title" style="font-size:14px">' + esc((D.languageById(v.language_id) || {}).name || '') + '</div>' +
+          '<div class="li-sub">' + esc(v.height) + ' • ' + esc(v.backness) + ' • bulat: ' + esc(v.rounding) + ' • panjang: ' + esc(v.length) + ' • nasal: ' + esc(v.nasalization) + ' • contoh: ' + esc(v.example_word) + '</div></div>' + audioBtn(v.example_word, v.ipa) + '</div>';
+      }).join('') + '</div></div>' +
+      '<div class="section"><div class="section-head"><div class="section-title">Detail Konsonan (Consonant)</div></div>' +
+      '<div class="list">' + (D.consonantsDetail || []).map(function (c2) {
+        return '<div class="list-item" style="min-height:56px;cursor:default"><span style="font-size:24px;min-width:44px;text-align:center">' + esc(c2.ipa) + '</span>' +
+          '<div class="li-main"><div class="li-title" style="font-size:14px">' + esc((D.languageById(c2.language_id) || {}).name || '') + '</div>' +
+          '<div class="li-sub">tempat: ' + esc(c2.place) + ' • cara: ' + esc(c2.manner) + ' • voicing: ' + esc(c2.voicing) + ' • aspirasi: ' + esc(c2.aspiration) + ' • contoh: ' + esc(c2.example_word) + '</div></div>' + audioBtn(c2.example_word, c2.ipa) + '</div>';
+      }).join('') + '</div></div>' +
+      '<div class="section"><div class="section-head"><div class="section-title">Struktur Suku Kata (SyllableStructure)</div></div>' +
+      '<div class="list">' + (D.syllableStructures || []).map(function (s) {
+        return '<div class="list-item" style="min-height:56px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc((D.languageById(s.language_id) || {}).name) + ' — ' + esc(s.pattern) + '</div><div class="li-sub">onset: ' + esc(s.onset) + ' • nukleus: ' + esc(s.nucleus) + ' • koda: ' + esc(s.coda) + ' • contoh: ' + esc(s.example) + '</div></div></div>';
+      }).join('') + '</div></div>' +
+      '<div class="section"><div class="section-head"><div class="section-title">Fonotaktik (Phonotactics)</div></div>' +
+      '<div class="list">' + (D.phonotactics || []).map(function (p) {
+        return '<div class="list-item" style="min-height:56px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc((D.languageById(p.language_id) || {}).name) + '</div><div class="li-sub">' + esc(p.syllable_pattern) + '<br>dibatasi: ' + esc(p.restricted_clusters) + '<br>contoh: ' + esc((p.examples || []).join(', ')) + '</div></div></div>';
+      }).join('') + '</div></div>' +
+      '<div class="section"><div class="section-head"><div class="section-title">Aturan Fonologis (PhonologicalRule)</div></div>' +
+      '<div class="list">' + (D.phonologicalRules || []).map(function (r) {
+        return '<div class="list-item" style="min-height:60px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(r.name) + ' — ' + esc((D.languageById(r.language_id) || {}).name) + '</div>' +
+          '<div class="li-sub">lingkungan: ' + esc(r.environment) + ' • ' + esc(r.input) + ' → ' + esc(r.output) + '<br>' + esc(r.description) + ' • contoh: ' + esc(r.example) + '</div></div></div>';
+      }).join('') + '</div></div>' +
+      '<div class="section"><div class="section-head"><div class="section-title">Tekanan & Intonasi (Stress/Intonation)</div></div>' +
+      '<div class="list">' + (D.stressDetail || []).map(function (st) {
+        return '<div class="list-item" style="min-height:56px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(st.type) + ' — ' + esc((D.languageById(st.language_id) || {}).name) + '</div><div class="li-sub">' + esc(st.description) + '<br>contoh: ' + esc(st.example) + '</div></div>' + audioBtn(st.example, 'contoh') + '</div>';
+      }).join('') + (D.intonationDetail || []).map(function (in2) {
+        return '<div class="list-item" style="min-height:56px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">Intonasi: ' + esc(in2.function) + ' — ' + esc((D.languageById(in2.language_id) || {}).name) + '</div><div class="li-sub">' + esc(in2.pattern) + ' • ' + esc(in2.description) + '<br>contoh: ' + esc(in2.example) + '</div></div>' + audioBtn(in2.example, 'contoh') + '</div>';
+      }).join('') + '</div></div>' +
+      '<div class="section"><div class="section-head"><div class="section-title">Pembicara & Audio (Speaker/Audio)</div></div>' +
+      '<div class="list">' + (D.speakers || []).map(function (sp) {
+        return '<div class="list-item" style="min-height:56px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(sp.speaker_type) + ' — ' + esc((D.languageById(sp.language_id) || {}).name) + '</div>' +
+          '<div class="li-sub">' + esc(sp.region) + (sp.dialect ? ' • dialek: ' + esc(sp.dialect) : '') + '<br>Izin: ' + esc(sp.consent_status) + '</div></div></div>';
+      }).join('') + '</div>' +
+      '<div class="card" style="margin-top:10px"><div class="body-sm muted">' + (D.audioEntities || []).length + ' entri audio terdaftar — semua placeholder DEMO (audio asli belum tersedia; tidak ada data pribadi yang ditampilkan).</div></div></div>' +
       sourceNote() + '</div>';
     window.App.initExpandables(app);
   }
@@ -3429,8 +4155,10 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="card" style="padding:6px 0;overflow:hidden">' + items.map(g =>
         expandable('account_tree', g.title + ' <span class="badge" style="margin-left:6px">' + esc(g.category) + '</span>',
           '<div class="body">' + esc(g.desc) + '</div>' +
+          (g.topics && g.topics.length ? '<div class="label" style="margin:10px 0 6px">Topik (GrammarTopic)</div><div class="related-list">' + g.topics.map(t => '<span class="badge primary">' + esc(t) + '</span>').join('') + '</div>' : '') +
           '<div style="margin-top:10px">' + (g.examples || []).map(e =>
-            '<div class="card" style="margin-bottom:8px"><div class="label" style="margin-bottom:4px">' + esc(e.label) + '</div><div class="body">' + esc(e.text) + '</div></div>').join('') + '</div>')).join('') + '</div>';
+            '<div class="card" style="margin-bottom:8px"><div class="label" style="margin-bottom:4px">' + esc(e.label) + '</div><div class="body">' + esc(e.text) + '</div></div>').join('') + '</div>' +
+          '<p class="body-sm muted" style="margin-top:8px">Pengecualian: ' + esc(g.exceptions || 'Data demo — belum tersedia.') + '</p>')).join('') + '</div>';
 
     app.innerHTML =
       '<div class="container" style="max-width:820px">' +
@@ -3561,6 +4289,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
     if (!c) { viewLearn(app); return; }
     const lang = D.languageById(c.languageId);
     const lessons = c.lessons.map(lid => D.lessonMap[lid]).filter(Boolean);
+    const modules = (D.learningModules || []).filter(m => m.course_id === c.id);
     const progress = progressOf(c.id);
     window.App.recordHistory('course', c.id, c.title);
 
@@ -3571,10 +4300,14 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="hero-art" style="height:130px"><span class="ha-glyph">' + esc(c.title.slice(0, 1)) + '</span><span class="ha-label">' + esc(c.level) + '</span></div>' +
       '<div class="card" style="margin-top:14px">' +
       '<div class="title-lg">' + esc(c.title) + '</div>' +
-      '<div class="meta" style="margin:4px 0 12px">' + esc(lang ? lang.name : '') + ' • ' + lessons.length + ' pelajaran</div>' +
+      '<div class="meta" style="margin:4px 0 12px">' + esc(lang ? lang.name : '') + ' • Level: <span class="badge primary">' + esc(c.level) + '</span> • ' + lessons.length + ' pelajaran</div>' +
       '<div class="progress-label"><span>Progres</span><span>' + progress + '%</span></div>' +
       '<div class="progress-track"><div class="progress-fill animated" style="--pct:' + progress + '%"></div></div>' +
       '<div class="body-sm muted" style="margin-top:10px">' + esc(c.desc) + '</div></div>' +
+      (modules.length ? '<div class="section"><div class="section-title" style="margin-bottom:12px">Modul (LearningModule)</div>' +
+        '<div class="list">' + modules.map(function (md) {
+          return '<div class="list-item" style="cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(md.title) + '</div><div class="li-sub">' + esc(md.description) + ' • ' + md.lesson_ids.length + ' pelajaran</div></div></div>';
+        }).join('') + '</div></div>' : '') +
       '<div class="section"><div class="section-title" style="margin-bottom:12px">Pelajaran</div>' +
       '<div class="list">' + lessons.map((l, i) =>
         '<div class="list-item" data-nav="#/lesson/' + l.id + '" role="button">' +
@@ -3738,6 +4471,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
      ============================================================ */
   function viewProfile(app) {
     const savedCount = State.bookmarks.length;
+    const attempts = window.App.Store.get('attempts', []);
     const hist = State.history.slice(0, 8);
     const langsLearning = D.courses.filter(c => progressOf(c.id) > 0);
     const avgProgress = D.courses.length ? Math.round(D.courses.reduce((s, c) => s + progressOf(c.id), 0) / D.courses.length) : 0;
@@ -3772,6 +4506,12 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
         '<span class="meta">' + progressOf(c.id) + '%</span>' + icon('chevron_right', 'chev') + '</div>').join('') +
         (langsLearning.length ? '' : '<div class="list-item" data-nav="#/learn" style="cursor:pointer"><div class="li-main"><div class="li-title" style="font-size:14px;color:var(--primary)">Mulai kursus pertama</div></div>' + icon('chevron_right', 'chev') + '</div>') + '</div></div>' +
       '<div class="section"><div class="section-head"><div class="section-title">Riwayat</div><button class="section-link" data-action="clear-history">Bersihkan</button></div>' + historyHtml + '</div>' +
+      (attempts.length ? '<div class="section"><div class="section-head"><div class="section-title">Riwayat Latihan (Assessment)</div><span class="meta">' + attempts.length + ' percobaan</span></div>' +
+        '<div class="list">' + attempts.slice(0, 6).map(function (a) {
+          return '<div class="list-item" style="min-height:52px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc((D.lessonMap[a.lessonId] || {}).title || a.exerciseId) + ' <span class="badge">' + esc(a.type) + '</span></div>' +
+            '<div class="li-sub">' + a.correct + '/' + a.total + ' benar • ' + new Date(a.date).toLocaleDateString('id-ID') + '</div></div>' +
+            '<span class="badge ' + (a.score >= 70 ? 'success' : 'danger') + '">' + a.score + '%</span></div>';
+        }).join('') + '</div></div>' : '') +
       '<div class="section"><div class="section-head"><div class="section-title">Pencapaian</div></div>' +
       '<div class="h-scroll">' + [
         ['emoji_events', 'Pelopor', 'Membuka profil pertama'],
@@ -3940,6 +4680,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
     const num = (langId) => (D.comparisons.numbers.find(n => n.langId === langId) || {}).values || [];
     const phr = (langId) => (D.comparisons.phrases.find(p => p.langId === langId) || {}).values || [];
     const makanW = (langId) => (D.wordsOfLanguage(langId).find(w => w.meaning.toLowerCase().includes('makan')) || {}).word || '—';
+    const makanWord = (langId) => D.wordsOfLanguage(langId).find(w => w.meaning.toLowerCase().includes('makan')) || null;
     const scriptsA = D.scriptsOfLanguage(pickA.id), scriptsB = D.scriptsOfLanguage(pickB.id);
 
     const cmpRow = (label, va, vb) =>
@@ -3976,10 +4717,16 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       cmpRow('Penutur', pickA.speakers, pickB.speakers) +
       cmpRow('Status', pickA.status, pickB.status) +
       cmpRow('Sistem Tulisan', scriptsA.map(s => s.name).join(', '), scriptsB.map(s => s.name).join(', ')) +
+      cmpRow('Arah tulisan', (scriptsA[0] || {}).direction || '—', (scriptsB[0] || {}).direction || '—') +
       cmpRow('Kata "makan"', makanW(pickA.id), makanW(pickB.id)) +
       cmpRow('Angka 1–5', (num(pickA.id).join(' · ') || '—'), (num(pickB.id).join(' · ') || '—')) +
       cmpRow('Sapaan pagi', (phr(pickA.id)[0] || '—'), (phr(pickB.id)[0] || '—')) +
       cmpRow('Terima kasih', (phr(pickA.id)[1] || '—'), (phr(pickB.id)[1] || '—')) +
+      cmpRow('IPA "makan"', (makanWord(pickA.id) || {}).ipa || '—', (makanWord(pickB.id) || {}).ipa || '—') +
+      cmpRow('Topik grammar', (D.grammarOfLanguage(pickA.id).length ? D.grammarOfLanguage(pickA.id).slice(0, 3).map(g2 => (g2.topics || []).join('/')).filter(Boolean).join(', ') || '—' : '—'), (D.grammarOfLanguage(pickB.id).length ? D.grammarOfLanguage(pickB.id).slice(0, 3).map(g2 => (g2.topics || []).join('/')).filter(Boolean).join(', ') || '—' : '—')) +
+      cmpRow('Budaya', D.cultureOfLanguage(pickA.id).length + ' entri', D.cultureOfLanguage(pickB.id).length + ' entri') +
+      cmpRow('Sastra', D.literatureOfLanguage(pickA.id).length + ' karya', D.literatureOfLanguage(pickB.id).length + ' karya') +
+      cmpRow('Dialek', D.dialectsOfLanguage(pickA.id).length + ' dialek', D.dialectsOfLanguage(pickB.id).length + ' dialek') +
       '</div>' +
       '<div class="section"><div class="section-title" style="margin-bottom:10px">Word Comparison — satu konsep, banyak bahasa</div>' +
       '<div class="card" style="padding:0;overflow:hidden">' + conceptRows + '</div></div>' +
@@ -4007,9 +4754,24 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
   function viewNetwork(app, id) {
     const center = D.languageById(id) || D.languageById('jawa');
     window.App.recordHistory('network', center.id, center.name);
-    const rels = D.relations.filter(r => r.from === center.id || r.to === center.id);
+    const rels = D.relations.filter(r => (r.from === center.id || r.to === center.id) && r.from !== r.to && D.languageMap[r.from] && D.languageMap[r.to]);
+    const contentRels = D.relations.filter(r => r.from === center.id && !D.languageMap[r.to]);
     const nodes = [...new Set(rels.flatMap(r => [r.from, r.to]).filter(x => x !== center.id))].map(lid => D.languageById(lid)).filter(Boolean);
     const sameFamily = D.languages.filter(l => l.family === center.family && l.id !== center.id);
+    const contentNav = function (tid) {
+      if (D.wordMap[tid]) return '#/word/' + tid;
+      if (D.characterMap[tid]) return '#/character/' + tid;
+      if (D.dialectMap[tid]) return '#/language/' + center.id;
+      if (D.scriptMap[tid]) return '#/script/' + tid;
+      return '#/network/' + center.id;
+    };
+    const contentLabel = function (tid) {
+      if (D.wordMap[tid]) return D.wordMap[tid].word + ' (Kata)';
+      if (D.characterMap[tid]) return D.characterMap[tid].name + ' (Karakter)';
+      if (D.dialectMap[tid]) return D.dialectMap[tid].name + ' (Dialek)';
+      if (D.scriptMap[tid]) return D.scriptMap[tid].name + ' (Aksara)';
+      return tid;
+    };
 
     app.innerHTML =
       '<div class="container" style="max-width:860px">' +
@@ -4029,12 +4791,14 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
           '<div class="li-main"><div class="li-title" style="font-size:14px">' + esc(center.name) + ' ' + dir + ' ' + esc(other.name) + '</div>' +
           '<div class="li-sub">' + esc(relTypeLabel[r.type] || r.type) + '</div></div>' + icon('chevron_right', 'chev') + '</div>';
       }).join('') : '<div class="list-item" style="cursor:default"><div class="li-main"><div class="li-sub">Belum ada relasi tercatat (demo).</div></div></div>') + '</div></div>' +
+      (contentRels.length ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Konten terhubung (kata / karakter / dialek / aksara)</div>' +
+        '<div class="related-list">' + contentRels.map(function (r) { return '<button class="chip" data-nav="' + contentNav(r.to) + '">' + esc(contentLabel(r.to)) + '</button>'; }).join('') + '</div></div>' : '') +
       (sameFamily.length ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Serumpun (' + esc(familyName(center.family)) + ')</div>' +
         '<div class="related-list">' + sameFamily.map(l => '<button class="chip" data-nav="#/language/' + l.id + '">' + esc(l.name) + '</button>').join('') + '</div></div>' : '') +
-      '<div class="section"><div class="section-title" style="margin-bottom:10px">Jenis Relasi</div>' +
+      '<div class="section"><div class="section-title" style="margin-bottom:10px">Jenis Relasi (Relation)</div>' +
       '<div class="card"><div class="related-list" style="justify-content:flex-start">' +
-      Object.entries(relTypeLabel).map(([k, v]) => '<span class="badge primary">' + esc(v) + '</span>').join('') +
-      '</div><div class="body-sm muted" style="margin-top:10px">Node: Bahasa, Dialek, Aksara, Kata • Edge: related, uses, derived, influenced, spoken_in, written_in, borrowed.</div></div></div>' +
+      (D.relationTypes || []).map(function (rt) { return '<span class="badge primary">' + esc(rt.relation_type) + '</span>'; }).join('') +
+      '</div><div class="body-sm muted" style="margin-top:10px">Node: Bahasa, Dialek, Aksara, Karakter, Kata, Bunyi • Edge: related, dialect_of, uses, written_in, derived_from, influenced_by, spoken_in, dst. Struktur generic: relation_id, source_entity, source_id, relation_type, target_entity, target_id.</div></div></div>' +
       sourceNote() + '</div>';
     window.App.initExpandables(app);
   }
@@ -4057,12 +4821,22 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="ki-item"><div class="ki-label">Total Rekaman</div><div class="ki-value">' + D.dataVersion.totalRecords + '+</div></div>' +
       '<div class="ki-item"><div class="ki-label">Revisi</div><div class="ki-value">' + D.revisions.length + ' log</div></div>' +
       '</div>' +
+      '<div class="card" style="margin-bottom:16px"><div class="body-sm muted"><b>Source ≠ Content Verification.</b> Sumber sitasi (mis. Ethnologue, ISO 639-3) hanyalah ilustrasi struktur — keberadaan sumber <b>tidak otomatis</b> berarti isi prototipe sudah diverifikasi. Status konten ALFABASA saat ini: <span class="badge danger">DEMO</span>.</div></div>' +
       '<div class="section"><div class="section-title" style="margin-bottom:10px">Statistik Verifikasi</div>' +
       '<div class="stat-row">' +
       [['verified', 'Verified', counts.verified || 0], ['reviewed', 'Reviewed', counts.reviewed || 0], ['unverified', 'Unverified', counts.unverified || 0]].map(x =>
         '<div class="stat-box"><div class="sb-num">' + x[2] + '</div><div class="sb-label">' + x[1] + '</div></div>').join('') +
       '<div class="stat-box"><div class="sb-num">' + D.sources.length + '</div><div class="sb-label">Sumber</div></div>' +
       '</div></div>' +
+      '<div class="section"><div class="section-title" style="margin-bottom:10px">Status Konten (Content Verification)</div>' +
+      '<div class="list">' + (D.verifications || []).map(function (v) {
+        return '<div class="list-item" style="cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(v.verification_id) + ' — konten: ' + esc(v.content_id) + '</div>' +
+          '<div class="li-sub">' + esc(v.notes || '') + (v.reviewer ? ' • Reviewer: ' + esc(v.reviewer) + ' • ' + esc(v.verification_date) : '') + '</div></div>' +
+          '<span class="badge ' + (v.status === 'VERIFIED' ? 'success' : v.status === 'REVIEWED' ? 'primary' : 'danger') + '">' + esc(v.status) + '</span></div>';
+      }).join('') + '</div>' +
+      '<div class="card" style="margin-top:10px"><div class="related-list" style="justify-content:flex-start">' +
+      ['DEMO', 'UNVERIFIED', 'REVIEWED', 'VERIFIED'].map(function (s) { return '<span class="badge">' + esc(s) + '</span>'; }).join('') +
+      '</div></div></div>' +
       '<div class="section"><div class="section-title" style="margin-bottom:10px">Daftar Sumber</div>' +
       '<div class="list">' + D.sources.map(s =>
         '<div class="list-item" style="cursor:default;align-items:flex-start">' + monogram(s.organization) +
@@ -4159,6 +4933,8 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
 
   window.Views = { viewHome, viewExplore, viewLanguages, viewLanguage, viewScripts, viewScript, viewCharacter, viewDictionary, viewWord, viewPronunciation, viewGrammar, viewCulture, viewLiterature, viewLearn, viewCourse, viewLesson, viewSearch, viewSaved, viewProfile, viewSettings, viewFamily, viewFamilyList, viewError, viewMenus, viewMenuDetail, viewCompare, viewNetwork, viewSources };
 })();
+
+
 
 </script>
 </body>
