@@ -12,6 +12,9 @@
 <style>
 
 
+
+
+
 /* ============================================================
    ALFABASA — Design System
    Material Design 3 · AMOLED Dark / Light · Indigo accent
@@ -623,6 +626,9 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
 
 
 
+
+
+
 </style>
 </head>
 <body>
@@ -689,16 +695,6 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
 </div>
 
 <script>
-
-
-/* ============================================================
-   ALFABASA — Prototype Data Layer
-   Semua data di bawah adalah DATA DEMO untuk prototipe.
-   Belum diverifikasi dan bukan angka final.
-   Struktur entity dirancang agar siap dihubungkan ke
-   database/API sungguhan (id relasi → foreign key).
-   ============================================================ */
-
 const ALFABASA = {
   meta: {
     name: 'ALFABASA',
@@ -2370,6 +2366,10 @@ const ALFABASA = {
 
   /* --- SUMBER BARU (sitasi demo) --- */
   var newSources = [
+    { id: 's-demo-2', title: 'Ethnologue: Languages of the World', type: 'linguistic database', organization: 'SIL International', publication: 'Ethnologue (sitasi demo)', year: 2024, verification: 'reviewed', note: 'Sitasi demo untuk ilustrasi struktur data sumber.' },
+    { id: 's-demo-3', title: 'ISO 639-3 Registration Authority', type: 'standards', organization: 'SIL International', publication: 'ISO 639-3 (sitasi demo)', year: 2024, verification: 'verified', note: 'Sitasi demo untuk kode bahasa.' },
+    { id: 's-demo-4', title: 'Glottolog 5.0', type: 'linguistic database', organization: 'Max Planck Institute', publication: 'Glottolog (sitasi demo)', year: 2024, verification: 'verified', note: 'Sitasi demo untuk klasifikasi dan glottocode.' },
+    { id: 's-demo-5', title: 'UNESCO Atlas of the World’s Languages in Danger', type: 'international organization', organization: 'UNESCO', publication: 'Atlas (sitasi demo)', year: 2010, verification: 'reviewed', note: 'Sitasi demo untuk status vitalitas bahasa.' }
   ];
   D.sources = D.sources.concat(newSources);
 
@@ -2568,7 +2568,7 @@ const ALFABASA = {
     { from: 'jawa', to: 'jawa-krama', type: 'contains' },
     { from: 'jawa-ngoko', to: 'jawa', type: 'dialect_of' },
     { from: 'sunda-cirebon', to: 'sunda', type: 'variant_of' },
-    
+    { from: 'jawa', to: 'jawa', type: 'uses' },
     { from: 'jawa', to: 'latin', type: 'written_in' },
     { from: 'jawa', to: 'jawa-ha', type: 'contains' },
     { from: 'jawa-ha', to: 'jawa', type: 'pronounced_as' },
@@ -2774,6 +2774,10 @@ const ALFABASA = {
   });
 
   /* ---- BAGIAN 09: TONE (entity dari data pronunciation) ---- */
+  D.tones = (D.pronunciation.tones || []).map(function (t, i) {
+    return { tone_id: 'tone-' + i, language_id: 'mandarin', type: 'nada', contour: t.symbol, description: t.desc, example: t.example, audio_id: null, content_status: 'DEMO' };
+  });
+
   /* ---- BAGIAN 11+12: FONOLOGI PER BAHASA (ringkas, aman) ---- */
   D.phonologies = [
     { language_id: 'jawa', vowel_inventory: ['i', 'e', 'ə', 'a', 'u', 'o'], consonant_count: 'sekitar 23', tones: 'tidak ada', stress: 'tidak membedakan makna', syllable: 'CV, CVC (koda /ŋ k h/)', notes: 'memiliki implosif /ɓ/ /ɗ/ dan pasangan dental/retrofleks' },
@@ -2845,8 +2849,270 @@ const ALFABASA = {
   }
   D.languages.forEach(function (l) { audit(l, ['community', 'city', 'province', 'island']); });
   D.registry.version = '0.7.0';
+  D.registry.entities = D.registry.entities.concat([
+    { name: 'Phonology', table: 'phonologies', fields: ['language_id', 'vowel_inventory', 'consonant_count', 'tones', 'stress', 'syllable', 'notes'], relations: ['Language 1:1'] },
+    { name: 'Tone', table: 'tones', fields: ['tone_id', 'language_id', 'type', 'contour', 'description', 'example', 'audio_id'], relations: ['Language N:1'] },
+    { name: 'Pronunciation', table: 'pronunciations', fields: ['pronunciation_id', 'word_id', 'language_id', 'dialect_id', 'ipa', 'phonetic_description', 'region', 'audio_id', 'source_id'], relations: ['Word 1:1'] },
+    { name: 'Etymology', table: 'etymologies', fields: ['etymology_id', 'word_id', 'origin', 'source_language', 'period'], relations: ['Word 1:1'] },
+    { name: 'Synonym', table: 'synonyms', fields: ['synonym_id', 'word_id', 'synonym'], relations: ['Word N:1'] },
+    { name: 'Antonym', table: 'antonyms', fields: ['antonym_id', 'word_id', 'antonym'], relations: ['Word N:1'] },
+    { name: 'RelatedWord', table: 'relatedWords', fields: ['related_word_id', 'word_id', 'related_word'], relations: ['Word N:N'] },
+    { name: 'GrammarTopic', table: 'grammarTopics', fields: ['grammar_topic_id', 'grammar_id', 'language_id', 'category', 'subcategory', 'title', 'description', 'rules', 'exceptions', 'source_id'], relations: ['Grammar N:1'] },
+    { name: 'GrammarExample', table: 'grammarExamples', fields: ['grammar_example_id', 'grammar_topic_id', 'text', 'transliteration', 'translation', 'ipa', 'notes'], relations: ['GrammarTopic N:1'] },
+    { name: 'LearningProgress', table: 'learningProgress (getter)', fields: ['progress_id', 'user_id', 'language_id', 'course_id', 'lesson_id', 'completion', 'score', 'last_accessed'], relations: ['Course N:1', 'User'] }
+  ]);
   D.meta.version = '0.7.0 (data depth)';
   D.meta.dataStatus = 'Demo Data — konten belum diverifikasi; field tanpa data diberi label "Not yet documented".';
+})(ALFABASA);
+
+
+/* ============================================================
+   ALFABASA — MASTER DATABASE EXPANSION v0.6 (compact)
+   Concept/ConceptEntry, LanguageBranch, WordForm berjenjang,
+   getDataStats, validateData, registry lengkap. Status: DEMO.
+   ============================================================ */
+(function (D) {
+
+  /* ---- KATA BARU (mendukung konsep multibahasa) ---- */
+  var newWords = [
+    { id: 'ngajeng', languageId: 'bali', word: 'ngajeng', pos: 'Kata kerja (alus)', meaning: 'Makan (ragam halus Bahasa Bali).', ipa: '/ŋadʒəŋ/', script: 'Latin', transliteration: 'ngajeng', audio: true, examples: [{ text: 'Titiang jagi ngajeng.', translation: 'Saya akan makan.' }], synonyms: [], antonyms: [], etymology: 'Bali', relatedWords: ['makan', 'mangan'], sourceIds: ['s-demo-1'] },
+    { id: 'mizu', languageId: 'jepang', word: 'mizu', pos: '名詞 (kata benda)', meaning: 'Air.', ipa: '/mʲizɯ/', script: 'Kana', transliteration: 'mizu', nativeScript: '水', audio: true, examples: [{ text: '水を飲みます。', translation: 'Saya minum air.' }], synonyms: [], antonyms: [], etymology: 'Wago (kata asli Jepang)', relatedWords: ['air', 'banyu'], sourceIds: ['s-demo-1'] },
+    { id: 'meokda', languageId: 'korea', word: 'meokda', pos: '동사 (kata kerja)', meaning: 'Makan (bentuk kamus).', ipa: '/mʌk̚t͈a/', script: 'Hangul', transliteration: 'meokda', nativeScript: '먹다', audio: true, examples: [{ text: '밥을 먹어요.', translation: 'Saya makan nasi.' }], synonyms: [], antonyms: [], etymology: 'Korea asli', relatedWords: ['makan', 'eat'], sourceIds: ['s-demo-1'] },
+    { id: 'chi', languageId: 'mandarin', word: 'chī', pos: '动词 (kata kerja)', meaning: 'Makan.', ipa: '/ʈʂʰi˥/', script: 'Han', transliteration: 'chī', nativeScript: '吃', audio: true, examples: [{ text: '我吃饭。', translation: 'Saya makan nasi.' }], synonyms: [], antonyms: [], etymology: 'Tionghoa', relatedWords: ['makan', 'eat'], sourceIds: ['s-demo-1'] },
+    { id: 'agua', languageId: 'spanyol', word: 'agua', pos: 'Sustantivo (kata benda)', meaning: 'Air.', ipa: '/ˈaɣwa/', script: 'Latin', transliteration: 'agua', audio: true, examples: [{ text: 'Quiero agua.', translation: 'Saya ingin air.' }], synonyms: [], antonyms: [], etymology: 'Latin: aqua', relatedWords: ['air', 'water'], sourceIds: ['s-demo-1'] },
+    { id: 'imah', languageId: 'sunda', word: 'imah', pos: 'Kata benda', meaning: 'Rumah (loma). Lemes: bumi.', ipa: '/imah/', script: 'Latin', transliteration: 'imah', audio: true, examples: [{ text: 'Imah abdi di Bandung.', translation: 'Rumah saya di Bandung.' }], synonyms: ['bumi (lemes)'], antonyms: [], etymology: 'Sunda', relatedWords: ['rumah', 'omah'], sourceIds: ['s-demo-1'] },
+    { id: 'umah', languageId: 'bali', word: 'umah', pos: 'Kata benda', meaning: 'Rumah.', ipa: '/umah/', script: 'Latin', transliteration: 'umah', audio: true, examples: [{ text: 'Umah tiange di Denpasar.', translation: 'Rumah saya di Denpasar.' }], synonyms: [], antonyms: [], etymology: 'Bali', relatedWords: ['rumah', 'omah'], sourceIds: ['s-demo-1'] },
+    { id: 'hirup', languageId: 'sunda', word: 'hirup', pos: 'Kata kerja', meaning: 'Hidup.', ipa: '/hirup/', script: 'Latin', transliteration: 'hirup', audio: true, examples: [{ text: 'Hirup kudu boga harepan.', translation: 'Hidup harus punya harapan.' }], synonyms: [], antonyms: [], etymology: 'Sunda', relatedWords: ['hidup', 'urip'], sourceIds: ['s-demo-1'] },
+    { id: 'leben', languageId: 'jerman', word: 'leben', pos: 'Verb / Nomen', meaning: 'Hidup; kehidupan.', ipa: '/ˈleːbən/', script: 'Latin', transliteration: 'leben', audio: true, examples: [{ text: 'Das Leben ist schön.', translation: 'Hidup itu indah.' }], synonyms: [], antonyms: [], etymology: 'Germanik: liben', relatedWords: ['hidup', 'live'], sourceIds: ['s-demo-1'] },
+    { id: 'maison', languageId: 'prancis', word: 'maison', pos: 'Nom (kata benda)', meaning: 'Rumah.', ipa: '/mɛzɔ̃/', script: 'Latin', transliteration: 'maison', audio: true, examples: [{ text: 'Ma maison est grande.', translation: 'Rumah saya besar.' }], synonyms: [], antonyms: [], etymology: 'Latin: mansio', relatedWords: ['rumah', 'house'], sourceIds: ['s-demo-1'] },
+    { id: 'ie', languageId: 'jepang', word: 'ie', pos: '名詞 (kata benda)', meaning: 'Rumah (bangunan/keluarga).', ipa: '/i.e/', script: 'Kana', transliteration: 'ie', nativeScript: '家', audio: true, examples: [{ text: '家に帰ります。', translation: 'Saya pulang ke rumah.' }], synonyms: [], antonyms: [], etymology: 'Wago', relatedWords: ['rumah', 'house'], sourceIds: ['s-demo-1'] },
+    { id: 'lengua', languageId: 'spanyol', word: 'lengua', pos: 'Sustantivo', meaning: 'Bahasa; lidah.', ipa: '/ˈleŋɡwa/', script: 'Latin', transliteration: 'lengua', audio: true, examples: [{ text: 'La lengua española.', translation: 'Bahasa Spanyol.' }], synonyms: ['idioma'], antonyms: [], etymology: 'Latin: lingua', relatedWords: ['bahasa', 'language'], sourceIds: ['s-demo-1'] },
+    { id: 'langue', languageId: 'prancis', word: 'langue', pos: 'Nom', meaning: 'Bahasa; lidah.', ipa: '/lɑ̃ɡ/', script: 'Latin', transliteration: 'langue', audio: true, examples: [{ text: 'La langue française.', translation: 'Bahasa Prancis.' }], synonyms: [], antonyms: [], etymology: 'Latin: lingua', relatedWords: ['bahasa', 'language'], sourceIds: ['s-demo-1'] }
+  ];
+  D.words = D.words.concat(newWords);
+
+  /* ---- CONCEPT & CONCEPTENTRY (terhubung wordId) ---- */
+  var conceptDefs = [
+    { conceptId: 'con-makan', name: 'makan', description: 'Konsep makan lintas bahasa.', category: 'aktivitas' },
+    { conceptId: 'con-air', name: 'air', description: 'Konsep air lintas bahasa.', category: 'alam' },
+    { conceptId: 'con-rumah', name: 'rumah', description: 'Konsep rumah lintas bahasa.', category: 'tempat' },
+    { conceptId: 'con-hidup', name: 'hidup', description: 'Konsep hidup lintas bahasa.', category: 'kehidupan' },
+    { conceptId: 'con-terimakasih', name: 'terima kasih', description: 'Ungkapan terima kasih lintas bahasa.', category: 'ungkapan' },
+    { conceptId: 'con-bahasa', name: 'bahasa', description: 'Konsep bahasa lintas bahasa.', category: 'abstrak' }
+  ];
+  D.concepts = conceptDefs;
+  D.conceptEntries = [];
+  conceptDefs.forEach(function (cd) {
+    var pairs = {
+      'con-makan': [['indonesia', 'makan'], ['jawa', 'mangan'], ['sunda', 'dahar'], ['bali', 'ngajeng'], ['english', 'eat'], ['jepang', 'taberu'], ['korea', 'meokda'], ['mandarin', 'chi']],
+      'con-air': [['indonesia', 'air'], ['jawa', 'banyu'], ['sunda', 'cai'], ['bali', 'yeh'], ['english', 'water'], ['jepang', 'mizu'], ['spanyol', 'agua']],
+      'con-rumah': [['indonesia', 'rumah'], ['jawa', 'omah'], ['sunda', 'imah'], ['bali', 'umah'], ['english', 'house'], ['jepang', 'ie'], ['prancis', 'maison']],
+      'con-hidup': [['indonesia', 'hidup'], ['jawa', 'urip'], ['sunda', 'hirup'], ['bali', 'urip'], ['english', 'live'], ['jerman', 'leben']],
+      'con-terimakasih': [['indonesia', 'terima-kasih'], ['jawa', 'matur-nuwun'], ['sunda', 'dahar']],
+      'con-bahasa': [['indonesia', 'bahasa'], ['jawa', 'basa'], ['bali', 'basa'], ['english', 'language'], ['spanyol', 'lengua'], ['prancis', 'langue']]
+    }[cd.conceptId] || [];
+    pairs.forEach(function (p) {
+      var norm = function (s) { return String(s).toLowerCase().replace(/[āáǎà]/g, 'a').replace(/[īíǐì]/g, 'i').replace(/[ūúǔù]/g, 'u').replace(/[ēéěè]/g, 'e').replace(/[ōóǒò]/g, 'o'); };
+      var w = D.words.find(function (x) { return x.languageId === p[0] && (norm(x.word) === norm(p[1]) || norm(x.transliteration || x.word) === norm(p[1])); });
+      D.conceptEntries.push({ conceptEntryId: 'ce-' + cd.conceptId + '-' + p[0], conceptId: cd.conceptId, languageId: p[0], wordId: w ? w.id : null, word: p[1], meaningId: w ? 'wm-' + w.id : null });
+    });
+  });
+
+  /* ---- ENTITY LENGKAP UNTUK SEMUA KATA (generate ulang tanpa duplikat) ---- */
+  var haveWm = {}; D.wordMeanings.forEach(function (m) { haveWm[m.word_id] = 1; });
+  var havePr = {}; D.pronunciations.forEach(function (p) { havePr[p.word_id] = 1; });
+  var haveSnt = {}; D.exampleSentences.forEach(function (s) { (s.word_ids || []).forEach(function (wid) { haveSnt[wid] = 1; }); });
+  D.words.forEach(function (w) {
+    if (!haveWm[w.id]) D.wordMeanings.push({ meaningId: 'wm-' + w.id, meaning_id: 'wm-' + w.id, word_id: w.id, wordId: w.id, definition: w.meaning, senseNumber: 1, sense_number: 1, usage: 'umum', domain: null, context: null, exampleSentenceIds: [], example_sentence_ids: [] });
+    if (!havePr[w.id]) D.pronunciations.push({ pronunciationId: 'pron-' + w.id, pronunciation_id: 'pron-' + w.id, word_id: w.id, wordId: w.id, language_id: w.languageId, languageId: w.languageId, dialect_id: w.dialect || null, ipa: w.ipa, phonetic_description: null, region: w.region || null, audio_id: w.audio ? 'audio-demo-' + w.id : null, audioId: w.audio ? 'audio-demo-' + w.id : null, source_id: 's-demo-1', sourceId: 's-demo-1', verificationId: 'v-demo', content_status: 'DEMO' });
+    if (!haveSnt[w.id]) (w.examples || []).forEach(function (e, i) {
+      D.exampleSentences.push({ sentenceId: 'snt-' + w.id + '-' + i, sentence_id: 'snt-' + w.id + '-' + i, language_id: w.languageId, languageId: w.languageId, text: e.text, nativeText: null, transliteration: null, ipa: null, translation: e.translation, context: null, word_ids: [w.id], wordIds: [w.id], audio_id: null, source_id: 's-demo-1', verificationId: 'v-demo' });
+    });
+  });
+  /* ---- LANGUAGEBRANCH (entity terpisah dari string) ---- */
+  D.languageBranches = [];
+  D.families.forEach(function (f) {
+    (f.branch || '').split(/[-–]/).map(function (s) { return s.trim(); }).filter(Boolean).forEach(function (b) {
+      var id = 'br-' + f.id + '-' + b.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      if (!D.languageBranches.some(function (x) { return x.branchId === id; })) {
+        D.languageBranches.push({ branchId: id, familyId: f.id, name: b, subbranch: false });
+      }
+    });
+  });
+  D.languages.forEach(function (l) { l.subbranchId = null; });
+
+  /* ---- WORDFORM berjenjang (ngoko/krama dsb) ---- */
+  D.wordForms = (D.wordForms || []).filter(function (w) { return w.form_type && w.form_type !== 'lemma' && w.form_type !== 'bentuk'; });
+  var extraForms = [
+    { wordId: 'mangan', form: 'dhahar', formType: 'krama', grammaticalFunction: 'Kata kerja (krama)' },
+    { wordId: 'banyu', form: 'toya', formType: 'krama', grammaticalFunction: 'Kata benda (krama)' },
+    { wordId: 'omah', form: 'griya', formType: 'krama', grammaticalFunction: 'Kata benda (krama)' },
+    { wordId: 'urip', form: 'gesang', formType: 'krama', grammaticalFunction: 'Kata kerja (krama)' },
+    { wordId: 'ngombe', form: 'ngunjuk', formType: 'krama', grammaticalFunction: 'Kata kerja (krama)' },
+    { wordId: 'mangan', form: 'mangan', formType: 'ngoko', grammaticalFunction: 'Kata kerja (ngoko)' },
+    { wordId: 'dahar', form: 'tuang', formType: 'lemes', grammaticalFunction: 'Kata kerja (lemes — untuk orang lebih tua)' },
+    { wordId: 'dahar', form: 'emam', formType: 'loma', grammaticalFunction: 'Kata kerja (anak-anak)' }
+  ];
+  extraForms.forEach(function (f) {
+    var w = D.wordMap[f.wordId];
+    D.wordForms.push({ wordFormId: 'wfx-' + f.wordId + '-' + f.formType, wordId: f.wordId, form: f.form, formType: f.formType, grammaticalFunction: f.grammaticalFunction, dialectId: null, region: w ? w.region : null, notes: null });
+  });
+
+  /* ---- ALIAS FIELD camelCase (struktur sesuai Buku Biru) ---- */
+  D.words.forEach(function (w) {
+    w.wordId = w.id; w.writtenForm = w.word; w.nativeForm = w.nativeScript || w.word; w.lemma = w.baseForm || w.word;
+    w.partOfSpeech = w.pos; w.pronunciationId = 'pron-' + w.id; w.audioId = w.audio ? 'audio-demo-' + w.id : null;
+  });
+  D.scripts.forEach(function (s) { s.scriptId = s.id; s.relatedScripts = s.related || []; });
+  D.characters.forEach(function (c) {
+    c.characterId = c.id; c.unicodeId = 'u-' + c.id; c.soundId = 'snd-' + c.id;
+    c.exampleWords = c.example ? [c.example.split(' ')[0].replace(/[^a-zA-Z0-9]/g, '')] : [];
+  });
+  D.dialects.forEach(function (d) { d.dialectId = d.id; d.nativeName = d.name; d.speakerEstimate = d.speaker_estimate || null; d.description = d.note || null; });
+  D.grammar.forEach(function (g) { g.grammarId = g.id; g.rules = g.examples || []; });
+  D.culture.forEach(function (c) { c.cultureId = c.id; c.examples = []; });
+  D.literature.forEach(function (l) { l.literatureId = l.id; l.nativeTitle = l.native_title || l.title; });
+  D.courses.forEach(function (c) { c.courseId = c.id; });
+  D.lessons.forEach(function (l) { l.lessonId = l.id; });
+  D.exercises.forEach(function (e) { e.exerciseId = e.id; });
+  D.sources.forEach(function (s) { s.sourceId = s.id; s.accessDate = null; s.publisher = null; s.identifier = null; });
+  D.minimalPairs.forEach(function (mp) {
+    mp.minimalPairId = mp.minimal_pair_id; mp.wordAId = D.words.find(function (x) { return x.word.toLowerCase() === String(mp.word_a).toLowerCase(); }) ? D.words.find(function (x) { return x.word.toLowerCase() === String(mp.word_a).toLowerCase(); }).id : null;
+    mp.wordBId = D.words.find(function (x) { return x.word.toLowerCase() === String(mp.word_b).toLowerCase(); }) ? D.words.find(function (x) { return x.word.toLowerCase() === String(mp.word_b).toLowerCase(); }).id : null;
+  });
+  D.grammarTopics.forEach(function (t) { t.grammarTopicId = t.grammar_topic_id; t.rules = t.rules || []; });
+  D.grammarExamples.forEach(function (g) { g.grammarExampleId = g.grammar_example_id; });
+  D.phonologies.forEach(function (p) { p.phonologyId = 'ph-' + p.language_id; });
+  D.pronunciations.forEach(function (p) { p.pronunciationId = p.pronunciation_id; });
+  D.etymologies.forEach(function (e) { e.etymologyId = e.etymology_id; });
+
+  /* ---- RELATION TYPES + STATUS VERIFIKASI ---- */
+  D.relationTypes = D.relationTypes.concat([
+    { relation_type: 'branch_of', desc: 'cabang dari' }, { relation_type: 'borrowed_from', desc: 'dipinjam dari' }
+  ]);
+  D.verificationStatuses = ['DEMO', 'UNVERIFIED', 'REVIEWED', 'VERIFIED', 'NEEDS_UPDATE', 'DISPUTED', 'ARCHIVED'];
+
+  /* ---- STATISTIK & VALIDASI ---- */
+  D.getDataStats = function () {
+    return {
+      languages: D.languages.length, families: D.families.length, branches: D.languageBranches.length,
+      dialects: D.dialects.length, scripts: D.scripts.length, characters: D.characters.length,
+      glyphs: (D.glyphs || []).length, unicode: Object.keys(D.unicodeData || {}).length,
+      words: D.words.length, wordForms: (D.wordForms || []).length, meanings: (D.wordMeanings || []).length,
+      sentences: (D.exampleSentences || []).length, pronunciations: (D.pronunciations || []).length,
+      audio: (D.audioEntities || []).length, speakers: (D.speakers || []).length,
+      sounds: (D.sounds || []).length, vowels: (D.vowelsDetail || []).length, consonants: (D.consonantsDetail || []).length,
+      minimalPairs: (D.minimalPairs || []).length, rules: (D.phonologicalRules || []).length,
+      phonotactics: (D.phonotactics || []).length, syllables: (D.syllableStructures || []).length,
+      grammar: D.grammar.length, grammarTopics: (D.grammarTopics || []).length, grammarExamples: (D.grammarExamples || []).length,
+      culture: D.culture.length, literature: D.literature.length,
+      courses: D.courses.length, modules: (D.learningModules || []).length, lessons: D.lessons.length,
+      materials: (D.learningMaterials || []).length, exercises: D.exercises.length, questions: (D.questions || []).length,
+      concepts: (D.concepts || []).length, conceptEntries: (D.conceptEntries || []).length,
+      relations: D.relations.length, sources: D.sources.length, verifications: (D.verifications || []).length,
+      revisions: (D.revisions || []).length
+    };
+  };
+  D.validateData = function () {
+    var issues = [];
+    var maps = { language: D.languageMap, dialect: D.dialectMap, script: D.scriptMap, character: D.characterMap, word: D.wordMap, family: D.familyMap, culture: D.cultureMap, literature: D.literatureMap, grammar: D.grammarMap, course: D.courseMap, lesson: D.lessonMap, exercise: D.exerciseMap, source: (function () { var m = {}; D.sources.forEach(function (s) { m[s.id] = 1; }); return m; })() };
+    var resolve = function (id) { return Object.keys(maps).some(function (k) { return maps[k][id] !== undefined; }); };
+    var checkDup = function (arr, key, label) { var seen = {}; arr.forEach(function (x) { var id = x[key]; if (id && seen[id]) issues.push('ID duplikat ' + label + ': ' + id); seen[id] = 1; }); };
+    checkDup(D.languages, 'id', 'language'); checkDup(D.scripts, 'id', 'script'); checkDup(D.characters, 'id', 'character'); checkDup(D.words, 'id', 'word');
+    checkDup(D.dialects, 'id', 'dialect'); checkDup(D.grammar, 'id', 'grammar'); checkDup(D.culture, 'id', 'culture'); checkDup(D.literature, 'id', 'literature');
+    checkDup(D.courses, 'id', 'course'); checkDup(D.lessons, 'id', 'lesson'); checkDup(D.exercises, 'id', 'exercise');
+    D.relations.forEach(function (r) {
+      if (r.from && !resolve(r.from)) issues.push('Relation from tidak dikenal: ' + r.from);
+      if (r.to && !resolve(r.to)) issues.push('Relation to tidak dikenal: ' + r.to);
+    });
+    D.words.forEach(function (w) { if (!D.languageMap[w.languageId]) issues.push('Word tanpa languageId valid: ' + w.id); });
+    D.characters.forEach(function (c) { if (!D.scriptMap[c.scriptId]) issues.push('Character tanpa scriptId valid: ' + c.id); });
+    D.lessons.forEach(function (l) { if (!D.courseMap[l.courseId]) issues.push('Lesson tanpa courseId valid: ' + l.id); });
+    D.exercises.forEach(function (e) { if (!D.lessonMap[e.lessonId]) issues.push('Exercise tanpa lessonId valid: ' + e.id); });
+    D.grammar.forEach(function (g) { if (!D.languageMap[g.languageId]) issues.push('Grammar tanpa languageId valid: ' + g.id); });
+    D.conceptEntries.forEach(function (ce) {
+      if (ce.wordId && !D.wordMap[ce.wordId]) issues.push('ConceptEntry wordId tidak dikenal: ' + ce.wordId);
+      if (!D.languageMap[ce.languageId]) issues.push('ConceptEntry languageId tidak dikenal: ' + ce.languageId);
+    });
+    return { status: issues.length ? 'WARNING' : 'PASS', issueCount: issues.length, issues: issues.slice(0, 20), note: 'Validasi struktur data prototipe (DEMO) — beberapa data belum lengkap bukan berarti rusak.' };
+  };
+
+  /* ---- REGISTRY LENGKAP (override) ---- */
+  D.registry = {
+    version: '0.7.1',
+    note: 'Skema entitas ALFABASA — setiap entitas terpisah (tabel) siap dipindahkan ke database/API. Data saat ini: DEMO.',
+    entities: [
+      { name: 'Language', table: 'languages', relations: ['LanguageName 1:1', 'LanguageCode 1:1', 'LanguageStatus 1:1', 'LanguageRegion 1:N', 'SpeakerStatistic 1:1', 'Dialect 1:N', 'Script N:N', 'Word 1:N', 'Grammar 1:N', 'Culture 1:N', 'Literature 1:N'] },
+      { name: 'LanguageName', table: 'languages.*name', relations: ['Language 1:1'] },
+      { name: 'LanguageCode', table: 'languages.code', relations: ['Language 1:1'] },
+      { name: 'LanguageFamily', table: 'families', relations: ['Language N:1'] },
+      { name: 'LanguageBranch', table: 'languageBranches', relations: ['Language N:1'] },
+      { name: 'LanguageSubbranch', table: 'languages.subbranchId', relations: ['Language N:1'] },
+      { name: 'LanguageRegion', table: 'languages.regionDetail', relations: ['Language 1:N'] },
+      { name: 'SpeakerStatistic', table: 'languages.speakers*', relations: ['Language 1:1'] },
+      { name: 'LanguageStatus', table: 'languages.statuses', relations: ['Language 1:1'] },
+      { name: 'Dialect', table: 'dialects', relations: ['Language N:1', 'Word N:1'] },
+      { name: 'WritingSystem', table: 'languages.writingSystems', relations: ['Language N:N Script'] },
+      { name: 'Script', table: 'scripts', relations: ['Character 1:N', 'ScriptLanguage N:N'] },
+      { name: 'ScriptClassification', table: 'scripts.classification', relations: ['Script N:1'] },
+      { name: 'ScriptLanguage', table: 'scripts.languages', relations: ['Script N:N Language'] },
+      { name: 'ScriptRegion', table: 'scripts.region', relations: ['Script N:1'] },
+      { name: 'ScriptHistory', table: 'scripts.history', relations: ['Script 1:1'] },
+      { name: 'Character', table: 'characters', relations: ['Script N:1', 'Glyph 1:N', 'CharacterVariant 1:N', 'UnicodeData 1:1', 'Sound 1:1'] },
+      { name: 'Glyph', table: 'glyphs', relations: ['Character N:1'] },
+      { name: 'CharacterVariant', table: 'characterVariants', relations: ['Character N:1'] },
+      { name: 'UnicodeData', table: 'unicodeData', relations: ['Character 1:1'] },
+      { name: 'StrokeOrder', table: 'strokeOrders', relations: ['Character 1:N'] },
+      { name: 'Transliteration', table: 'scripts.transliteration', relations: ['Script 1:N'] },
+      { name: 'Sound', table: 'sounds', relations: ['Language N:1'] },
+      { name: 'Phoneme', table: 'pronunciation.vowels+consonants', relations: ['Sound 1:1'] },
+      { name: 'Vowel', table: 'vowelsDetail', relations: ['Language N:1'] },
+      { name: 'Consonant', table: 'consonantsDetail', relations: ['Language N:1'] },
+      { name: 'Tone', table: 'pronunciation.tones', relations: ['Language N:1'] },
+      { name: 'Stress', table: 'stressDetail', relations: ['Language N:1'] },
+      { name: 'Intonation', table: 'intonationDetail', relations: ['Language N:1'] },
+      { name: 'MinimalPair', table: 'minimalPairs', relations: ['Language N:1', 'Word N:1'] },
+      { name: 'PhonologicalRule', table: 'phonologicalRules', relations: ['Language N:1'] },
+      { name: 'Phonotactics', table: 'phonotactics', relations: ['Language N:1'] },
+      { name: 'SyllableStructure', table: 'syllableStructures', relations: ['Language N:1'] },
+      { name: 'Pronunciation', table: 'pronunciations', relations: ['Word 1:1', 'Audio 1:N'] },
+      { name: 'Audio', table: 'audioEntities', relations: ['Word N:1', 'Speaker N:1'] },
+      { name: 'Speaker', table: 'speakers', relations: ['Audio 1:N'] },
+      { name: 'Word', table: 'words', relations: ['Language N:1', 'WordForm 1:N', 'WordMeaning 1:N', 'Synonym 1:N', 'Antonym 1:N', 'Homonym 1:N', 'Homograph 1:N', 'Homophone 1:N', 'Etymology 1:1', 'RelatedWord N:N', 'Pronunciation 1:1'] },
+      { name: 'WordForm', table: 'wordForms', relations: ['Word N:1'] },
+      { name: 'WordMeaning', table: 'wordMeanings', relations: ['Word N:1'] },
+      { name: 'ExampleSentence', table: 'exampleSentences', relations: ['Word N:N'] },
+      { name: 'Synonym', table: 'synonyms', relations: ['Word N:1'] },
+      { name: 'Antonym', table: 'antonyms', relations: ['Word N:1'] },
+      { name: 'Homonym', table: 'words.homonyms', relations: ['Word N:1'] },
+      { name: 'Homograph', table: 'words.homographs', relations: ['Word N:1'] },
+      { name: 'Homophone', table: 'words.homophones', relations: ['Word N:1'] },
+      { name: 'Etymology', table: 'etymologies', relations: ['Word 1:1'] },
+      { name: 'RelatedWord', table: 'relatedWords', relations: ['Word N:N'] },
+      { name: 'Grammar', table: 'grammar', relations: ['Language N:1', 'GrammarTopic 1:N'] },
+      { name: 'GrammarTopic', table: 'grammarTopics', relations: ['Grammar N:1'] },
+      { name: 'GrammarExample', table: 'grammarExamples', relations: ['GrammarTopic N:1'] },
+      { name: 'Culture', table: 'culture', relations: ['Language N:1'] },
+      { name: 'Literature', table: 'literature', relations: ['Language N:1'] },
+      { name: 'LearningLevel', table: 'learningLevels', relations: ['Language N:1'] },
+      { name: 'LearningCourse', table: 'courses', relations: ['Language N:1', 'LearningModule 1:N', 'LearningLesson 1:N'] },
+      { name: 'LearningModule', table: 'learningModules', relations: ['Course N:1'] },
+      { name: 'LearningLesson', table: 'lessons', relations: ['Course N:1', 'LearningMaterial 1:N', 'Exercise 1:1'] },
+      { name: 'LearningMaterial', table: 'learningMaterials', relations: ['Lesson N:1'] },
+      { name: 'Exercise', table: 'exercises', relations: ['Lesson N:1', 'Question 1:N'] },
+      { name: 'Question', table: 'questions', relations: ['Exercise N:1'] },
+      { name: 'Assessment', table: 'assessments (runtime)', relations: ['Lesson N:1', 'User'] },
+      { name: 'LearningProgress', table: 'learningProgress (runtime)', relations: ['Course N:1', 'User'] },
+      { name: 'Concept', table: 'concepts', relations: ['ConceptEntry 1:N'] },
+      { name: 'ConceptEntry', table: 'conceptEntries', relations: ['Concept N:1', 'Language N:1', 'Word N:1'] },
+      { name: 'Relation', table: 'relations', relations: ['generic N:N'] },
+      { name: 'Source', table: 'sources', relations: ['Verification 1:1'] },
+      { name: 'Verification', table: 'verifications', relations: ['Content 1:1'] },
+      { name: 'RevisionHistory', table: 'revisions', relations: ['Content 1:N'] }
+    ]
+  };
+  D.sources = D.sources.filter(function (s, i, a) { return a.findIndex(function (x) { return x.id === s.id; }) === i; });
+  D.meta.version = '0.7.1 (database expansion)';
 })(ALFABASA);
 
 
@@ -3430,6 +3696,9 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
 
 
 
+
+
+
 /* ============================================================
    ALFABASA — Views (semua halaman)
    ============================================================ */
@@ -4006,6 +4275,8 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
 
     const secBody = (html) => '<div class="body">' + html + '</div>';
     const wf = (D.wordForms || []).find(x => x.word_id === w.id);
+    const wForms = (D.wordForms || []).filter(x => x.word_id === w.id && x.formType && x.formType !== 'lemma' && x.formType !== 'bentuk');
+    const wConcepts = (D.concepts || []).filter(c => (D.conceptEntries || []).some(e => e.conceptId === c.conceptId && e.wordId === w.id));
     const wm = (D.wordMeanings || []).find(x => x.word_id === w.id);
     const snts = (D.exampleSentences || []).filter(s => s.word_ids && s.word_ids.indexOf(w.id) >= 0);
     const infoRow2 = (label, val) => '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub" style="text-transform:uppercase;letter-spacing:.8px;font-size:10.5px;font-weight:800">' + esc(label) + '</div><div class="li-title" style="font-size:13.5px">' + val + '</div></div></div>';
@@ -4018,8 +4289,18 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
         '<div class="list" style="border:none">' +
         infoRow2('Lemma (bentuk dasar)', esc(wf ? wf.form : w.word)) +
         infoRow2('Fungsi gramatikal', esc((wf && wf.grammatical_function) || w.pos || '—')) +
+        (wForms.length ? wForms.map(function (f) {
+          return '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub" style="text-transform:uppercase;letter-spacing:.8px;font-size:10.5px;font-weight:800">' + esc(f.formType) + '</div><div class="li-title" style="font-size:13.5px">' + esc(f.form) + ' <span class="meta">— ' + esc(f.grammaticalFunction || '') + '</span></div></div></div>';
+        }).join('') : '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub">Data demo — belum tersedia.</div></div></div>') +
         infoRow2('Bentuk turunan', (w.derivedForms && w.derivedForms.length ? w.derivedForms.map(function (d) { return '<span class="badge" style="margin:2px 4px 2px 0">' + esc(d) + '</span>'; }).join('') : 'Data demo — belum tersedia')) +
         '</div>')),
+      expandable('hub', 'Konsep Multibahasa (Concept)', secBody(
+        (wConcepts.length ? '<div class="related-list">' + wConcepts.map(function (c) {
+          const entries = (D.conceptEntries || []).filter(function (e) { return e.conceptId === c.conceptId; });
+          return '<div class="card" style="width:100%;margin-bottom:8px;padding:12px"><div class="title-sm">' + esc(c.name) + ' <span class="badge">' + esc(c.category) + '</span></div><div class="meta" style="margin-top:6px">' +
+            entries.map(function (e) { return '<span class="badge" style="margin:2px 4px 2px 0">' + esc((D.languageById(e.languageId) || {}).name || e.languageId) + ': ' + esc(e.word) + '</span>'; }).join('') +
+            '</div></div>';
+        }).join('') + '</div>' : '<p class="body-sm muted">Kata ini belum terdaftar dalam konsep multibahasa (demo).</p>'))),
       expandable('graphic_eq', 'Pelafalan & IPA', secBody(
         '<div class="keyinfo" style="grid-template-columns:1fr 1fr">' +
         '<div class="ki-item"><div class="ki-label">IPA</div><div class="ki-value">' + esc(w.ipa) + '</div></div>' +
@@ -4810,6 +5091,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
 
   function viewSources(app) {
     const counts = {};
+    const st = D.getDataStats ? D.getDataStats() : {};
     D.sources.forEach(s => { counts[s.verification] = (counts[s.verification] || 0) + 1; });
 
     app.innerHTML =
@@ -4822,6 +5104,15 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       '<div class="ki-item"><div class="ki-label">Revisi</div><div class="ki-value">' + D.revisions.length + ' log</div></div>' +
       '</div>' +
       '<div class="card" style="margin-bottom:16px"><div class="body-sm muted"><b>Source ≠ Content Verification.</b> Sumber sitasi (mis. Ethnologue, ISO 639-3) hanyalah ilustrasi struktur — keberadaan sumber <b>tidak otomatis</b> berarti isi prototipe sudah diverifikasi. Status konten ALFABASA saat ini: <span class="badge danger">DEMO</span>.</div></div>' +
+      '<div class="section"><div class="section-head"><div class="section-title">Statistik Data (getDataStats)</div><button class="btn btn-outline" style="height:36px;font-size:12.5px;padding:0 14px" data-action="run-validate">' + icon('fact_check') + ' Validasi (validateData)</button></div>' +
+      '<div id="statsGrid" class="stat-row">' +
+      [['languages', 'Bahasa', st.languages], ['scripts', 'Aksara', st.scripts], ['characters', 'Karakter', st.characters], ['words', 'Kata', st.words]]
+        .map(x => '<div class="stat-box"><div class="sb-num">' + x[2] + '</div><div class="sb-label">' + x[1] + '</div></div>').join('') +
+      '</div>' +
+      '<div class="card" style="margin-top:10px"><div class="related-list" style="justify-content:flex-start">' +
+      [['dialects', 'Dialek', st.dialects], ['branches', 'Cabang', st.branches], ['glyphs', 'Glyph', st.glyphs], ['unicode', 'Unicode', st.unicode], ['wordForms', 'Bentuk kata', st.wordForms], ['meanings', 'Makna', st.meanings], ['sentences', 'Kalimat', st.sentences], ['pronunciations', 'Pelafalan', st.pronunciations], ['sounds', 'Bunyi', st.sounds], ['minimalPairs', 'Minimal pair', st.minimalPairs], ['rules', 'Aturan fonologis', st.rules], ['phonotactics', 'Fonotaktik', st.phonotactics], ['syllables', 'Suku kata', st.syllables], ['grammar', 'Tata bahasa', st.grammar], ['grammarTopics', 'Topik grammar', st.grammarTopics], ['culture', 'Budaya', st.culture], ['literature', 'Sastra', st.literature], ['courses', 'Kursus', st.courses], ['modules', 'Modul', st.modules], ['lessons', 'Pelajaran', st.lessons], ['exercises', 'Latihan', st.exercises], ['questions', 'Soal', st.questions], ['concepts', 'Konsep', st.concepts], ['conceptEntries', 'Entri konsep', st.conceptEntries], ['relations', 'Relasi', st.relations], ['sources', 'Sumber', st.sources], ['verifications', 'Verifikasi', st.verifications]]
+        .map(x => '<span class="badge" style="margin:3px">' + esc(x[1]) + ': <b>' + x[2] + '</b></span>').join('') +
+      '</div><div id="validateOut" style="margin-top:10px"></div></div>' +
       '<div class="section"><div class="section-title" style="margin-bottom:10px">Statistik Verifikasi</div>' +
       '<div class="stat-row">' +
       [['verified', 'Verified', counts.verified || 0], ['reviewed', 'Reviewed', counts.reviewed || 0], ['unverified', 'Unverified', counts.unverified || 0]].map(x =>
@@ -4919,6 +5210,13 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
     if (clearHist) { window.App.State.history = []; window.App.Store.set('history', []); viewProfile($('#app')); window.App.toast('Riwayat dibersihkan'); }
     const themeSys = e.target.closest('[data-action="theme-sys"]');
     if (themeSys) { window.App.toast('Sinkron tema sistem: tersedia di versi final (demo).'); }
+    const val = e.target.closest('[data-action="run-validate"]');
+    if (val && D.validateData) {
+      const res = D.validateData();
+      const out = document.getElementById('validateOut');
+      if (out) out.innerHTML = '<div class="card" style="background:var(--surface-variant);border:none"><div class="row"><span class="badge ' + (res.status === 'PASS' ? 'success' : 'danger') + '">' + esc(res.status) + '</span><span class="meta">' + res.issueCount + ' masalah • ' + esc(res.note) + '</span></div>' + (res.issues && res.issues.length ? '<div class="body-sm muted" style="margin-top:8px">' + res.issues.map(function (i) { return '• ' + esc(i); }).join('<br>') + '</div>' : '') + '</div>';
+      window.App.toast('Validasi: ' + res.status);
+    }
   });
 
   /* Skeleton progress: animasikan setelah render */
@@ -4933,6 +5231,9 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
 
   window.Views = { viewHome, viewExplore, viewLanguages, viewLanguage, viewScripts, viewScript, viewCharacter, viewDictionary, viewWord, viewPronunciation, viewGrammar, viewCulture, viewLiterature, viewLearn, viewCourse, viewLesson, viewSearch, viewSaved, viewProfile, viewSettings, viewFamily, viewFamilyList, viewError, viewMenus, viewMenuDetail, viewCompare, viewNetwork, viewSources };
 })();
+
+
+
 
 
 
