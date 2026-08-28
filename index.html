@@ -18,6 +18,7 @@
 
 
 
+
 /* ============================================================
    ALFABASA — Design System
    Material Design 3 · AMOLED Dark / Light · Indigo accent
@@ -635,6 +636,7 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
 
 
 
+
 </style>
 </head>
 <body>
@@ -701,6 +703,7 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
 </div>
 
 <script>
+
 
 
 
@@ -3176,7 +3179,7 @@ const ALFABASA = {
     { id: 'jawa-suku', scriptId: 'jawa', char: 'ꦸ', name: 'Suku', unicode: 'U+A9B8', transliteration: 'u', sound: '/u/', type: 'Sandhangan (vokal)', example: 'ꦲꦸ — hu', related: ['jawa-ha'] },
     { id: 'jawa-pepet', scriptId: 'jawa', char: 'ꦼ', name: 'Pepet', unicode: 'U+A9BC', transliteration: 'ê', sound: '/ə/', type: 'Sandhangan (vokal)', example: 'ꦲꦼ — hê', related: ['jawa-ha'] },
     { id: 'jawa-taling', scriptId: 'jawa', char: 'ꦺ', name: 'Taling', unicode: 'U+A9BA', transliteration: 'é', sound: '/e/', type: 'Sandhangan (vokal)', example: 'ꦲꦺ — hé', related: ['jawa-ha'] },
-    { id: 'jawa-talingtarung', scriptId: 'jawa', char: 'ꦾ', name: 'Taling Tarung', unicode: 'U+A9BE', transliteration: 'o', sound: '/o/', type: 'Sandhangan (vokal)', example: 'ꦲꦾ — ho', related: ['jawa-ha'] },
+    { id: 'jawa-talingtarung', scriptId: 'jawa', char: 'ꦴ', name: 'Tarung', unicode: 'U+A9B4', transliteration: 'o', sound: '/o/', type: 'Sandhangan (vokal)', example: 'ꦲꦴ — ho', related: ['jawa-ha'] },
     { id: 'jawa-cecak', scriptId: 'jawa', char: 'ꦁ', name: 'Cecak', unicode: 'U+A981', transliteration: 'ng', sound: '/ŋ/', type: 'Sandhangan (panyigeg)', example: 'ꦲꦁ — hang', related: ['jawa-ha'] },
     { id: 'jawa-layar', scriptId: 'jawa', char: 'ꦂ', name: 'Layar', unicode: 'U+A982', transliteration: 'r', sound: '/r/', type: 'Sandhangan (panyigeg)', example: 'ꦲꦂ — har', related: ['jawa-ha'] },
     { id: 'jawa-wignyan', scriptId: 'jawa', char: 'ꦃ', name: 'Wignyan', unicode: 'U+A983', transliteration: 'h', sound: '/h/', type: 'Sandhangan (panyigeg)', example: 'ꦲꦃ — hah', related: ['jawa-ha'] },
@@ -3486,7 +3489,7 @@ const ALFABASA = {
 
 
 
-if (typeof module !== 'undefined' && module.exports) { /* ============================================================
+/* ============================================================
    ALFABASA — DATABASE ENRICHMENT PHASE 01 (v0.9.0)
    Country, LanguageCountry, ScriptLanguage, ekspansi global.
    Semua konten: DEMO / UNVERIFIED. Angka penutur: estimasi.
@@ -3783,7 +3786,464 @@ if (typeof module !== 'undefined' && module.exports) { /* ======================
 
 })(ALFABASA);
 
-module.exports = ALFABASA; }
+/* ============================================================
+   ALFABASA — STRUKTUR AKSARA TERSTRUKTUR (PHASE 02, v0.10.0)
+   Entity: CharacterType, Pair, Diacritic (Sandhangan), Numeral,
+   Punctuation, SpecialCharacter, Combination.
+   Semua unicode/codepoint/unicode_name DIIKUTI dari data karakter
+   yang sudah ada + verifikasi Unicode (unicodedata).
+   Data yang belum tersedia: null / "Data belum tersedia".
+   ============================================================ */
+(function (D) {
+
+  /* ============ 1. KLASIFIKASI character_type ============ */
+  var TYPE = {
+    'jawa-ha':'dasar','jawa-na':'dasar','jawa-ca':'dasar','jawa-ra':'dasar','jawa-ka':'dasar',
+    'jawa-da':'dasar','jawa-ta':'dasar','jawa-sa':'dasar','jawa-wa':'dasar','jawa-la':'dasar',
+    'jawa-pa':'dasar','jawa-dha':'dasar','jawa-ja':'dasar','jawa-ya':'dasar','jawa-nya':'dasar',
+    'jawa-ma':'dasar','jawa-ga':'dasar','jawa-ba':'dasar','jawa-tha':'dasar','jawa-nga':'dasar',
+    'bali-ha':'dasar','bali-na':'dasar','bali-ba':'dasar',
+    'sunda-a':'dasar','sunda-ha':'dasar',
+    'lontara-ka':'dasar','lontara-ma':'dasar','lontara-ha':'dasar','lontara-a':'dasar','lontara-na':'dasar','lontara-ta':'dasar','lontara-nga':'dasar','lontara-i':'dasar','lontara-u':'dasar','lontara-e':'dasar','lontara-o':'dasar',
+    'batak-a':'dasar','batak-ha':'dasar','batak-na':'dasar','batak-ta':'dasar',
+    'arab-ba':'dasar','arab-ta':'dasar','arab-tsa':'dasar','arab-alif':'dasar','arab-ha':'dasar','arab-kha':'dasar','arab-sin':'dasar','arab-shin':'dasar',
+    'deva-ka':'dasar','deva-kha':'dasar','deva-ga':'dasar','deva-a':'dasar','deva-aa':'dasar',
+    'hangul-giyeok':'dasar','hangul-nieun':'dasar','hangul-a':'dasar','hangul-i':'dasar','hangul-eo':'dasar','hangul-eu':'dasar','hangul-o':'dasar','hangul-u':'dasar','hangul-ya':'dasar','hangul-yeo':'dasar',
+    'cyr-a':'dasar','cyr-be':'dasar',
+    'greek-alpha':'dasar','greek-beta':'dasar',
+    'hebrew-shin':'dasar','hebrew-aleph':'dasar',
+    'han-xue':'dasar','han-ren':'dasar','han-shan':'dasar',
+    'kana-a':'dasar','kana-ka':'dasar','kana-shi':'dasar','kana-ki':'dasar','kana-su':'dasar','kana-se':'dasar','kana-so':'dasar','kana-sa':'dasar','kana-ku':'dasar','kana-ke':'dasar',
+    'thai-ko':'dasar','thai-kho':'dasar','thai-ka':'dasar','thai-kha':'dasar','thai-kho-khwai':'dasar','thai-kho-khon':'dasar','thai-kho-khuat':'dasar','thai-kho-khwai-2':'dasar','thai-kho-khon-2':'dasar','thai-ngo-ngu':'dasar','thai-cho-chan':'dasar','thai-cho-ching':'dasar','thai-cho-cho':'dasar','thai-cho-choe':'dasar',
+    'pegon-nga':'dasar','pegon-nga-2':'dasar',
+    'latin-a':'dasar','latin-b':'dasar','latin-c':'dasar',
+    'arm-ayb':'dasar','geo-ani':'dasar','syr-alaph':'dasar',
+    'ben-ka':'dasar','guj-ka':'dasar','gur-ka':'dasar','odi-ka':'dasar','tam-ka':'dasar','tel-ka':'dasar','kan-ka':'dasar','mal-ka':'dasar','lao-ko':'dasar','khm-ka':'dasar','mym-ka':'dasar','eth-ha':'dasar',
+    'rej-ka':'dasar','rej-ga':'dasar','rej-nga':'dasar','sin-sayanna':'dasar',
+    'jawa-0':'angka','jawa-1':'angka','jawa-2':'angka','jawa-3':'angka','jawa-4':'angka','jawa-5':'angka','jawa-6':'angka','jawa-7':'angka','jawa-8':'angka','jawa-9':'angka',
+    'bali-0':'angka','bali-1':'angka','bali-2':'angka','bali-3':'angka','bali-4':'angka','bali-5':'angka','bali-6':'angka','bali-7':'angka','bali-8':'angka','bali-9':'angka',
+    'sunda-0':'angka','sunda-1':'angka','sunda-2':'angka','sunda-3':'angka','sunda-4':'angka','sunda-5':'angka','sunda-6':'angka','sunda-7':'angka','sunda-8':'angka','sunda-9':'angka',
+    'jawa-wulu':'sandhangan','jawa-suku':'sandhangan','jawa-pepet':'sandhangan','jawa-taling':'sandhangan','jawa-talingtarung':'sandhangan','jawa-cecak':'sandhangan','jawa-layar':'sandhangan','jawa-wignyan':'sandhangan','jawa-pangkon':'sandhangan',
+    'jawa-padalingsa':'tanda_baca','jawa-padalungsi':'tanda_baca',
+    'deva-u':'sandhangan','deva-e':'sandhangan'
+  };
+  D.characters.forEach(function (c) { c.character_type = TYPE[c.id] || 'dasar'; });
+  D.charactersWithType = function (scriptId, type) {
+    return D.characters.filter(function (c) { return c.scriptId === scriptId && (type ? c.character_type === type : true); });
+  };
+
+  /* ============ 2. KARAKTER BARU (verified via unicodedata) ============ */
+  /* Aksara Murda & Swara Jawa; sandhangan Bali/Sunda/Arab/Devanagari/Latin.
+     Semua unicode/unicode_name = data nyata Unicode (sumber: Unicode Consortium). */
+  var UNI = {
+    'jawa-ka-murda':   ['U+A991','JAVANESE LETTER KA MURDA'],
+    'jawa-ga-murda':   ['U+A993','JAVANESE LETTER GA MURDA'],
+    'jawa-na-murda':   ['U+A99F','JAVANESE LETTER NA MURDA'],
+    'jawa-ca-murda':   ['U+A996','JAVANESE LETTER CA MURDA'],
+    'jawa-nya-murda':  ['U+A998','JAVANESE LETTER NYA MURDA'],
+    'jawa-swara-a':    ['U+A984','JAVANESE LETTER A'],
+    'jawa-swara-i':    ['U+A986','JAVANESE LETTER I'],
+    'jawa-swara-u':    ['U+A988','JAVANESE LETTER U'],
+    'jawa-swara-e':    ['U+A98C','JAVANESE LETTER E'],
+    'jawa-swara-o':    ['U+A98E','JAVANESE LETTER O'],
+    'jawa-swara-ai':   ['U+A98D','JAVANESE LETTER AI'],
+    'bali-tedung':     ['U+1B35','BALINESE VOWEL SIGN TEDUNG'],
+    'bali-taling':     ['U+1B3E','BALINESE VOWEL SIGN TALING'],
+    'bali-adegadeg':   ['U+1B44','BALINESE ADEG ADEG'],
+    'sunda-panghulu':  ['U+1BA4','SUNDANESE VOWEL SIGN PANGHULU'],
+    'sunda-panyuku':   ['U+1BA5','SUNDANESE VOWEL SIGN PANYUKU'],
+    'sunda-panaelaeng':['U+1BA6','SUNDANESE VOWEL SIGN PANAELAENG'],
+    'sunda-panolong':  ['U+1BA7','SUNDANESE VOWEL SIGN PANOLONG'],
+    'sunda-pamepet':   ['U+1BA8','SUNDANESE VOWEL SIGN PAMEPET'],
+    'sunda-paneuleung':['U+1BA9','SUNDANESE VOWEL SIGN PANEULEUNG'],
+    'sunda-pamaaeh':   ['U+1BAA','SUNDANESE SIGN PAMAAEH'],
+    'arab-fatha':      ['U+064E','ARABIC FATHA'],
+    'arab-kasra':      ['U+0650','ARABIC KASRA'],
+    'arab-damma':      ['U+064F','ARABIC DAMMA'],
+    'arab-sukun':      ['U+0652','ARABIC SUKUN'],
+    'deva-matra-aa':   ['U+093E','DEVANAGARI VOWEL SIGN AA'],
+    'deva-matra-i':    ['U+093F','DEVANAGARI VOWEL SIGN I'],
+    'latin-acute':     ['U+0301','COMBINING ACUTE ACCENT'],
+    'latin-diaeresis': ['U+0308','COMBINING DIAERESIS']
+  };
+  var NEWCH = [
+    { id: 'jawa-ka-murda', scriptId: 'jawa', name: 'Ka Murda', transliteration: 'ka', sound: '/ka/', type: 'Aksara Murda (khusus)', note: 'Bentuk hormat Ka — dipakai di awal kata untuk nama & gelar kehormatan.', example: 'ꦑ — Ka Murda' },
+    { id: 'jawa-ga-murda', scriptId: 'jawa', name: 'Ga Murda', transliteration: 'ga', sound: '/ga/', type: 'Aksara Murda (khusus)', note: 'Bentuk hormat Ga.', example: 'ꦓ — Ga Murda' },
+    { id: 'jawa-na-murda', scriptId: 'jawa', name: 'Na Murda', transliteration: 'na', sound: '/na/', type: 'Aksara Murda (khusus)', note: 'Bentuk hormat Na.', example: 'ꦟ — Na Murda' },
+    { id: 'jawa-ca-murda', scriptId: 'jawa', name: 'Ca Murda', transliteration: 'ca', sound: '/tʃa/', type: 'Aksara Murda (khusus)', note: 'Bentuk hormat Ca.', example: 'ꦖ — Ca Murda' },
+    { id: 'jawa-nya-murda', scriptId: 'jawa', name: 'Nya Murda', transliteration: 'nya', sound: '/ɲa/', type: 'Aksara Murda (khusus)', note: 'Bentuk hormat Nya.', example: 'ꦘ — Nya Murda' },
+    { id: 'jawa-swara-a', scriptId: 'jawa', name: 'A (Swara)', transliteration: 'a', sound: '/a/', type: 'Aksara Swara (khusus)', note: 'Aksara swara untuk vokal awal kata.', example: 'ꦄ — A swara' },
+    { id: 'jawa-swara-i', scriptId: 'jawa', name: 'I (Swara)', transliteration: 'i', sound: '/i/', type: 'Aksara Swara (khusus)', note: 'Aksara swara untuk vokal i awal kata.', example: 'ꦆ — I swara' },
+    { id: 'jawa-swara-u', scriptId: 'jawa', name: 'U (Swara)', transliteration: 'u', sound: '/u/', type: 'Aksara Swara (khusus)', note: 'Aksara swara untuk vokal u awal kata.', example: 'ꦈ — U swara' },
+    { id: 'jawa-swara-e', scriptId: 'jawa', name: 'E (Swara)', transliteration: 'e', sound: '/e/', type: 'Aksara Swara (khusus)', note: 'Aksara swara untuk vokal e awal kata.', example: 'ꦌ — E swara' },
+    { id: 'jawa-swara-o', scriptId: 'jawa', name: 'O (Swara)', transliteration: 'o', sound: '/o/', type: 'Aksara Swara (khusus)', note: 'Aksara swara untuk vokal o awal kata.', example: 'ꦎ — O swara' },
+    { id: 'jawa-swara-ai', scriptId: 'jawa', name: 'Ai (Swara)', transliteration: 'ai', sound: '/ai/', type: 'Aksara Swara (khusus)', note: 'Aksara swara untuk diftong ai.', example: 'ꦍ — Ai swara' },
+    { id: 'bali-tedung', scriptId: 'bali', name: 'Tedung', transliteration: 'ā', sound: '/aː/', type: 'Sandhangan (vokal)', note: 'Tanda vokal a panjang.', example: 'ᬳᬵ — hā' },
+    { id: 'bali-taling', scriptId: 'bali', name: 'Taling', transliteration: 'é', sound: '/e/', type: 'Sandhangan (vokal)', note: 'Tanda vokal e (taling).', example: 'ᬳᬾ — hé' },
+    { id: 'bali-adegadeg', scriptId: 'bali', name: 'Adeg-Adeg', transliteration: '(paten)', sound: null, type: 'Tanda (virama)', note: 'Virama — menghilangkan vokal inheren.', example: 'ᬳ᭄ — h (mati)' },
+    { id: 'sunda-panghulu', scriptId: 'sunda', name: 'Panghulu', transliteration: 'i', sound: '/i/', type: 'Sandhangan (vokal)', note: 'Tanda vokal i.', example: 'ᮠᮤ — hi' },
+    { id: 'sunda-panyuku', scriptId: 'sunda', name: 'Panyuku', transliteration: 'u', sound: '/u/', type: 'Sandhangan (vokal)', note: 'Tanda vokal u.', example: 'ᮠᮥ — hu' },
+    { id: 'sunda-panaelaeng', scriptId: 'sunda', name: 'Panaelaeng', transliteration: 'é', sound: '/e/', type: 'Sandhangan (vokal)', note: 'Tanda vokal é.', example: 'ᮠᮦ — hé' },
+    { id: 'sunda-panolong', scriptId: 'sunda', name: 'Panolong', transliteration: 'o', sound: '/o/', type: 'Sandhangan (vokal)', note: 'Tanda vokal o.', example: 'ᮠᮧ — ho' },
+    { id: 'sunda-pamepet', scriptId: 'sunda', name: 'Pamepet', transliteration: 'ê', sound: '/ə/', type: 'Sandhangan (vokal)', note: 'Tanda vokal ê (pepet).', example: 'ᮠᮨ — hê' },
+    { id: 'sunda-paneuleung', scriptId: 'sunda', name: 'Paneuleung', transliteration: 'eu', sound: '/ɨ/', type: 'Sandhangan (vokal)', note: 'Tanda vokal eu.', example: 'ᮠᮩ — heu' },
+    { id: 'sunda-pamaaeh', scriptId: 'sunda', name: 'Pamaaeh', transliteration: '(paten)', sound: null, type: 'Tanda (virama)', note: 'Virama — menghilangkan vokal inheren.', example: 'ᮠ᮪ — h (mati)' },
+    { id: 'arab-fatha', scriptId: 'arab', name: 'Fatha', transliteration: 'a', sound: '/a/', type: 'Harakat (vokal)', note: 'Tanda vokal pendek a di atas huruf.', example: 'بَ — ba' },
+    { id: 'arab-kasra', scriptId: 'arab', name: 'Kasra', transliteration: 'i', sound: '/i/', type: 'Harakat (vokal)', note: 'Tanda vokal pendek i di bawah huruf.', example: 'بِ — bi' },
+    { id: 'arab-damma', scriptId: 'arab', name: 'Damma', transliteration: 'u', sound: '/u/', type: 'Harakat (vokal)', note: 'Tanda vokal pendek u di atas huruf.', example: 'بُ — bu' },
+    { id: 'arab-sukun', scriptId: 'arab', name: 'Sukun', transliteration: '(tanpa vokal)', sound: null, type: 'Harakat (tanda)', note: 'Tanda konsonan tanpa vokal.', example: 'بْ — b (mati)' },
+    { id: 'deva-matra-aa', scriptId: 'devanagari', name: 'Matra Ā', transliteration: 'ā', sound: '/aː/', type: 'Matra (vokal)', note: 'Tanda vokal panjang ā.', example: 'का — kā' },
+    { id: 'deva-matra-i', scriptId: 'devanagari', name: 'Matra I', transliteration: 'i', sound: '/i/', type: 'Matra (vokal)', note: 'Tanda vokal i.', example: 'कि — ki' },
+    { id: 'latin-acute', scriptId: 'latin', name: 'Aksen Akut', transliteration: '◌́', sound: '/◌́/', type: 'Diakritik (aksen)', note: 'Tanda aksen tajam (é, á, ó).', example: 'é — e akut' },
+    { id: 'latin-diaeresis', scriptId: 'latin', name: 'Diaeresis', transliteration: '◌̈', sound: '/◌̈/', type: 'Diakritik (aksen)', note: 'Tanda dua titik di atas vokal (ë, ü).', example: 'ü — u diaeresis' }
+  ];
+  NEWCH.forEach(function (n) {
+    if (D.characterMap[n.id]) return;
+    var u = UNI[n.id];
+    n.char = u ? String.fromCodePoint(parseInt(u[0].slice(2), 16)) : null;
+    n.unicode = u ? u[0] : null;
+    n.character_type = /Sandhangan|Harakat|Matra|Diakritik|Tanda \(virama\)/.test(n.type) ? 'sandhangan' : 'khusus';
+    n.related = n.related || [];
+    n.sourceIds = ['s-unicode'];
+    n.verification_status = 'UNVERIFIED (demo — Unicode nyata)';
+    D.characters.push(n);
+  });
+  /* unicodeData untuk karakter baru (verified) */
+  NEWCH.forEach(function (n) {
+    if (D.unicodeData[n.id]) return;
+    var u = UNI[n.id]; if (!u) return;
+    var cc = { 'arab-fatha':'30','arab-kasra':'32','arab-damma':'31','arab-sukun':'34','latin-acute':'230','latin-diaeresis':'230','bali-tedung':'0','bali-taling':'0','bali-adegadeg':'9' }[n.id] || '0';
+    D.unicodeData[n.id] = {
+      unicode_id: 'u-' + n.id, character_id: n.id, codepoint: u[0], unicode_name: u[1],
+      block: (n.scriptId === 'jawa' ? 'U+A980–U+A9DF' : n.scriptId === 'bali' ? 'U+1B00–U+1B7F' : n.scriptId === 'sunda' ? 'U+1B80–U+1BBF' : n.scriptId === 'arab' ? 'U+0600–U+06FF' : n.scriptId === 'devanagari' ? 'U+0900–U+097F' : 'U+0300–U+036F'),
+      script: n.scriptId === 'jawa' ? 'Aksara Jawa' : n.scriptId === 'bali' ? 'Aksara Bali' : n.scriptId === 'sunda' ? 'Aksara Sunda' : n.scriptId === 'arab' ? 'Arab' : n.scriptId === 'devanagari' ? 'Devanagari' : 'Latin',
+      general_category: /vowel|matra|harakat|diakritik|tanda/i.test(n.type) ? 'Mn (Mark, Nonspacing)' : 'Lo (Letter, Other)',
+      canonical_combining_class: cc + (cc === '230' ? ' (Above)' : cc === '30' ? ' (Arabic Fatha)' : cc === '31' ? ' (Arabic Damma)' : cc === '32' ? ' (Arabic Kasra)' : cc === '34' ? ' (Arabic Sukun)' : cc === '9' ? ' (Above Left)' : ' (Not Reordered)'),
+      bidirectional_class: /sandhangan|harakat|matra|diakritik|tanda/i.test(n.type) ? 'NSM (Nonspacing Mark)' : 'L (Left-to-Right)',
+      unicode_version: n.scriptId === 'jawa' ? '5.2' : n.scriptId === 'bali' ? '5.0' : n.scriptId === 'sunda' ? '5.1' : n.scriptId === 'arab' ? '1.1' : n.scriptId === 'devanagari' ? '1.1' : '1.1',
+      normalization: null, mirrored: 'No',
+      source: 'Unicode Consortium (metadata blok resmi — verifikasi per karakter pada Unicode.org)', content_status: 'DEMO'
+    };
+  });
+
+  /* ============ 3. PASANGAN (PAIR) — di-generate dari karakter dasar ============ */
+  D.pairs = [];
+  function makePairs(scriptId, viramaId, scriptName) {
+    var virama = D.characterMap[viramaId];
+    if (!virama) return;
+    D.charactersWithType(scriptId, 'dasar').forEach(function (base) {
+      D.pairs.push({
+        pair_id: 'pair-' + base.id,
+        script_id: scriptId,
+        base_character_id: base.id,
+        name: 'Pasangan ' + base.name,
+        native_form: base.char,
+        glyph: virama.char + base.char,
+        transliteration: base.transliteration,
+        unicode_sequence: virama.unicode + ' ' + base.unicode,
+        codepoint_sequence: (virama.unicode || '').replace('U+', 'U+') + ' ' + base.unicode,
+        function: 'Menghilangkan vokal inheren aksara sebelumnya; pasangan menggantikan posisi huruf dasar dalam gugus konsonan (mirip virama: ' + virama.name + ').',
+        usage_rule: 'Ditulis setelah ' + virama.name + ' (' + virama.unicode + ') di tengah kata untuk menulis gugus konsonan tanpa vokal.',
+        formation_rule: virama.char + ' + ' + base.char + ' = ' + virama.char + base.char,
+        example: base.id === 'jawa-sa' ? 'ꦠꦏ꧀ꦱꦏ — taksaka' : null,
+        example_transliteration: base.id === 'jawa-sa' ? 'taksaka' : null,
+        example_meaning: base.id === 'jawa-sa' ? 'naga mitologis' : null,
+        phonetic_effect: 'Vokal /a/ inheren huruf sebelumnya dihilangkan → terbaca sebagai konsonan akhir suku kata.',
+        position: 'berurutan setelah virama (pangkon)',
+        related_character: base.id,
+        source_id: 's-unicode',
+        verification_status: 'UNVERIFIED (demo — Unicode nyata)'
+      });
+    });
+  }
+  makePairs('jawa', 'jawa-pangkon', 'Aksara Jawa');
+  makePairs('bali', 'bali-adegadeg', 'Aksara Bali');
+
+  /* ============ 4. SANDHANGAN (DIACRITIC) ============ */
+  D.diacritics = [];
+  var DIA_JW = {
+    'jawa-wulu':       ['vowel_mark','di atas','Mengubah vokal inheren /a/ menjadi /i/.','wulu (i)','꧆ + ꦲ → ꦲꦶ (contoh: ꦲꦶ — hi)','/i/'],
+    'jawa-suku':       ['vowel_mark','di bawah','Mengubah vokal inheren /a/ menjadi /u/.','suku (u)','꧈? tidak — ꦲ + suku → ꦲꦸ','/u/'],
+    'jawa-pepet':      ['vowel_mark','di atas','Mengubah vokal inheren /a/ menjadi /ə/ (pepet).','pepet (ê)','ꦲ + pepet → ꦲꦼ','/ə/'],
+    'jawa-taling':     ['vowel_mark','di depan (kiri)','Mengubah vokal inheren /a/ menjadi /e/ (taling).','taling (é)','ꦲ + taling → ꦲꦺ','/e/'],
+    'jawa-talingtarung':['vowel_mark','di belakang (kanan)','Mengubah vokal inheren /a/ menjadi /o/ (Tarung). Taling Tarung penuh = Taling + Tarung (lihat Kombinasi).','tarung (o)','ꦲ + tarung → ꦲꦴ; taling tarung: ꦲꦺꦴ','/o/'],
+    'jawa-cecak':      ['final_consonant_mark','di atas','Konsonan penutup suku kata /ŋ/ (ng).','cecak (ng)','ꦲ + cecak → ꦲꦁ','/ŋ/'],
+    'jawa-layar':      ['final_consonant_mark','di atas','Konsonan penutup suku kata /r/.','layar (r)','ꦲ + layar → ꦲꦂ','/r/'],
+    'jawa-wignyan':    ['final_consonant_mark','di atas','Konsonan penutup suku kata /h/.','wignyan (h)','ꦲ + wignyan → ꦲꦃ','/h/'],
+    'jawa-pangkon':    ['special_mark','di belakang (kanan bawah)','Virama — menghilangkan vokal inheren; dasar pembentukan pasangan.','pangkon/paten','ꦲ + pangkon → ꦲ꧀','/◌̚/']
+  };
+  Object.keys(DIA_JW).forEach(function (id) {
+    var c = D.characterMap[id]; if (!c) return;
+    var d = DIA_JW[id];
+    D.diacritics.push({
+      sandhangan_id: 'dia-' + id, script_id: c.scriptId, character_id: c.id,
+      name: c.name, native_name: c.name, glyph: c.char,
+      transliteration: c.transliteration, phonetic_value: d[2],
+      ipa: d[5] || c.sound, unicode: c.unicode, codepoint: c.unicode,
+      type: d[0], position: d[1], function: d[2],
+      usage_rule: 'Dipasang pada aksara dasar untuk mengubah bunyinya.',
+      combination_rule: d[4], base_character: c.related && c.related[0] ? c.related[0] : 'jawa-ha',
+      example: c.example || null, example_transliteration: null, example_meaning: null,
+      pronunciation: d[3],
+      source_id: 's-unicode', verification_status: 'UNVERIFIED (demo — Unicode nyata)'
+    });
+  });
+  var DIA_MANUAL = [
+    ['bali','bali-tedung','vowel_mark','di atas','Tanda vokal ā (a panjang).','tedung (ā)','ᬳ + tedung → ᬳᵃ? — lihat contoh','/aː/'],
+    ['bali','bali-taling','vowel_mark','di depan (kiri)','Tanda vokal é (taling).','taling (é)','ᬳ + taling → ᬳᬾ','/e/'],
+    ['bali','bali-adegadeg','special_mark','di belakang (kanan)','Virama — menghilangkan vokal inheren; dasar pembentukan pasangan Bali.','adeg-adeg','ᬳ + adeg-adeg → ᬳ᭄','/◌̚/'],
+    ['sunda','sunda-panghulu','vowel_mark','di atas','Tanda vokal i.','panghulu (i)','ᮠ + panghulu → ᮠᮤ','/i/'],
+    ['sunda','sunda-panyuku','vowel_mark','di bawah','Tanda vokal u.','panyuku (u)','ᮠ + panyuku → ᮠᮥ','/u/'],
+    ['sunda','sunda-panaelaeng','vowel_mark','di depan (kiri)','Tanda vokal é.','panaelaeng (é)','ᮠ + panaelaeng → ᮠᮦ','/e/'],
+    ['sunda','sunda-panolong','vowel_mark','di belakang (kanan)','Tanda vokal o.','panolong (o)','ᮠ + panolong → ᮠᮧ','/o/'],
+    ['sunda','sunda-pamepet','vowel_mark','di atas','Tanda vokal ê (pepet).','pamepet (ê)','ᮠ + pamepet → ᮠᮨ','/ə/'],
+    ['sunda','sunda-paneuleung','vowel_mark','di atas','Tanda vokal eu.','paneuleung (eu)','ᮠ + paneuleung → ᮠᮩ','/ɨ/'],
+    ['sunda','sunda-pamaaeh','special_mark','di belakang (kanan)','Virama — menghilangkan vokal inheren.','pamaaeh','ᮠ + pamaaeh → ᮠ᮪','/◌̚/'],
+    ['arab','arab-fatha','vowel_mark','di atas huruf','Tanda vokal pendek /a/.','fatha (a)','ب + fatha → بَ','/a/'],
+    ['arab','arab-kasra','vowel_mark','di bawah huruf','Tanda vokal pendek /i/.','kasra (i)','ب + kasra → بِ','/i/'],
+    ['arab','arab-damma','vowel_mark','di atas huruf','Tanda vokal pendek /u/.','damma (u)','ب + damma → بُ','/u/'],
+    ['arab','arab-sukun','special_mark','di atas huruf','Tanda konsonan tanpa vokal.','sukun','ب + sukun → بْ','/◌̚/'],
+    ['devanagari','deva-matra-aa','vowel_mark','di belakang (kanan)','Tanda vokal panjang ā.','matra ā','क + matra aa → का','/aː/'],
+    ['devanagari','deva-matra-i','vowel_mark','di depan (kiri)','Tanda vokal i.','matra i','क + matra i → कि','/i/'],
+    ['devanagari','deva-u','vowel_mark','di bawah','Tanda vokal u.','matra u','क + matra u → कु','/u/'],
+    ['devanagari','deva-e','vowel_mark','di atas','Tanda vokal e.','matra e','क + matra e → के','/eː/'],
+    ['latin','latin-acute','other','di atas huruf','Tanda aksen tajam (é, á, ó).','akut (◌́)','e + akut → é','/eː/'],
+    ['latin','latin-diaeresis','other','di atas huruf','Tanda dua titik (ë, ü).','diaeresis (◌̈)','u + diaeresis → ü','/y/']
+  ];
+  DIA_MANUAL.forEach(function (m) {
+    var c = D.characterMap[m[1]]; if (!c) return;
+    D.diacritics.push({
+      sandhangan_id: 'dia-' + m[1], script_id: m[0], character_id: c.id,
+      name: c.name, native_name: c.name, glyph: c.char,
+      transliteration: c.transliteration, phonetic_value: m[4],
+      ipa: m[6] || c.sound, unicode: c.unicode, codepoint: c.unicode,
+      type: m[2], position: m[3], function: m[4],
+      usage_rule: 'Dipasang pada aksara dasar untuk mengubah bunyinya.',
+      combination_rule: m[5], base_character: null,
+      example: c.example || null, example_transliteration: null, example_meaning: null,
+      pronunciation: m[4],
+      source_id: 's-unicode', verification_status: 'UNVERIFIED (demo — Unicode nyata)'
+    });
+  });
+
+  /* ============ 5. ANGKA (NUMERAL) — di-generate ============ */
+  D.numerals = [];
+  D.characters.filter(function (c) { return c.character_type === 'angka'; }).forEach(function (c) {
+    var nv = parseInt((c.transliteration || '').replace(/\D/g, ''), 10);
+    D.numerals.push({
+      numeral_id: 'num-' + c.id, script_id: c.scriptId,
+      numeric_value: isNaN(nv) ? null : nv,
+      name: (c.name || '').replace(/^Angka /, ''), native_name: (c.name || '').replace(/^Angka /, ''),
+      glyph: c.char, unicode: c.unicode, codepoint: c.unicode,
+      unicode_name: (D.unicodeData[c.id] || {}).unicode_name || null,
+      usage: 'Penulisan angka dalam teks ' + ((D.scriptMap[c.scriptId] || {}).name || c.scriptId) + '.',
+      writing_rule: null, example: c.example || null,
+      source_id: 's-unicode', verification_status: 'UNVERIFIED (demo — Unicode nyata)'
+    });
+  });
+
+  /* ============ 6. TANDA BACA (PUNCTUATION) ============ */
+  D.punctuations = [];
+  var PUNCT = {
+    'jawa-padalingsa': ['Pada Lingsa', 'Tanda koma — pemisah klausa/unsur dalam kalimat.', 'Digunakan seperti koma di tengah kalimat.', '꧈ — koma'],
+    'jawa-padalungsi': ['Pada Lungsi', 'Tanda titik — penutup kalimat/akhir wacana.', 'Digunakan seperti titik di akhir kalimat.', '꧉ — titik']
+  };
+  Object.keys(PUNCT).forEach(function (id) {
+    var c = D.characterMap[id]; if (!c) return;
+    var p = PUNCT[id];
+    D.punctuations.push({
+      punctuation_id: 'punct-' + id, script_id: c.scriptId, character_id: c.id,
+      name: p[0], native_name: p[0], glyph: c.char,
+      unicode: c.unicode, codepoint: c.unicode, function: p[1],
+      usage: p[2], example: p[3],
+      source_id: 's-unicode', verification_status: 'UNVERIFIED (demo — Unicode nyata)'
+    });
+  });
+
+  /* ============ 7. KARAKTER KHUSUS (SPECIAL CHARACTER) ============ */
+  D.specialCharacters = [];
+  var SPECIAL_TYPES = { 'Aksara Murda (khusus)': 'murda', 'Aksara Swara (khusus)': 'swara' };
+  D.characters.filter(function (c) { return c.character_type === 'khusus' && c.scriptId === 'jawa'; }).forEach(function (c) {
+    var kind = SPECIAL_TYPES[c.type] || 'khusus';
+    D.specialCharacters.push({
+      special_character_id: 'sp-' + c.id, script_id: c.scriptId, character_id: c.id,
+      name: c.name, glyph: c.char, transliteration: c.transliteration,
+      unicode: c.unicode, codepoint: c.unicode,
+      function: kind === 'murda' ? 'Aksara Murda — bentuk hormat/khidmat untuk nama, gelar, dan kata bermartabat.' : 'Aksara Swara — menuliskan vokal pada awal kata (vokal tidak mengikuti konsonan).',
+      usage: c.note || null,
+      historical_usage: kind === 'murda' ? 'Dalam naskah Jawa kuno, murda dipakai untuk menghormati nama raja/tokoh.' : 'Swara muncul pada kata serapan dan penulisan vokal awal.',
+      modern_usage: 'Masih diajarkan dalam pelajaran aksara Jawa di sekolah.',
+      example: c.example || null,
+      source_id: 's-unicode', verification_status: 'UNVERIFIED (demo — Unicode nyata)'
+    });
+  });
+
+  /* ============ 8. KOMBINASI (COMBINATION) ============ */
+  D.combinations = [];
+  var COMBO = [
+    ['comb-jawa-hi','jawa','jawa-ha','jawa-wulu','hi','hi','/hi/','ha + wulu = ꦲꦶ','ꦲꦶ — hi'],
+    ['comb-jawa-hu','jawa','jawa-ha','jawa-suku','hu','hu','/hu/','ha + suku = ꦲꦸ','ꦲꦸ — hu'],
+    ['comb-jawa-he-pepet','jawa','jawa-ha','jawa-pepet','hê','hê','/hə/','ha + pepet = ꦲꦼ','ꦲꦼ — hê'],
+    ['comb-jawa-he-taling','jawa','jawa-ha','jawa-taling','hé','hé','/he/','ha + taling = ꦲꦺ','ꦲꦺ — hé'],
+    ['comb-jawa-ho','jawa','jawa-ha','jawa-talingtarung','ho','ho','/ho/','ha + taling + tarung (taling tarung) = ꦲꦺꦴ','ꦲꦺꦴ — ho'],
+    ['comb-jawa-hang','jawa','jawa-ha','jawa-cecak','hang','hang','/haŋ/','ha + cecak = ꦲꦁ','ꦲꦁ — hang'],
+    ['comb-jawa-har','jawa','jawa-ha','jawa-layar','har','har','/har/','ha + layar = ꦲꦂ','ꦲꦂ — har'],
+    ['comb-jawa-hah','jawa','jawa-ha','jawa-wignyan','hah','hah','/hah/','ha + wignyan = ꦲꦃ','ꦲꦃ — hah'],
+    ['comb-jawa-hmat','jawa','jawa-ha','jawa-pangkon','h (mati)','h̚','/h̚/','ha + pangkon = ꦲ꧀','ꦲ꧀ — h mati'],
+    ['comb-jawa-ksa','jawa','jawa-ka','jawa-sa','ksa','ksa','/ksa/','ka + pangkon + sa = ꦏ꧀ꦱ (gugus konsonan)','ꦏ꧀ꦱ — ksa'],
+    ['comb-jawa-aksara','jawa','jawa-ha','jawa-sa','aksara','aksara','/aksara/','a + ka + pangkon + sa + ra = ꦲꦏ꧀ꦱꦫ (kata "aksara")','ꦲꦏ꧀ꦱꦫ — aksara'],
+    ['comb-jawa-taksaka','jawa','jawa-ta','jawa-sa','taksaka','taksaka','/taksaka/','ta + ka + pangkon + sa + ka = ꦠꦏ꧀ꦱꦏ (kata "taksaka")','ꦠꦏ꧀ꦱꦏ — taksaka']
+  ];
+  COMBO.forEach(function (c) {
+    var base = D.characterMap[c[2]]; var mod = D.characterMap[c[3]];
+    D.combinations.push({
+      combination_id: c[0], script_id: c[1],
+      base_character: c[2], modifier: c[3],
+      base_glyph: base ? base.char : null, modifier_glyph: mod ? mod.char : null,
+      combined_form: c[4], glyph: c[5],
+      unicode_sequence: (base ? base.unicode : '') + ' ' + (mod ? mod.unicode : ''),
+      reading: c[5], phonetic_result: c[6], rule: c[7],
+      example: c[8], source_id: 's-unicode', verification_status: 'UNVERIFIED (demo — Unicode nyata)'
+    });
+  });
+  /* Kombinasi multi-karakter: ha + taling + tarung = ho penuh */
+  var ho = D.combinationMap ? null : null;
+  var hoSeq = D.characterMap['jawa-ha'].unicode + ' ' + D.characterMap['jawa-taling'].unicode + ' ' + D.characterMap['jawa-talingtarung'].unicode;
+  var comboHo = D.combinations.filter(function (x) { return x.combination_id === 'comb-jawa-ho'; })[0];
+  if (comboHo) comboHo.unicode_sequence = hoSeq;
+
+
+  /* ============ 9. GETTERS & RELASI ============ */
+  D.pairsOfScript = function (scriptId) { return (D.pairs || []).filter(function (p) { return p.script_id === scriptId; }); };
+  D.pairByBaseCharacter = function (charId) { return (D.pairs || []).find(function (p) { return p.base_character_id === charId; }) || null; };
+  D.diacriticsOfScript = function (scriptId) { return (D.diacritics || []).filter(function (d) { return d.script_id === scriptId; }); };
+  D.numeralsOfScript = function (scriptId) { return (D.numerals || []).filter(function (n) { return n.script_id === scriptId; }); };
+  D.punctuationsOfScript = function (scriptId) { return (D.punctuations || []).filter(function (p) { return p.script_id === scriptId; }); };
+  D.specialOfScript = function (scriptId) { return (D.specialCharacters || []).filter(function (s) { return s.script_id === scriptId; }); };
+  D.combinationsOfScript = function (scriptId) { return (D.combinations || []).filter(function (c) { return c.script_id === scriptId; }); };
+  D.characterByUnicode = function (cp) {
+    var q = String(cp || '').toUpperCase().replace(/^U\+/, 'U+');
+    return D.characters.find(function (c) { return (c.unicode || '').toUpperCase() === q; }) || null;
+  };
+  D.pairMap = Object.fromEntries((D.pairs || []).map(function (p) { return [p.pair_id, p]; }));
+  D.diacriticMap = Object.fromEntries((D.diacritics || []).map(function (d) { return [d.sandhangan_id, d]; }));
+  D.numeralMap = Object.fromEntries((D.numerals || []).map(function (n) { return [n.numeral_id, n]; }));
+  D.punctuationMap = Object.fromEntries((D.punctuations || []).map(function (p) { return [p.punctuation_id, p]; }));
+  D.specialMap = Object.fromEntries((D.specialCharacters || []).map(function (s) { return [s.special_character_id, s]; }));
+  D.combinationMap = Object.fromEntries((D.combinations || []).map(function (c) { return [c.combination_id, c]; }));
+  D.characterTypeStats = function () {
+    var m = {};
+    D.characters.forEach(function (c) { m[c.character_type || 'dasar'] = (m[c.character_type || 'dasar'] || 0) + 1; });
+    return m;
+  };
+
+  /* ============ 10. SEARCH INDEX EXTEND ============ */
+  var oldSI = D.searchIndex;
+  D.searchIndex = function () {
+    var r = oldSI.call(D);
+    (D.pairs || []).forEach(function (p) {
+      r.push({ type: 'Pasangan', id: p.pair_id, title: p.name + ' — ' + p.glyph, sub: (p.unicode_sequence || '') + ' • ' + (p.transliteration || ''), keywords: (p.name + ' ' + p.glyph + ' ' + (p.transliteration || '') + ' pasangan ' + (p.unicode_sequence || '')).toLowerCase() });
+    });
+    (D.diacritics || []).forEach(function (d) {
+      r.push({ type: 'Sandhangan', id: d.sandhangan_id, title: d.name + ' — ' + d.glyph, sub: (d.unicode || '') + ' • ' + (d.ipa || '') + ' • ' + d.type, keywords: (d.name + ' ' + d.glyph + ' ' + (d.transliteration || '') + ' sandhangan ' + (d.ipa || '') + ' ' + (d.unicode || '')).toLowerCase() });
+    });
+    (D.numerals || []).forEach(function (n) {
+      r.push({ type: 'Angka Aksara', id: n.numeral_id, title: n.glyph + ' — ' + n.native_name + ' (' + n.numeric_value + ')', sub: (n.unicode || '') + ' • ' + ((D.scriptMap[n.script_id] || {}).name || n.script_id), keywords: (n.native_name + ' ' + n.numeric_value + ' angka ' + (n.unicode || '') + ' ' + (n.unicode_name || '')).toLowerCase() });
+    });
+    (D.punctuations || []).forEach(function (p) {
+      r.push({ type: 'Tanda Baca', id: p.punctuation_id, title: p.glyph + ' — ' + p.name, sub: (p.unicode || '') + ' • ' + p.function, keywords: (p.name + ' ' + p.glyph + ' tanda baca ' + (p.unicode || '')).toLowerCase() });
+    });
+    (D.specialCharacters || []).forEach(function (s) {
+      r.push({ type: 'Karakter Khusus', id: s.special_character_id, title: s.glyph + ' — ' + s.name, sub: (s.unicode || '') + ' • ' + s.function, keywords: (s.name + ' ' + s.glyph + ' ' + (s.transliteration || '') + ' khusus murda swara ' + (s.unicode || '')).toLowerCase() });
+    });
+    (D.combinations || []).forEach(function (c) {
+      r.push({ type: 'Kombinasi', id: c.combination_id, title: c.glyph + ' — ' + c.combined_form, sub: (c.unicode_sequence || '') + ' • ' + c.reading, keywords: (c.combined_form + ' ' + c.glyph + ' kombinasi ' + (c.unicode_sequence || '')).toLowerCase() });
+    });
+    return r;
+  };
+
+  /* ============ 11. STATS EXTEND ============ */
+  var oldStats2 = D.getDataStats;
+  D.getDataStats = function () {
+    var s = oldStats2();
+    s.pairs = (D.pairs || []).length;
+    s.diacritics = (D.diacritics || []).length;
+    s.numerals = (D.numerals || []).length;
+    s.punctuations = (D.punctuations || []).length;
+    s.specialCharacters = (D.specialCharacters || []).length;
+    s.combinations = (D.combinations || []).length;
+    s.characterTypes = D.characterTypeStats();
+    return s;
+  };
+
+  /* ============ 12. VALIDATE EXTEND ============ */
+  var oldVal2 = D.validateData;
+  D.validateData = function () {
+    var res = oldVal2();
+    var issues = res.issues.slice();
+    (D.pairs || []).forEach(function (p) {
+      if (!D.scriptMap[p.script_id]) issues.push('Pair script_id tidak dikenal: ' + p.pair_id + ' → ' + p.script_id);
+      if (!D.characterMap[p.base_character_id]) issues.push('Pair base_character_id tidak dikenal: ' + p.pair_id + ' → ' + p.base_character_id);
+      if (!p.unicode_sequence || !/^U\+[0-9A-Fa-f]+( U\+[0-9A-Fa-f]+)*$/.test(p.unicode_sequence)) issues.push('Pair unicode_sequence tidak valid: ' + p.pair_id);
+    });
+    (D.diacritics || []).forEach(function (d) {
+      if (!D.scriptMap[d.script_id]) issues.push('Diacritic script_id tidak dikenal: ' + d.sandhangan_id);
+      if (d.character_id && !D.characterMap[d.character_id]) issues.push('Diacritic character_id tidak dikenal: ' + d.sandhangan_id);
+    });
+    (D.numerals || []).forEach(function (n) {
+      if (!D.scriptMap[n.script_id]) issues.push('Numeral script_id tidak dikenal: ' + n.numeral_id);
+      if (typeof n.numeric_value !== 'number') issues.push('Numeral numeric_value bukan angka: ' + n.numeral_id);
+    });
+    (D.punctuations || []).forEach(function (p) { if (!D.scriptMap[p.script_id]) issues.push('Punctuation script_id tidak dikenal: ' + p.punctuation_id); });
+    (D.specialCharacters || []).forEach(function (s) {
+      if (!D.scriptMap[s.script_id]) issues.push('Special script_id tidak dikenal: ' + s.special_character_id);
+      if (s.character_id && !D.characterMap[s.character_id]) issues.push('Special character_id tidak dikenal: ' + s.special_character_id);
+    });
+    (D.combinations || []).forEach(function (c) {
+      if (!D.scriptMap[c.script_id]) issues.push('Combination script_id tidak dikenal: ' + c.combination_id);
+      if (c.base_character && !D.characterMap[c.base_character]) issues.push('Combination base tidak dikenal: ' + c.combination_id + ' → ' + c.base_character);
+      if (c.modifier && !D.characterMap[c.modifier]) issues.push('Combination modifier tidak dikenal: ' + c.combination_id + ' → ' + c.modifier);
+    });
+    res.issues = issues.slice(0, 25); res.issueCount = issues.length;
+    res.status = issues.length ? 'WARNING' : 'PASS';
+    return res;
+  };
+
+  /* ============ 13. COVERAGE EXTEND ============ */
+  var oldCov = D.coverageReport;
+  D.coverageReport = function () {
+    var r = oldCov();
+    r.characters_with_type = { count: D.characters.filter(function (c) { return !!c.character_type; }).length, total: D.characters.length };
+    r.characters_by_type = D.characterTypeStats();
+    r.scripts_with_pairs = { count: Object.keys(D.pairMap).length ? D.scripts.filter(function (s) { return D.pairsOfScript(s.id).length; }).length : 0, total: D.scripts.length };
+    r.scripts_with_diacritics = { count: D.scripts.filter(function (s) { return D.diacriticsOfScript(s.id).length; }).length, total: D.scripts.length };
+    r.scripts_with_numerals = { count: D.scripts.filter(function (s) { return D.numeralsOfScript(s.id).length; }).length, total: D.scripts.length };
+    r.scripts_with_punctuation = { count: D.scripts.filter(function (s) { return D.punctuationsOfScript(s.id).length; }).length, total: D.scripts.length };
+    r.scripts_with_special = { count: D.scripts.filter(function (s) { return D.specialOfScript(s.id).length; }).length, total: D.scripts.length };
+    r.scripts_with_combination = { count: D.scripts.filter(function (s) { return D.combinationsOfScript(s.id).length; }).length, total: D.scripts.length };
+    r.diacritics_with_unicode = { count: D.diacritics.filter(function (d) { return d.unicode; }).length, total: D.diacritics.length };
+    r.numerals_with_unicode = { count: D.numerals.filter(function (n) { return n.unicode; }).length, total: D.numerals.length };
+    return r;
+  };
+
+  /* ============ 14. REGISTRY & META ============ */
+  D.registry.version = '0.10.0';
+  D.registry.entities = D.registry.entities.concat([
+    { name: 'CharacterType', table: 'characters.character_type', fields: ['dasar', 'pasangan', 'sandhangan', 'angka', 'tanda_baca', 'khusus'], relations: ['Character 1:1'] },
+    { name: 'Pair', table: 'pairs', fields: ['pair_id', 'script_id', 'base_character_id', 'name', 'native_form', 'glyph', 'transliteration', 'unicode_sequence', 'function', 'usage_rule', 'formation_rule', 'example', 'phonetic_effect', 'position', 'related_character', 'source_id', 'verification_status'], relations: ['Character 1:1 (base)', 'Script N:1'] },
+    { name: 'Diacritic', table: 'diacritics', fields: ['sandhangan_id', 'script_id', 'character_id', 'name', 'glyph', 'transliteration', 'ipa', 'unicode', 'type', 'position', 'function', 'combination_rule', 'example'], relations: ['Character N:1', 'Script N:1'] },
+    { name: 'Numeral', table: 'numerals', fields: ['numeral_id', 'script_id', 'numeric_value', 'name', 'glyph', 'unicode', 'unicode_name', 'usage', 'example'], relations: ['Script N:1'] },
+    { name: 'Punctuation', table: 'punctuations', fields: ['punctuation_id', 'script_id', 'name', 'glyph', 'unicode', 'function', 'usage', 'example'], relations: ['Script N:1'] },
+    { name: 'SpecialCharacter', table: 'specialCharacters', fields: ['special_character_id', 'script_id', 'character_id', 'name', 'glyph', 'transliteration', 'unicode', 'function', 'historical_usage', 'modern_usage'], relations: ['Character 1:1', 'Script N:1'] },
+    { name: 'Combination', table: 'combinations', fields: ['combination_id', 'script_id', 'base_character', 'modifier', 'combined_form', 'glyph', 'unicode_sequence', 'reading', 'phonetic_result', 'rule', 'example'], relations: ['Character N:N', 'Script N:1'] }
+  ]);
+  D.meta.version = '0.10.0 (struktur aksara terstruktur)';
+  D.meta.dataStatus = 'Demo Data — konten UNVERIFIED; struktur aksara: Karakter Dasar, Pasangan, Sandhangan, Angka, Tanda Baca, Karakter Khusus, Kombinasi. Semua Unicode nyata (Unicode Consortium); data yang belum ada: null / "Data belum tersedia".';
+})(ALFABASA);
+
+
+if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA; }
+
 
 
 
@@ -4174,6 +4634,22 @@ module.exports = ALFABASA; }
         return say('Aksara <b>' + esc(sc.name) + '</b>:\n' + '• Klasifikasi: ' + esc(sc.classification) + '\n' + '• Wilayah: ' + esc(sc.region) + '\n' + '• Arah: ' + esc(sc.direction) + '\n' + '• Unicode: ' + esc(sc.unicodeBlock) + '\n' + '• Sejarah: ' + esc(sc.history) + '\n\nData demo ALFABASA — belum diverifikasi.', 'Demo Data');
       }
     }
+    if (q.includes('pasangan') || q.includes('pair')) {
+      const sc = D.scripts.find(s => q.includes(s.name.toLowerCase()) || (s.languages.some(lid => q.includes((D.languageById(lid) || {}).name || ''))));
+      const pairs = sc ? D.pairsOfScript(sc.id) : (D.pairs || []).slice(0, 5);
+      if (pairs && pairs.length) {
+        return say('Pasangan <b>' + esc(sc ? sc.name : '') + '</b> (' + pairs.length + ' entri):\n' + pairs.slice(0, 6).map(p => '• ' + p.glyph + ' — ' + p.name + ' (' + p.unicode_sequence + ')').join('\n') + '\n\nPasangan menghilangkan vokal aksara sebelumnya (virama + huruf dasar). Buka detail pasangan di halaman aksara. Data demo ALFABASA — belum diverifikasi.', 'Demo Data');
+      }
+      return say('Sebutkan aksara yang ingin dilihat pasangannya, misal "pasangan aksara Jawa". Data demo ALFABASA — belum diverifikasi.', 'ALFABASA AI');
+    }
+    if (q.includes('sandhangan') || q.includes('diakritik') || q.includes('harakat') || q.includes('matra')) {
+      const sc = D.scripts.find(s => q.includes(s.name.toLowerCase()) || (s.languages.some(lid => q.includes((D.languageById(lid) || {}).name || ''))));
+      const dias = sc ? D.diacriticsOfScript(sc.id) : (D.diacritics || []).slice(0, 5);
+      if (dias && dias.length) {
+        return say('Sandhangan/diakritik <b>' + esc(sc ? sc.name : '') + '</b> (' + dias.length + ' entri):\n' + dias.slice(0, 8).map(d => '• ' + d.glyph + ' ' + d.name + ' — ' + (d.ipa || '') + ' (' + (d.type || '').replace(/_/g, ' ') + ')').join('\n') + '\n\nTiap sandhangan dapat dibuka untuk fungsi, posisi, dan contoh. Data demo ALFABASA — belum diverifikasi.', 'Demo Data');
+      }
+      return say('Sebutkan aksara, misal "sandhangan aksara Jawa". Data demo ALFABASA — belum diverifikasi.', 'ALFABASA AI');
+    }
     if (q.includes('ipa') || q.includes('bunyi') || q.includes('pengucapan') || q.includes('fonetik')) {
       return say('Sistem IPA di ALFABASA mencakup vokal, konsonan, nada, dan tekanan dengan contoh per bahasa. Contoh konsonan khas Nusantara: /ɓ/ (implosif b, di Jawa dan Bugis) dan /ɖ/ (retrofleks d di Jawa). Buka halaman <b>Pengucapan</b> di menu Explore untuk daftar lengkap dengan audio demo.', 'ALFABASA AI');
     }
@@ -4362,6 +4838,7 @@ module.exports = ALFABASA; }
   window.App = { State, Store, D, esc, icon, toast, navigate, isBookmarked, toggleBookmark, bookmarkBtn, statusBadge, familyName, progressOf, setProgress, lessonDone, recordHistory, playDemoAudio, audioBtn, globalSearch, initCarousel, initExpandables, initExercise, renderAI, sendAi, applyTheme, init, parseHash, registerRoute: onRoute };
   window.addEventListener('DOMContentLoaded', init);
 })();
+
 
 
 
@@ -4792,24 +5269,70 @@ module.exports = ALFABASA; }
 
     const chars = D.charactersOfScript(s.id);
     const langs = s.languages.map(lid => D.languageById(lid)).filter(Boolean);
-    const charGrid = chars.slice(0, 20);
+    const basics = chars.filter(c => c.character_type === 'dasar');
+    const pairs = D.pairsOfScript(s.id);
+    const diacritics = D.diacriticsOfScript(s.id);
+    const numerals = D.numeralsOfScript(s.id);
+    const puncts = D.punctuationsOfScript(s.id);
+    const specials = D.specialOfScript(s.id);
+    const combos = D.combinationsOfScript(s.id);
+
+    /* Grid/card renderer per jenis unsur — setiap item membuka halaman detail */
+    const glyphCard = (glyph, name, sub, nav) =>
+      '<div class="explore-card" style="padding:12px 8px;align-items:center;text-align:center" data-nav="' + nav + '" role="button" tabindex="0">' +
+      '<div style="font-size:30px;line-height:1.1">' + glyph + '</div>' +
+      '<div class="ec-title" style="font-size:12px">' + esc(name) + '</div>' +
+      '<div class="ec-desc" style="font-size:10.5px">' + esc(sub) + '</div></div>';
+    const grid4 = (cards) => '<div class="explore-grid" style="grid-template-columns:repeat(4,1fr);gap:8px">' + cards + '</div>';
+    const noneMsg = '<p class="body-sm muted">Data belum tersedia (demo).</p>';
+
+    const partHtml = (val) => {
+      if (val === 'dasar') return basics.length ? grid4(basics.map(c => glyphCard(c.char, c.name, (c.transliteration || '') + ' • ' + (c.unicode || '—'), '#/character/' + c.id)).join('')) : noneMsg;
+      if (val === 'pasangan') return pairs.length ? grid4(pairs.map(p => glyphCard(p.glyph, p.name, (p.transliteration || '') + ' • ' + (p.unicode_sequence || '—'), '#/pair/' + p.pair_id)).join('')) : noneMsg;
+      if (val === 'sandhangan') return diacritics.length ? grid4(diacritics.map(d => glyphCard(d.glyph, d.name, (d.ipa || '') + ' • ' + (d.unicode || '—'), '#/sandhangan/' + d.sandhangan_id)).join('')) : noneMsg;
+      if (val === 'angka') return numerals.length ? grid4(numerals.map(n => glyphCard(n.glyph, n.native_name, (n.numeric_value != null ? n.numeric_value : '—') + ' • ' + (n.unicode || '—'), '#/numeral/' + n.numeral_id)).join('')) : noneMsg;
+      if (val === 'tanda_baca') return puncts.length ? grid4(puncts.map(p => glyphCard(p.glyph, p.name, p.unicode || '—', '#/punctuation/' + p.punctuation_id)).join('')) : noneMsg;
+      if (val === 'khusus') return specials.length ? grid4(specials.map(sp => glyphCard(sp.glyph, sp.name, (sp.transliteration || '') + ' • ' + (sp.unicode || '—'), '#/special/' + sp.special_character_id)).join('')) : noneMsg;
+      if (val === 'kombinasi') return combos.length ? '<div class="list" style="border:none">' + combos.map(co =>
+        '<div class="list-item" data-nav="#/combination/' + co.combination_id + '" role="button" tabindex="0"><div class="li-main"><div class="li-title"><span style="font-size:20px">' + co.glyph + '</span> <span style="font-size:14px">' + esc(co.combined_form) + '</span></div><div class="li-sub">' + esc(co.unicode_sequence) + ' • ' + esc(co.reading) + '</div></div>' + icon('chevron_right', 'chev') + '</div>').join('') + '</div>' : noneMsg;
+      let html = '';
+      if (basics.length) html += '<div class="section-title" style="margin:14px 0 8px">Karakter Dasar</div>' + grid4(basics.map(c => glyphCard(c.char, c.name, (c.transliteration || '') + ' • ' + (c.unicode || '—'), '#/character/' + c.id)).join(''));
+      if (pairs.length) html += '<div class="section-title" style="margin:14px 0 8px">Pasangan</div>' + grid4(pairs.map(p => glyphCard(p.glyph, p.name, (p.transliteration || '') + ' • ' + (p.unicode_sequence || '—'), '#/pair/' + p.pair_id)).join(''));
+      if (diacritics.length) html += '<div class="section-title" style="margin:14px 0 8px">Sandhangan</div>' + grid4(diacritics.map(d => glyphCard(d.glyph, d.name, (d.ipa || '') + ' • ' + (d.unicode || '—'), '#/sandhangan/' + d.sandhangan_id)).join(''));
+      if (numerals.length) html += '<div class="section-title" style="margin:14px 0 8px">Angka</div>' + grid4(numerals.map(n => glyphCard(n.glyph, n.native_name, (n.numeric_value != null ? n.numeric_value : '—') + ' • ' + (n.unicode || '—'), '#/numeral/' + n.numeral_id)).join(''));
+      if (puncts.length) html += '<div class="section-title" style="margin:14px 0 8px">Tanda Baca</div>' + grid4(puncts.map(p => glyphCard(p.glyph, p.name, p.unicode || '—', '#/punctuation/' + p.punctuation_id)).join(''));
+      if (specials.length) html += '<div class="section-title" style="margin:14px 0 8px">Karakter Khusus</div>' + grid4(specials.map(sp => glyphCard(sp.glyph, sp.name, (sp.transliteration || '') + ' • ' + (sp.unicode || '—'), '#/special/' + sp.special_character_id)).join(''));
+      if (combos.length) html += '<div class="section-title" style="margin:14px 0 8px">Kombinasi / Gabungan</div>' + '<div class="list" style="border:none">' + combos.map(co =>
+        '<div class="list-item" data-nav="#/combination/' + co.combination_id + '" role="button" tabindex="0"><div class="li-main"><div class="li-title"><span style="font-size:20px">' + co.glyph + '</span> <span style="font-size:14px">' + esc(co.combined_form) + '</span></div><div class="li-sub">' + esc(co.unicode_sequence) + ' • ' + esc(co.reading) + '</div></div>' + icon('chevron_right', 'chev') + '</div>').join('') + '</div>';
+      return html || noneMsg;
+    };
+
+    const typeFilters = [
+      { label: 'Semua', value: 'all' },
+      ...(basics.length ? [{ label: 'Karakter Dasar', value: 'dasar' }] : []),
+      ...(pairs.length ? [{ label: 'Pasangan', value: 'pasangan' }] : []),
+      ...(diacritics.length ? [{ label: 'Sandhangan', value: 'sandhangan' }] : []),
+      ...(numerals.length ? [{ label: 'Angka', value: 'angka' }] : []),
+      ...(puncts.length ? [{ label: 'Tanda Baca', value: 'tanda_baca' }] : []),
+      ...(specials.length ? [{ label: 'Karakter Khusus', value: 'khusus' }] : []),
+      ...(combos.length ? [{ label: 'Kombinasi', value: 'kombinasi' }] : [])
+    ];
+    const f = State.filters.scriptParts || { value: 'all' };
+
+    const unicodeParts = s.unicodeBlock || 'Data belum tersedia';
+    const udCount = chars.filter(c => c.unicode).length;
 
     const sections = [
       expandable('summarize', 'Ringkasan', '<div class="body"><p>' + esc(s.history.split('.')[0]) + '.</p></div>'),
       expandable('history', 'Sejarah', '<div class="body"><p>' + esc(s.history) + '</p></div>'),
-      expandable('grid_view', 'Karakter', charGrid.length
-        ? '<div class="explore-grid" style="grid-template-columns:repeat(4,1fr);gap:8px">' + charGrid.map(c =>
-          '<div class="explore-card" style="padding:12px 8px;align-items:center;text-align:center" data-nav="#/character/' + c.id + '" role="button">' +
-          '<div style="font-size:30px;line-height:1.1">' + c.char + '</div><div class="ec-title" style="font-size:12px">' + esc(c.name) + '</div>' +
-          '<div class="ec-desc" style="font-size:10.5px">' + esc(c.transliteration) + ' • ' + esc(c.unicode) + '</div></div>').join('') + '</div>'
-        : '<p class="body-sm muted">Belum ada data karakter (demo).</p>'),
-      expandable('link', 'Pasangan', '<div class="body"><p>Pasangan digunakan untuk menghilangkan vokal aksara sebelumnya dan menyambung ke aksara berikutnya. Contoh: ꦠꦏ꧀ꦱꦏ — taksaka.</p></div>'),
-      expandable('edit', 'Sandhangan', '<div class="body"><p>Sandhangan mengubah vokal: wulu (i), suku (u), pepet (ê), taling (é), taling tarung (o). Contoh: ꦲꦶ (hi), ꦲꦸ (hu), ꦲꦺ (hé), ꦲꦺꦴ (ho).</p></div>'),
-      expandable('pin', 'Angka', '<div class="body"><p>Angka Jawa: ꧐ ꧑ ꧒ ꧓ ꧔ ꧕ ꧖ ꧗ ꧘ ꧙ (0–9).</p></div>'),
-      expandable('format_list_bulleted', 'Tanda Baca', '<div class="body"><p>Pada (tanda baca) digunakan untuk memisahkan kalimat: pada lingsa (.) dan pada lungsi (;).</p></div>'),
       expandable('swap_horiz', 'Arah Penulisan', '<div class="body"><p>' + esc(s.direction) + '.</p></div>'),
-      expandable('data_object', 'Unicode', '<div class="body"><p>Blok Unicode: ' + esc(s.unicodeBlock) + '.</p></div>'),
-      expandable('translate', 'Transliterasi', '<div class="body"><p>' + esc(s.transliteration) + '</p></div>'),
+      expandable('data_object', 'Unicode (informasi teknis)', '<div class="body"><p>Blok Unicode: ' + esc(unicodeParts) + '</p>' +
+        '<div class="list" style="border:none">' +
+        [['Jumlah karakter', udCount + ' dari ' + chars.length + ' memiliki code point'],
+         ['Sumber metadata', 'Unicode Consortium (blok resmi)'],
+         ['Status', 'UNVERIFIED (demo)']].map(r =>
+          '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub" style="text-transform:uppercase;letter-spacing:.8px;font-size:10.5px;font-weight:800">' + esc(r[0]) + '</div><div class="li-title" style="font-size:13.5px">' + esc(r[1]) + '</div></div></div>').join('') + '</div></div>'),
+      expandable('translate', 'Transliterasi & Aturan Penulisan', '<div class="body"><p>' + esc(s.transliteration) + '</p></div>'),
       expandable('article', 'Contoh Penggunaan', '<div class="body"><p>' + esc(s.usage) + '</p></div>'),
       expandable('language', 'Bahasa Terkait', '<div class="body">' + (langs.length ? relatedChips(langs.map(l => ({ label: l.name, nav: '#/language/' + l.id }))) : '<p class="body-sm muted">—</p>') + '</div>')
     ];
@@ -4828,7 +5351,14 @@ module.exports = ALFABASA; }
       '<div class="ki-item"><div class="ki-label">Bahasa</div><div class="ki-value">' + esc(langs.map(l => l.name).join(', ') || '—') + '</div></div>' +
       '<div class="ki-item"><div class="ki-label">Arah</div><div class="ki-value">' + esc(s.direction) + '</div></div>' +
       '</div>' +
-      '<div class="card" style="padding:6px 0;overflow:hidden">' + sections.join('') + '</div>' +
+      // STRUKTUR UNSUR AKSARA
+      '<div class="card" style="padding:14px 16px;margin-top:16px">' +
+      '<div class="title-md" style="margin-bottom:4px">Unsur Aksara</div>' +
+      '<div class="body-sm muted" style="margin-bottom:12px">Karakter dasar, pasangan, sandhangan, angka, tanda baca, dan kombinasi — setiap item dapat dibuka.</div>' +
+      chipsRow(typeFilters, 'scriptParts', f.value) +
+      '<div style="margin-top:6px" id="scriptParts">' + partHtml(f.value) + '</div></div>' +
+      // SECTIONS
+      '<div class="card" style="padding:6px 0;overflow:hidden;margin-top:16px">' + sections.join('') + '</div>' +
       '<div class="section"><div class="section-title" style="margin-bottom:10px">Aksara Terkait</div>' +
       relatedChips((s.related || []).map(rid => D.scriptById(rid)).filter(Boolean).map(r => ({ label: r.name, nav: '#/script/' + r.id }))) + '</div>' +
       sourceNote(s.sourceIds) + '</div>';
@@ -4849,41 +5379,80 @@ module.exports = ALFABASA; }
     const glyphs = (D.glyphs || []).filter(g => g.character_id === c.id);
     const variants = (D.characterVariants || []).filter(v => v.character_id === c.id);
 
+    /* Relasi baru: pasangan terkait, sandhangan terkait, kombinasi terkait */
+    const myPair = D.pairByBaseCharacter ? D.pairByBaseCharacter(c.id) : null;
+    const myDiacritics = (D.diacritics || []).filter(d => d.character_id === c.id);
+    const myCombos = (D.combinations || []).filter(co => co.base_character === c.id || co.modifier === c.id);
+    const scriptLangs = s ? (s.languages || []).map(lid => D.languageById(lid)).filter(Boolean) : [];
+
+    const typeLabel = c.character_type === 'dasar' ? 'Karakter Dasar'
+      : c.character_type === 'angka' ? 'Angka'
+      : c.character_type === 'sandhangan' ? 'Sandhangan'
+      : c.character_type === 'tanda_baca' ? 'Tanda Baca'
+      : c.character_type === 'khusus' ? 'Karakter Khusus'
+      : (c.type || 'Karakter');
+
+    const section = (title, html) => '<div class="section"><div class="section-title" style="margin-bottom:10px">' + title + '</div>' + html + '</div>';
+
+    const techRows = (rows) => '<div class="card" style="padding:6px 0;overflow:hidden"><div class="list" style="border:none">' +
+      rows.map(r => '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub" style="text-transform:uppercase;letter-spacing:.8px;font-size:10.5px;font-weight:800">' + esc(r[0]) + '</div><div class="li-title" style="font-size:13.5px">' + esc(r[1] == null || r[1] === '' ? 'Data belum tersedia' : r[1]) + '</div></div></div>').join('') + '</div></div>';
+
     app.innerHTML =
       '<div class="container" style="max-width:640px">' +
       '<div class="page-head"><button class="icon-btn" data-action="back" aria-label="Kembali">' + icon('arrow_back') + '</button>' +
       '<div class="spacer"></div>' + bookmarkBtn('character', c.id, c.name) + '</div>' +
+      // HERO — informasi utama dulu
       '<div class="card word-hero">' +
       '<div class="word-glyph">' + c.char + '</div>' +
-      '<div class="word-ipa">' + esc(c.transliteration) + ' • ' + esc(c.sound) + '</div>' +
-      '<div class="meta" style="margin-top:6px">' + esc(c.name) + ' • ' + esc(c.unicode) + '</div>' +
+      '<div class="headline" style="font-size:22px">' + esc(c.name) + '</div>' +
+      '<div class="word-ipa">' + esc(c.transliteration || '—') + (c.sound ? ' • ' + esc(c.sound) : '') + '</div>' +
       '<div class="row" style="justify-content:center;margin-top:8px;gap:6px;flex-wrap:wrap">' +
-      '<span class="badge primary">' + esc(c.type) + '</span>' + demoBadge() +
+      '<span class="badge primary">' + esc(typeLabel) + '</span>' + demoBadge() +
       (s ? '<button class="badge outline" style="cursor:pointer;border:none" data-nav="#/script/' + s.id + '">' + esc(s.name) + '</button>' : '') +
       '</div>' +
       '<div class="word-actions">' +
-      audioBtn(c.transliteration, c.name) +
+      audioBtn(c.transliteration || c.name, c.name) +
       '<button class="btn btn-outline" data-action="stroke" data-char="' + esc(c.char) + '" aria-label="Urutan goresan (demo)">' + icon('gesture') + ' Stroke Order</button>' +
       '</div></div>' +
-      '<div class="section"><div class="section-title" style="margin-bottom:10px">Contoh Penggunaan</div>' +
-      '<div class="card"><p class="body">' + esc(c.example || '—') + '</p>' +
-      '<div class="row" style="margin-top:12px;gap:8px;flex-wrap:wrap">' + audioBtn(c.example || c.transliteration, 'contoh') + '</div></div></div>' +
-      (ud ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Informasi Unicode</div>' +
-        '<div class="card" style="padding:6px 0;overflow:hidden"><div class="list" style="border:none">' +
-        [['Code Point', ud.codepoint], ['Unicode Name', ud.unicode_name], ['Block', ud.block], ['Script', ud.script], ['General Category', ud.general_category], ['Direction', ud.direction], ['Unicode Version', ud.unicode_version]]
-          .map(r => '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub" style="text-transform:uppercase;letter-spacing:.8px;font-size:10.5px;font-weight:800">' + esc(r[0]) + '</div><div class="li-title" style="font-size:13.5px">' + esc(r[1]) + '</div></div></div>').join('') +
-        '</div></div></div>' : '') +
+      // INFORMASI (deskripsi) + PENGGUNAAN + CONTOH
+      (c.note || c.description ? section('Deskripsi', '<div class="card"><p class="body">' + esc(c.note || c.description) + '</p></div>') : '') +
+      (c.usage ? section('Penggunaan', '<div class="card"><p class="body">' + esc(c.usage) + '</p></div>') : '') +
+      (c.example ? section('Contoh', '<div class="card"><p class="body" style="font-size:20px">' + c.example + '</p>' +
+        '<div class="row" style="margin-top:12px;gap:8px;flex-wrap:wrap">' + audioBtn(c.example, 'contoh') + '</div></div>') : '') +
+      // PASANGAN TERKAIT
+      (myPair ? section('Pasangan Terkait', '<div class="list">' +
+        '<div class="list-item" data-nav="#/pair/' + myPair.pair_id + '" role="button"><div class="li-main"><div class="li-title" style="font-size:20px">' + myPair.glyph + ' — ' + esc(myPair.name) + '</div><div class="li-sub">' + esc(myPair.unicode_sequence) + ' • ' + esc(myPair.function || '') + '</div></div>' + icon('chevron_right', 'chev') + '</div></div>') : '') +
+      // SANDHANGAN TERKAIT
+      (myDiacritics.length ? section('Sandhangan Terkait', '<div class="list">' + myDiacritics.map(d =>
+        '<div class="list-item" data-nav="#/sandhangan/' + d.sandhangan_id + '" role="button"><div class="li-main"><div class="li-title" style="font-size:20px">' + d.glyph + ' — ' + esc(d.name) + '</div><div class="li-sub">' + esc(d.ipa || '') + ' • ' + esc(d.type || '') + '</div></div>' + icon('chevron_right', 'chev') + '</div>').join('') + '</div>') : '') +
+      // KOMBINASI TERKAIT
+      (myCombos.length ? section('Kombinasi Terkait', '<div class="list">' + myCombos.map(co =>
+        '<div class="list-item" data-nav="#/combination/' + co.combination_id + '" role="button"><div class="li-main"><div class="li-title" style="font-size:20px">' + co.glyph + ' — ' + esc(co.combined_form) + '</div><div class="li-sub">' + esc(co.unicode_sequence) + ' • ' + esc(co.reading) + '</div></div>' + icon('chevron_right', 'chev') + '</div>').join('') + '</div>') : '') +
+      // BAHASA TERKAIT
+      (scriptLangs.length ? section('Bahasa Terkait', relatedChips(scriptLangs.map(l => ({ label: l.name, nav: '#/language/' + l.id })))) : '') +
+      // INFORMASI TEKNIS — expandable
       '<div class="section"><div class="card" style="padding:6px 0;overflow:hidden">' +
-      expandable('category', 'Glyph', '<div class="body">' + (glyphs.length ? glyphs.map(g => '<div class="list-item" style="min-height:44px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + g.form + ' — ' + esc(g.style) + '</div><div class="li-sub">' + esc(g.period) + ' • ' + esc(g.region) + ' • Font: ' + esc(g.font_reference) + '</div></div></div>').join('') : '<p class="body-sm muted">Data demo — belum tersedia.</p>') + '</div>') +
-      expandable('layers', 'Varian Karakter (CharacterVariant)', '<div class="body">' + (variants.length ? variants.map(v => '<div class="list-item" style="min-height:44px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(v.variant_name) + ' — <span style="font-size:18px">' + v.form + '</span></div><div class="li-sub">' + esc(v.description) + '</div></div></div>').join('') : '<p class="body-sm muted">Data demo — belum tersedia.</p>') + '</div>') +
-      expandable('gesture', 'Stroke Order', '<div class="body"><p class="body-sm muted">' + esc(D.strokeOrderNote || 'Data demo — belum tersedia.') + '</p></div>') +
+      expandable('data_object', 'Informasi Teknis', techRows([
+        ['Unicode', c.unicode], ['Code Point', c.unicode],
+        ['Unicode Name', ud ? ud.unicode_name : null],
+        ['Block', ud ? ud.block : (s ? s.unicodeBlock : null)],
+        ['Script', ud ? ud.script : null],
+        ['General Category', ud ? ud.general_category : null],
+        ['Combining Class', ud ? ud.canonical_combining_class : null],
+        ['Direction', ud ? (ud.direction || ud.bidirectional_class) : (s ? s.direction : null)],
+        ['Unicode Version', ud ? ud.unicode_version : null],
+        ['Normalization', ud ? ud.normalization : null],
+        ['Mirrored', ud ? ud.mirrored : null]
+      ])) +
+      expandable('category', 'Glyph', '<div class="body">' + (glyphs.length ? glyphs.map(g => '<div class="list-item" style="min-height:44px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + g.form + ' — ' + esc(g.style) + '</div><div class="li-sub">' + esc(g.period) + ' • ' + esc(g.region) + ' • Font: ' + esc(g.font_reference) + '</div></div></div>').join('') : '<p class="body-sm muted">Data belum tersedia (demo).</p>') + '</div>') +
+      expandable('layers', 'Varian Karakter (CharacterVariant)', '<div class="body">' + (variants.length ? variants.map(v => '<div class="list-item" style="min-height:44px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:14px">' + esc(v.variant_name) + ' — <span style="font-size:18px">' + v.form + '</span></div><div class="li-sub">' + esc(v.description) + '</div></div></div>').join('') : '<p class="body-sm muted">Data belum tersedia (demo).</p>') + '</div>') +
+      expandable('gesture', 'Stroke Order', '<div class="body"><p class="body-sm muted">' + esc(D.strokeOrderNote || 'Data belum tersedia (demo).') + '</p></div>') +
       '</div></div>' +
-      (related.length ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Karakter Terkait</div>' +
-        '<div class="h-scroll">' + related.map(r =>
-          '<div class="h-card" data-nav="#/character/' + r.id + '" role="button">' +
-          '<div class="hc-art"><span class="hc-glyph">' + r.char + '</span></div>' +
-          '<div class="hc-body"><div class="hc-title">' + esc(r.name) + '</div><div class="hc-sub">' + esc(r.transliteration) + ' • ' + esc(r.unicode) + '</div></div></div>').join('') + '</div></div>' : '') +
-      sourceNote() + '</div>';
+      (related.length ? section('Karakter Terkait', '<div class="h-scroll">' + related.map(r =>
+        '<div class="h-card" data-nav="#/character/' + r.id + '" role="button">' +
+        '<div class="hc-art"><span class="hc-glyph">' + r.char + '</span></div>' +
+        '<div class="hc-body"><div class="hc-title">' + esc(r.name) + '</div><div class="hc-sub">' + esc(r.transliteration) + ' • ' + esc(r.unicode) + '</div></div></div>').join('') + '</div>') : '') +
+      sourceNote([c.sourceIds && c.sourceIds[0] || 's-demo-1']) + '</div>';
     window.App.initExpandables(app);
 
     const strokeBtn = app.querySelector('[data-action="stroke"]');
@@ -5317,7 +5886,7 @@ module.exports = ALFABASA; }
   function viewSearch(app, params) {
     const q = params.q || '';
     const results = window.App.globalSearch(q);
-    const typeIcon = { 'Bahasa': 'language', 'Dialek': 'forum', 'Rumpun Bahasa': 'account_tree', 'Aksara': 'abc', 'Karakter': 'grid_view', 'Kata': 'menu_book', 'Tata Bahasa': 'account_tree', 'Budaya': 'public', 'Sastra': 'auto_stories', 'Kursus': 'school' };
+    const typeIcon = { 'Bahasa': 'language', 'Dialek': 'forum', 'Rumpun Bahasa': 'account_tree', 'Aksara': 'abc', 'Karakter': 'grid_view', 'Kata': 'menu_book', 'Tata Bahasa': 'account_tree', 'Budaya': 'public', 'Sastra': 'auto_stories', 'Kursus': 'school', 'Pasangan': 'link', 'Sandhangan': 'edit', 'Angka Aksara': 'pin', 'Tanda Baca': 'format_list_bulleted', 'Karakter Khusus': 'star', 'Kombinasi': 'merge_type' };
     const routeOf = (r) => {
       switch (r.type) {
         case 'Bahasa': return '#/language/' + r.id;
@@ -5330,6 +5899,12 @@ module.exports = ALFABASA; }
         case 'Budaya': return '#/culture';
         case 'Sastra': return '#/literature';
         case 'Kursus': return '#/course/' + r.id;
+        case 'Pasangan': return '#/pair/' + r.id;
+        case 'Sandhangan': return '#/sandhangan/' + r.id;
+        case 'Angka Aksara': return '#/numeral/' + r.id;
+        case 'Tanda Baca': return '#/punctuation/' + r.id;
+        case 'Karakter Khusus': return '#/special/' + r.id;
+        case 'Kombinasi': return '#/combination/' + r.id;
         default: return '#/explore';
       }
     };
@@ -5822,6 +6397,188 @@ module.exports = ALFABASA; }
   }
 
   /* ============================================================
+     DETAIL ENTITY AKSARA (PHASE 02): Pair, Sandhangan, Numeral,
+     Punctuation, SpecialCharacter, Combination
+     ============================================================ */
+  const entityTech = (rows) => '<div class="card" style="padding:6px 0;overflow:hidden"><div class="list" style="border:none">' +
+    rows.map(r => '<div class="list-item" style="min-height:40px;cursor:default"><div class="li-main"><div class="li-sub" style="text-transform:uppercase;letter-spacing:.8px;font-size:10.5px;font-weight:800">' + esc(r[0]) + '</div><div class="li-title" style="font-size:13.5px">' + esc(r[1] == null || r[1] === '' ? 'Data belum tersedia' : r[1]) + '</div></div></div>').join('') + '</div></div>';
+
+  const entityPage = (app, opts) => {
+    const { backNav, heroGlyph, heroLabel, name, sub, badges, main, sections, extra, sourceId } = opts;
+    app.innerHTML =
+      '<div class="container" style="max-width:640px">' +
+      '<div class="page-head"><button class="icon-btn" data-action="back" aria-label="Kembali" data-nav="' + backNav + '">' + icon('arrow_back') + '</button>' +
+      '<div class="spacer"></div>' + bookmarkBtn(opts.type || 'character', opts.id, name) + '</div>' +
+      '<div class="card word-hero">' +
+      '<div class="word-glyph">' + heroGlyph + '</div>' +
+      '<div class="headline" style="font-size:22px">' + esc(name) + '</div>' +
+      '<div class="word-ipa">' + esc(sub) + '</div>' +
+      '<div class="row" style="justify-content:center;margin-top:8px;gap:6px;flex-wrap:wrap">' + badges + '</div>' +
+      '</div>' +
+      main +
+      (sections || '') +
+      (extra || '') +
+      sourceNote(sourceId ? [sourceId] : ['s-demo-1']) + '</div>';
+    window.App.initExpandables(app);
+  };
+
+  function viewPair(app, id) {
+    const p = D.pairMap[id];
+    if (!p) { window.App.toast('Pasangan tidak ditemukan'); viewScripts(app, {}); return; }
+    const s = D.scriptById(p.script_id);
+    const base = D.characterMap[p.base_character_id];
+    window.App.recordHistory('pair', p.pair_id, p.name);
+    const rows = [
+      ['Nama', p.name], ['Bentuk asli', p.glyph], ['Transliterasi', p.transliteration],
+      ['Unicode Sequence', p.unicode_sequence], ['Base Character', base ? (base.char + ' — ' + base.name) : null],
+      ['Verifikasi', p.verification_status]
+    ];
+    entityPage(app, {
+      type: 'pair', id: p.pair_id, backNav: s ? '#/script/' + s.id : '#/scripts',
+      heroGlyph: p.glyph, heroLabel: 'Pasangan', name: p.name, sub: (p.transliteration || '') + ' • ' + (p.unicode_sequence || ''),
+      badges: '<span class="badge primary">Pasangan</span>' + demoBadge() + (s ? '<button class="badge outline" style="cursor:pointer;border:none" data-nav="#/script/' + s.id + '">' + esc(s.name) + '</button>' : ''),
+      main:
+        '<div class="section"><div class="section-title" style="margin-bottom:10px">Fungsi</div><div class="card"><p class="body">' + esc(p.function || 'Data belum tersedia.') + '</p></div></div>' +
+        '<div class="section"><div class="section-title" style="margin-bottom:10px">Aturan Pembentukan</div><div class="card"><p class="body">' + esc(p.formation_rule || 'Data belum tersedia.') + '</p><p class="body-sm muted" style="margin-top:8px">' + esc(p.usage_rule || '') + '</p></div></div>' +
+        (p.example ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Contoh</div><div class="card"><p class="body" style="font-size:20px">' + p.example + '</p>' + (p.example_meaning ? '<p class="body-sm muted">' + esc(p.example_meaning) + '</p>' : '') + '</div></div>' : '') +
+        (base ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Karakter Dasar</div>' +
+          '<div class="list"><div class="list-item" data-nav="#/character/' + base.id + '" role="button"><div class="li-main"><div class="li-title" style="font-size:20px">' + base.char + ' — ' + esc(base.name) + '</div><div class="li-sub">' + esc(base.transliteration) + ' • ' + esc(base.unicode) + '</div></div>' + icon('chevron_right', 'chev') + '</div></div></div>' : ''),
+      sections: '<div class="section"><div class="card" style="padding:6px 0;overflow:hidden">' +
+        expandable('data_object', 'Informasi Teknis', entityTech(rows)) +
+        expandable('graphic_eq', 'Efek Fonetik', '<div class="body"><p>' + esc(p.phonetic_effect || 'Data belum tersedia.') + '</p><p class="body-sm muted" style="margin-top:8px">Posisi: ' + esc(p.position || 'Data belum tersedia.') + '</p></div>') +
+        '</div></div>',
+      sourceId: p.source_id
+    });
+  }
+
+  function viewSandhangan(app, id) {
+    const d = D.diacriticMap[id];
+    if (!d) { window.App.toast('Sandhangan tidak ditemukan'); viewScripts(app, {}); return; }
+    const s = D.scriptById(d.script_id);
+    window.App.recordHistory('sandhangan', d.sandhangan_id, d.name);
+    const typeNames = { vowel_mark: 'Tanda Vokal', consonant_mark: 'Tanda Konsonan', final_consonant_mark: 'Tanda Konsonan Penutup', special_mark: 'Tanda Khusus', other: 'Lainnya' };
+    const rows = [
+      ['Nama', d.name], ['Jenis', typeNames[d.type] || d.type], ['Posisi', d.position],
+      ['Transliterasi', d.transliteration], ['IPA', d.ipa], ['Unicode', d.unicode],
+      ['Code Point', d.codepoint], ['Verifikasi', d.verification_status]
+    ];
+    entityPage(app, {
+      type: 'sandhangan', id: d.sandhangan_id, backNav: s ? '#/script/' + s.id : '#/scripts',
+      heroGlyph: d.glyph, heroLabel: 'Sandhangan', name: d.name, sub: (d.ipa || '') + ' • ' + (d.unicode || ''),
+      badges: '<span class="badge primary">' + esc(typeNames[d.type] || d.type) + '</span>' + demoBadge() + (s ? '<button class="badge outline" style="cursor:pointer;border:none" data-nav="#/script/' + s.id + '">' + esc(s.name) + '</button>' : ''),
+      main:
+        '<div class="section"><div class="section-title" style="margin-bottom:10px">Fungsi</div><div class="card"><p class="body">' + esc(d.function || 'Data belum tersedia.') + '</p></div></div>' +
+        '<div class="section"><div class="section-title" style="margin-bottom:10px">Aturan Kombinasi</div><div class="card"><p class="body">' + esc(d.combination_rule || 'Data belum tersedia.') + '</p><p class="body-sm muted" style="margin-top:8px">' + esc(d.usage_rule || '') + '</p></div></div>' +
+        (d.example ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Contoh</div><div class="card"><p class="body" style="font-size:22px">' + d.example + '</p>' + (d.pronunciation ? '<p class="body-sm muted">' + esc(d.pronunciation) + '</p>' : '') + '</div></div>' : ''),
+      sections: '<div class="section"><div class="card" style="padding:6px 0;overflow:hidden">' +
+        expandable('data_object', 'Informasi Teknis', entityTech(rows)) +
+        '</div></div>',
+      sourceId: d.source_id
+    });
+  }
+
+  function viewNumeral(app, id) {
+    const n = D.numeralMap[id];
+    if (!n) { window.App.toast('Angka tidak ditemukan'); viewScripts(app, {}); return; }
+    const s = D.scriptById(n.script_id);
+    window.App.recordHistory('numeral', n.numeral_id, n.native_name);
+    const rows = [
+      ['Nama', n.native_name], ['Nilai Angka', n.numeric_value != null ? n.numeric_value : 'Data belum tersedia'],
+      ['Unicode', n.unicode], ['Code Point', n.codepoint], ['Unicode Name', n.unicode_name],
+      ['Verifikasi', n.verification_status]
+    ];
+    entityPage(app, {
+      type: 'numeral', id: n.numeral_id, backNav: s ? '#/script/' + s.id : '#/scripts',
+      heroGlyph: n.glyph, heroLabel: 'Angka', name: n.native_name, sub: (n.numeric_value != null ? 'Nilai ' + n.numeric_value : '') + ' • ' + (n.unicode || ''),
+      badges: '<span class="badge primary">Angka</span>' + demoBadge() + (s ? '<button class="badge outline" style="cursor:pointer;border:none" data-nav="#/script/' + s.id + '">' + esc(s.name) + '</button>' : ''),
+      main:
+        '<div class="section"><div class="section-title" style="margin-bottom:10px">Penggunaan</div><div class="card"><p class="body">' + esc(n.usage || 'Data belum tersedia.') + '</p>' + (n.writing_rule ? '<p class="body-sm muted" style="margin-top:8px">' + esc(n.writing_rule) + '</p>' : '') + '</div></div>' +
+        (n.example ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Contoh</div><div class="card"><p class="body" style="font-size:22px">' + n.example + '</p></div></div>' : ''),
+      sections: '<div class="section"><div class="card" style="padding:6px 0;overflow:hidden">' +
+        expandable('data_object', 'Informasi Teknis', entityTech(rows)) +
+        '</div></div>',
+      sourceId: n.source_id
+    });
+  }
+
+  function viewPunctuation(app, id) {
+    const p = D.punctuationMap[id];
+    if (!p) { window.App.toast('Tanda baca tidak ditemukan'); viewScripts(app, {}); return; }
+    const s = D.scriptById(p.script_id);
+    window.App.recordHistory('punctuation', p.punctuation_id, p.name);
+    const rows = [['Nama', p.name], ['Unicode', p.unicode], ['Code Point', p.codepoint], ['Verifikasi', p.verification_status]];
+    entityPage(app, {
+      type: 'punctuation', id: p.punctuation_id, backNav: s ? '#/script/' + s.id : '#/scripts',
+      heroGlyph: p.glyph, heroLabel: 'Tanda Baca', name: p.name, sub: p.unicode || '',
+      badges: '<span class="badge primary">Tanda Baca</span>' + demoBadge() + (s ? '<button class="badge outline" style="cursor:pointer;border:none" data-nav="#/script/' + s.id + '">' + esc(s.name) + '</button>' : ''),
+      main:
+        '<div class="section"><div class="section-title" style="margin-bottom:10px">Fungsi</div><div class="card"><p class="body">' + esc(p.function || 'Data belum tersedia.') + '</p></div></div>' +
+        (p.usage ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Penggunaan</div><div class="card"><p class="body">' + esc(p.usage) + '</p></div></div>' : '') +
+        (p.example ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Contoh</div><div class="card"><p class="body" style="font-size:22px">' + p.example + '</p></div></div>' : ''),
+      sections: '<div class="section"><div class="card" style="padding:6px 0;overflow:hidden">' +
+        expandable('data_object', 'Informasi Teknis', entityTech(rows)) + '</div></div>',
+      sourceId: p.source_id
+    });
+  }
+
+  function viewSpecial(app, id) {
+    const sp = D.specialMap[id];
+    if (!sp) { window.App.toast('Karakter khusus tidak ditemukan'); viewScripts(app, {}); return; }
+    const s = D.scriptById(sp.script_id);
+    const c = sp.character_id ? D.characterMap[sp.character_id] : null;
+    window.App.recordHistory('special', sp.special_character_id, sp.name);
+    const rows = [
+      ['Nama', sp.name], ['Transliterasi', sp.transliteration], ['Unicode', sp.unicode],
+      ['Code Point', sp.codepoint], ['Verifikasi', sp.verification_status]
+    ];
+    entityPage(app, {
+      type: 'special', id: sp.special_character_id, backNav: s ? '#/script/' + s.id : '#/scripts',
+      heroGlyph: sp.glyph, heroLabel: 'Karakter Khusus', name: sp.name, sub: (sp.transliteration || '') + ' • ' + (sp.unicode || ''),
+      badges: '<span class="badge primary">Karakter Khusus</span>' + demoBadge() + (s ? '<button class="badge outline" style="cursor:pointer;border:none" data-nav="#/script/' + s.id + '">' + esc(s.name) + '</button>' : ''),
+      main:
+        '<div class="section"><div class="section-title" style="margin-bottom:10px">Fungsi</div><div class="card"><p class="body">' + esc(sp.function || 'Data belum tersedia.') + '</p></div></div>' +
+        (sp.usage ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Penggunaan</div><div class="card"><p class="body">' + esc(sp.usage) + '</p></div></div>' : '') +
+        (sp.historical_usage || sp.modern_usage ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Sejarah & Modern</div><div class="card">' +
+          (sp.historical_usage ? '<p class="body-sm muted">Historis: ' + esc(sp.historical_usage) + '</p>' : '') +
+          (sp.modern_usage ? '<p class="body-sm muted" style="margin-top:6px">Modern: ' + esc(sp.modern_usage) + '</p>' : '') + '</div></div>' : '') +
+        (sp.example ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Contoh</div><div class="card"><p class="body" style="font-size:24px">' + sp.example + '</p></div></div>' : '') +
+        (c ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Entri Karakter</div>' +
+          '<div class="list"><div class="list-item" data-nav="#/character/' + c.id + '" role="button"><div class="li-main"><div class="li-title" style="font-size:20px">' + c.char + ' — ' + esc(c.name) + '</div><div class="li-sub">' + esc(c.transliteration) + ' • ' + esc(c.unicode) + '</div></div>' + icon('chevron_right', 'chev') + '</div></div></div>' : ''),
+      sections: '<div class="section"><div class="card" style="padding:6px 0;overflow:hidden">' +
+        expandable('data_object', 'Informasi Teknis', entityTech(rows)) + '</div></div>',
+      sourceId: sp.source_id
+    });
+  }
+
+  function viewCombination(app, id) {
+    const co = D.combinationMap[id];
+    if (!co) { window.App.toast('Kombinasi tidak ditemukan'); viewScripts(app, {}); return; }
+    const s = D.scriptById(co.script_id);
+    const base = co.base_character ? D.characterMap[co.base_character] : null;
+    const mod = co.modifier ? D.characterMap[co.modifier] : null;
+    window.App.recordHistory('combination', co.combination_id, co.combined_form);
+    const rows = [
+      ['Unicode Sequence', co.unicode_sequence], ['Bentuk Gabungan', co.combined_form],
+      ['Bacaan', co.reading], ['Hasil Fonetik', co.phonetic_result], ['Verifikasi', co.verification_status]
+    ];
+    const chips = [];
+    if (base) chips.push('<button class="chip" data-nav="#/character/' + base.id + '">' + base.char + ' ' + esc(base.name) + '</button>');
+    if (mod) chips.push('<button class="chip" data-nav="#/character/' + mod.id + '">' + mod.char + ' ' + esc(mod.name) + '</button>');
+    entityPage(app, {
+      type: 'combination', id: co.combination_id, backNav: s ? '#/script/' + s.id : '#/scripts',
+      heroGlyph: co.glyph, heroLabel: 'Kombinasi', name: co.combined_form, sub: (co.reading || '') + ' • ' + (co.phonetic_result || ''),
+      badges: '<span class="badge primary">Kombinasi</span>' + demoBadge() + (s ? '<button class="badge outline" style="cursor:pointer;border:none" data-nav="#/script/' + s.id + '">' + esc(s.name) + '</button>' : ''),
+      main:
+        '<div class="section"><div class="section-title" style="margin-bottom:10px">Rumus</div><div class="card"><p class="body">' + esc(co.rule || 'Data belum tersedia.') + '</p></div></div>' +
+        (chips.length ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Penyusun</div><div class="related-list">' + chips.join('') + '</div></div>' : '') +
+        (co.example ? '<div class="section"><div class="section-title" style="margin-bottom:10px">Contoh</div><div class="card"><p class="body" style="font-size:22px">' + co.example + '</p></div></div>' : ''),
+      sections: '<div class="section"><div class="card" style="padding:6px 0;overflow:hidden">' +
+        expandable('data_object', 'Informasi Teknis', entityTech(rows)) + '</div></div>',
+      sourceId: co.source_id
+    });
+  }
+
+  /* ============================================================
      REGISTER ROUTES
      ============================================================ */
   const R = window.App.registerRoute;
@@ -5862,14 +6619,41 @@ module.exports = ALFABASA; }
   R(/^network$/, (app) => viewNetwork(app));
   R(/^network\/([\w-]+)$/, (app, m) => viewNetwork(app, m[1]));
   R(/^sources$/, (app) => viewSources(app));
+  R(/^pair\/([\w-]+)$/, (app, m) => viewPair(app, m[1]));
+  R(/^sandhangan\/([\w-]+)$/, (app, m) => viewSandhangan(app, m[1]));
+  R(/^numeral\/([\w-]+)$/, (app, m) => viewNumeral(app, m[1]));
+  R(/^punctuation\/([\w-]+)$/, (app, m) => viewPunctuation(app, m[1]));
+  R(/^special\/([\w-]+)$/, (app, m) => viewSpecial(app, m[1]));
+  R(/^combination\/([\w-]+)$/, (app, m) => viewCombination(app, m[1]));
 
-  /* Filter live re-render: daftar bahasa / aksara / kamus */
+  /* Filter live re-render: daftar bahasa / aksara / kamus / unsur aksara */
   document.addEventListener('alfabasa:filter', (e) => {
     const app = $('#app');
     const { group, value } = e.detail;
     if (group === 'langs') { const el = $('#langList', app); if (el) el.innerHTML = languageListHtml('', value); }
     if (group === 'scripts') { const el = $('#scriptList', app); if (el) el.innerHTML = scriptListHtml('', value); }
     if (group === 'dict') { const el = $('#dictList', app); if (el) el.innerHTML = dictListHtml('', value); }
+    if (group === 'scriptParts') {
+      const el = $('#scriptParts', app);
+      if (!el) return;
+      const s = D.scriptById((window.App.parseHash().path || '').split('/')[1]);
+      if (s) {
+        const basics = D.charactersOfScript(s.id).filter(c => c.character_type === 'dasar');
+        const pairs = D.pairsOfScript(s.id), diacritics = D.diacriticsOfScript(s.id), numerals = D.numeralsOfScript(s.id);
+        const puncts = D.punctuationsOfScript(s.id), specials = D.specialOfScript(s.id), combos = D.combinationsOfScript(s.id);
+        const g = (glyph, name, sub, nav) => '<div class="explore-card" style="padding:12px 8px;align-items:center;text-align:center" data-nav="' + nav + '" role="button"><div style="font-size:30px;line-height:1.1">' + glyph + '</div><div class="ec-title" style="font-size:12px">' + esc(name) + '</div><div class="ec-desc" style="font-size:10.5px">' + esc(sub) + '</div></div>';
+        const grid4 = (cards) => '<div class="explore-grid" style="grid-template-columns:repeat(4,1fr);gap:8px">' + cards + '</div>';
+        const none = '<p class="body-sm muted">Data belum tersedia (demo).</p>';
+        const list = (arr) => '<div class="list" style="border:none">' + arr.map(co => '<div class="list-item" data-nav="#/combination/' + co.combination_id + '" role="button"><div class="li-main"><div class="li-title"><span style="font-size:20px">' + co.glyph + '</span> <span style="font-size:14px">' + esc(co.combined_form) + '</span></div><div class="li-sub">' + esc(co.unicode_sequence) + ' • ' + esc(co.reading) + '</div></div>' + icon('chevron_right', 'chev') + '</div>').join('') + '</div>';
+        if (value === 'dasar') el.innerHTML = basics.length ? grid4(basics.map(c => g(c.char, c.name, (c.transliteration || '') + ' • ' + (c.unicode || '—'), '#/character/' + c.id)).join('')) : none;
+        else if (value === 'pasangan') el.innerHTML = pairs.length ? grid4(pairs.map(p => g(p.glyph, p.name, (p.transliteration || '') + ' • ' + (p.unicode_sequence || '—'), '#/pair/' + p.pair_id)).join('')) : none;
+        else if (value === 'sandhangan') el.innerHTML = diacritics.length ? grid4(diacritics.map(d => g(d.glyph, d.name, (d.ipa || '') + ' • ' + (d.unicode || '—'), '#/sandhangan/' + d.sandhangan_id)).join('')) : none;
+        else if (value === 'angka') el.innerHTML = numerals.length ? grid4(numerals.map(n => g(n.glyph, n.native_name, (n.numeric_value != null ? n.numeric_value : '—') + ' • ' + (n.unicode || '—'), '#/numeral/' + n.numeral_id)).join('')) : none;
+        else if (value === 'tanda_baca') el.innerHTML = puncts.length ? grid4(puncts.map(p => g(p.glyph, p.name, p.unicode || '—', '#/punctuation/' + p.punctuation_id)).join('')) : none;
+        else if (value === 'khusus') el.innerHTML = specials.length ? grid4(specials.map(sp => g(sp.glyph, sp.name, (sp.transliteration || '') + ' • ' + (sp.unicode || '—'), '#/special/' + sp.special_character_id)).join('')) : none;
+        else if (value === 'kombinasi') el.innerHTML = combos.length ? list(combos) : none;
+      }
+    }
   });
 
   /* Search chips di halaman search */
@@ -5898,7 +6682,9 @@ module.exports = ALFABASA; }
         out.innerHTML = '<div class="list">' + rows.map(function (r) {
           const badge = r[1].status === 'COMPLETE' ? 'success' : r[1].status === 'MISSING' ? 'danger' : 'primary';
           return '<div class="list-item" style="min-height:44px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:13.5px">' + esc(r[0]) + '</div><div class="li-sub">' + r[1].count + ' dari ' + cr.total_languages + ' bahasa</div></div><span class="badge ' + badge + '">' + r[1].status + '</span></div>';
-        }).join('') + '</div><div class="card" style="margin-top:10px"><div class="body-sm muted">Aksara dengan bahasa: ' + cr.scripts_with_language.count + '/' + cr.scripts_with_language.total + ' • Karakter dengan Unicode: ' + cr.characters_with_unicode.count + '/' + cr.characters_with_unicode.total + ' • Kata dengan makna: ' + cr.words_with_meaning.count + '/' + cr.words_with_meaning.total + ' • Kata dengan pelafalan: ' + cr.words_with_pronunciation.count + '/' + cr.words_with_pronunciation.total + '</div></div>';
+        }).join('') + '</div>' +
+          (cr.scripts_with_pairs ? '<div class="card" style="margin-top:10px"><div class="label" style="margin-bottom:6px">Struktur Aksara</div><div class="body-sm muted">Aksara dengan pasangan: ' + cr.scripts_with_pairs.count + '/' + cr.scripts_with_pairs.total + ' • sandhangan: ' + cr.scripts_with_diacritics.count + '/' + cr.scripts_with_diacritics.total + ' • angka: ' + cr.scripts_with_numerals.count + '/' + cr.scripts_with_numerals.total + ' • tanda baca: ' + cr.scripts_with_punctuation.count + '/' + cr.scripts_with_punctuation.total + ' • karakter khusus: ' + cr.scripts_with_special.count + '/' + cr.scripts_with_special.total + ' • kombinasi: ' + cr.scripts_with_combination.count + '/' + cr.scripts_with_combination.total + '<br>Karakter ber-type: ' + cr.characters_with_type.count + '/' + cr.characters_with_type.total + ' (dasar ' + (cr.characters_by_type.dasar || 0) + ', pasangan ' + (cr.characters_by_type.pasangan || 0) + ', sandhangan ' + (cr.characters_by_type.sandhangan || 0) + ', angka ' + (cr.characters_by_type.angka || 0) + ', tanda baca ' + (cr.characters_by_type.tanda_baca || 0) + ', khusus ' + (cr.characters_by_type.khusus || 0) + ')</div></div>' : '') +
+          '<div class="card" style="margin-top:10px"><div class="body-sm muted">Aksara dengan bahasa: ' + cr.scripts_with_language.count + '/' + cr.scripts_with_language.total + ' • Karakter dengan Unicode: ' + cr.characters_with_unicode.count + '/' + cr.characters_with_unicode.total + ' • Kata dengan makna: ' + cr.words_with_meaning.count + '/' + cr.words_with_meaning.total + ' • Kata dengan pelafalan: ' + cr.words_with_pronunciation.count + '/' + cr.words_with_pronunciation.total + '</div></div>';
       }
     }
   });
@@ -5913,8 +6699,9 @@ module.exports = ALFABASA; }
     obs.observe(document.body, { childList: true, subtree: true });
   });
 
-  window.Views = { viewHome, viewExplore, viewLanguages, viewLanguage, viewScripts, viewScript, viewCharacter, viewDictionary, viewWord, viewPronunciation, viewGrammar, viewCulture, viewLiterature, viewLearn, viewCourse, viewLesson, viewSearch, viewSaved, viewProfile, viewSettings, viewFamily, viewFamilyList, viewError, viewMenus, viewMenuDetail, viewCompare, viewNetwork, viewSources };
+  window.Views = { viewHome, viewExplore, viewLanguages, viewLanguage, viewScripts, viewScript, viewCharacter, viewDictionary, viewWord, viewPronunciation, viewGrammar, viewCulture, viewLiterature, viewLearn, viewCourse, viewLesson, viewSearch, viewSaved, viewProfile, viewSettings, viewFamily, viewFamilyList, viewError, viewMenus, viewMenuDetail, viewCompare, viewNetwork, viewSources, viewPair, viewSandhangan, viewNumeral, viewPunctuation, viewSpecial, viewCombination };
 })();
+
 
 
 
