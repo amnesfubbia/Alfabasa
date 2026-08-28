@@ -16,6 +16,8 @@
 
 
 
+
+
 /* ============================================================
    ALFABASA — Design System
    Material Design 3 · AMOLED Dark / Light · Indigo accent
@@ -631,6 +633,8 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
 
 
 
+
+
 </style>
 </head>
 <body>
@@ -697,6 +701,8 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
 </div>
 
 <script>
+
+
 
 const ALFABASA = {
   meta: {
@@ -3480,7 +3486,306 @@ const ALFABASA = {
 
 
 
-if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA; }
+if (typeof module !== 'undefined' && module.exports) { /* ============================================================
+   ALFABASA — DATABASE ENRICHMENT PHASE 01 (v0.9.0)
+   Country, LanguageCountry, ScriptLanguage, ekspansi global.
+   Semua konten: DEMO / UNVERIFIED. Angka penutur: estimasi.
+   ============================================================ */
+(function (D) {
+
+  /* ============ COUNTRY DATABASE ============ */
+  D.countries = [
+    { country_id: 'id', name: 'Indonesia', iso2: 'ID', iso3: 'IDN', continent: 'Asia', region: 'Asia Tenggara', subregion: 'Nusantara', capital: 'Jakarta', language_ids: ['indonesia', 'jawa', 'sunda', 'bali', 'melayu', 'bugis', 'batak', 'sasak', 'aceh', 'makassar', 'minang', 'banjar'], official_language_ids: ['indonesia'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'my', name: 'Malaysia', iso2: 'MY', iso3: 'MYS', continent: 'Asia', region: 'Asia Tenggara', subregion: 'Semenanjung Malaya & Borneo', capital: 'Kuala Lumpur', language_ids: ['melayu', 'iban'], official_language_ids: ['melayu'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'sg', name: 'Singapura', iso2: 'SG', iso3: 'SGP', continent: 'Asia', region: 'Asia Tenggara', capital: 'Singapura', language_ids: ['melayu', 'mandarin', 'tamil', 'english'], official_language_ids: ['melayu', 'mandarin', 'tamil', 'english'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'bn', name: 'Brunei', iso2: 'BN', iso3: 'BRN', continent: 'Asia', region: 'Asia Tenggara', capital: 'Bandar Seri Begawan', language_ids: ['melayu'], official_language_ids: ['melayu'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'th', name: 'Thailand', iso2: 'TH', iso3: 'THA', continent: 'Asia', region: 'Asia Tenggara', capital: 'Bangkok', language_ids: ['thai'], official_language_ids: ['thai'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'vn', name: 'Vietnam', iso2: 'VN', iso3: 'VNM', continent: 'Asia', region: 'Asia Tenggara', capital: 'Hanoi', language_ids: ['vietnam'], official_language_ids: ['vietnam'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'ph', name: 'Filipina', iso2: 'PH', iso3: 'PHL', continent: 'Asia', region: 'Asia Tenggara', capital: 'Manila', language_ids: ['tagalog'], official_language_ids: ['tagalog'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'jp', name: 'Jepang', iso2: 'JP', iso3: 'JPN', continent: 'Asia', region: 'Asia Timur', capital: 'Tokyo', language_ids: ['jepang'], official_language_ids: ['jepang'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'kr', name: 'Korea Selatan', iso2: 'KR', iso3: 'KOR', continent: 'Asia', region: 'Asia Timur', capital: 'Seoul', language_ids: ['korea'], official_language_ids: ['korea'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'kp', name: 'Korea Utara', iso2: 'KP', iso3: 'PRK', continent: 'Asia', region: 'Asia Timur', capital: 'Pyongyang', language_ids: ['korea'], official_language_ids: ['korea'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'cn', name: 'Tiongkok', iso2: 'CN', iso3: 'CHN', continent: 'Asia', region: 'Asia Timur', capital: 'Beijing', language_ids: ['mandarin'], official_language_ids: ['mandarin'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'tw', name: 'Taiwan', iso2: 'TW', iso3: 'TWN', continent: 'Asia', region: 'Asia Timur', capital: 'Taipei', language_ids: ['mandarin'], official_language_ids: ['mandarin'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'in', name: 'India', iso2: 'IN', iso3: 'IND', continent: 'Asia', region: 'Asia Selatan', capital: 'New Delhi', language_ids: ['hindi', 'tamil', 'bengali'], official_language_ids: ['hindi', 'english'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'bd', name: 'Bangladesh', iso2: 'BD', iso3: 'BGD', continent: 'Asia', region: 'Asia Selatan', capital: 'Dhaka', language_ids: ['bengali'], official_language_ids: ['bengali'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'lk', name: 'Sri Lanka', iso2: 'LK', iso3: 'LKA', continent: 'Asia', region: 'Asia Selatan', capital: 'Colombo', language_ids: ['tamil', 'singhala'], official_language_ids: ['singhala', 'tamil'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'sa', name: 'Arab Saudi', iso2: 'SA', iso3: 'SAU', continent: 'Asia', region: 'Timur Tengah', capital: 'Riyadh', language_ids: ['arab'], official_language_ids: ['arab'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'eg', name: 'Mesir', iso2: 'EG', iso3: 'EGY', continent: 'Afrika', region: 'Afrika Utara', capital: 'Kairo', language_ids: ['arab'], official_language_ids: ['arab'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'ma', name: 'Maroko', iso2: 'MA', iso3: 'MAR', continent: 'Afrika', region: 'Afrika Utara', capital: 'Rabat', language_ids: ['arab'], official_language_ids: ['arab'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'ir', name: 'Iran', iso2: 'IR', iso3: 'IRN', continent: 'Asia', region: 'Timur Tengah', capital: 'Teheran', language_ids: ['persia'], official_language_ids: ['persia'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'tr', name: 'Turki', iso2: 'TR', iso3: 'TUR', continent: 'Asia/Eropa', region: 'Timur Tengah & Eropa', capital: 'Ankara', language_ids: ['turki'], official_language_ids: ['turki'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'gr', name: 'Yunani', iso2: 'GR', iso3: 'GRC', continent: 'Eropa', region: 'Eropa Selatan', capital: 'Athena', language_ids: ['yunani'], official_language_ids: ['yunani'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'gb', name: 'Britania Raya', iso2: 'GB', iso3: 'GBR', continent: 'Eropa', region: 'Eropa Barat', capital: 'London', language_ids: ['english'], official_language_ids: ['english'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'us', name: 'Amerika Serikat', iso2: 'US', iso3: 'USA', continent: 'Amerika Utara', capital: 'Washington DC', language_ids: ['english', 'spanyol'], official_language_ids: [], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'au', name: 'Australia', iso2: 'AU', iso3: 'AUS', continent: 'Oseania', capital: 'Canberra', language_ids: ['english', 'maori'], official_language_ids: [], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'nz', name: 'Selandia Baru', iso2: 'NZ', iso3: 'NZL', continent: 'Oseania', capital: 'Wellington', language_ids: ['english', 'maori'], official_language_ids: ['english', 'maori'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'ws', name: 'Samoa', iso2: 'WS', iso3: 'WSM', continent: 'Oseania', region: 'Polinesia', capital: 'Apia', language_ids: ['samoa'], official_language_ids: ['samoa'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'nl', name: 'Belanda', iso2: 'NL', iso3: 'NLD', continent: 'Eropa', region: 'Eropa Barat', capital: 'Amsterdam', language_ids: ['belanda'], official_language_ids: ['belanda'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'de', name: 'Jerman', iso2: 'DE', iso3: 'DEU', continent: 'Eropa', region: 'Eropa Barat', capital: 'Berlin', language_ids: ['jerman'], official_language_ids: ['jerman'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'fr', name: 'Prancis', iso2: 'FR', iso3: 'FRA', continent: 'Eropa', region: 'Eropa Barat', capital: 'Paris', language_ids: ['prancis'], official_language_ids: ['prancis'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'es', name: 'Spanyol', iso2: 'ES', iso3: 'ESP', continent: 'Eropa', region: 'Eropa Barat', capital: 'Madrid', language_ids: ['spanyol'], official_language_ids: ['spanyol'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'pt', name: 'Portugal', iso2: 'PT', iso3: 'PRT', continent: 'Eropa', region: 'Eropa Selatan', capital: 'Lisboa', language_ids: ['portugis'], official_language_ids: ['portugis'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'it', name: 'Italia', iso2: 'IT', iso3: 'ITA', continent: 'Eropa', region: 'Eropa Selatan', capital: 'Roma', language_ids: ['italia'], official_language_ids: ['italia'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'ru', name: 'Rusia', iso2: 'RU', iso3: 'RUS', continent: 'Eropa/Asia', region: 'Eropa Timur & Asia Utara', capital: 'Moskow', language_ids: ['rusia'], official_language_ids: ['rusia'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'pl', name: 'Polandia', iso2: 'PL', iso3: 'POL', continent: 'Eropa', region: 'Eropa Tengah', capital: 'Warsawa', language_ids: ['polandia'], official_language_ids: ['polandia'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'se', name: 'Swedia', iso2: 'SE', iso3: 'SWE', continent: 'Eropa', region: 'Eropa Utara', capital: 'Stockholm', language_ids: ['swedia'], official_language_ids: ['swedia'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'fi', name: 'Finlandia', iso2: 'FI', iso3: 'FIN', continent: 'Eropa', region: 'Eropa Utara', capital: 'Helsinki', language_ids: ['finlandia'], official_language_ids: ['finlandia', 'swedia'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'ua', name: 'Ukraina', iso2: 'UA', iso3: 'UKR', continent: 'Eropa', region: 'Eropa Timur', capital: 'Kyiv', language_ids: ['ukraina'], official_language_ids: ['ukraina'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'ke', name: 'Kenya', iso2: 'KE', iso3: 'KEN', continent: 'Afrika', region: 'Afrika Timur', capital: 'Nairobi', language_ids: ['swahili'], official_language_ids: ['swahili', 'english'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'ng', name: 'Nigeria', iso2: 'NG', iso3: 'NGA', continent: 'Afrika', region: 'Afrika Barat', capital: 'Abuja', language_ids: ['yoruba', 'hausa'], official_language_ids: ['english'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'za', name: 'Afrika Selatan', iso2: 'ZA', iso3: 'ZAF', continent: 'Afrika', region: 'Afrika Selatan', capital: 'Pretoria', language_ids: ['zulu'], official_language_ids: ['english', 'zulu'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'et', name: 'Etiopia', iso2: 'ET', iso3: 'ETH', continent: 'Afrika', region: 'Afrika Timur', capital: 'Addis Ababa', language_ids: ['amharic'], official_language_ids: ['amharic'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'mx', name: 'Meksiko', iso2: 'MX', iso3: 'MEX', continent: 'Amerika Utara', capital: 'Mexico City', language_ids: ['spanyol'], official_language_ids: ['spanyol'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'pe', name: 'Peru', iso2: 'PE', iso3: 'PER', continent: 'Amerika Selatan', capital: 'Lima', language_ids: ['spanyol', 'quechua'], official_language_ids: ['spanyol', 'quechua'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'bo', name: 'Bolivia', iso2: 'BO', iso3: 'BOL', continent: 'Amerika Selatan', capital: 'Sucre', language_ids: ['spanyol', 'quechua'], official_language_ids: ['spanyol', 'quechua'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'py', name: 'Paraguay', iso2: 'PY', iso3: 'PRY', continent: 'Amerika Selatan', capital: 'Asunción', language_ids: ['spanyol'], official_language_ids: ['spanyol'], source_ids: ['s-demo-1'], verification_status: 'DEMO' },
+    { country_id: 'br', name: 'Brasil', iso2: 'BR', iso3: 'BRA', continent: 'Amerika Selatan', capital: 'Brasília', language_ids: ['portugis'], official_language_ids: ['portugis'], source_ids: ['s-demo-1'], verification_status: 'DEMO' }
+  ];
+  D.countryMap = {}; D.countries.forEach(function (c) { D.countryMap[c.country_id] = c; });
+  D.getters = D.getters || {};
+
+  /* ============ BAHASA GLOBAL BARU (12) ============ */
+  var NA = 'Data tidak tersedia';
+  var newLangs = [
+    { id: 'swahili', name: 'Bahasa Swahili', nativeName: 'Kiswahili', englishName: 'Swahili', code: { iso6391: 'sw', iso6393: 'swa', glottocode: 'swah1253' }, family: 'nigerkongo', familyPath: ['Niger-Kongo', 'Atlantik-Kongo', 'Bantu', 'Bantu Timur', '—'], region: 'Afrika Timur', countries: ['Kenya', 'Tanzania'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Kenya & Tanzania', scripts: ['latin', 'arab'], primaryScript: 'latin', dialects: [], summary: 'Lingua franca Afrika Timur; bahasa Bantu dengan serapan Arab besar.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Data demo — belum tersedia.', vocabulary: 'Serapan Arab dan Inggris besar.', grammar: 'Kelas kata benda (noun class) khas Bantu.', culture: 'Data demo — belum tersedia.', literature: 'Tradisi lisan dan sastra Kiswahili.', related: ['arab'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'amharic', name: 'Bahasa Amharic', nativeName: 'አማርኛ', englishName: 'Amharic', code: { iso6391: 'am', iso6393: 'amh', glottocode: 'amha1245' }, family: 'afroasiatik', familyPath: ['Afroasiatik', 'Semitik', 'Semitik Selatan', 'Ethiopik', '—'], region: 'Etiopia', countries: ['Etiopia'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Etiopia', scripts: ['ethiopic'], primaryScript: 'ethiopic', dialects: [], summary: 'Bahasa Semitik dengan aksara Ethiopic (fidel).', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Sistem fidel: konsonan + vokal dalam satu bentuk.', vocabulary: 'Data demo — belum tersedia.', grammar: 'SOV, morfologi kaya.', culture: 'Data demo — belum tersedia.', literature: 'Tradisi tulis Ge’ez dan Amharic.', related: ['arab'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'yoruba', name: 'Bahasa Yoruba', nativeName: 'Èdè Yorùbá', englishName: 'Yoruba', code: { iso6391: 'yo', iso6393: 'yor', glottocode: 'yoru1245' }, family: 'nigerkongo', familyPath: ['Niger-Kongo', 'Atlantik-Kongo', 'Volta-Niger', 'Yoruboid', '—'], region: 'Afrika Barat', countries: ['Nigeria'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Regional di Nigeria', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa tonal Niger-Kongo dengan tiga nada.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Tiga nada pembeda makna.', vocabulary: 'Data demo — belum tersedia.', grammar: 'SVO, tanpa tense gramatikal (aspek leksikal).', culture: 'Data demo — belum tersedia.', literature: 'Tradisi lisan Ifá dan sastra modern.', related: [], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'zulu', name: 'Bahasa Zulu', nativeName: 'isiZulu', englishName: 'Zulu', code: { iso6391: 'zu', iso6393: 'zul', glottocode: 'zulu1248' }, family: 'nigerkongo', familyPath: ['Niger-Kongo', 'Atlantik-Kongo', 'Bantu', 'Bantu Selatan', 'Nguni'], region: 'Afrika Selatan', countries: ['Afrika Selatan'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Afrika Selatan', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Bantu Nguni dengan klik konsonan.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Klik konsonan (/ǀ/, /ǁ/, /ǃ/) khas.', vocabulary: 'Data demo — belum tersedia.', grammar: 'Kelas kata benda; SOV dengan agreement.', culture: 'Data demo — belum tersedia.', literature: 'Tradisi lisan dan sastra isiZulu.', related: [], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'quechua', name: 'Bahasa Quechua', nativeName: 'Runasimi', englishName: 'Quechua', code: { iso6391: 'qu', iso6393: 'que', glottocode: 'quec1387' }, family: 'quechua', familyPath: ['Quechua', '—', '—', '—', '—'], region: 'Andes — Amerika Selatan', countries: ['Peru', 'Bolivia'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Peru & Bolivia', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Keluarga bahasa indigenous Andes, warisan Kekaisaran Inka.', profile: 'Data demo — belum diverifikasi.', history: 'Bahasa resmi Kekaisaran Inka.', pronunciation: 'Tiga seri konsonan (lemah, aspirasi, ejektif).', vocabulary: 'Data demo — belum tersedia.', grammar: 'Aglutinatif, SOV.', culture: 'Data demo — belum tersedia.', literature: 'Tradisi lisan Andes.', related: [], sourceIds: ['s-demo-1'], statusFlags: ['indigenous'] },
+    { id: 'maori', name: 'Bahasa Maori', nativeName: 'Te Reo Māori', englishName: 'Maori', code: { iso6391: 'mi', iso6393: 'mri', glottocode: 'maor1246' }, family: 'austronesia', familyPath: ['Austronesia', 'Malayo-Polinesia', 'Oseanik', 'Polinesia', '—'], region: 'Selandia Baru', countries: ['Selandia Baru'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Revitalisasi', vitality: 'aktif', officialStatus: 'Resmi di Selandia Baru', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Polinesia yang menjalani revitalisasi aktif di Selandia Baru.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Vokal panjang pendek pembeda makna.', vocabulary: 'Data demo — belum tersedia.', grammar: 'VSO, partikel penentu khas Polinesia.', culture: 'Data demo — belum tersedia.', literature: 'Tradisi lisan whakataukī (peribahasa).', related: ['samoa'], sourceIds: ['s-demo-1'], statusFlags: ['revitalisasi'] },
+    { id: 'samoa', name: 'Bahasa Samoa', nativeName: 'Gagana Sāmoa', englishName: 'Samoan', code: { iso6391: 'sm', iso6393: 'smo', glottocode: 'samo1305' }, family: 'austronesia', familyPath: ['Austronesia', 'Malayo-Polinesia', 'Oseanik', 'Polinesia', '—'], region: 'Pasifik — Samoa', countries: ['Samoa'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Samoa', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Polinesia dengan penutur terbanyak kedua.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Glottal stop ditandai koma atas (’).', vocabulary: 'Data demo — belum tersedia.', grammar: 'VSO.', culture: 'Data demo — belum tersedia.', literature: 'Tradisi lisan Samoa (pōvā).', related: ['maori'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'minang', name: 'Bahasa Minangkabau', nativeName: 'Baso Minangkabau', englishName: 'Minangkabau', code: { iso6391: 'min', iso6393: 'min', glottocode: 'mina1268' }, family: 'austronesia', familyPath: ['Austronesia', 'Malayo-Polinesia', 'Malayo-Polinesia Barat', 'Malayik', '—'], region: 'Indonesia — Sumatera Barat', countries: ['Indonesia'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Bahasa daerah', scripts: ['latin', 'arab'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Malayik yang dituturkan di Sumatera Barat dan diaspora Minang.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Vokal /a/ → /o/ pada beberapa dialek.', vocabulary: 'Data demo — belum tersedia.', grammar: 'Berkerabat dekat dengan Melayu.', culture: 'Sistem matrilineal dan adat Minangkabau.', literature: 'Tambo Minangkabau dan tradisi lisan.', related: ['melayu', 'indonesia'], sourceIds: ['s-demo-1'], statusFlags: ['nusantara'] },
+    { id: 'banjar', name: 'Bahasa Banjar', nativeName: 'Basa Banjar', englishName: 'Banjar', code: { iso6391: 'bjn', iso6393: 'bjn', glottocode: 'banj1241' }, family: 'austronesia', familyPath: ['Austronesia', 'Malayo-Polinesia', 'Malayo-Polinesia Barat', 'Malayik', '—'], region: 'Indonesia — Kalimantan Selatan', countries: ['Indonesia'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Bahasa daerah', scripts: ['latin', 'arab'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Malayik di Kalimantan Selatan dengan penutur diaspora besar.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Data demo — belum tersedia.', vocabulary: 'Data demo — belum tersedia.', grammar: 'SVO, mirip Melayu.', culture: 'Data demo — belum tersedia.', literature: 'Tradisi lisan dan hikayat Banjar.', related: ['melayu', 'indonesia'], sourceIds: ['s-demo-1'], statusFlags: ['nusantara'] },
+    { id: 'iban', name: 'Bahasa Iban', nativeName: 'Jaku Iban', englishName: 'Iban', code: { iso6391: 'iba', iso6393: 'iba', glottocode: 'iban1264' }, family: 'austronesia', familyPath: ['Austronesia', 'Malayo-Polinesia', 'Malayo-Polinesia Barat', 'Malayik', 'Dayak'], region: 'Kalimantan', countries: ['Malaysia', 'Indonesia'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Bahasa komunitas', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Dayak Malayik di Sarawak dan Kalimantan Barat.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Data demo — belum tersedia.', vocabulary: 'Data demo — belum tersedia.', grammar: 'SVO.', culture: 'Data demo — belum tersedia.', literature: 'Tradisi lisan Dayak.', related: ['melayu'], sourceIds: ['s-demo-1'], statusFlags: ['nusantara'] },
+    { id: 'sansekerta', name: 'Bahasa Sanskerta', nativeName: 'संस्कृतम्', englishName: 'Sanskrit', code: { iso6391: 'sa', iso6393: 'san', glottocode: 'sans1269' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Indo-Iran', 'Indo-Arya', 'Sanskerta', '—'], region: 'Asia Selatan (historis)', countries: ['India'], speakers: '— (bahasa historis/liturgi)', speakersL1: '—', speakersL2: '—', speakersYear: null, status: 'Historis', vitality: 'punah', officialStatus: 'Bahasa liturgi & klasik', scripts: ['devanagari'], primaryScript: 'devanagari', dialects: [], summary: 'Bahasa klasik India; sumber kosakata besar bagi bahasa Nusantara dan Asia.', profile: 'Data demo — belum diverifikasi.', history: 'Dokumentasi tata bahasa tertua (Panini, ±abad ke-5 SM).', pronunciation: 'Data demo — belum tersedia.', vocabulary: 'Data demo — belum tersedia.', grammar: 'Sistem kasus 8, morfologi sangat kaya.', culture: 'Data demo — belum tersedia.', literature: 'Weda, Ramayana, Mahabharata.', related: ['hindi', 'jawa_kuno'], sourceIds: ['s-demo-1'], statusFlags: ['historis'] },
+    { id: 'latin-historis', name: 'Bahasa Latin', nativeName: 'Lingua Latina', englishName: 'Latin', code: { iso6391: 'la', iso6393: 'lat', glottocode: 'lati1261' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Italik', 'Latin-Faliski', '—', '—'], region: 'Eropa (historis)', countries: ['Italia'], speakers: '— (bahasa historis)', speakersL1: '—', speakersL2: '—', speakersYear: null, status: 'Historis', vitality: 'punah', officialStatus: 'Bahasa liturgi & akademik', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Romawi Kuno; induk bahasa Roman.', profile: 'Data demo — belum diverifikasi.', history: 'Dari Latin Kuno hingga Latin Vulgar → bahasa Roman.', pronunciation: 'Data demo — belum tersedia.', vocabulary: 'Data demo — belum tersedia.', grammar: 'Kasus 6, gender 3, konjugasi 4.', culture: 'Data demo — belum tersedia.', literature: 'Vergilius, Cicero, Ovidius.', related: ['italia', 'spanyol', 'prancis'], sourceIds: ['s-demo-1'], statusFlags: ['historis'] }
+  ];
+  D.languages = D.languages.concat(newLangs);
+
+  /* ============ KELUARGA BARU ============ */
+  D.families = D.families.concat([
+    { id: 'nigerkongo', name: 'Niger-Kongo', macrofamily: null, branch: 'Atlantik-Kongo • Bantu • Volta-Niger', languages: ['swahili', 'yoruba', 'zulu'] },
+    { id: 'quechua', name: 'Quechua', macrofamily: null, branch: '—', languages: ['quechua'] }
+  ]);
+
+  /* ============ RELASI LANGUAGE ↔ COUNTRY ============ */
+  var countryByName = {};
+  D.countries.forEach(function (c) { countryByName[c.name] = c.country_id; countryByName[c.name.toLowerCase()] = c.country_id; });
+  D.languageCountries = [];
+  var roleHint = function (l) {
+    var os = (l.officialStatus || '').toLowerCase();
+    if (os.indexOf('nasional') >= 0 || os.indexOf('resmi') >= 0 || os.indexOf('official') >= 0) return 'official';
+    if (l.vitality === 'punah' || os.indexOf('historis') >= 0) return 'historical';
+    if ((l.statusFlags || []).indexOf('nusantara') >= 0) return 'regional';
+    if ((l.statusFlags || []).indexOf('indigenous') >= 0) return 'indigenous';
+    return 'regional';
+  };
+  D.languages.forEach(function (l) {
+    (l.countries || []).forEach(function (cn) {
+      var cid = countryByName[cn] || countryByName[cn.toLowerCase()];
+      if (cid) {
+        var role = roleHint(l);
+        D.languageCountries.push({ relation_id: 'lc-' + l.id + '-' + cid, language_id: l.id, country_id: cid, role: role, region: l.region, status: 'aktif (demo)', source_id: 's-demo-1', verification_status: 'DEMO' });
+        if (!l.country_ids) l.country_ids = [];
+        if (l.country_ids.indexOf(cid) < 0) l.country_ids.push(cid);
+      }
+    });
+  });
+  D.languages.forEach(function (l) { if (!l.country_ids || !l.country_ids.length) l.country_ids = []; });
+
+  /* ============ SCRIPT ↔ LANGUAGE (TAHAP 7 — PRIORITAS) ============ */
+  var scriptLang = {
+    latin: ['indonesia', 'jawa', 'sunda', 'bali', 'melayu', 'english', 'spanyol', 'prancis', 'jerman', 'vietnam', 'bugis', 'batak', 'sasak', 'aceh', 'makassar', 'italia', 'portugis', 'belanda', 'polandia', 'swedia', 'finlandia', 'turki', 'tagalog', 'swahili', 'yoruba', 'zulu', 'quechua', 'maori', 'samoa', 'minang', 'banjar', 'iban'],
+    arab: ['arab', 'melayu', 'persia', 'minang', 'banjar', 'swahili'],
+    cyrillic: ['rusia', 'ukraina'],
+    greek: ['yunani'],
+    devanagari: ['hindi', 'sansekerta'],
+    bengali: ['bengali'],
+    tamil: ['tamil'],
+    ethiopic: ['amharic'],
+    jawa: ['jawa', 'jawa_kuno'],
+    bali: ['bali', 'sasak'],
+    sunda: ['sunda'],
+    lontara: ['bugis', 'makassar'],
+    batak: ['batak'],
+    han: ['mandarin', 'jepang', 'korea'],
+    kana: ['jepang'],
+    hangul: ['korea'],
+    thai: ['thai'],
+    sinhala: ['singhala']
+  };
+  D.scripts.forEach(function (s) {
+    if (scriptLang[s.id]) {
+      scriptLang[s.id].forEach(function (lid) {
+        if (s.languages.indexOf(lid) < 0) s.languages.push(lid);
+      });
+    }
+  });
+  D.scriptLanguages = [];
+  D.scripts.forEach(function (s) {
+    (s.languages || []).forEach(function (lid) {
+      D.scriptLanguages.push({ script_language_id: 'sl-' + s.id + '-' + lid, script_id: s.id, language_id: lid, usage_type: 'primary', region_id: null, period: null, source_id: 's-demo-1', verification_status: 'DEMO' });
+    });
+  });
+
+  /* ============ SCRIPT BARU: SINHALA ============ */
+  D.scripts.push({ id: 'sinhala', name: 'Sinhala', classification: 'Abugida', region: 'Sri Lanka', languages: ['singhala'], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0D80–U+0DFF', history: 'Turunan Brahmi; digunakan untuk bahasa Sinhala di Sri Lanka.', characters: ['sin-sayanna'], transliteration: 'ISO 15919 (contoh demo).', usage: 'Bahasa Sinhala.', related: ['devanagari'], sourceIds: ['s-demo-1'] });
+
+  /* ============ BAHASA SINGHALA + KARAKTER ============ */
+  D.languages.push({ id: 'singhala', name: 'Bahasa Sinhala', nativeName: 'සිංහල', englishName: 'Sinhala', code: { iso6391: 'si', iso6393: 'sin', glottocode: 'sinh1246' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Indo-Iran', 'Indo-Arya', 'Sinhala', '—'], region: 'Sri Lanka', countries: ['Sri Lanka'], speakers: 'estimasi — ' + NA, speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Sri Lanka', scripts: ['sinhala'], primaryScript: 'sinhala', dialects: [], summary: 'Bahasa Indo-Arya mayoritas di Sri Lanka.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Data demo — belum tersedia.', vocabulary: 'Data demo — belum tersedia.', grammar: 'SOV.', culture: 'Data demo — belum tersedia.', literature: 'Tradisi tulis Sinhala kuno.', related: ['hindi'], sourceIds: ['s-demo-1'], statusFlags: [] });
+  D.characters.push({ id: 'sin-sayanna', scriptId: 'sinhala', char: 'ස', name: 'Sayanna', unicode: 'U+0DC3', transliteration: 'sa', sound: '/sa/', type: 'Konsonan', example: 'සිංහල — siṃhala', related: [] });
+  D.unicodeData['sin-sayanna'] = { unicode_id: 'u-sin-sayanna', character_id: 'sin-sayanna', codepoint: 'U+0DC3', unicode_name: 'SINHALA LETTER SAYANNA', block: 'U+0D80–U+0DFF', script: 'Sinhala', general_category: 'Lo (Letter, Other)', canonical_combining_class: '0 (Not Reordered)', bidirectional_class: 'L (Left-to-Right)', unicode_version: '1.1', normalization: null, mirrored: 'No', source: 'Unicode Consortium', content_status: 'DEMO' };
+
+  /* ============ KOSAKATA DOMAIN BARU (~33 kata) ============ */
+  var w2 = [
+    ['senin', 'Senin', 'hari pertama dalam pekan', '/sənin/', 'waktu'], ['selasa', 'Selasa', 'hari kedua dalam pekan', '/səlasa/', 'waktu'], ['rabu', 'Rabu', 'hari ketiga dalam pekan', '/rabu/', 'waktu'], ['kamis', 'Kamis', 'hari keempat dalam pekan', '/kamis/', 'waktu'], ['jumat', 'Jumat', 'hari kelima dalam pekan', '/dʒumat/', 'waktu'], ['sabtu', 'Sabtu', 'hari keenam dalam pekan', '/sabtu/', 'waktu'], ['minggu', 'Minggu', 'hari ketujuh dalam pekan', '/miŋgu/', 'waktu'],
+    ['utara', 'utara', 'arah mata angin lawan selatan', '/utara/', 'arah'], ['selatan', 'selatan', 'arah mata angin lawan utara', '/səlatan/', 'arah'], ['timur', 'timur', 'arah mata angin tempat matahari terbit', '/timur/', 'arah'], ['barat', 'barat', 'arah mata angin tempat matahari terbenam', '/barat/', 'arah'],
+    ['angin', 'angin', 'udara yang bergerak', '/aŋin/', 'cuaca'], ['awan', 'awan', 'gumpalan uap air di langit', '/awan/', 'cuaca'], ['mendung', 'mendung', 'langit tertutup awan gelap', '/mənduŋ/', 'cuaca'],
+    ['senang', 'senang', 'merasa gembira', '/sənaŋ/', 'emosi'], ['sedih', 'sedih', 'merasa pilu', '/sədih/', 'emosi'], ['marah', 'marah', 'merasa tidak senang yang kuat', '/marah/', 'emosi'], ['takut', 'takut', 'merasa cemas akan bahaya', '/takut/', 'emosi'],
+    ['pergi', 'pergi', 'meninggalkan suatu tempat', '/pərgi/', 'aktivitas'], ['datang', 'datang', 'sampai di suatu tempat', '/dataŋ/', 'aktivitas'], ['melihat', 'lihat', 'menggunakan mata untuk mengenali', '/lihat/', 'aktivitas'], ['mendengar', 'dengar', 'menangkap bunyi dengan telinga', '/dəŋar/', 'aktivitas'], ['berbicara', 'bicara', 'mengucapkan kata-kata', '/bitʃara/', 'aktivitas'], ['membaca', 'baca', 'melihat dan memahami tulisan', '/batʃa/', 'aktivitas'], ['menulis', 'tulis', 'membuat huruf/kata di media', '/tulis/', 'aktivitas'], ['membeli', 'beli', 'memperoleh dengan uang', '/bəli/', 'aktivitas'], ['memasak', 'masak', 'mengolah makanan', '/masak/', 'aktivitas'],
+    ['pintu', 'pintu', 'penutup lubang masuk', '/pintu/', 'benda'], ['jendela', 'jendela', 'lubang udara/cahaya di dinding', '/dʒəndəla/', 'benda'], ['meja', 'meja', 'perabot berkaki untuk meletakkan barang', '/medʒa/', 'benda'], ['kursi', 'kursi', 'perabot untuk duduk', '/kursi/', 'benda'],
+    ['karena', 'karena', 'konjungsi sebab', '/karəna/', 'fungsi'], ['tetapi', 'tetapi', 'konjungsi perlawanan', '/tə tapi/', 'fungsi'], ['ya', 'ya', 'kata persetujuan', '/ja/', 'fungsi'], ['tidak', 'tidak', 'kata penolakan/negasi', '/tidak/', 'fungsi'], ['di', 'di', 'preposisi tempat', '/di/', 'fungsi']
+  ];
+  w2.forEach(function (r) {
+    D.words.push({ id: r[0] + '-id', languageId: 'indonesia', word: r[1], pos: 'Kata ' + (r[4] === 'fungsi' ? 'fungsi' : r[4]), meaning: r[2], ipa: r[3], script: 'Latin', transliteration: r[0], audio: false, examples: [], synonyms: [], antonyms: [], etymology: 'Melayu: ' + r[0], relatedWords: [], sourceIds: ['s-demo-1'], domain: r[4] });
+  });
+
+  /* ============ GRAMMAR BARU ============ */
+  D.grammar = D.grammar.concat([
+    { id: 'g-eng-plural', languageId: 'english', category: 'Number', title: 'Plural', desc: 'Plural reguler Inggris: -s/-es; plural tak beraturan: man→men, child→children.', examples: [{ label: 'Reguler', text: 'book → books; box → boxes' }, { label: 'Irreguler', text: 'man → men; mouse → mice' }], topics: ['number', 'plural', 'nomina'], exceptions: 'Kata massa (water, rice) tanpa plural.' },
+    { id: 'g-korea-particle', languageId: 'korea', category: 'Partikel', title: 'Partikel 은/는 & 이/가', desc: 'Partikel topik 은/는 dan subjek 이/가; pemilihan berdasarkan konsonan/vokal akhir.', examples: [{ label: 'Topik', text: '나는 학생이에요. (naneun — topik)' }, { label: 'Subjek', text: '사람이 왔어요. (sarami — subjek)' }], topics: ['partikel', 'sintaksis'], exceptions: 'Partikel berubah setelah konsonan (은/이) vs vokal (는/가).' },
+    { id: 'g-sunda-negasi', languageId: 'sunda', category: 'Negasi', title: 'Negasi', desc: 'Negasi Sunda: henteu (umum), moal (tidak akan), lain (bukan), teu (loma).', examples: [{ label: 'Umum', text: 'Abdi henteu tiasa.' }, { label: 'Bukan', text: 'Éta lain buku.' }], topics: ['negasi'], exceptions: 'Tingkat kesopanan memengaruhi bentuk.' },
+    { id: 'g-melayu-reduplikasi', languageId: 'melayu', category: 'Morfologi', title: 'Reduplikasi', desc: 'Reduplikasi Melayu: jamak (buku-buku), intensitas (besar-besar), keserupaan (anak-anakan), tak tentu (siapa-siapa).', examples: [{ label: 'Jamak', text: 'buku-buku (banyak buku)' }, { label: 'Intensitas', text: 'besar-besaran' }], topics: ['reduplikasi', 'morfologi', 'number'], exceptions: 'Makna reduplikasi bervariasi.' }
+  ]);
+
+  /* ============ BUDAYA BARU ============ */
+  D.culture = D.culture.concat([
+    { id: 'c-sunda-paribasa', languageId: 'sunda', category: 'Peribahasa', title: 'Paribasa Sunda', desc: 'Peribahasa Sunda: "Cikaracak ninggang batu, laun-laun jadi legok" (sedikit demi sedikit, lama-lama menjadi banyak).', terms: ['paribasa'], type: 'tradition', sourceIds: ['s-demo-1'] },
+    { id: 'c-bali-nama', languageId: 'bali', category: 'Identitas', title: 'Sistem Nama Bali', desc: 'Nama Bali: nama urutan lahir (Wayan, Made, Nyoman, Ketut) + nama diri; kasta memengaruhi sapaan (I Gusti, Dewa).', terms: ['Wayan', 'Made', 'Nyoman', 'Ketut'], type: 'fact', sourceIds: ['s-demo-1'] },
+    { id: 'c-indo-ungkapan', languageId: 'indonesia', category: 'Ungkapan Budaya', title: 'Ungkapan Sehari-hari', desc: 'Ungkapan Indonesia: "tangan kanan" (pembantu kepercayaan), "buah bibir" (bahan pembicaraan), "besar kepala" (sombong).', terms: ['buah bibir', 'besar kepala'], type: 'interpretation', sourceIds: ['s-demo-1'] },
+    { id: 'c-melayu-ungkapan', languageId: 'melayu', category: 'Peribahasa', title: 'Peribahasa Melayu', desc: 'Peribahasa Melayu: "Alang-alang menyeluk pekasam, biar sampai ke pangkal lengan" (jika berusaha, lakukan sampai tuntas).', terms: ['peribahasa', 'pepatah'], type: 'tradition', sourceIds: ['s-demo-1'] }
+  ]);
+
+  /* ============ SASTRA BARU (domain publik) ============ */
+  D.literature = D.literature.concat([
+    { id: 'l-arjunawiwaha', languageId: 'jawa_kuno', title: 'Arjunawiwaha', genre: 'Kakawin', period: 'Kuno (abad ke-11)', creator: 'Mpu Kanwa', region: 'Jawa Timur', desc: 'Kakawin pertama era Jawa Timur yang mengisahkan pertapaan Arjuna.', excerpt: 'Karya Mpu Kanwa (abad ke-11) menjadi model kakawin Jawa.', copyrightStatus: 'public domain', copyrightNote: 'Karya kuno (domain publik)', sourceIds: ['s-demo-1'] },
+    { id: 'l-sejarah-melayu', languageId: 'melayu', title: 'Sejarah Melayu (Sulalatus Salatin)', genre: 'Historiografi / Hikayat', period: 'Klasik (abad ke-17)', creator: 'Tun Seri Lanang (disalin)', region: 'Melayu', desc: 'Kronik Kesultanan Melaka yang menjadi rujukan sejarah dan identitas Melayu.', excerpt: 'Sejarah Melayu mendokumentasikan kejayaan Melaka dan adat istiadat Melayu.', copyrightStatus: 'public domain', copyrightNote: 'Naskah klasik (domain publik)', sourceIds: ['s-demo-1'] },
+    { id: 'l-lontara-bilang', languageId: 'makassar', title: 'Lontara’ Bilang', genre: 'Naskah kronik', period: 'Klasik (abad ke-16–18)', creator: 'Anonim (tradisi istana Gowa)', region: 'Sulawesi Selatan', desc: 'Catatan harian kerajaan Gowa-Tallo yang ditulis dengan Aksara Lontara.', excerpt: 'Lontara’ bilang adalah sumber sejarah kerajaan-kerajaan Sulawesi Selatan.', copyrightStatus: 'public domain', copyrightNote: 'Naskah lontara (domain publik)', sourceIds: ['s-demo-1'] }
+  ]);
+
+  /* ============ SUMBER + RELASI BARU ============ */
+  D.sources.push({ id: 's-unicode', title: 'Unicode Consortium — UnicodeData', type: 'standards', organization: 'Unicode Consortium', publication: 'UnicodeData.txt', year: 2024, verification: 'verified', note: 'Metadata Unicode resmi (referensi). Konten ALFABASA tetap DEMO — metadata karakter dapat diverifikasi di unicode.org.' });
+  D.relations = D.relations.concat([
+    { from: 'jawa', to: 'id', type: 'spoken_in' }, { from: 'sunda', to: 'id', type: 'spoken_in' }, { from: 'bali', to: 'id', type: 'spoken_in' },
+    { from: 'melayu', to: 'my', type: 'spoken_in' }, { from: 'jepang', to: 'jp', type: 'spoken_in' }, { from: 'korea', to: 'kr', type: 'spoken_in' },
+    { from: 'mandarin', to: 'cn', type: 'spoken_in' }, { from: 'arab', to: 'sa', type: 'spoken_in' }, { from: 'english', to: 'gb', type: 'spoken_in' },
+    { from: 'india', to: 'in', type: 'spoken_in' }
+  ].map(function (r) { return { relation_id: r.from + '-' + r.to + '-rel', source_entity: 'language', source_id: r.from, relation_type: r.type, target_entity: 'country', target_id: r.to, description: null, source_reference: 's-demo-1' }; }));
+  D.relations = D.relations.filter(function (r) { return !(r.from === 'india'); });
+
+  /* ============ COVERAGE REPORT (TAHAP 21) ============ */
+  D.coverageReport = function () {
+    var langs = D.languages;
+    var count = function (fn) { return langs.filter(fn).length; };
+    var withC = count(function (l) { return l.country_ids && l.country_ids.length; });
+    var withF = count(function (l) { return l.family_id || l.family; });
+    var withS = count(function (l) { return l.scripts && l.scripts.length; });
+    var withD = count(function (l) { return D.dialects.some(function (d) { return d.languageId === l.id; }); });
+    var withW = count(function (l) { return D.words.some(function (w) { return w.languageId === l.id; }); });
+    var withG = count(function (l) { return D.grammar.some(function (g) { return g.languageId === l.id; }); });
+    var withCu = count(function (l) { return D.culture.some(function (c) { return c.languageId === l.id; }); });
+    var withLi = count(function (l) { return D.literature.some(function (x) { return x.languageId === l.id; }); });
+    var withSo = count(function (l) { return l.sourceIds && l.sourceIds.length; });
+    var total = langs.length;
+    var grade = function (n) { return n === total ? 'COMPLETE' : n === 0 ? 'MISSING' : 'PARTIAL'; };
+    return {
+      total_languages: total,
+      language_with_country: { count: withC, status: grade(withC) },
+      language_with_family: { count: withF, status: grade(withF) },
+      language_with_script: { count: withS, status: grade(withS) },
+      language_with_dialect: { count: withD, status: grade(withD) },
+      language_with_word: { count: withW, status: grade(withW) },
+      language_with_grammar: { count: withG, status: grade(withG) },
+      language_with_culture: { count: withCu, status: grade(withCu) },
+      language_with_literature: { count: withLi, status: grade(withLi) },
+      language_with_source: { count: withSo, status: grade(withSo) },
+      scripts_with_language: { count: D.scripts.filter(function (s) { return s.languages && s.languages.length; }).length, total: D.scripts.length },
+      characters_with_unicode: { count: D.characters.filter(function (c) { return c.unicode; }).length, total: D.characters.length },
+      words_with_meaning: { count: D.words.filter(function (w) { return D.wordMeanings.some(function (m) { return (m.word_id || m.wordId) === w.id; }); }).length, total: D.words.length },
+      words_with_pronunciation: { count: D.words.filter(function (w) { return D.pronunciations.some(function (p) { return (p.word_id || p.wordId) === w.id; }); }).length, total: D.words.length }
+    };
+  };
+
+  /* ============ VALIDATE & STATS EXTEND ============ */
+  var oldVal = D.validateData;
+  D.validateData = function () {
+    var res = oldVal();
+    var issues = res.issues.slice();
+    D.countries.forEach(function (c) { if (!c.country_id) issues.push('Country tanpa id: ' + c.name); });
+    D.languageCountries.forEach(function (lc) {
+      if (!D.languageMap[lc.language_id]) issues.push('LanguageCountry language_id tidak dikenal: ' + lc.language_id);
+      if (!D.countryMap[lc.country_id]) issues.push('LanguageCountry country_id tidak dikenal: ' + lc.country_id);
+    });
+    D.scriptLanguages.forEach(function (sl) {
+      if (!D.scriptMap[sl.script_id]) issues.push('ScriptLanguage script_id tidak dikenal: ' + sl.script_id);
+      if (!D.languageMap[sl.language_id]) issues.push('ScriptLanguage language_id tidak dikenal: ' + sl.language_id);
+    });
+    D.languages.forEach(function (l) { if (!l.country_ids) issues.push('Language tanpa country_ids: ' + l.id); });
+    res.issues = issues.slice(0, 25); res.issueCount = issues.length;
+    res.status = issues.length ? 'WARNING' : 'PASS';
+    return res;
+  };
+  var oldStats = D.getDataStats;
+  D.getDataStats = function () {
+    var s = oldStats();
+    s.countries = D.countries.length;
+    s.languageCountries = D.languageCountries.length;
+    s.scriptLanguages = D.scriptLanguages.length;
+    s.transliterations = (D.transliterations || []).length;
+    return s;
+  };
+
+  /* ============ REGISTRY UPDATE ============ */
+  D.registry.version = '0.9.0';
+  D.registry.entities = D.registry.entities.concat([
+    { name: 'Country', table: 'countries', relations: ['Language N:N', 'LanguageCountry 1:N'] },
+    { name: 'LanguageCountry', table: 'languageCountries', relations: ['Language N:1', 'Country N:1'] },
+    { name: 'ScriptLanguage', table: 'scriptLanguages', relations: ['Script N:1', 'Language N:1'] }
+  ]);
+  D.meta.version = '0.9.0 (database enrichment phase 01)';
+    var haveLc = {}; D.languageCountries.forEach(function (x) { haveLc[x.relation_id] = 1; });
+  D.languages.forEach(function (l) {
+    (l.countries || []).forEach(function (cn) {
+      var cid = D.countryMap && D.countries.some(function (c) { return c.name === cn; }) ? D.countries.find(function (c) { return c.name === cn; }).country_id : null;
+      if (cid) {
+        var rid = 'lc-' + l.id + '-' + cid;
+        if (!haveLc[rid]) { D.languageCountries.push({ relation_id: rid, language_id: l.id, country_id: cid, role: 'regional', region: l.region, status: 'aktif (demo)', source_id: 's-demo-1', verification_status: 'DEMO' }); haveLc[rid] = 1; }
+        if (!l.country_ids) l.country_ids = [];
+        if (l.country_ids.indexOf(cid) < 0) l.country_ids.push(cid);
+      }
+    });
+    if (!l.country_ids) l.country_ids = [];
+  });
+  D.meta.dataStatus = 'Demo Data — konten UNVERIFIED; angka penutur = estimasi/Data tidak tersedia; Country & relasi bahasa-negara ditambahkan; metadata Unicode dari Unicode Consortium (referensi).';
+})(ALFABASA);
+
+
+(function (D) {
+  var haveWM = {}; D.wordMeanings.forEach(function (m) { haveWM[m.word_id || m.wordId] = 1; });
+  var havePR = {}; D.pronunciations.forEach(function (p) { havePR[p.word_id || p.wordId] = 1; });
+  var haveSN = {}; D.exampleSentences.forEach(function (s) { (s.word_ids || []).forEach(function (wid) { haveSN[wid] = 1; }); });
+  D.words.forEach(function (w) {
+    if (!haveWM[w.id]) D.wordMeanings.push({ meaning_id: 'wm-' + w.id, word_id: w.id, wordId: w.id, definition: w.meaning, sense_number: 1, senseNumber: 1, usage: 'umum', domain: w.domain || null, example_sentence_ids: [], exampleSentenceIds: [], content_status: 'DEMO' });
+    if (!havePR[w.id]) D.pronunciations.push({ pronunciation_id: 'pron-' + w.id, word_id: w.id, wordId: w.id, language_id: w.languageId, languageId: w.languageId, dialect_id: null, ipa: w.ipa, phonetic_description: null, region: null, audio_id: null, source_id: 's-demo-1', sourceId: 's-demo-1', verificationId: 'v-demo', content_status: 'DEMO' });
+    if (!haveSN[w.id]) D.exampleSentences.push({ sentence_id: 'snt-' + w.id + '-0', language_id: w.languageId, languageId: w.languageId, text: w.examples && w.examples[0] ? w.examples[0].text : null, nativeText: null, transliteration: null, ipa: null, translation: w.examples && w.examples[0] ? w.examples[0].translation : null, context: null, word_ids: [w.id], wordIds: [w.id], audio_id: null, source_id: 's-demo-1', verificationId: 'v-demo', content_status: 'DEMO' });
+  });
+
+})(ALFABASA);
+
+module.exports = ALFABASA; }
+
+
 
 (function () {
   'use strict';
@@ -4057,6 +4362,8 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
   window.App = { State, Store, D, esc, icon, toast, navigate, isBookmarked, toggleBookmark, bookmarkBtn, statusBadge, familyName, progressOf, setProgress, lessonDone, recordHistory, playDemoAudio, audioBtn, globalSearch, initCarousel, initExpandables, initExercise, renderAI, sendAi, applyTheme, init, parseHash, registerRoute: onRoute };
   window.addEventListener('DOMContentLoaded', init);
 })();
+
+
 
 
 
@@ -5475,7 +5782,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
         .map(x => '<div class="stat-box"><div class="sb-num">' + x[2] + '</div><div class="sb-label">' + x[1] + '</div></div>').join('') +
       '</div>' +
       '<div class="card" style="margin-top:10px"><div class="related-list" style="justify-content:flex-start">' +
-      [['dialects', 'Dialek', st.dialects], ['branches', 'Cabang', st.branches], ['glyphs', 'Glyph', st.glyphs], ['unicode', 'Unicode', st.unicode], ['wordForms', 'Bentuk kata', st.wordForms], ['meanings', 'Makna', st.meanings], ['sentences', 'Kalimat', st.sentences], ['pronunciations', 'Pelafalan', st.pronunciations], ['sounds', 'Bunyi', st.sounds], ['minimalPairs', 'Minimal pair', st.minimalPairs], ['rules', 'Aturan fonologis', st.rules], ['phonotactics', 'Fonotaktik', st.phonotactics], ['syllables', 'Suku kata', st.syllables], ['grammar', 'Tata bahasa', st.grammar], ['grammarTopics', 'Topik grammar', st.grammarTopics], ['culture', 'Budaya', st.culture], ['literature', 'Sastra', st.literature], ['courses', 'Kursus', st.courses], ['modules', 'Modul', st.modules], ['lessons', 'Pelajaran', st.lessons], ['exercises', 'Latihan', st.exercises], ['questions', 'Soal', st.questions], ['concepts', 'Konsep', st.concepts], ['conceptEntries', 'Entri konsep', st.conceptEntries], ['relations', 'Relasi', st.relations], ['sources', 'Sumber', st.sources], ['verifications', 'Verifikasi', st.verifications]]
+      [['countries', 'Negara', st.countries], ['languageCountries', 'Relasi B↔N', st.languageCountries], ['scriptLanguages', 'Aksara↔Bahasa', st.scriptLanguages], ['transliterations', 'Transliterasi', st.transliterations], ['dialects', 'Dialek', st.dialects], ['branches', 'Cabang', st.branches], ['glyphs', 'Glyph', st.glyphs], ['unicode', 'Unicode', st.unicode], ['wordForms', 'Bentuk kata', st.wordForms], ['meanings', 'Makna', st.meanings], ['sentences', 'Kalimat', st.sentences], ['pronunciations', 'Pelafalan', st.pronunciations], ['sounds', 'Bunyi', st.sounds], ['minimalPairs', 'Minimal pair', st.minimalPairs], ['rules', 'Aturan fonologis', st.rules], ['phonotactics', 'Fonotaktik', st.phonotactics], ['syllables', 'Suku kata', st.syllables], ['grammar', 'Tata bahasa', st.grammar], ['grammarTopics', 'Topik grammar', st.grammarTopics], ['culture', 'Budaya', st.culture], ['literature', 'Sastra', st.literature], ['courses', 'Kursus', st.courses], ['modules', 'Modul', st.modules], ['lessons', 'Pelajaran', st.lessons], ['exercises', 'Latihan', st.exercises], ['questions', 'Soal', st.questions], ['concepts', 'Konsep', st.concepts], ['conceptEntries', 'Entri konsep', st.conceptEntries], ['relations', 'Relasi', st.relations], ['sources', 'Sumber', st.sources], ['verifications', 'Verifikasi', st.verifications]]
         .map(x => '<span class="badge" style="margin:3px">' + esc(x[1]) + ': <b>' + x[2] + '</b></span>').join('') +
       '</div><div id="validateOut" style="margin-top:10px"></div></div>' +
       '<div class="section"><div class="section-title" style="margin-bottom:10px">Statistik Verifikasi</div>' +
@@ -5582,6 +5889,18 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
       if (out) out.innerHTML = '<div class="card" style="background:var(--surface-variant);border:none"><div class="row"><span class="badge ' + (res.status === 'PASS' ? 'success' : 'danger') + '">' + esc(res.status) + '</span><span class="meta">' + res.issueCount + ' masalah • ' + esc(res.note) + '</span></div>' + (res.issues && res.issues.length ? '<div class="body-sm muted" style="margin-top:8px">' + res.issues.map(function (i) { return '• ' + esc(i); }).join('<br>') + '</div>' : '') + '</div>';
       window.App.toast('Validasi: ' + res.status);
     }
+    const cov = e.target.closest('[data-action="run-coverage"]');
+    if (cov && D.coverageReport) {
+      const cr = D.coverageReport();
+      const out = document.getElementById('coverageOut');
+      if (out) {
+        const rows = [['Bahasa + Negara', cr.language_with_country], ['Bahasa + Rumpun', cr.language_with_family], ['Bahasa + Aksara', cr.language_with_script], ['Bahasa + Dialek', cr.language_with_dialect], ['Bahasa + Kata', cr.language_with_word], ['Bahasa + Grammar', cr.language_with_grammar], ['Bahasa + Budaya', cr.language_with_culture], ['Bahasa + Sastra', cr.language_with_literature], ['Bahasa + Sumber', cr.language_with_source]];
+        out.innerHTML = '<div class="list">' + rows.map(function (r) {
+          const badge = r[1].status === 'COMPLETE' ? 'success' : r[1].status === 'MISSING' ? 'danger' : 'primary';
+          return '<div class="list-item" style="min-height:44px;cursor:default"><div class="li-main"><div class="li-title" style="font-size:13.5px">' + esc(r[0]) + '</div><div class="li-sub">' + r[1].count + ' dari ' + cr.total_languages + ' bahasa</div></div><span class="badge ' + badge + '">' + r[1].status + '</span></div>';
+        }).join('') + '</div><div class="card" style="margin-top:10px"><div class="body-sm muted">Aksara dengan bahasa: ' + cr.scripts_with_language.count + '/' + cr.scripts_with_language.total + ' • Karakter dengan Unicode: ' + cr.characters_with_unicode.count + '/' + cr.characters_with_unicode.total + ' • Kata dengan makna: ' + cr.words_with_meaning.count + '/' + cr.words_with_meaning.total + ' • Kata dengan pelafalan: ' + cr.words_with_pronunciation.count + '/' + cr.words_with_pronunciation.total + '</div></div>';
+      }
+    }
   });
 
   /* Skeleton progress: animasikan setelah render */
@@ -5596,6 +5915,8 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
 
   window.Views = { viewHome, viewExplore, viewLanguages, viewLanguage, viewScripts, viewScript, viewCharacter, viewDictionary, viewWord, viewPronunciation, viewGrammar, viewCulture, viewLiterature, viewLearn, viewCourse, viewLesson, viewSearch, viewSaved, viewProfile, viewSettings, viewFamily, viewFamilyList, viewError, viewMenus, viewMenuDetail, viewCompare, viewNetwork, viewSources };
 })();
+
+
 
 
 
