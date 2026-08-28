@@ -15,6 +15,7 @@
 
 
 
+
 /* ============================================================
    ALFABASA — Design System
    Material Design 3 · AMOLED Dark / Light · Indigo accent
@@ -629,6 +630,7 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
 
 
 
+
 </style>
 </head>
 <body>
@@ -695,6 +697,7 @@ html[data-theme="light"] .skeleton::after{background:linear-gradient(90deg,trans
 </div>
 
 <script>
+
 const ALFABASA = {
   meta: {
     name: 'ALFABASA',
@@ -704,7 +707,7 @@ const ALFABASA = {
     note: 'Seluruh angka penutur, tanggal, dan fakta dalam prototipe ini adalah data demo untuk keperluan tampilan.'
   },
 
-  /* ---------------- RUMPUN BAHASA (Language Family) ---------------- */
+  
   families: [
     { id: 'austronesia', name: 'Austronesia', macrofamily: 'Austro-Tai (hipotesis)', branch: 'Malayo-Polinesia', languages: ['indonesia','jawa','sunda','bali','melayu','bugis','batak','sasak','aceh','makassar','jawa_kuno'] },
     { id: 'indoeropa', name: 'Indo-Eropa', macrofamily: null, branch: 'Keltik-Germanik-Roman-Slavik-Indo-Iran', languages: ['english','hindi','spanyol','prancis','jerman'] },
@@ -716,7 +719,7 @@ const ALFABASA = {
     { id: 'austroasiatik', name: 'Austroasiatik', macrofamily: null, branch: 'Mon-Khmer', languages: ['vietnam'] }
   ],
 
-  /* ---------------- BAHASA (Language) ---------------- */
+  
   languages: [
     {
       id: 'jawa', name: 'Bahasa Jawa', nativeName: 'Basa Jawa', englishName: 'Javanese',
@@ -1182,7 +1185,7 @@ const ALFABASA = {
     }
   ],
 
-  /* ---------------- DIALEK (Dialect) ---------------- */
+  
   dialects: [
     { id: 'jawa-ngoko', languageId: 'jawa', name: 'Ngoko', region: 'Seluruh Jawa', note: 'Tingkat tutur informal, digunakan antar sebaya atau kepada yang lebih muda.', level: 'informal' },
     { id: 'jawa-krama', languageId: 'jawa', name: 'Krama', region: 'Seluruh Jawa', note: 'Tingkat tutur hormat, digunakan kepada orang yang lebih tua atau dihormati.', level: 'formal' },
@@ -1248,7 +1251,7 @@ const ALFABASA = {
     { id: 'vietnam-selatan', languageId: 'vietnam', name: 'Vietnam Selatan (Saigon)', region: 'Saigon', note: 'Ragam yang paling banyak penuturnya.', level: 'regional' }
   ],
 
-  /* ---------------- AKSARA (Script) ---------------- */
+  
   scripts: [
     {
       id: 'latin', name: 'Latin', classification: 'Alfabet', region: 'Global',
@@ -1428,7 +1431,7 @@ const ALFABASA = {
     }
   ],
 
-  /* ---------------- KARAKTER (Character) ---------------- */
+  
   characters: [
     { id: 'jawa-ha', scriptId: 'jawa', char: 'ꦲ', name: 'Ha', unicode: 'U+A9B2', transliteration: 'ha', sound: '/ha/', type: 'Aksara Nglegena (dasar)', example: 'ꦲꦸꦫꦶꦥ꧀ — urip (hidup)', related: ['jawa-na','jawa-ka'] },
     { id: 'jawa-na', scriptId: 'jawa', char: 'ꦤ', name: 'Na', unicode: 'U+A9A4', transliteration: 'na', sound: '/na/', type: 'Aksara Nglegena (dasar)', example: 'ꦤꦭꦶꦏ — nalika (ketika)', related: ['jawa-ha','jawa-ca'] },
@@ -1482,7 +1485,7 @@ const ALFABASA = {
     { id: 'latin-b', scriptId: 'latin', char: 'B', name: 'B', unicode: 'U+0042', transliteration: 'b', sound: '/b/', type: 'Huruf', example: 'Bahasa — language', related: ['latin-a'] }
   ],
 
-  /* ---------------- KATA (Word) ---------------- */
+  
   words: [
     { id: 'makan', languageId: 'indonesia', word: 'makan', pos: 'Kata kerja', meaning: 'Memasukkan makanan ke dalam mulut, mengunyah, dan menelannya.', ipa: '/makan/', script: 'Latin', transliteration: 'makan', audio: true,
       examples: [{ text: 'Saya makan nasi setiap pagi.', translation: 'I eat rice every morning.' }],
@@ -1614,7 +1617,7 @@ const ALFABASA = {
       sourceIds: ['s-demo-1'] }
   ],
 
-  /* ---------------- PENGUCAPAN (Pronunciation) ---------------- */
+  
   pronunciation: {
     intro: 'Sistem bunyi bahasa dijelaskan dengan Alfabet Fonetis Internasional (IPA). Setiap simbol IPA memiliki audio demo dan contoh kata.',
     vowels: [
@@ -1657,7 +1660,7 @@ const ALFABASA = {
     audioNote: 'Audio pada prototipe ini adalah audio demo (nada sintetis) untuk menunjukkan konsep pemutar audio. Versi final menggunakan rekaman penutur asli dengan metadata pembicara, wilayah, dan verifikasi.'
   },
 
-  /* ---------------- TATA BAHASA (Grammar) ---------------- */
+  
   grammar: [
     { id: 'g-jawa-undhausuk', languageId: 'jawa', category: 'Kesopanan', title: 'Undha-usuk: Ngoko dan Krama', desc: 'Bahasa Jawa membedakan tingkat tutur berdasarkan hubungan sosial: ngoko (informal/sebaya) dan krama (hormat).',
       examples: [
@@ -1724,7 +1727,7 @@ const ALFABASA = {
       ] }
   ],
 
-  /* ---------------- BUDAYA (Culture) ---------------- */
+  
   culture: [
     { id: 'c-jawa-unggah', languageId: 'jawa', category: 'Kesopanan', title: 'Unggah-ungguh', desc: 'Etika berbahasa Jawa yang mengatur pilihan kata sesuai status sosial, usia, dan situasi. Mencerminkan sikap andhap asor (rendah hati).',
       terms: ['ngoko', 'krama', 'krama inggil', 'andhap asor'], sourceIds: ['s-demo-1'] },
@@ -1752,7 +1755,7 @@ const ALFABASA = {
       terms: ['salām', 'ahlan', 'marhaban'], sourceIds: ['s-demo-1'] }
   ],
 
-  /* ---------------- SASTRA (Literature) ---------------- */
+  
   literature: [
     { id: 'l-centhini', languageId: 'jawa', title: 'Serat Centhini', genre: 'Serat / Ensiklopedi budaya', period: 'Klasik (1814–1823)', creator: 'Komisi pujangga Kasunanan Surakarta', region: 'Jawa',
       desc: 'Karya monumental berbahasa Jawa yang mendokumentasikan seluruh aspek budaya Jawa: agama, mistik, musik, seksualitas, dan kehidupan sehari-hari.',
@@ -1792,7 +1795,7 @@ const ALFABASA = {
       excerpt: 'Karya ini menjadi puncak sastra Heian dan referensi budaya Jepang hingga kini.' }
   ],
 
-  /* ---------------- KURSUS & PELAJARAN (Course / Lesson) ---------------- */
+  
   courses: [
     { id: 'course-indo-dasar', languageId: 'indonesia', title: 'Bahasa Indonesia Dasar', level: 'Pemula', desc: 'Fondasi Bahasa Indonesia: sapaan, kata dasar, dan kalimat sederhana.', defaultProgress: 65, lessons: ['lesson-indo-1', 'lesson-indo-2', 'lesson-indo-3'] },
     { id: 'course-aksara-jawa', languageId: 'jawa', title: 'Aksara Jawa Dasar', level: 'Pemula', desc: 'Kenali 20 aksara nglegena, sandhangan, dan pasangan.', defaultProgress: 30, lessons: ['lesson-aksara-1', 'lesson-aksara-2', 'lesson-aksara-3'] },
@@ -1889,7 +1892,7 @@ const ALFABASA = {
       exerciseId: 'ex-sunda-1' }
   ],
 
-  /* ---------------- LATIHAN (Exercise) ---------------- */
+  
   exercises: [
     { id: 'ex-indo-1', lessonId: 'lesson-indo-1', type: 'Pilihan Ganda', questions: [
       { q: 'Apa arti "selamat pagi"?', options: ['Good night', 'Good morning', 'Good evening', 'Goodbye'], answer: 1, explanation: '"Selamat pagi" = good morning, digunakan hingga sekitar pukul 10-11.' },
@@ -1947,7 +1950,7 @@ const ALFABASA = {
     ]}
   ],
 
-  /* ---------------- FEATURED CONTENT ---------------- */
+  
   featured: [
     { id: 'feat-1', title: 'Bahasa Jawa', category: 'Bahasa', description: 'Kenali bahasa, wilayah, penutur, aksara, dan budayanya.', image: 'ꦲ', targetType: 'language', targetId: 'jawa', priority: 1, verified: true, active: true, displayCount: 0, lastDisplayed: null, cta: 'Jelajahi' },
     { id: 'feat-2', title: 'Aksara Jawa', category: 'Aksara', description: 'Pelajari sejarah, karakter, pasangan, sandhangan, transliterasi, dan penggunaannya.', image: 'ꦲꦤꦕꦫꦏ', targetType: 'script', targetId: 'jawa', priority: 2, verified: true, active: true, displayCount: 0, lastDisplayed: null, cta: 'Pelajari' },
@@ -1957,7 +1960,7 @@ const ALFABASA = {
     { id: 'feat-6', title: 'IPA: Bunyi Bahasa', category: 'Pengucapan', description: 'Pahami simbol fonetik dan bunyi bahasa dunia.', image: 'ɓ', targetType: 'pronunciation', targetId: 'pronunciation', priority: 6, verified: false, active: true, displayCount: 0, lastDisplayed: null, cta: 'Pelajari' }
   ],
 
-  /* ---------------- SUMBER (Source) ---------------- */
+  
   sources: [
     { id: 's-demo-1', title: 'Demo Data ALFABASA', type: 'demo', organization: 'ALFABASA Prototype', publication: 'Prototipe v0.4.0', year: 2026, verification: 'unverified', note: 'Seluruh konten prototipe adalah data demo dan belum melalui proses verifikasi editorial.' },
     { id: 's-demo-2', title: 'Ethnologue: Languages of the World', type: 'linguistic database', organization: 'SIL International', publication: 'Ethnologue (sitasi demo)', year: 2024, verification: 'reviewed', note: 'Sitasi demo untuk ilustrasi struktur data sumber.' },
@@ -1966,7 +1969,7 @@ const ALFABASA = {
     { id: 's-demo-5', title: 'UNESCO Atlas of the World’s Languages in Danger', type: 'international organization', organization: 'UNESCO', publication: 'Atlas of the World’s Languages in Danger (sitasi demo)', year: 2010, verification: 'reviewed', note: 'Sitasi demo untuk status vitalitas bahasa.' }
   ],
 
-  /* ---------------- REVISI & VERSI DATA (demo) ---------------- */
+  
   dataVersion: { version: '0.4.0', released: '2026-08-28', status: 'prototype', entities: 8, totalRecords: 300 },
   revisions: [
     { id: 'rev-1', entity: 'Language', entityId: 'jawa', change: 'Menambah entri dialek Surabaya', by: 'Editor Demo', at: '2026-08-28', reason: 'Kelengkapan data demo' },
@@ -1975,7 +1978,7 @@ const ALFABASA = {
     { id: 'rev-4', entity: 'Source', entityId: 's-demo-3', change: 'Menambah sitasi ISO 639-3', by: 'Reviewer Demo', at: '2026-08-25', reason: 'Verifikasi' }
   ],
 
-  /* ---------------- MENU & MATERI (Buku Biru v4.0) ---------------- */
+  
   menus: [
     { no: '01', title: 'Ensiklopedia Bahasa', icon: 'language', route: '#/languages', desc: 'Pusat informasi ensiklopedis setiap bahasa.', materi: [
       { t: 'Identitas Bahasa', sub: ['Nama Bahasa', 'Kode Bahasa (ISO, Glottocode)', 'Status Bahasa'] },
@@ -2103,7 +2106,7 @@ const ALFABASA = {
     ]}
   ],
 
-  /* ---------------- PERBANDINGAN (demo) ---------------- */
+  
   comparisons: {
     numbers: [
       { langId: 'indonesia', values: ['satu', 'dua', 'tiga', 'empat', 'lima'] },
@@ -2144,7 +2147,7 @@ const ALFABASA = {
     ]
   },
 
-  /* ---------------- RELASI BAHASA / JARINGAN (demo) ---------------- */
+  
   relations: [
     { from: 'melayu', to: 'indonesia', type: 'ancestor' },
     { from: 'jawa_kuno', to: 'jawa', type: 'ancestor' },
@@ -2170,7 +2173,7 @@ const ALFABASA = {
     { from: 'jawa', to: 'melayu', type: 'contact' }
   ],
 
-  /* ---------------- GETTERS (siap untuk API) ---------------- */
+  
   get languageMap() { return Object.fromEntries(this.languages.map(l => [l.id, l])); },
   get scriptMap() { return Object.fromEntries(this.scripts.map(s => [s.id, s])); },
   get characterMap() { return Object.fromEntries(this.characters.map(c => [c.id, c])); },
@@ -2185,7 +2188,7 @@ const ALFABASA = {
   get exerciseMap() { return Object.fromEntries(this.exercises.map(e => [e.id, e])); },
   get menuMap() { return Object.fromEntries(this.menus.map(m => [m.no, m])); },
 
-  /* Helpers relasi */
+  
   languageById(id) { return this.languageMap[id] || null; },
   scriptById(id) { return this.scriptMap[id] || null; },
   scriptsOfLanguage(langId) { return this.scripts.filter(s => s.languages.includes(langId)); },
@@ -2201,7 +2204,7 @@ const ALFABASA = {
   courseOfLesson(lessonId) { const l = this.lessonMap[lessonId]; return l ? this.courseMap[l.courseId] : null; },
   activeFeatured() {
     const list = this.featured.filter(f => f.active).slice();
-    // Rotasi demo: tampilkan 3 item teratas dengan prioritas, tandai displayCount
+    
     list.sort((a, b) => a.priority - b.priority);
     const shown = list.slice(0, 3);
     shown.forEach(f => { f.displayCount += 1; f.lastDisplayed = new Date().toISOString(); });
@@ -2223,14 +2226,10 @@ const ALFABASA = {
   }
 };
 
-/* ============================================================
-   ALFABASA — PENAMBAHAN DATA ENTRI (berbasis file versi 307KB)
-   Hanya menambah data (concat array) — tidak mengubah kode UI.
-   Semua data: DEMO, belum diverifikasi.
-   ============================================================ */
+
 (function (D) {
 
-  /* --- AKSARA BARU (17) --- */
+  
   var newScripts = [
     { id: 'armenian', name: 'Armenian', classification: 'Alfabet', region: 'Armenia', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+0530–U+058F', history: 'Diciptakan oleh Mesrop Mashtots (±405 M) untuk bahasa Armenia. Memiliki huruf kapital dan kecil.', characters: ['arm-ayb'], transliteration: 'Ditransliterasikan ke Latin mengikuti sistem resmi.', usage: 'Bahasa Armenia di Armenia dan diaspora.', related: ['greek', 'cyrillic'], sourceIds: ['s-demo-1'] },
     { id: 'georgian', name: 'Georgian (Mkhedruli)', classification: 'Alfabet', region: 'Georgia', languages: [], status: 'Aktif', direction: 'Kiri → kanan', unicodeBlock: 'U+10D0–U+10FF', history: 'Berkembang dari Asomtavruli (kapital kuno) menjadi Mkhedruli modern.', characters: ['geo-ani'], transliteration: 'Sistem nasional (ISO 9984).', usage: 'Bahasa Georgia.', related: ['armenian'], sourceIds: ['s-demo-1'] },
@@ -2252,7 +2251,7 @@ const ALFABASA = {
   ];
   D.scripts = D.scripts.concat(newScripts);
 
-  /* --- KARAKTER BARU --- */
+  
   var newCharacters = [
     { id: 'arm-ayb', scriptId: 'armenian', char: 'ա', name: 'Ayb', unicode: 'U+0531', transliteration: 'a', sound: '/ɑ/', type: 'Huruf', example: 'այբուբեն — aybuben (alfabet)', related: [] },
     { id: 'geo-ani', scriptId: 'georgian', char: 'ა', name: 'Ani', unicode: 'U+10D0', transliteration: 'a', sound: '/a/', type: 'Huruf', example: 'ანბანი — anbani (alfabet)', related: [] },
@@ -2273,7 +2272,7 @@ const ALFABASA = {
   ];
   D.characters = D.characters.concat(newCharacters);
 
-  /* --- KATA BARU --- */
+  
   var newWords = [
     { id: 'matur-nuwun', languageId: 'jawa', word: 'matur nuwun', pos: 'Ungkapan', meaning: 'Terima kasih (Jawa, ragam krama).', ipa: '/matʊr nuwʊn/', script: 'Aksara Jawa', transliteration: 'matur nuwun', nativeScript: 'ꦩꦠꦸꦂꦤꦸꦮꦸꦤ꧀', audio: true, examples: [{ text: 'Matur nuwun, Pak.', translation: 'Terima kasih, Pak.' }], synonyms: ['nuwun sewu (sangat terima kasih)'], antonyms: [], etymology: 'Jawa: matur (berkata) + nuwun (minta/terima kasih)', relatedWords: ['terima-kasih', 'arigatō'], dialect: 'jawa-krama', sourceIds: ['s-demo-1'] },
     { id: 'sega', languageId: 'jawa', word: 'sega', pos: 'Kata benda', meaning: 'Nasi (ngoko). Krama: sekul.', ipa: '/səga/', script: 'Aksara Jawa', transliteration: 'sega', nativeScript: 'ꦱꦼꦒ', audio: true, examples: [{ text: 'Aku mangan sega.', translation: 'Saya makan nasi.' }], synonyms: ['sekul (krama)'], antonyms: [], etymology: 'Jawa', relatedWords: ['mangan'], dialect: 'jawa-ngoko', sourceIds: ['s-demo-1'] },
@@ -2286,7 +2285,7 @@ const ALFABASA = {
   ];
   D.words = D.words.concat(newWords);
 
-  /* --- TATA BAHASA BARU --- */
+  
   var newGrammar = [
     { id: 'g-indo-fonologi', languageId: 'indonesia', category: 'Fonologi', title: 'Sistem Bunyi', desc: 'Fonologi Bahasa Indonesia: 6 vokal (/i e ə a u o/), 22 konsonan, tanpa nada dan tanpa panjang vokal fonemis.', examples: [{ label: 'Vokal', text: '/i/ ini, /e/ kue, /ə/ besar, /a/ apa, /u/ buku, /o/ bola' }, { label: 'Konsonan', text: 'p b t d k g m n ny ng s z f v c j h l r w y' }] },
     { id: 'g-jawa-fonologi', languageId: 'jawa', category: 'Fonologi', title: 'Sistem Bunyi Jawa', desc: 'Fonologi Jawa menonjol karena pasangan dental/retrofleks (t–ṭ, d–ḍ) dan konsonan implosif /ɓ/ /ɗ/.', examples: [{ label: 'Retrofleks', text: 'tata (tertata) vs thaṭa (konon)' }, { label: 'Implosif', text: 'bapa /ɓapa/ — b dengan arus udara masuk' }] },
@@ -2297,7 +2296,7 @@ const ALFABASA = {
   ];
   D.grammar = D.grammar.concat(newGrammar);
 
-  /* --- BUDAYA BARU (dengan tipe fakta/tradisi/interpretasi) --- */
+  
   var newCulture = [
     { id: 'c-jawa-daily', languageId: 'jawa', category: 'Penggunaan Sehari-hari', title: 'Bahasa Jawa dalam Kehidupan Sehari-hari', desc: 'Penggunaan ngoko antar sebaya, krama kepada orang tua/atasan; pilihan kata mengikuti situasi formal-informal.', terms: ['ngoko', 'krama', 'campur kode'], type: 'fact', sourceIds: ['s-demo-1'] },
     { id: 'c-bali-sor', languageId: 'bali', category: 'Kesopanan', title: 'Sor Singgih Basa Bali', desc: 'Tingkat tutur Bali: alus (halus), madia (tengah), kasar — dipilih berdasarkan status sosial dalam konteks tradisional.', terms: ['alus', 'madia', 'kasar'], type: 'fact', sourceIds: ['s-demo-1'] },
@@ -2305,10 +2304,10 @@ const ALFABASA = {
     { id: 'c-jawa-tembang', languageId: 'jawa', category: 'Tradisi', title: 'Tembang Macapat', desc: 'Puisi tradisional Jawa dengan metrum tetap (11 macapat: maskumambang, mijil, sinom, dll) yang mengiringi siklus kehidupan.', terms: ['macapat', 'metrum', 'tembang'], type: 'tradition', sourceIds: ['s-demo-1'] }
   ];
   D.culture = D.culture.concat(newCulture);
-  /* beri tipe default ke budaya lama (fact) */
+  
   D.culture.forEach(function (c) { if (!c.type) c.type = 'fact'; });
 
-  /* --- SASTRA BARU (dengan status hak cipta) --- */
+  
   var newLiterature = [
     { id: 'l-babad-tanah-jawi', languageId: 'jawa', title: 'Babad Tanah Jawi', genre: 'Babad / Historiografi', period: 'Klasik (abad ke-17–18)', creator: 'Anonim (tradisi keraton)', region: 'Jawa', desc: 'Kronik sejarah raja-raja Jawa dari era mitologis hingga Mataram, ditulis dalam tembang dan prosa Jawa.', excerpt: 'Babad menjadi sumber wacana kekuasaan dan identitas keraton Jawa.', copyrightStatus: 'public domain', copyrightNote: 'Naskah klasik (domain publik)', sourceIds: ['s-demo-1'] },
     { id: 'l-serat-kalatidha', languageId: 'jawa', title: 'Serat Kalatidha', genre: 'Tembang / Filsafat', period: 'Klasik (abad ke-19)', creator: 'Ranggawarsita', region: 'Surakarta', desc: 'Karya pujangga Ranggawarsita tentang zaman edan — kritik sosial dalam tembang.', excerpt: '“Amenangi jaman edan, ewuhaya ing pambudi” — menyaksikan zaman gila, bingung dalam bertindak.', copyrightStatus: 'public domain', copyrightNote: 'Naskah klasik (domain publik)', sourceIds: ['s-demo-1'] },
@@ -2317,7 +2316,7 @@ const ALFABASA = {
   D.literature = D.literature.concat(newLiterature);
   D.literature.forEach(function (l) { if (!l.copyrightStatus) l.copyrightStatus = 'public domain'; });
 
-  /* --- KURSUS & PELAJARAN BARU --- */
+  
   var newCourses = [
     { id: 'course-eng-dasar', languageId: 'english', title: 'English Basics', level: 'Pemula', desc: 'Greetings, nouns, and simple sentences in English.', defaultProgress: 0, lessons: ['lesson-eng-1', 'lesson-eng-2'] },
     { id: 'course-indo-menengah', languageId: 'indonesia', title: 'Bahasa Indonesia Menengah', level: 'Menengah', desc: 'Imbuhan lanjutan, kalimat kompleks, dan ragam formal.', defaultProgress: 0, lessons: ['lesson-indo-m1'] }
@@ -2348,7 +2347,7 @@ const ALFABASA = {
   ];
   D.exercises = D.exercises.concat(newExercises);
 
-  /* --- RELASI BAHASA BARU --- */
+  
   var newRelations = [
     { from: 'melayu', to: 'indonesia', type: 'ancestor' },
     { from: 'jawa_kuno', to: 'jawa', type: 'ancestor' },
@@ -2364,7 +2363,7 @@ const ALFABASA = {
   ];
   D.relations = D.relations.concat(newRelations);
 
-  /* --- SUMBER BARU (sitasi demo) --- */
+  
   var newSources = [
     { id: 's-demo-2', title: 'Ethnologue: Languages of the World', type: 'linguistic database', organization: 'SIL International', publication: 'Ethnologue (sitasi demo)', year: 2024, verification: 'reviewed', note: 'Sitasi demo untuk ilustrasi struktur data sumber.' },
     { id: 's-demo-3', title: 'ISO 639-3 Registration Authority', type: 'standards', organization: 'SIL International', publication: 'ISO 639-3 (sitasi demo)', year: 2024, verification: 'verified', note: 'Sitasi demo untuk kode bahasa.' },
@@ -2373,13 +2372,13 @@ const ALFABASA = {
   ];
   D.sources = D.sources.concat(newSources);
 
-  /* --- FEATURED BARU --- */
+  
   D.featured = D.featured.concat([
     { id: 'feat-7', title: 'Aksara Bali', category: 'Aksara', description: 'Lontar, gantungan, dan tradisi tulis Bali.', image: 'ᬳ', targetType: 'script', targetId: 'bali', priority: 7, verified: true, active: true, displayCount: 0, lastDisplayed: null, cta: 'Pelajari' },
     { id: 'feat-8', title: 'Kakawin Sutasoma', category: 'Sastra', description: 'Sumber semboyan Bhinneka Tunggal Ika dalam Bahasa Jawa Kuno.', image: 'ᬒ', targetType: 'literature', targetId: 'l-sutasoma', priority: 8, verified: true, active: true, displayCount: 0, lastDisplayed: null, cta: 'Baca' }
   ]);
 
-  /* --- ENRICHMENT BAHASA RINGAN (kode ISO 639-2 + nama alternatif) --- */
+  
   var code2 = { jawa: 'jav', indonesia: 'ind', sunda: 'sun', bali: 'ban', melayu: 'msa', english: 'eng', jepang: 'jpn', korea: 'kor', mandarin: 'zho', arab: 'ara', hindi: 'hin', spanyol: 'spa', prancis: 'fra', jerman: 'deu', thai: 'tha', vietnam: 'vie', bugis: 'bug', batak: 'bbc', sasak: 'sas', aceh: 'ace', makassar: 'mak', jawa_kuno: 'kaw' };
   var altNames = { jawa: ['Basa Jawi', 'Javanese'], indonesia: ['Melayu Indonesia', 'Indonesian'], sunda: ['Basa Sunda'], bali: ['Basa Bali'], melayu: ['Malay'], jepang: ['Nihongo', '日本語'], korea: ['Hangugeo', '한국어'], mandarin: ['Putonghua', '普通话'], arab: ['العربية'], hindi: ['हिन्दी'] };
   D.languages.forEach(function (l) {
@@ -2389,7 +2388,7 @@ const ALFABASA = {
     if (!l.historicalNames) l.historicalNames = [];
   });
 
-  /* --- REGISTRY SKEMA ENTITAS (dokumentasi arsitektur database) --- */
+  
   D.registry = {
     version: '0.5.1',
     note: 'Skema entitas ALFABASA — setiap entitas terpisah (tabel) siap dipindahkan ke database/API. Data saat ini: DEMO.',
@@ -2423,20 +2422,16 @@ const ALFABASA = {
     ]
   };
 
-  /* --- PENANDA VERSI --- */
+  
   D.meta.version = '0.5.1 (data entri diperluas)';
   D.meta.note = 'Seluruh angka penutur, tanggal, dan fakta dalam prototipe ini adalah data demo untuk keperluan tampilan.';
 })(ALFABASA);
 
 
-/* ============================================================
-   ALFABASA — MASTER GAP FIX: DATA ARCHITECTURE
-   Hanya menambah struktur data (tidak mengubah kode UI lama).
-   Semua contoh data: DEMO, belum diverifikasi.
-   ============================================================ */
+
 (function (D) {
 
-  /* ================= BAGIAN 3+4: UNICODE & STROKE ORDER ================= */
+  
   D.unicodeData = {};
   D.characters.forEach(function (c) {
     var s = D.scriptMap[c.scriptId] || {};
@@ -2465,7 +2460,7 @@ const ALFABASA = {
     { glyph_id: 'g-bali-ha', character_id: 'bali-ha', script_id: 'bali', form: 'ᬳ', style: 'Bentuk lontar', period: 'tradisional', region: 'Bali', font_reference: 'Demo — font Noto Sans Balinese', image: null }
   ];
 
-  /* ================= BAGIAN 5: FONOLOGI DIPERDALAM ================= */
+  
   D.vowelsDetail = [
     { vowel_id: 'v-ind-a', language_id: 'indonesia', ipa: '/a/', height: 'rendah', backness: 'depan', rounding: 'tak bulat', length: 'pendek', nasalization: 'tidak', example_word: 'air', audio_id: null },
     { vowel_id: 'v-ind-i', language_id: 'indonesia', ipa: '/i/', height: 'tinggi', backness: 'depan', rounding: 'tak bulat', length: 'pendek', nasalization: 'tidak', example_word: 'ini', audio_id: null },
@@ -2524,7 +2519,7 @@ const ALFABASA = {
     { syllable_structure_id: 'ss-4', language_id: 'jepang', pattern: 'mora: (C)V, N, Q', onset: '0–1 konsonan', nucleus: 'vokal', coda: 'nasal /N/, geminat /Q/', example: 'to-u-kyo-u (4 mora)' }
   ];
 
-  /* ================= BAGIAN 6: AUDIO & SPEAKER ================= */
+  
   D.speakers = [
     { speaker_id: 'speaker-demo-1', language_id: 'jawa', region: 'Yogyakarta (demo fiktif)', dialect: 'jawa-tengah', speaker_type: 'penutur asli (demo)', recording_context: 'studio (demo)', consent_status: 'DEMO — identitas disembunyikan', source_id: 's-demo-1' },
     { speaker_id: 'speaker-demo-2', language_id: 'indonesia', region: 'Jakarta (demo fiktif)', dialect: null, speaker_type: 'penutur asli (demo)', recording_context: 'studio (demo)', consent_status: 'DEMO — identitas disembunyikan', source_id: 's-demo-1' }
@@ -2533,7 +2528,7 @@ const ALFABASA = {
     return { audio_id: 'audio-demo-' + w.id, word_id: w.id, language_id: w.languageId, speaker_id: null, region_id: null, recording_date: null, duration: 0.4, format: 'sintetis (DEMO)', transcription: w.word, ipa: w.ipa, source_id: 's-demo-1', verification_id: 'v-demo', available: false, note: 'Audio asli belum tersedia — placeholder DEMO.' };
   });
 
-  /* ================= BAGIAN 1+7: WORD & GRAMMAR STRUCTURE ================= */
+  
   D.wordForms = D.words.map(function (w) {
     return { word_form_id: 'wf-' + w.id, word_id: w.id, form: w.word, form_type: 'lemma', grammatical_function: w.pos, dialect: null, region: null };
   });
@@ -2578,7 +2573,7 @@ const ALFABASA = {
     { from: 'indonesia', to: 'latin', type: 'written_in' }
   ]);
 
-  /* ================= BAGIAN 7: GRAMMAR TOPIC ================= */
+  
   var grammarTopicMap = {
     'g-indo-imbuhan': ['morfologi', 'kelas kata', 'afiks'], 'g-indo-kalimat': ['sintaksis', 'struktur kalimat', 'negasi', 'pertanyaan'],
     'g-jawa-undhausuk': ['honorifik', 'speech level', 'pragmatik'], 'g-jawa-struktur': ['sintaksis', 'struktur kalimat'], 'g-jawa-imbuhan': ['morfologi', 'afiks'],
@@ -2589,7 +2584,7 @@ const ALFABASA = {
   };
   D.grammar.forEach(function (g) { g.topics = grammarTopicMap[g.id] || [g.category.toLowerCase()]; g.exceptions = 'Data demo — belum tersedia.'; });
 
-  /* ================= BAGIAN 8: LEARNING ARCHITECTURE ================= */
+  
   D.learningLevels = [
     { level_id: 'lvl-1', language_id: 'indonesia', name: 'Pemula', description: 'Sapaan, kata dasar, kalimat sederhana.', order: 1 },
     { level_id: 'lvl-2', language_id: 'indonesia', name: 'Menengah', description: 'Imbuhan lanjutan, ragam formal.', order: 2 },
@@ -2610,7 +2605,7 @@ const ALFABASA = {
     });
   });
 
-  /* ================= BAGIAN 9: SOURCE vs VERIFICATION ================= */
+  
   D.contentStatus = { DEMO: 'demo', UNVERIFIED: 'unverified', REVIEWED: 'reviewed', VERIFIED: 'verified' };
   D.verifications = [
     { verification_id: 'v-demo', content_id: '*', status: 'DEMO', reviewer: null, verification_date: null, notes: 'Seluruh konten prototipe adalah data demo; sumber sitasi (jika ada) tidak berarti konten telah diverifikasi.' },
@@ -2624,7 +2619,7 @@ const ALFABASA = {
     { revision_id: 'rev-6', content_id: 'script/jawa', version: 2, changed_by: 'Editor Demo', change_date: '2026-08-28', change_summary: 'Menambah glyph dan varian karakter.' }
   ]);
 
-  /* ================= BAGIAN 14: ARCHITECTURE COMMON + REGISTRY ================= */
+  
   D.commonFields = { IDENTITY: ['id', 'name', 'native_name', 'alternative_name'], CLASSIFICATION: ['category', 'subcategory', 'type'], LOCATION: ['country', 'region', 'province', 'city', 'community'], CONTENT: ['description', 'history', 'examples', 'notes'], MEDIA: ['image', 'audio', 'video'], RELATION: ['related_entities'], SOURCE: ['source_id'], VERIFICATION: ['verification_id', 'status'], SYSTEM: ['created_at', 'updated_at', 'version', 'active_status'] };
   D.registry = {
     version: '0.6.0',
@@ -2687,7 +2682,7 @@ const ALFABASA = {
     ]
   };
 
-  /* ================= BAGIAN 17: WORDING HATI-HATI ================= */
+  
   D.languages.forEach(function (l) {
     if (l.summary && l.summary.indexOf('adalah bahasa') >= 0) {
       l.summary = l.summary.replace(/^([^.]*?)adalah/, '$1secara umum adalah');
@@ -2699,14 +2694,10 @@ const ALFABASA = {
 })(ALFABASA);
 
 
-/* ============================================================
-   ALFABASA — DATA DEPTH UPGRADE (v0.7.0)
-   Perpendalam entry yang ada; generate entity terstruktur dari
-   data yang sudah ada; tidak mengarang fakta. Status: DEMO.
-   ============================================================ */
+
 (function (D) {
 
-  /* ---- BAGIAN 01: PERDALAM LANGUAGE ENTRY (struktur penuh, di-generate dari field lama) ---- */
+  
   var NA = 'Not yet documented';
   D.languages.forEach(function (l) {
     l.primary_name = l.name; l.native_name = l.nativeName; l.endonym = l.nativeName; l.exonym = l.englishName;
@@ -2727,7 +2718,7 @@ const ALFABASA = {
     l.source_id = (l.sourceIds || ['s-demo-1'])[0]; l.verification_id = 'v-demo'; l.content_status = 'DEMO';
   });
 
-  /* ---- BAGIAN 03: PERDALAM DIALECT ---- */
+  
   var dialectFeatures = {
     'jawa-ngoko': { phonological_features: 'tidak ada perbedaan fonologis mencolok dari ragam standar; leksikon ngoko', lexical_features: 'kosakata ngoko: mangan, omah, aku', grammatical_features: 'imbuhan ngoko (N-, -e)', social_usage: 'antar sebaya, ke yang lebih muda', formal_usage: 'tidak digunakan pada ragam resmi', informal_usage: 'sehari-hari' },
     'jawa-krama': { phonological_features: 'sama dengan ngoko; pemilihan leksikon berbeda', lexical_features: 'kosakata krama: dhahar, griya, kula', grammatical_features: 'bentuk krama (menawi, déné)', social_usage: 'kepada orang tua/atasan/orang dihormati', formal_usage: 'ragam resmi dan upacara', informal_usage: 'jarang pada percakapan akrab' },
@@ -2742,14 +2733,14 @@ const ALFABASA = {
     d.history = NA; d.speaker_estimate = NA; d.community = NA; d.verification_id = 'v-demo'; d.content_status = 'DEMO';
   });
 
-  /* ---- BAGIAN 04: PERDALAM SCRIPT ---- */
+  
   D.scripts.forEach(function (s) {
     s.native_name = s.name; s.writing_direction = s.direction || 'Kiri → kanan'; s.period = NA;
     s.modern_usage = s.usage || NA; s.unicode_blocks = s.unicodeBlock || NA; s.description = s.history || NA;
     s.verification_id = 'v-demo'; s.content_status = 'DEMO';
   });
 
-  /* ---- BAGIAN 05+06: CHARACTER/Glyph/Variant/StrokeOrder status ---- */
+  
   D.characters.forEach(function (c) {
     c.character = c.char; c.native_name = c.name; c.codepoint = c.unicode || null;
     c.description = 'Data demo — belum diverifikasi.'; c.verification_id = 'v-demo'; c.content_status = 'DEMO';
@@ -2759,7 +2750,7 @@ const ALFABASA = {
   D.strokeOrders = D.strokeOrders || [];
   D.strokeOrderNote = 'Data stroke order asli belum tersedia (DEMO). Struktur siap: stroke_order_id, character_id, stroke_count, strokes, direction, animation, image, source_id.';
 
-  /* ---- BAGIAN 07+08: PERDALAM WORD & PRONUNCIATION ---- */
+  
   D.pronunciations = D.words.map(function (w) {
     return { pronunciation_id: 'pron-' + w.id, word_id: w.id, language_id: w.languageId, dialect_id: w.dialect || null, ipa: w.ipa, phonetic_description: NA, region: w.region || NA, audio_id: w.audio ? 'audio-demo-' + w.id : null, source_id: 's-demo-1', verification_id: 'v-demo', content_status: 'DEMO' };
   });
@@ -2773,12 +2764,12 @@ const ALFABASA = {
     (w.relatedWords || []).forEach(function (r) { D.relatedWords.push({ related_word_id: 'rw-' + w.id + '-' + r.replace(/[^a-zA-Z0-9]/g, ''), word_id: w.id, related_word: r }); });
   });
 
-  /* ---- BAGIAN 09: TONE (entity dari data pronunciation) ---- */
+  
   D.tones = (D.pronunciation.tones || []).map(function (t, i) {
     return { tone_id: 'tone-' + i, language_id: 'mandarin', type: 'nada', contour: t.symbol, description: t.desc, example: t.example, audio_id: null, content_status: 'DEMO' };
   });
 
-  /* ---- BAGIAN 11+12: FONOLOGI PER BAHASA (ringkas, aman) ---- */
+  
   D.phonologies = [
     { language_id: 'jawa', vowel_inventory: ['i', 'e', 'ə', 'a', 'u', 'o'], consonant_count: 'sekitar 23', tones: 'tidak ada', stress: 'tidak membedakan makna', syllable: 'CV, CVC (koda /ŋ k h/)', notes: 'memiliki implosif /ɓ/ /ɗ/ dan pasangan dental/retrofleks' },
     { language_id: 'indonesia', vowel_inventory: ['i', 'e', 'ə', 'a', 'u', 'o'], consonant_count: 'sekitar 22', tones: 'tidak ada', stress: 'umumnya menjelang akhir kata; tidak membedakan makna', syllable: 'V, CV, CVC, CCVC', notes: 'tanpa panjang vokal fonemis' },
@@ -2791,7 +2782,7 @@ const ALFABASA = {
   ];
   D.phonologies.forEach(function (p) { p.verification_id = 'v-demo'; p.content_status = 'DEMO'; });
 
-  /* ---- BAGIAN 15: GRAMMAR TOPIC & EXAMPLE ENTITY ---- */
+  
   D.grammarTopics = D.grammar.map(function (g) {
     return { grammar_topic_id: 'gt-' + g.id, grammar_id: g.id, language_id: g.languageId, category: g.category, subcategory: null, title: g.title, description: g.desc, rules: g.examples || [], exceptions: g.exceptions || NA, source_id: 's-demo-1', content_status: 'DEMO' };
   });
@@ -2802,7 +2793,7 @@ const ALFABASA = {
     });
   });
 
-  /* ---- BAGIAN 16+17: CULTURE & LITERATURE DEEPEN ---- */
+  
   D.culture.forEach(function (c) {
     c.subcategory = c.category; c.region = (D.languageById(c.languageId) || {}).region || NA;
     c.historical_context = NA; c.social_context = NA; c.fact_status = c.type || 'fact';
@@ -2812,7 +2803,7 @@ const ALFABASA = {
     l.native_title = l.title; l.historical_context = NA; l.verification_id = 'v-demo'; l.content_status = 'DEMO';
   });
 
-  /* ---- BAGIAN 18: LEARNING — PROGRESS ENTITY (getter runtime) ---- */
+  
   D.learningProgress = function () {
     var out = [];
     D.courses.forEach(function (c) {
@@ -2822,7 +2813,7 @@ const ALFABASA = {
     return out;
   };
 
-  /* ---- BAGIAN 19: RELATION ENGINE — tambah relasi terstruktur ---- */
+  
   var newRels = [
     { from: 'jawa-ngoko', to: 'jawa', type: 'dialect_of' }, { from: 'jawa-krama', to: 'jawa', type: 'dialect_of' },
     { from: 'jawa-tengah', to: 'jawa', type: 'dialect_of' }, { from: 'jawa-timur', to: 'jawa', type: 'dialect_of' },
@@ -2838,12 +2829,12 @@ const ALFABASA = {
   ];
   D.relations = D.relations.concat(newRels);
 
-  /* ---- BAGIAN 25: VERIFICATION per konten ---- */
+  
   D.verifications = (D.verifications || []).concat([
     { verification_id: 'v-demo-all', content_id: 'all-entries', status: 'DEMO', reviewer: null, verification_date: null, notes: 'Seluruh entri prototipe berstatus DEMO; konten UNVERIFIED tidak ditampilkan sebagai VERIFIED.' }
   ]);
 
-  /* ---- BAGIAN 26: AUDIT FIELD — default untuk field umum ---- */
+  
   function audit(obj, list) {
     list.forEach(function (k) { if (obj[k] === undefined) obj[k] = NA; });
   }
@@ -2866,14 +2857,10 @@ const ALFABASA = {
 })(ALFABASA);
 
 
-/* ============================================================
-   ALFABASA — MASTER DATABASE EXPANSION v0.6 (compact)
-   Concept/ConceptEntry, LanguageBranch, WordForm berjenjang,
-   getDataStats, validateData, registry lengkap. Status: DEMO.
-   ============================================================ */
+
 (function (D) {
 
-  /* ---- KATA BARU (mendukung konsep multibahasa) ---- */
+  
   var newWords = [
     { id: 'ngajeng', languageId: 'bali', word: 'ngajeng', pos: 'Kata kerja (alus)', meaning: 'Makan (ragam halus Bahasa Bali).', ipa: '/ŋadʒəŋ/', script: 'Latin', transliteration: 'ngajeng', audio: true, examples: [{ text: 'Titiang jagi ngajeng.', translation: 'Saya akan makan.' }], synonyms: [], antonyms: [], etymology: 'Bali', relatedWords: ['makan', 'mangan'], sourceIds: ['s-demo-1'] },
     { id: 'mizu', languageId: 'jepang', word: 'mizu', pos: '名詞 (kata benda)', meaning: 'Air.', ipa: '/mʲizɯ/', script: 'Kana', transliteration: 'mizu', nativeScript: '水', audio: true, examples: [{ text: '水を飲みます。', translation: 'Saya minum air.' }], synonyms: [], antonyms: [], etymology: 'Wago (kata asli Jepang)', relatedWords: ['air', 'banyu'], sourceIds: ['s-demo-1'] },
@@ -2891,7 +2878,7 @@ const ALFABASA = {
   ];
   D.words = D.words.concat(newWords);
 
-  /* ---- CONCEPT & CONCEPTENTRY (terhubung wordId) ---- */
+  
   var conceptDefs = [
     { conceptId: 'con-makan', name: 'makan', description: 'Konsep makan lintas bahasa.', category: 'aktivitas' },
     { conceptId: 'con-air', name: 'air', description: 'Konsep air lintas bahasa.', category: 'alam' },
@@ -2918,7 +2905,7 @@ const ALFABASA = {
     });
   });
 
-  /* ---- ENTITY LENGKAP UNTUK SEMUA KATA (generate ulang tanpa duplikat) ---- */
+  
   var haveWm = {}; D.wordMeanings.forEach(function (m) { haveWm[m.word_id] = 1; });
   var havePr = {}; D.pronunciations.forEach(function (p) { havePr[p.word_id] = 1; });
   var haveSnt = {}; D.exampleSentences.forEach(function (s) { (s.word_ids || []).forEach(function (wid) { haveSnt[wid] = 1; }); });
@@ -2929,7 +2916,7 @@ const ALFABASA = {
       D.exampleSentences.push({ sentenceId: 'snt-' + w.id + '-' + i, sentence_id: 'snt-' + w.id + '-' + i, language_id: w.languageId, languageId: w.languageId, text: e.text, nativeText: null, transliteration: null, ipa: null, translation: e.translation, context: null, word_ids: [w.id], wordIds: [w.id], audio_id: null, source_id: 's-demo-1', verificationId: 'v-demo' });
     });
   });
-  /* ---- LANGUAGEBRANCH (entity terpisah dari string) ---- */
+  
   D.languageBranches = [];
   D.families.forEach(function (f) {
     (f.branch || '').split(/[-–]/).map(function (s) { return s.trim(); }).filter(Boolean).forEach(function (b) {
@@ -2941,7 +2928,7 @@ const ALFABASA = {
   });
   D.languages.forEach(function (l) { l.subbranchId = null; });
 
-  /* ---- WORDFORM berjenjang (ngoko/krama dsb) ---- */
+  
   D.wordForms = (D.wordForms || []).filter(function (w) { return w.form_type && w.form_type !== 'lemma' && w.form_type !== 'bentuk'; });
   var extraForms = [
     { wordId: 'mangan', form: 'dhahar', formType: 'krama', grammaticalFunction: 'Kata kerja (krama)' },
@@ -2958,7 +2945,7 @@ const ALFABASA = {
     D.wordForms.push({ wordFormId: 'wfx-' + f.wordId + '-' + f.formType, wordId: f.wordId, form: f.form, formType: f.formType, grammaticalFunction: f.grammaticalFunction, dialectId: null, region: w ? w.region : null, notes: null });
   });
 
-  /* ---- ALIAS FIELD camelCase (struktur sesuai Buku Biru) ---- */
+  
   D.words.forEach(function (w) {
     w.wordId = w.id; w.writtenForm = w.word; w.nativeForm = w.nativeScript || w.word; w.lemma = w.baseForm || w.word;
     w.partOfSpeech = w.pos; w.pronunciationId = 'pron-' + w.id; w.audioId = w.audio ? 'audio-demo-' + w.id : null;
@@ -2986,13 +2973,13 @@ const ALFABASA = {
   D.pronunciations.forEach(function (p) { p.pronunciationId = p.pronunciation_id; });
   D.etymologies.forEach(function (e) { e.etymologyId = e.etymology_id; });
 
-  /* ---- RELATION TYPES + STATUS VERIFIKASI ---- */
+  
   D.relationTypes = D.relationTypes.concat([
     { relation_type: 'branch_of', desc: 'cabang dari' }, { relation_type: 'borrowed_from', desc: 'dipinjam dari' }
   ]);
   D.verificationStatuses = ['DEMO', 'UNVERIFIED', 'REVIEWED', 'VERIFIED', 'NEEDS_UPDATE', 'DISPUTED', 'ARCHIVED'];
 
-  /* ---- STATISTIK & VALIDASI ---- */
+  
   D.getDataStats = function () {
     return {
       languages: D.languages.length, families: D.families.length, branches: D.languageBranches.length,
@@ -3037,7 +3024,7 @@ const ALFABASA = {
     return { status: issues.length ? 'WARNING' : 'PASS', issueCount: issues.length, issues: issues.slice(0, 20), note: 'Validasi struktur data prototipe (DEMO) — beberapa data belum lengkap bukan berarti rusak.' };
   };
 
-  /* ---- REGISTRY LENGKAP (override) ---- */
+  
   D.registry = {
     version: '0.7.1',
     note: 'Skema entitas ALFABASA — setiap entitas terpisah (tabel) siap dipindahkan ke database/API. Data saat ini: DEMO.',
@@ -3116,8 +3103,385 @@ const ALFABASA = {
 })(ALFABASA);
 
 
-/* Ekspor untuk pengujian di Node */
+
+(function (D) {
+
+  
+  var NA = 'Data tidak tersedia';
+  var newLangs = [
+    { id: 'italia', name: 'Bahasa Italia', nativeName: 'Italiano', englishName: 'Italian', code: { iso6391: 'it', iso6393: 'ita', glottocode: 'ital1282' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Italik', 'Roman', 'Italo-Roman', '—'], region: 'Eropa — Italia, Swiss (Ticino)', countries: ['Italia', 'Swiss', 'San Marino'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Italia & Swiss', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Roman yang dituturkan di Italia dan diaspora Italia.', profile: 'Data demo — belum diverifikasi.', history: 'Berkembang dari Latin Vulgar; dibakukan melalui sastra Dante.', pronunciation: 'Tujuh vokal, konsonan ganda (geminate) khas.', vocabulary: 'Data demo — belum tersedia.', grammar: 'SVO, gender dua, artikel dan konjugasi kaya.', culture: 'Data demo — belum tersedia.', literature: 'Dante, Petrarca, Boccaccio.', related: ['spanyol', 'prancis'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'portugis', name: 'Bahasa Portugis', nativeName: 'Português', englishName: 'Portuguese', code: { iso6391: 'pt', iso6393: 'por', glottocode: 'port1283' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Italik', 'Roman', 'Ibero-Roman', '—'], region: 'Eropa & Global — Portugal, Brasil, Afrika', countries: ['Portugal', 'Brasil', 'Mozambik', 'Angola'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di 9+ negara', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Roman terbesar ke-2 di dunia, dominan di Brasil.', profile: 'Data demo — belum diverifikasi.', history: 'Dari Latin Vulgar Iberia; menyebar melalui kolonisasi.', pronunciation: 'Vokal nasal khas, sibilant palatal.', vocabulary: 'Data demo — belum tersedia.', grammar: 'SVO, gender, kontraksi preposisi+artikel.', culture: 'Data demo — belum tersedia.', literature: 'Camões, Pessoa, sastra Brasil.', related: ['spanyol', 'italia'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'rusia', name: 'Bahasa Rusia', nativeName: 'Русский', englishName: 'Russian', code: { iso6391: 'ru', iso6393: 'rus', glottocode: 'russ1263' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Slavik', 'Slavik Timur', '—', '—'], region: 'Eropa Timur & Asia Utara', countries: ['Rusia', 'Belarus', 'Kazakhstan'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Rusia', scripts: ['cyrillic'], primaryScript: 'cyrillic', dialects: [], summary: 'Bahasa Slavik terbesar, ditulis dengan aksara Cyrillic.', profile: 'Data demo — belum diverifikasi.', history: 'Berkembang dari Rusia Kuno; standarisasi modern.', pronunciation: 'Palatalisasi konsonan khas, vokal tereduksi.', vocabulary: 'Data demo — belum tersedia.', grammar: 'SVO, 6 kasus, aspek perfektif/imperfektif.', culture: 'Data demo — belum tersedia.', literature: 'Pushkin, Tolstoy, Dostoevsky.', related: ['ukraina', 'polandia'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'turki', name: 'Bahasa Turki', nativeName: 'Türkçe', englishName: 'Turkish', code: { iso6391: 'tr', iso6393: 'tur', glottocode: 'nucl1301' }, family: 'turkik', familyPath: ['Turkik', 'Turki Umum', 'Oghuz', '—', '—'], region: 'Turki, Siprus, diaspora', countries: ['Turki', 'Siprus'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Turki', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Turkik dengan aglutinasi kuat; Latin sejak 1928.', profile: 'Data demo — belum diverifikasi.', history: 'Dari Turkik kuno; reformasi alfabet 1928 oleh Atatürk.', pronunciation: 'Harmoni vokal khas.', vocabulary: 'Serapan Arab, Persia, Prancis.', grammar: 'Aglutinatif, SOV, tanpa gender.', culture: 'Data demo — belum tersedia.', literature: 'Yunus Emre, Orhan Pamuk.', related: [], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'tagalog', name: 'Bahasa Tagalog', nativeName: 'Tagalog', englishName: 'Tagalog', code: { iso6391: 'tl', iso6393: 'tgl', glottocode: 'taga1280' }, family: 'austronesia', familyPath: ['Austronesia', 'Malayo-Polinesia', 'Filipina', 'Filipina Tengah', 'Tagalog'], region: 'Filipina (Luzon)', countries: ['Filipina'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Dasar bahasa nasional (Filipino)', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Austronesia yang menjadi dasar Bahasa Filipino.', profile: 'Data demo — belum diverifikasi.', history: 'Dipengaruhi Spanyol dan Inggris secara besar-besaran.', pronunciation: 'Sistem vokal sederhana.', vocabulary: 'Serapan besar Spanyol dan Inggris.', grammar: 'Sistem fokus (voice) Austronesia yang khas.', culture: 'Data demo — belum tersedia.', literature: 'Florante at Laura.', related: ['indonesia', 'melayu'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'tamil', name: 'Bahasa Tamil', nativeName: 'தமிழ்', englishName: 'Tamil', code: { iso6391: 'ta', iso6393: 'tam', glottocode: 'tami1289' }, family: 'dravida', familyPath: ['Dravida', 'Dravida Selatan', 'Tamil-Kannada', 'Tamil-Malayalam', 'Tamil'], region: 'India Selatan, Sri Lanka, Singapura', countries: ['India', 'Sri Lanka', 'Singapura'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Tamil Nadu & Singapura', scripts: ['tamil'], primaryScript: 'tamil', dialects: [], summary: 'Salah satu bahasa klasik tertua yang masih hidup.', profile: 'Data demo — belum diverifikasi.', history: 'Tradisi sastra 2000+ tahun.', pronunciation: 'Konsonan yang berubah bunyi sesuai posisi.', vocabulary: 'Data demo — belum tersedia.', grammar: 'Aglutinatif, SOV.', culture: 'Data demo — belum tersedia.', literature: 'Tirukkural, sastra Sangam.', related: ['malayalam'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'bengali', name: 'Bahasa Bengali', nativeName: 'বাংলা', englishName: 'Bengali', code: { iso6391: 'bn', iso6393: 'ben', glottocode: 'beng1280' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Indo-Iran', 'Indo-Arya', 'Bengali-Assam', '—'], region: 'Bangladesh, Benggala Barat', countries: ['Bangladesh', 'India'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Bangladesh', scripts: ['bengali'], primaryScript: 'bengali', dialects: [], summary: 'Bahasa Indo-Arya dengan penutur terbesar ke-5 dunia.', profile: 'Data demo — belum diverifikasi.', history: 'Dari Prakrit; identitas bahasa diperjuangkan dalam Gerakan Bahasa 1952.', pronunciation: 'Vokal nasal, konsonan aspirasi.', vocabulary: 'Serapan Sanskerta besar.', grammar: 'SOV, postposisi.', culture: 'Data demo — belum tersedia.', literature: 'Rabindranath Tagore.', related: ['hindi'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'yunani', name: 'Bahasa Yunani', nativeName: 'Ελληνικά', englishName: 'Greek', code: { iso6391: 'el', iso6393: 'ell', glottocode: 'mode1248' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Hellenik', '—', '—', '—'], region: 'Yunani, Siprus', countries: ['Yunani', 'Siprus'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Yunani & Siprus', scripts: ['greek'], primaryScript: 'greek', dialects: [], summary: 'Bahasa dengan tradisi tulis terlama di Eropa (±3400 tahun).', profile: 'Data demo — belum diverifikasi.', history: 'Dari Yunani Mykenai hingga Yunani Modern.', pronunciation: 'Diftong historis menjadi monoftong.', vocabulary: 'Akar kosakata ilmiah dunia.', grammar: 'Kasus 4, artikel, aspek.', culture: 'Data demo — belum tersedia.', literature: 'Homer, tragedi Attika.', related: [], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'belanda', name: 'Bahasa Belanda', nativeName: 'Nederlands', englishName: 'Dutch', code: { iso6391: 'nl', iso6393: 'nld', glottocode: 'dutc1256' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Germanik', 'Germanik Barat', 'Belanda', '—'], region: 'Belanda, Belgia (Flandria), Suriname', countries: ['Belanda', 'Belgia', 'Suriname'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Belanda', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Germanik Barat; sumber banyak serapan Indonesia.', profile: 'Data demo — belum diverifikasi.', history: 'Serapan Belanda banyak masuk Indonesia masa kolonial.', pronunciation: 'Frikatif guttural khas.', vocabulary: 'Serapan Indonesia: kantor, polisi, asbak.', grammar: 'SVO (induk kalimat), gender dua.', culture: 'Data demo — belum tersedia.', literature: 'Multatuli.', related: ['jerman', 'english'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'polandia', name: 'Bahasa Polandia', nativeName: 'Polski', englishName: 'Polish', code: { iso6391: 'pl', iso6393: 'pol', glottocode: 'poli1260' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Slavik', 'Slavik Barat', 'Lechitik', '—'], region: 'Polandia', countries: ['Polandia'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Polandia', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Slavik Barat dengan konsonan sibilan kompleks.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Konsonan sibilan dan nasal khas.', vocabulary: 'Data demo — belum tersedia.', grammar: 'Kasus 7, gender 3.', culture: 'Data demo — belum tersedia.', literature: 'Mickiewicz, Sienkiewicz.', related: ['rusia'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'swedia', name: 'Bahasa Swedia', nativeName: 'Svenska', englishName: 'Swedish', code: { iso6391: 'sv', iso6393: 'swe', glottocode: 'swed1254' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Germanik', 'Germanik Utara', 'Skandinavia Timur', '—'], region: 'Swedia, Finlandia (pesisir)', countries: ['Swedia', 'Finlandia'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Swedia', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Skandinavia dengan aksen nada musikal.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Aksen nada membedakan makna pada beberapa pasangan.', vocabulary: 'Data demo — belum tersedia.', grammar: 'Definiteness melalui sufiks.', culture: 'Data demo — belum tersedia.', literature: 'Strindberg, Astrid Lindgren.', related: ['jerman'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'finlandia', name: 'Bahasa Finlandia', nativeName: 'Suomi', englishName: 'Finnish', code: { iso6391: 'fi', iso6393: 'fin', glottocode: 'finn1318' }, family: 'uralik', familyPath: ['Uralik', 'Finnik', 'Finnik Selatan', '—', '—'], region: 'Finlandia', countries: ['Finlandia'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Finlandia', scripts: ['latin'], primaryScript: 'latin', dialects: [], summary: 'Bahasa Uralik aglutinatif dengan 15 kasus.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Panjang vokal/konsonan membedakan makna.', vocabulary: 'Data demo — belum tersedia.', grammar: 'Aglutinatif, tanpa gender.', culture: 'Data demo — belum tersedia.', literature: 'Kalevala.', related: [], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'ukraina', name: 'Bahasa Ukraina', nativeName: 'Українська', englishName: 'Ukrainian', code: { iso6391: 'uk', iso6393: 'ukr', glottocode: 'ukra1253' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Slavik', 'Slavik Timur', '—', '—'], region: 'Ukraina', countries: ['Ukraina'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Ukraina', scripts: ['cyrillic'], primaryScript: 'cyrillic', dialects: [], summary: 'Bahasa Slavik Timur dengan aksara Cyrillic Ukraina.', profile: 'Data demo — belum diverifikasi.', history: 'Data demo — belum tersedia.', pronunciation: 'Data demo — belum tersedia.', vocabulary: 'Data demo — belum tersedia.', grammar: 'Kasus 7.', culture: 'Data demo — belum tersedia.', literature: 'Shevchenko.', related: ['rusia'], sourceIds: ['s-demo-1'], statusFlags: [] },
+    { id: 'persia', name: 'Bahasa Persia', nativeName: 'فارسی', englishName: 'Persian (Farsi)', code: { iso6391: 'fa', iso6393: 'fas', glottocode: 'fars1254' }, family: 'indoeropa', familyPath: ['Indo-Eropa', 'Indo-Iran', 'Iranik', 'Iranik Barat', '—'], region: 'Iran, Afghanistan, Tajikistan', countries: ['Iran', 'Afghanistan', 'Tajikistan'], speakers: 'estimasi — ' + NA + ' (demo)', speakersL1: 'estimasi', speakersL2: 'estimasi', speakersYear: null, status: 'Aktif', vitality: 'aktif', officialStatus: 'Resmi di Iran', scripts: ['arab'], primaryScript: 'arab', dialects: [], summary: 'Bahasa Iranik dengan tradisi puisi yang agung.', profile: 'Data demo — belum diverifikasi.', history: 'Dari Persia Kuno melalui Persia Tengah.', pronunciation: 'Data demo — belum tersedia.', vocabulary: 'Serapan Arab besar setelah Islam.', grammar: 'SOV, tanpa gender gramatikal.', culture: 'Data demo — belum tersedia.', literature: 'Rumi, Hafez, Ferdowsi.', related: ['arab', 'hindi'], sourceIds: ['s-demo-1'], statusFlags: [] }
+  ];
+  D.languages = D.languages.concat(newLangs);
+
+  
+  var newFams = [
+    { id: 'dravida', name: 'Dravida', macrofamily: null, branch: 'Dravida Selatan', languages: ['tamil'] },
+    { id: 'turkik', name: 'Turkik', macrofamily: null, branch: 'Turki Umum (Oghuz)', languages: ['turki'] },
+    { id: 'uralik', name: 'Uralik', macrofamily: null, branch: 'Finnik', languages: ['finlandia'] }
+  ];
+  D.families = D.families.concat(newFams);
+  D.families.forEach(function (f) {
+    if (f.id === 'indoeropa') f.branch = 'Germanik • Italik • Slavik • Indo-Iran • Hellenik';
+  });
+  D.languages.forEach(function (l) {
+    var fam = D.familyById(l.family);
+    if (fam && !fam.languages.includes(l.id)) fam.languages.push(l.id);
+    if (!l.code.iso6392) l.code.iso6392 = l.code.iso6393 || null;
+    if (!l.alternativeNames) l.alternativeNames = [l.englishName];
+    if (!l.statuses) l.statuses = l.vitality === 'aktif' ? ['komunitas'] : ['komunitas'];
+    if (!l.historicalNames) l.historicalNames = [];
+    l.officialStatus = l.officialStatus || (l.name + ' (bahasa daerah)');
+    if (!l.regionDetail) l.regionDetail = { provinces: [], islands: [], areas: [l.region.split('—')[0].trim()], diaspora: [] };
+    if (!l.speakersDetail) l.speakersDetail = { generation: NA, transmission: NA };
+    if (!l.historyDetail) l.historyDetail = { origins: NA, earlyPhase: NA, middlePhase: NA, modernPhase: NA, contact: [], changes: [] };
+    if (!l.writingSystems) l.writingSystems = l.scripts.map(function (sid, i) { return { scriptId: sid, role: i === 0 ? 'utama' : 'historis', period: NA, modern: NA }; });
+    l.verification_id = 'v-demo'; l.content_status = 'DEMO'; l.notes = 'Belum diverifikasi';
+    l.iso_639_1 = l.code.iso6391 || null; l.iso_639_2 = l.code.iso6392 || null; l.iso_639_3 = l.code.iso6393 || null;
+    l.glottocode = l.code.glottocode || null; l.family_id = l.family; l.subbranchId = null;
+  });
+
+  
+  var newChars = [
+    
+    { id: 'jawa-0', scriptId: 'jawa', char: '꧐', name: 'Angka Nol', unicode: 'U+A9D0', transliteration: '0', sound: '/nul/', type: 'Angka', example: '꧑꧐꧒ — 102', related: ['jawa-1'] },
+    { id: 'jawa-1', scriptId: 'jawa', char: '꧑', name: 'Angka Siji', unicode: 'U+A9D1', transliteration: '1', sound: '/siji/', type: 'Angka', example: '꧑꧐ — 10', related: ['jawa-0', 'jawa-2'] },
+    { id: 'jawa-2', scriptId: 'jawa', char: '꧒', name: 'Angka Loro', unicode: 'U+A9D2', transliteration: '2', sound: '/loro/', type: 'Angka', example: '꧒꧑ — 21', related: ['jawa-1', 'jawa-3'] },
+    { id: 'jawa-3', scriptId: 'jawa', char: '꧓', name: 'Angka Telu', unicode: 'U+A9D3', transliteration: '3', sound: '/telu/', type: 'Angka', example: '꧓ — 3', related: ['jawa-2', 'jawa-4'] },
+    { id: 'jawa-4', scriptId: 'jawa', char: '꧔', name: 'Angka Papat', unicode: 'U+A9D4', transliteration: '4', sound: '/papat/', type: 'Angka', example: '꧔꧕ — 45', related: ['jawa-3', 'jawa-5'] },
+    { id: 'jawa-5', scriptId: 'jawa', char: '꧕', name: 'Angka Lima', unicode: 'U+A9D5', transliteration: '5', sound: '/lima/', type: 'Angka', example: '꧕ — 5', related: ['jawa-4', 'jawa-6'] },
+    { id: 'jawa-6', scriptId: 'jawa', char: '꧖', name: 'Angka Enem', unicode: 'U+A9D6', transliteration: '6', sound: '/enem/', type: 'Angka', example: '꧖꧗ — 67', related: ['jawa-5', 'jawa-7'] },
+    { id: 'jawa-7', scriptId: 'jawa', char: '꧗', name: 'Angka Pitu', unicode: 'U+A9D7', transliteration: '7', sound: '/pitu/', type: 'Angka', example: '꧗꧘ — 78', related: ['jawa-6', 'jawa-8'] },
+    { id: 'jawa-8', scriptId: 'jawa', char: '꧘', name: 'Angka Wolu', unicode: 'U+A9D8', transliteration: '8', sound: '/wolu/', type: 'Angka', example: '꧘꧙ — 89', related: ['jawa-7', 'jawa-9'] },
+    { id: 'jawa-9', scriptId: 'jawa', char: '꧙', name: 'Angka Sanga', unicode: 'U+A9D9', transliteration: '9', sound: '/sanga/', type: 'Angka', example: '꧙꧘ — 98', related: ['jawa-8'] },
+    { id: 'jawa-wulu', scriptId: 'jawa', char: 'ꦶ', name: 'Wulu', unicode: 'U+A9B6', transliteration: 'i', sound: '/i/', type: 'Sandhangan (vokal)', example: 'ꦲꦶ — hi', related: ['jawa-ha'] },
+    { id: 'jawa-suku', scriptId: 'jawa', char: 'ꦸ', name: 'Suku', unicode: 'U+A9B8', transliteration: 'u', sound: '/u/', type: 'Sandhangan (vokal)', example: 'ꦲꦸ — hu', related: ['jawa-ha'] },
+    { id: 'jawa-pepet', scriptId: 'jawa', char: 'ꦼ', name: 'Pepet', unicode: 'U+A9BC', transliteration: 'ê', sound: '/ə/', type: 'Sandhangan (vokal)', example: 'ꦲꦼ — hê', related: ['jawa-ha'] },
+    { id: 'jawa-taling', scriptId: 'jawa', char: 'ꦺ', name: 'Taling', unicode: 'U+A9BA', transliteration: 'é', sound: '/e/', type: 'Sandhangan (vokal)', example: 'ꦲꦺ — hé', related: ['jawa-ha'] },
+    { id: 'jawa-talingtarung', scriptId: 'jawa', char: 'ꦾ', name: 'Taling Tarung', unicode: 'U+A9BE', transliteration: 'o', sound: '/o/', type: 'Sandhangan (vokal)', example: 'ꦲꦾ — ho', related: ['jawa-ha'] },
+    { id: 'jawa-cecak', scriptId: 'jawa', char: 'ꦁ', name: 'Cecak', unicode: 'U+A981', transliteration: 'ng', sound: '/ŋ/', type: 'Sandhangan (panyigeg)', example: 'ꦲꦁ — hang', related: ['jawa-ha'] },
+    { id: 'jawa-layar', scriptId: 'jawa', char: 'ꦂ', name: 'Layar', unicode: 'U+A982', transliteration: 'r', sound: '/r/', type: 'Sandhangan (panyigeg)', example: 'ꦲꦂ — har', related: ['jawa-ha'] },
+    { id: 'jawa-wignyan', scriptId: 'jawa', char: 'ꦃ', name: 'Wignyan', unicode: 'U+A983', transliteration: 'h', sound: '/h/', type: 'Sandhangan (panyigeg)', example: 'ꦲꦃ — hah', related: ['jawa-ha'] },
+    { id: 'jawa-pangkon', scriptId: 'jawa', char: '꧀', name: 'Pangkon (Paten)', unicode: 'U+A9C0', transliteration: '(paten)', sound: '—', type: 'Tanda (virama)', example: 'ꦩꦔꦤ꧀ — mangan', related: ['jawa-na'] },
+    { id: 'jawa-padalingsa', scriptId: 'jawa', char: '꧈', name: 'Pada Lingsa', unicode: 'U+A9C8', transliteration: ',', sound: '—', type: 'Tanda baca', example: '꧈ — koma', related: ['jawa-padalungsi'] },
+    { id: 'jawa-padalungsi', scriptId: 'jawa', char: '꧉', name: 'Pada Lungsi', unicode: 'U+A9C9', transliteration: '.', sound: '—', type: 'Tanda baca', example: '꧉ — titik', related: ['jawa-padalingsa'] },
+    
+    { id: 'bali-0', scriptId: 'bali', char: '᭐', name: 'Angka Nol', unicode: 'U+1B50', transliteration: '0', sound: '/nul/', type: 'Angka', example: '᭑᭐᭒ — 102', related: ['bali-1'] },
+    { id: 'bali-1', scriptId: 'bali', char: '᭑', name: 'Angka Siki', unicode: 'U+1B51', transliteration: '1', sound: '/siki/', type: 'Angka', example: '᭑ — 1', related: ['bali-0', 'bali-2'] },
+    { id: 'bali-2', scriptId: 'bali', char: '᭒', name: 'Angka Kalih', unicode: 'U+1B52', transliteration: '2', sound: '/kalih/', type: 'Angka', example: '᭒ — 2', related: ['bali-1'] },
+    { id: 'bali-3', scriptId: 'bali', char: '᭓', name: 'Angka Telu', unicode: 'U+1B53', transliteration: '3', sound: '/telu/', type: 'Angka', example: '᭓ — 3', related: ['bali-2'] },
+    { id: 'bali-4', scriptId: 'bali', char: '᭔', name: 'Angka Papat', unicode: 'U+1B54', transliteration: '4', sound: '/papat/', type: 'Angka', example: '᭔ — 4', related: ['bali-3'] },
+    { id: 'bali-5', scriptId: 'bali', char: '᭕', name: 'Angka Lima', unicode: 'U+1B55', transliteration: '5', sound: '/lima/', type: 'Angka', example: '᭕ — 5', related: ['bali-4'] },
+    { id: 'bali-6', scriptId: 'bali', char: '᭖', name: 'Angka Enem', unicode: 'U+1B56', transliteration: '6', sound: '/enem/', type: 'Angka', example: '᭖ — 6', related: ['bali-5'] },
+    { id: 'bali-7', scriptId: 'bali', char: '᭗', name: 'Angka Pitu', unicode: 'U+1B57', transliteration: '7', sound: '/pitu/', type: 'Angka', example: '᭗ — 7', related: ['bali-6'] },
+    { id: 'bali-8', scriptId: 'bali', char: '᭘', name: 'Angka Kutus', unicode: 'U+1B58', transliteration: '8', sound: '/kutus/', type: 'Angka', example: '᭘ — 8', related: ['bali-7'] },
+    { id: 'bali-9', scriptId: 'bali', char: '᭙', name: 'Angka Sanga', unicode: 'U+1B59', transliteration: '9', sound: '/sanga/', type: 'Angka', example: '᭙ — 9', related: ['bali-8'] },
+    
+    { id: 'sunda-0', scriptId: 'sunda', char: '᮰', name: 'Angka Nol', unicode: 'U+1BB0', transliteration: '0', sound: '/nul/', type: 'Angka', example: '᮱᮰᮲ — 102', related: ['sunda-1'] },
+    { id: 'sunda-1', scriptId: 'sunda', char: '᮱', name: 'Angka Hiji', unicode: 'U+1BB1', transliteration: '1', sound: '/hiji/', type: 'Angka', example: '᮱ — 1', related: ['sunda-0'] },
+    { id: 'sunda-2', scriptId: 'sunda', char: '᮲', name: 'Angka Dua', unicode: 'U+1BB2', transliteration: '2', sound: '/dua/', type: 'Angka', example: '᮲ — 2', related: ['sunda-1'] },
+    { id: 'sunda-3', scriptId: 'sunda', char: '᮳', name: 'Angka Tilu', unicode: 'U+1BB3', transliteration: '3', sound: '/tilu/', type: 'Angka', example: '᮳ — 3', related: ['sunda-2'] },
+    { id: 'sunda-4', scriptId: 'sunda', char: '᮴', name: 'Angka Opat', unicode: 'U+1BB4', transliteration: '4', sound: '/opat/', type: 'Angka', example: '᮴ — 4', related: ['sunda-3'] },
+    { id: 'sunda-5', scriptId: 'sunda', char: '᮵', name: 'Angka Lima', unicode: 'U+1BB5', transliteration: '5', sound: '/lima/', type: 'Angka', example: '᮵ — 5', related: ['sunda-4'] },
+    { id: 'sunda-6', scriptId: 'sunda', char: '᮶', name: 'Angka Genep', unicode: 'U+1BB6', transliteration: '6', sound: '/genep/', type: 'Angka', example: '᮶ — 6', related: ['sunda-5'] },
+    { id: 'sunda-7', scriptId: 'sunda', char: '᮷', name: 'Angka Tujuh', unicode: 'U+1BB7', transliteration: '7', sound: '/tujuh/', type: 'Angka', example: '᮷ — 7', related: ['sunda-6'] },
+    { id: 'sunda-8', scriptId: 'sunda', char: '᮸', name: 'Angka Dalapan', unicode: 'U+1BB8', transliteration: '8', sound: '/dalapan/', type: 'Angka', example: '᮸ — 8', related: ['sunda-7'] },
+    { id: 'sunda-9', scriptId: 'sunda', char: '᮹', name: 'Angka Salapan', unicode: 'U+1BB9', transliteration: '9', sound: '/salapan/', type: 'Angka', example: '᮹ — 9', related: ['sunda-8'] },
+    
+    { id: 'lontara-ga', scriptId: 'lontara', char: 'ᨁ', name: 'Ga', unicode: 'U+1A01', transliteration: 'ga', sound: '/ga/', type: 'Aksara dasar', example: 'ᨁᨔ — gasa', related: ['lontara-ka'] },
+    { id: 'lontara-nga', scriptId: 'lontara', char: 'ᨂ', name: 'Nga', unicode: 'U+1A02', transliteration: 'nga', sound: '/ŋa/', type: 'Aksara dasar', example: 'ᨂᨑ — ngara', related: ['lontara-ga'] },
+    { id: 'lontara-pa', scriptId: 'lontara', char: 'ᨄ', name: 'Pa', unicode: 'U+1A04', transliteration: 'pa', sound: '/pa/', type: 'Aksara dasar', example: 'ᨄᨉ — pada', related: ['lontara-ka'] },
+    { id: 'lontara-ba', scriptId: 'lontara', char: 'ᨅ', name: 'Ba', unicode: 'U+1A05', transliteration: 'ba', sound: '/ba/', type: 'Aksara dasar', example: 'ᨅᨔ — basa (bahasa)', related: ['lontara-pa'] },
+    { id: 'lontara-ta', scriptId: 'lontara', char: 'ᨈ', name: 'Ta', unicode: 'U+1A08', transliteration: 'ta', sound: '/ta/', type: 'Aksara dasar', example: 'ᨈᨊ — tana (tanah)', related: ['lontara-ba'] },
+    { id: 'lontara-da', scriptId: 'lontara', char: 'ᨉ', name: 'Da', unicode: 'U+1A09', transliteration: 'da', sound: '/da/', type: 'Aksara dasar', example: 'ᨉᨊ — dana', related: ['lontara-ta'] },
+    { id: 'lontara-na', scriptId: 'lontara', char: 'ᨊ', name: 'Na', unicode: 'U+1A0A', transliteration: 'na', sound: '/na/', type: 'Aksara dasar', example: 'ᨊᨔ — nasa', related: ['lontara-da'] },
+    { id: 'lontara-a', scriptId: 'lontara', char: 'ᨕ', name: 'A', unicode: 'U+1A15', transliteration: 'a', sound: '/a/', type: 'Aksara dasar', example: 'ᨕᨔ — asa', related: ['lontara-na'] },
+    { id: 'lontara-ha', scriptId: 'lontara', char: 'ᨖ', name: 'Ha', unicode: 'U+1A16', transliteration: 'ha', sound: '/ha/', type: 'Aksara dasar', example: 'ᨖᨗᨒ — hila', related: ['lontara-a'] },
+    
+    { id: 'arab-fatha', scriptId: 'arab', char: 'َ', name: 'Fathah', unicode: 'U+064E', transliteration: 'a', sound: '/a/', type: 'Harakat (vokal pendek)', example: 'بَ — ba', related: ['arab-ba'] },
+    { id: 'arab-damma', scriptId: 'arab', char: 'ُ', name: 'Dhammah', unicode: 'U+064F', transliteration: 'u', sound: '/u/', type: 'Harakat (vokal pendek)', example: 'بُ — bu', related: ['arab-ba'] },
+    { id: 'arab-kasra', scriptId: 'arab', char: 'ِ', name: 'Kasrah', unicode: 'U+0650', transliteration: 'i', sound: '/i/', type: 'Harakat (vokal pendek)', example: 'بِ — bi', related: ['arab-ba'] },
+    { id: 'arab-shadda', scriptId: 'arab', char: 'ّ', name: 'Shaddah', unicode: 'U+0651', transliteration: '(geminasi)', sound: '—', type: 'Harakat (geminasi)', example: 'بَّ — bba', related: ['arab-ba'] },
+    { id: 'arab-sukun', scriptId: 'arab', char: 'ْ', name: 'Sukun', unicode: 'U+0652', transliteration: '(tanpa vokal)', sound: '—', type: 'Harakat (peniada vokal)', example: 'بْ — b', related: ['arab-ba'] }
+  ];
+  D.characters = D.characters.concat(newChars);
+
+  
+  var newChars2 = [
+    { id: 'deva-aa', scriptId: 'devanagari', char: 'ा', name: 'Matra AA', unicode: 'U+093E', transliteration: 'ā', sound: '/aː/', type: 'Matra (vokal)', example: 'का — kā', related: ['deva-ka'] },
+    { id: 'deva-i', scriptId: 'devanagari', char: 'ि', name: 'Matra I', unicode: 'U+093F', transliteration: 'i', sound: '/i/', type: 'Matra (vokal)', example: 'कि — ki', related: ['deva-ka'] },
+    { id: 'deva-u', scriptId: 'devanagari', char: 'ु', name: 'Matra U', unicode: 'U+0941', transliteration: 'u', sound: '/u/', type: 'Matra (vokal)', example: 'कु — ku', related: ['deva-ka'] },
+    { id: 'deva-e', scriptId: 'devanagari', char: 'े', name: 'Matra E', unicode: 'U+0947', transliteration: 'e', sound: '/eː/', type: 'Matra (vokal)', example: 'के — ke', related: ['deva-ka'] },
+    { id: 'deva-o', scriptId: 'devanagari', char: 'ो', name: 'Matra O', unicode: 'U+094B', transliteration: 'o', sound: '/oː/', type: 'Matra (vokal)', example: 'को — ko', related: ['deva-ka'] },
+    { id: 'deva-virama', scriptId: 'devanagari', char: '्', name: 'Virama (Halant)', unicode: 'U+094D', transliteration: '(paten)', sound: '—', type: 'Tanda (virama)', example: 'क् — k', related: ['deva-ka'] },
+    { id: 'deva-anusvara', scriptId: 'devanagari', char: 'ं', name: 'Anusvara', unicode: 'U+0902', transliteration: 'ṃ', sound: '/m/~/n/', type: 'Tanda (nasal)', example: 'कं — kaṃ', related: ['deva-ka'] },
+    { id: 'deva-0', scriptId: 'devanagari', char: '०', name: 'Angka Nol', unicode: 'U+0966', transliteration: '0', sound: '/śūnya/', type: 'Angka', example: '१०२ — 102', related: ['deva-1'] },
+    { id: 'deva-1', scriptId: 'devanagari', char: '१', name: 'Angka Ek', unicode: 'U+0967', transliteration: '1', sound: '/ek/', type: 'Angka', example: '१ — 1', related: ['deva-0'] },
+    { id: 'deva-2', scriptId: 'devanagari', char: '२', name: 'Angka Do', unicode: 'U+0968', transliteration: '2', sound: '/do/', type: 'Angka', example: '२ — 2', related: ['deva-1'] },
+    { id: 'deva-3', scriptId: 'devanagari', char: '३', name: 'Angka Teen', unicode: 'U+0969', transliteration: '3', sound: '/tīn/', type: 'Angka', example: '३ — 3', related: ['deva-2'] },
+    { id: 'deva-4', scriptId: 'devanagari', char: '४', name: 'Angka Chaar', unicode: 'U+096A', transliteration: '4', sound: '/chār/', type: 'Angka', example: '४ — 4', related: ['deva-3'] },
+    { id: 'deva-5', scriptId: 'devanagari', char: '५', name: 'Angka Paanch', unicode: 'U+096B', transliteration: '5', sound: '/pāñc/', type: 'Angka', example: '५ — 5', related: ['deva-4'] },
+    { id: 'thai-saraaa', scriptId: 'thai', char: 'า', name: 'Sara AA', unicode: 'U+0E32', transliteration: 'aa', sound: '/aː/', type: 'Tanda vokal', example: 'กา — kaa', related: ['thai-ko'] },
+    { id: 'thai-sarai', scriptId: 'thai', char: 'ิ', name: 'Sara I', unicode: 'U+0E34', transliteration: 'i', sound: '/i/', type: 'Tanda vokal', example: 'กิ — ki', related: ['thai-ko'] },
+    { id: 'thai-sarau', scriptId: 'thai', char: 'ุ', name: 'Sara U', unicode: 'U+0E38', transliteration: 'u', sound: '/u/', type: 'Tanda vokal', example: 'กุ — ku', related: ['thai-ko'] },
+    { id: 'thai-maiek', scriptId: 'thai', char: '่', name: 'Mai Ek', unicode: 'U+0E48', transliteration: '̀', sound: 'nada rendah', type: 'Tanda nada', example: 'ก่ — kà', related: ['thai-ko'] },
+    { id: 'thai-maitho', scriptId: 'thai', char: '้', name: 'Mai Tho', unicode: 'U+0E49', transliteration: '̂', sound: 'nada jatuh', type: 'Tanda nada', example: 'ก้ — kâ', related: ['thai-ko'] },
+    { id: 'thai-maitri', scriptId: 'thai', char: '๊', name: 'Mai Tri', unicode: 'U+0E4A', transliteration: '́', sound: 'nada tinggi', type: 'Tanda nada', example: 'ก๊ — ká', related: ['thai-ko'] },
+    { id: 'thai-maichattawa', scriptId: 'thai', char: '๋', name: 'Mai Chattawa', unicode: 'U+0E4B', transliteration: '̌', sound: 'nada naik', type: 'Tanda nada', example: 'ก๋ — kǎ', related: ['thai-ko'] },
+    { id: 'thai-0', scriptId: 'thai', char: '๐', name: 'Angka Nol', unicode: 'U+0E50', transliteration: '0', sound: '/sǔn/', type: 'Angka', example: '๑๐๒ — 102', related: ['thai-1'] },
+    { id: 'thai-1', scriptId: 'thai', char: '๑', name: 'Angka Nueng', unicode: 'U+0E51', transliteration: '1', sound: '/nɯːŋ/', type: 'Angka', example: '๑ — 1', related: ['thai-0'] },
+    { id: 'thai-2', scriptId: 'thai', char: '๒', name: 'Angka Song', unicode: 'U+0E52', transliteration: '2', sound: '/sɔːŋ/', type: 'Angka', example: '๒ — 2', related: ['thai-1'] },
+    { id: 'thai-3', scriptId: 'thai', char: '๓', name: 'Angka Sam', unicode: 'U+0E53', transliteration: '3', sound: '/sǎːm/', type: 'Angka', example: '๓ — 3', related: ['thai-2'] },
+    { id: 'thai-4', scriptId: 'thai', char: '๔', name: 'Angka Si', unicode: 'U+0E54', transliteration: '4', sound: '/sìː/', type: 'Angka', example: '๔ — 4', related: ['thai-3'] },
+    { id: 'hangul-eo', scriptId: 'hangul', char: 'ㅓ', name: 'EO', unicode: 'U+3153', transliteration: 'eo', sound: '/ʌ/', type: 'Jamo vokal (jungseong)', example: '어 — eo', related: ['hangul-a'] },
+    { id: 'hangul-o', scriptId: 'hangul', char: 'ㅗ', name: 'O', unicode: 'U+3157', transliteration: 'o', sound: '/o/', type: 'Jamo vokal (jungseong)', example: '오 — o', related: ['hangul-a'] },
+    { id: 'hangul-u', scriptId: 'hangul', char: 'ㅜ', name: 'U', unicode: 'U+315C', transliteration: 'u', sound: '/u/', type: 'Jamo vokal (jungseong)', example: '우 — u', related: ['hangul-a'] },
+    { id: 'hangul-eu', scriptId: 'hangul', char: 'ㅡ', name: 'EU', unicode: 'U+3161', transliteration: 'eu', sound: '/ɯ/', type: 'Jamo vokal (jungseong)', example: '으 — eu', related: ['hangul-a'] },
+    { id: 'hangul-i', scriptId: 'hangul', char: 'ㅣ', name: 'I', unicode: 'U+3163', transliteration: 'i', sound: '/i/', type: 'Jamo vokal (jungseong)', example: '이 — i', related: ['hangul-a'] },
+    { id: 'hangul-digeud', scriptId: 'hangul', char: 'ㄷ', name: 'Digeud', unicode: 'U+3137', transliteration: 'd', sound: '/t/~/d/', type: 'Jamo konsonan (choseong/jongseong)', example: '다 — da', related: ['hangul-giyeok'] },
+    { id: 'hangul-mieum', scriptId: 'hangul', char: 'ㅁ', name: 'Mieum', unicode: 'U+3141', transliteration: 'm', sound: '/m/', type: 'Jamo konsonan (choseong/jongseong)', example: '마 — ma', related: ['hangul-nieun'] },
+    { id: 'hangul-bieup', scriptId: 'hangul', char: 'ㅂ', name: 'Bieup', unicode: 'U+3142', transliteration: 'b/p', sound: '/p/~/b/', type: 'Jamo konsonan (choseong/jongseong)', example: '바 — ba', related: ['hangul-mieum'] },
+    { id: 'hangul-siot', scriptId: 'hangul', char: 'ㅅ', name: 'Siot', unicode: 'U+3145', transliteration: 's', sound: '/s/', type: 'Jamo konsonan (choseong/jongseong)', example: '사 — sa', related: ['hangul-bieup'] },
+    { id: 'hangul-ieung', scriptId: 'hangul', char: 'ㅇ', name: 'Ieung', unicode: 'U+3147', transliteration: 'ng (jongseong)', sound: '/ŋ/', type: 'Jamo konsonan (choseong/jongseong)', example: '앙 — ang', related: ['hangul-siot'] },
+    { id: 'kana-ka-katakana', scriptId: 'kana', char: 'カ', name: 'Ka (Katakana)', unicode: 'U+30AB', transliteration: 'ka', sound: '/ka/', type: 'Katakana', example: 'カメラ — kamera', related: ['kana-ka'] },
+    { id: 'kana-a-katakana', scriptId: 'kana', char: 'ア', name: 'A (Katakana)', unicode: 'U+30A2', transliteration: 'a', sound: '/a/', type: 'Katakana', example: 'アジア — ajia', related: ['kana-a'] },
+    { id: 'kana-sa-katakana', scriptId: 'kana', char: 'サ', name: 'Sa (Katakana)', unicode: 'U+30B5', transliteration: 'sa', sound: '/sa/', type: 'Katakana', example: 'サラダ — sarada', related: ['kana-shi'] },
+    { id: 'kana-ta-katakana', scriptId: 'kana', char: 'タ', name: 'Ta (Katakana)', unicode: 'U+30BF', transliteration: 'ta', sound: '/ta/', type: 'Katakana', example: 'タクシー — takushii', related: ['kana-ka'] },
+    { id: 'kana-na-katakana', scriptId: 'kana', char: 'ナ', name: 'Na (Katakana)', unicode: 'U+30CA', transliteration: 'na', sound: '/na/', type: 'Katakana', example: 'ナイフ — naifu', related: ['kana-a'] },
+    { id: 'kana-ga', scriptId: 'kana', char: 'が', name: 'Ga (dakuten)', unicode: 'U+304C', transliteration: 'ga', sound: '/ga/', type: 'Hiragana + dakuten', example: 'がっこう — gakkō (sekolah)', related: ['kana-ka'] },
+    { id: 'kana-ba', scriptId: 'kana', char: 'ば', name: 'Ba (dakuten)', unicode: 'U+3070', transliteration: 'ba', sound: '/ba/', type: 'Hiragana + dakuten', example: 'ばしょ — basho (tempat)', related: ['kana-shi'] },
+    { id: 'han-shui', scriptId: 'han', char: '水', name: 'Shuǐ (air)', unicode: 'U+6C34', transliteration: 'shuǐ', sound: '/ʂweɪ˨˩˦/', type: 'Karakter + radikal', example: '水 — air', related: ['han-xue'] },
+    { id: 'han-mu', scriptId: 'han', char: '木', name: 'Mù (pohon/kayu)', unicode: 'U+6728', transliteration: 'mù', sound: '/mu˥˩/', type: 'Karakter + radikal', example: '木 — pohon', related: ['han-shui'] },
+    { id: 'latin-a-lower', scriptId: 'latin', char: 'a', name: 'a', unicode: 'U+0061', transliteration: 'a', sound: '/a/', type: 'Huruf kecil', example: 'aksara', related: ['latin-a'] },
+    { id: 'rej-ga', scriptId: 'rejang', char: 'ꤱ', name: 'Ga', unicode: 'U+A931', transliteration: 'ga', sound: '/ga/', type: 'Aksara dasar', example: 'ꤰꤱ — kaga', related: ['rej-ka'] },
+    { id: 'rej-nga', scriptId: 'rejang', char: 'ꤲ', name: 'Nga', unicode: 'U+A932', transliteration: 'nga', sound: '/ŋa/', type: 'Aksara dasar', example: 'ꤲꤰ — ngaka', related: ['rej-ga'] },
+    { id: 'batak-ha', scriptId: 'batak', char: 'ᯂ', name: 'Ha', unicode: 'U+1BC2', transliteration: 'ha', sound: '/ha/', type: 'Aksara dasar', example: 'ᯂᯖ — hata (kata)', related: ['batak-a'] },
+    { id: 'batak-ka', scriptId: 'batak', char: 'ᯃ', name: 'Ka', unicode: 'U+1BC3', transliteration: 'ka', sound: '/ka/', type: 'Aksara dasar', example: 'ᯃᯬᯖ — kota', related: ['batak-ha'] },
+    { id: 'batak-i', scriptId: 'batak', char: 'ᯤ', name: 'I', unicode: 'U+1BC4', transliteration: 'i', sound: '/i/', type: 'Tanda vokal', example: 'ᯤᯘ — isa', related: ['batak-a'] }
+  ];
+  D.characters = D.characters.concat(newChars2);
+
+  
+  D.characterVariants = (D.characterVariants || []).concat([
+    { variant_id: 'cv-na-murda', character_id: 'jawa-na', script_id: 'jawa', variant_name: 'Murda (kapital)', form: 'ꦟ', period: 'modern', region: 'Jawa', description: 'Bentuk murda Na digunakan untuk nama diri dan gelar.' },
+    { variant_id: 'cv-ka-murda', character_id: 'jawa-ka', script_id: 'jawa', variant_name: 'Murda (kapital)', form: 'ꦑ', period: 'modern', region: 'Jawa', description: 'Bentuk murda Ka.' },
+    { variant_id: 'cv-a-swara', character_id: 'jawa-ha', script_id: 'jawa', variant_name: 'Swara A', form: 'ꦄ', period: 'modern', region: 'Jawa', description: 'Aksara swara untuk vokal awal kata (a, i, u, é, o).' },
+    { variant_id: 'cv-i-swara', character_id: 'jawa-ha', script_id: 'jawa', variant_name: 'Swara I', form: 'ꦅ', period: 'modern', region: 'Jawa', description: 'Aksara swara I.' },
+    { variant_id: 'cv-u-swara', character_id: 'jawa-ha', script_id: 'jawa', variant_name: 'Swara U', form: 'ꦈ', period: 'modern', region: 'Jawa', description: 'Aksara swara U.' },
+    { variant_id: 'cv-rekan', character_id: 'jawa-pa', script_id: 'jawa', variant_name: 'Rekan (serapan)', form: 'ꦦ', period: 'modern', region: 'Jawa', description: 'Aksara rekan untuk bunyi asing (f, v, z) pada kata serapan.' }
+  ]);
+
+  
+  var newWords2 = [
+    { id: 'satu', languageId: 'indonesia', word: 'satu', pos: 'Numeralia', meaning: 'Angka 1.', ipa: '/satu/', script: 'Latin', transliteration: 'satu', audio: false, examples: [{ text: 'Satu buku.', translation: 'One book.' }], synonyms: ['esa'], antonyms: [], etymology: 'Melayu: satu', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'ibu', languageId: 'indonesia', word: 'ibu', pos: 'Kata benda', meaning: 'Perempuan yang melahirkan/membesarkan; panggilan hormat untuk perempuan.', ipa: '/ibu/', script: 'Latin', transliteration: 'ibu', audio: false, examples: [{ text: 'Ibu pergi ke pasar.', translation: 'Mother goes to the market.' }], synonyms: ['bunda', 'mama'], antonyms: [], etymology: 'Melayu: ibu', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'ayah', languageId: 'indonesia', word: 'ayah', pos: 'Kata benda', meaning: 'Orang tua laki-laki; bapak.', ipa: '/ajah/', script: 'Latin', transliteration: 'ayah', audio: false, examples: [{ text: 'Ayah bekerja di kantor.', translation: 'Father works at the office.' }], synonyms: ['bapak', 'papa'], antonyms: [], etymology: 'Melayu: ayah', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'mata', languageId: 'indonesia', word: 'mata', pos: 'Kata benda', meaning: 'Indra penglihatan.', ipa: '/mata/', script: 'Latin', transliteration: 'mata', audio: false, examples: [{ text: 'Mata saya sakit.', translation: 'My eyes hurt.' }], synonyms: [], antonyms: [], etymology: 'Melayu: mata', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'tangan', languageId: 'indonesia', word: 'tangan', pos: 'Kata benda', meaning: 'Anggota tubuh untuk memegang.', ipa: '/taŋan/', script: 'Latin', transliteration: 'tangan', audio: false, examples: [{ text: 'Cuci tangan sebelum makan.', translation: 'Wash hands before eating.' }], synonyms: [], antonyms: [], etymology: 'Melayu: tangan', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'kaki', languageId: 'indonesia', word: 'kaki', pos: 'Kata benda', meaning: 'Anggota tubuh untuk berjalan.', ipa: '/kaki/', script: 'Latin', transliteration: 'kaki', audio: false, examples: [{ text: 'Kaki saya lelah.', translation: 'My feet are tired.' }], synonyms: [], antonyms: [], etymology: 'Melayu: kaki', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'kepala', languageId: 'indonesia', word: 'kepala', pos: 'Kata benda', meaning: 'Bagian tubuh paling atas.', ipa: '/kəpala/', script: 'Latin', transliteration: 'kepala', audio: false, examples: [{ text: 'Sakit kepala.', translation: 'Headache.' }], synonyms: [], antonyms: [], etymology: 'Melayu: kepala', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'mripat', languageId: 'jawa', word: 'mripat', pos: 'Kata benda (ngoko)', meaning: 'Mata.', ipa: '/mrɪpat/', script: 'Aksara Jawa', transliteration: 'mripat', nativeScript: 'ꦩꦿꦶꦥꦠ꧀', audio: false, examples: [{ text: 'Mripatku lara.', translation: 'Mataku sakit.' }], synonyms: ['paningal (krama)'], antonyms: [], etymology: 'Jawa', relatedWords: ['mata'], dialect: 'jawa-ngoko', sourceIds: ['s-demo-1'] },
+    { id: 'langit', languageId: 'indonesia', word: 'langit', pos: 'Kata benda', meaning: 'Ruang di atas bumi.', ipa: '/laŋit/', script: 'Latin', transliteration: 'langit', audio: false, examples: [{ text: 'Langit cerah hari ini.', translation: 'The sky is clear today.' }], synonyms: [], antonyms: ['bumi'], etymology: 'Melayu: langit', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'tanah', languageId: 'indonesia', word: 'tanah', pos: 'Kata benda', meaning: 'Permukaan bumi; daratan.', ipa: '/tanah/', script: 'Latin', transliteration: 'tanah', audio: false, examples: [{ text: 'Tanahnya subur.', translation: 'The soil is fertile.' }], synonyms: ['bumi', 'darat'], antonyms: [], etymology: 'Melayu: tanah', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'kucing', languageId: 'indonesia', word: 'kucing', pos: 'Kata benda', meaning: 'Hewan peliharaan pemakan daging.', ipa: '/kutʃiŋ/', script: 'Latin', transliteration: 'kucing', audio: false, examples: [{ text: 'Kucing itu tidur.', translation: 'The cat is sleeping.' }], synonyms: [], antonyms: [], etymology: 'Melayu: kucing', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'anjing', languageId: 'indonesia', word: 'anjing', pos: 'Kata benda', meaning: 'Hewan menyusui yang setia.', ipa: '/andʒiŋ/', script: 'Latin', transliteration: 'anjing', audio: false, examples: [{ text: 'Anjing menggonggong.', translation: 'The dog barks.' }], synonyms: [], antonyms: [], etymology: 'Melayu: anjing', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'burung', languageId: 'indonesia', word: 'burung', pos: 'Kata benda', meaning: 'Hewan berbulu yang terbang.', ipa: '/buruŋ/', script: 'Latin', transliteration: 'burung', audio: false, examples: [{ text: 'Burung terbang tinggi.', translation: 'Birds fly high.' }], synonyms: [], antonyms: [], etymology: 'Melayu: burung', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'ikan', languageId: 'indonesia', word: 'ikan', pos: 'Kata benda', meaning: 'Hewan yang hidup di air.', ipa: '/ikan/', script: 'Latin', transliteration: 'ikan', audio: false, examples: [{ text: 'Ikan berenang di sungai.', translation: 'Fish swim in the river.' }], synonyms: [], antonyms: [], etymology: 'Melayu: ikan', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'ayam', languageId: 'indonesia', word: 'ayam', pos: 'Kata benda', meaning: 'Unggas yang diternakkan.', ipa: '/ajam/', script: 'Latin', transliteration: 'ayam', audio: false, examples: [{ text: 'Ayam berkokok di pagi hari.', translation: 'Roosters crow in the morning.' }], synonyms: [], antonyms: [], etymology: 'Melayu: ayam', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'ular', languageId: 'indonesia', word: 'ular', pos: 'Kata benda', meaning: 'Hewan melata tanpa kaki.', ipa: '/ular/', script: 'Latin', transliteration: 'ular', audio: false, examples: [{ text: 'Ular di sawah.', translation: 'A snake in the rice field.' }], synonyms: [], antonyms: [], etymology: 'Melayu: ular', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'pohon', languageId: 'indonesia', word: 'pohon', pos: 'Kata benda', meaning: 'Tumbuhan berkayu besar.', ipa: '/pohon/', script: 'Latin', transliteration: 'pohon', audio: false, examples: [{ text: 'Pohon mangga di halaman.', translation: 'A mango tree in the yard.' }], synonyms: [], antonyms: [], etymology: 'Melayu: pohon', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'bunga', languageId: 'indonesia', word: 'bunga', pos: 'Kata benda', meaning: 'Bagian tumbuhan yang berwarna; kembang.', ipa: '/buŋa/', script: 'Latin', transliteration: 'bunga', audio: false, examples: [{ text: 'Bunga mawar merah.', translation: 'A red rose.' }], synonyms: ['kembang'], antonyms: [], etymology: 'Melayu: bunga', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'nasi', languageId: 'indonesia', word: 'nasi', pos: 'Kata benda', meaning: 'Beras yang telah dimasak.', ipa: '/nasi/', script: 'Latin', transliteration: 'nasi', audio: false, examples: [{ text: 'Makan nasi dan lauk.', translation: 'Eating rice with side dishes.' }], synonyms: [], antonyms: [], etymology: 'Melayu: nasi', relatedWords: ['sega'], sourceIds: ['s-demo-1'] },
+    { id: 'roti', languageId: 'indonesia', word: 'roti', pos: 'Kata benda', meaning: 'Makanan dari tepung yang dipanggang.', ipa: '/roti/', script: 'Latin', transliteration: 'roti', audio: false, examples: [{ text: 'Roti tawar dengan selai.', translation: 'Bread with jam.' }], synonyms: [], antonyms: [], etymology: 'Belanda: brood → roti', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'gula', languageId: 'indonesia', word: 'gula', pos: 'Kata benda', meaning: 'Pemanis dari tebu.', ipa: '/gula/', script: 'Latin', transliteration: 'gula', audio: false, examples: [{ text: 'Teh dengan gula.', translation: 'Tea with sugar.' }], synonyms: [], antonyms: [], etymology: 'Sanskerta: śarkarā', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'garam', languageId: 'indonesia', word: 'garam', pos: 'Kata benda', meaning: 'Bumbu asin dari air laut.', ipa: '/garam/', script: 'Latin', transliteration: 'garam', audio: false, examples: [{ text: 'Tambahkan garam secukupnya.', translation: 'Add salt to taste.' }], synonyms: [], antonyms: [], etymology: 'Melayu: garam', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'merah', languageId: 'indonesia', word: 'merah', pos: 'Kata sifat', meaning: 'Warna seperti darah.', ipa: '/merah/', script: 'Latin', transliteration: 'merah', audio: false, examples: [{ text: 'Bendera merah putih.', translation: 'The red and white flag.' }], synonyms: [], antonyms: [], etymology: 'Melayu: merah', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'biru', languageId: 'indonesia', word: 'biru', pos: 'Kata sifat', meaning: 'Warna seperti langit cerah.', ipa: '/biru/', script: 'Latin', transliteration: 'biru', audio: false, examples: [{ text: 'Laut biru.', translation: 'The blue sea.' }], synonyms: [], antonyms: [], etymology: 'Melayu: biru', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'putih', languageId: 'indonesia', word: 'putih', pos: 'Kata sifat', meaning: 'Warna seperti kapur/susu.', ipa: '/putih/', script: 'Latin', transliteration: 'putih', audio: false, examples: [{ text: 'Baju putih.', translation: 'A white shirt.' }], synonyms: [], antonyms: ['hitam'], etymology: 'Melayu: putih', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'hitam', languageId: 'indonesia', word: 'hitam', pos: 'Kata sifat', meaning: 'Warna seperti arang.', ipa: '/hitam/', script: 'Latin', transliteration: 'hitam', audio: false, examples: [{ text: 'Kucing hitam.', translation: 'A black cat.' }], synonyms: [], antonyms: ['putih'], etymology: 'Melayu: hitam', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'hari', languageId: 'indonesia', word: 'hari', pos: 'Kata benda', meaning: 'Satuan waktu 24 jam.', ipa: '/hari/', script: 'Latin', transliteration: 'hari', audio: false, examples: [{ text: 'Hari ini hujan.', translation: 'It rains today.' }], synonyms: [], antonyms: ['malam'], etymology: 'Melayu: hari', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'malam', languageId: 'indonesia', word: 'malam', pos: 'Kata benda', meaning: 'Waktu gelap setelah matahari terbenam.', ipa: '/malam/', script: 'Latin', transliteration: 'malam', audio: false, examples: [{ text: 'Selamat malam.', translation: 'Good night.' }], synonyms: [], antonyms: ['siang', 'pagi'], etymology: 'Melayu: malam', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'kota', languageId: 'indonesia', word: 'kota', pos: 'Kata benda', meaning: 'Wilayah permukiman padat; pusat pemerintahan.', ipa: '/kota/', script: 'Latin', transliteration: 'kota', audio: false, examples: [{ text: 'Kota Bandung.', translation: 'The city of Bandung.' }], synonyms: ['bandar'], antonyms: ['desa'], etymology: 'Melayu: kota', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'desa', languageId: 'indonesia', word: 'desa', pos: 'Kata benda', meaning: 'Wilayah pedesaan.', ipa: '/dəsa/', script: 'Latin', transliteration: 'desa', audio: false, examples: [{ text: 'Desa yang damai.', translation: 'A peaceful village.' }], synonyms: ['kampung'], antonyms: ['kota'], etymology: 'Sanskerta: deśa', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'jalan', languageId: 'indonesia', word: 'jalan', pos: 'Kata benda', meaning: 'Lintasan untuk lalu lintas.', ipa: '/dʒalan/', script: 'Latin', transliteration: 'jalan', audio: false, examples: [{ text: 'Jalan raya ramai.', translation: 'The highway is busy.' }], synonyms: [], antonyms: [], etymology: 'Melayu: jalan', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'pasar', languageId: 'indonesia', word: 'pasar', pos: 'Kata benda', meaning: 'Tempat jual beli.', ipa: '/pasar/', script: 'Latin', transliteration: 'pasar', audio: false, examples: [{ text: 'Ibu ke pasar pagi-pagi.', translation: 'Mother goes to the market early.' }], synonyms: ['pekan'], antonyms: [], etymology: 'Persia: bāzār (melalui Melayu)', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'tidur', languageId: 'indonesia', word: 'tidur', pos: 'Kata kerja', meaning: 'Istirahat dengan memejamkan mata.', ipa: '/tidur/', script: 'Latin', transliteration: 'tidur', audio: false, examples: [{ text: 'Saya tidur pukul sembilan.', translation: 'I sleep at nine.' }], synonyms: [], antonyms: ['bangun'], etymology: 'Melayu: tidur', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'duduk', languageId: 'indonesia', word: 'duduk', pos: 'Kata kerja', meaning: 'Berada dengan bertumpu pada pantat.', ipa: '/duduk/', script: 'Latin', transliteration: 'duduk', audio: false, examples: [{ text: 'Silakan duduk.', translation: 'Please sit down.' }], synonyms: [], antonyms: ['berdiri'], etymology: 'Melayu: duduk', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'buku', languageId: 'indonesia', word: 'buku', pos: 'Kata benda', meaning: 'Lembaran berisi tulisan yang dijilid.', ipa: '/buku/', script: 'Latin', transliteration: 'buku', audio: false, examples: [{ text: 'Baca buku setiap hari.', translation: 'Read a book every day.' }], synonyms: ['kitab'], antonyms: [], etymology: 'Belanda: boek', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'guru', languageId: 'indonesia', word: 'guru', pos: 'Kata benda', meaning: 'Orang yang mengajar.', ipa: '/guru/', script: 'Latin', transliteration: 'guru', audio: false, examples: [{ text: 'Guru mengajar di kelas.', translation: 'The teacher teaches in class.' }], synonyms: ['pengajar', 'pendidik'], antonyms: [], etymology: 'Sanskerta: guru', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'dokter', languageId: 'indonesia', word: 'dokter', pos: 'Kata benda', meaning: 'Ahli pengobatan penyakit.', ipa: '/doktər/', script: 'Latin', transliteration: 'dokter', audio: false, examples: [{ text: 'Dokter memeriksa pasien.', translation: 'The doctor examines the patient.' }], synonyms: [], antonyms: [], etymology: 'Belanda: dokter', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'mobil', languageId: 'indonesia', word: 'mobil', pos: 'Kata benda', meaning: 'Kendaraan roda empat bermesin.', ipa: '/mobil/', script: 'Latin', transliteration: 'mobil', audio: false, examples: [{ text: 'Mobil baru ayah.', translation: 'Father\'s new car.' }], synonyms: ['oto'], antonyms: [], etymology: 'Belanda: automobiel', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'kapal', languageId: 'indonesia', word: 'kapal', pos: 'Kata benda', meaning: 'Kendaraan air yang besar.', ipa: '/kapal/', script: 'Latin', transliteration: 'kapal', audio: false, examples: [{ text: 'Kapal berlayar ke luar negeri.', translation: 'The ship sails abroad.' }], synonyms: [], antonyms: [], etymology: 'Melayu: kapal', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'telepon', languageId: 'indonesia', word: 'telepon', pos: 'Kata benda', meaning: 'Alat komunikasi jarak jauh.', ipa: '/telepon/', script: 'Latin', transliteration: 'telepon', audio: false, examples: [{ text: 'Telepon berdering.', translation: 'The phone is ringing.' }], synonyms: ['ponsel', 'HP'], antonyms: [], etymology: 'Belanda/Inggris: telefoon/telephone', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'komputer', languageId: 'indonesia', word: 'komputer', pos: 'Kata benda', meaning: 'Mesin pengolah data elektronik.', ipa: '/komputər/', script: 'Latin', transliteration: 'komputer', audio: false, examples: [{ text: 'Komputer di kantor.', translation: 'The computer in the office.' }], synonyms: [], antonyms: [], etymology: 'Inggris: computer', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'wayang', languageId: 'jawa', word: 'wayang', pos: 'Kata benda', meaning: 'Pertunjukan boneka bayangan tradisional Jawa.', ipa: '/wajaŋ/', script: 'Aksara Jawa', transliteration: 'wayang', nativeScript: 'ꦮꦪꦁ', audio: false, examples: [{ text: 'Wayang kulit semalam suntuk.', translation: 'An all-night wayang kulit performance.' }], synonyms: [], antonyms: [], etymology: 'Jawa Kuno: wayang', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'batik', languageId: 'jawa', word: 'batik', pos: 'Kata benda', meaning: 'Kain bermotif yang dibuat dengan lilin.', ipa: '/batɪk/', script: 'Aksara Jawa', transliteration: 'batik', nativeScript: 'ꦧꦠꦶꦏ꧀', audio: false, examples: [{ text: 'Batik khas Yogyakarta.', translation: 'Yogyakarta-style batik.' }], synonyms: [], antonyms: [], etymology: 'Jawa: ambatik', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'baik', languageId: 'indonesia', word: 'baik', pos: 'Kata sifat', meaning: 'Bagus; tidak jahat.', ipa: '/baik/', script: 'Latin', transliteration: 'baik', audio: false, examples: [{ text: 'Dia orang yang baik.', translation: 'He is a good person.' }], synonyms: ['bagus'], antonyms: ['buruk'], etymology: 'Melayu: baik', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'besar', languageId: 'indonesia', word: 'besar', pos: 'Kata sifat', meaning: 'Berukuran lebih dari biasa.', ipa: '/bəsar/', script: 'Latin', transliteration: 'besar', audio: false, examples: [{ text: 'Rumah yang besar.', translation: 'A big house.' }], synonyms: ['raksasa', 'agung'], antonyms: ['kecil'], etymology: 'Melayu: besar', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'aku', languageId: 'indonesia', word: 'aku', pos: 'Kata ganti', meaning: 'Kata ganti orang pertama tunggal (akrab).', ipa: '/aku/', script: 'Latin', transliteration: 'aku', audio: false, examples: [{ text: 'Aku pergi dulu.', translation: 'I am leaving first.' }], synonyms: ['saya (formal)'], antonyms: [], etymology: 'Melayu: aku', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'kamu', languageId: 'indonesia', word: 'kamu', pos: 'Kata ganti', meaning: 'Kata ganti orang kedua (akrab).', ipa: '/kamu/', script: 'Latin', transliteration: 'kamu', audio: false, examples: [{ text: 'Kamu dari mana?', translation: 'Where are you from?' }], synonyms: ['Anda (formal)', 'engkau'], antonyms: [], etymology: 'Melayu: kamu', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'dan', languageId: 'indonesia', word: 'dan', pos: 'Konjungsi', meaning: 'Kata sambung penanda gabungan.', ipa: '/dan/', script: 'Latin', transliteration: 'dan', audio: false, examples: [{ text: 'Ibu dan ayah.', translation: 'Mother and father.' }], synonyms: [], antonyms: ['atau'], etymology: 'Melayu: dan', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'atau', languageId: 'indonesia', word: 'atau', pos: 'Konjungsi', meaning: 'Kata sambung penanda pilihan.', ipa: '/atau/', script: 'Latin', transliteration: 'atau', audio: false, examples: [{ text: 'Teh atau kopi?', translation: 'Tea or coffee?' }], synonyms: [], antonyms: ['dan'], etymology: 'Melayu: atau', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'pun', languageId: 'indonesia', word: 'pun', pos: 'Partikel', meaning: 'Partikel penegas: juga, bahkan.', ipa: '/pun/', script: 'Latin', transliteration: 'pun', audio: false, examples: [{ text: 'Dia pun setuju.', translation: 'He agrees too.' }], synonyms: [], antonyms: [], etymology: 'Melayu: pun', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'lah', languageId: 'indonesia', word: '-lah', pos: 'Partikel', meaning: 'Partikel penegas imperatif/halus.', ipa: '/lah/', script: 'Latin', transliteration: '-lah', audio: false, examples: [{ text: 'Duduklah di sini.', translation: 'Please sit here.' }], synonyms: [], antonyms: [], etymology: 'Melayu: -lah', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'panas', languageId: 'indonesia', word: 'panas', pos: 'Kata sifat', meaning: 'Bersuhu tinggi.', ipa: '/panas/', script: 'Latin', transliteration: 'panas', audio: false, examples: [{ text: 'Hari ini panas.', translation: 'It is hot today.' }], synonyms: [], antonyms: ['dingin'], etymology: 'Melayu: panas', relatedWords: [], sourceIds: ['s-demo-1'] },
+    { id: 'dingin', languageId: 'indonesia', word: 'dingin', pos: 'Kata sifat', meaning: 'Bersuhu rendah.', ipa: '/diŋin/', script: 'Latin', transliteration: 'dingin', audio: false, examples: [{ text: 'Air dingin menyegarkan.', translation: 'Cold water is refreshing.' }], synonyms: [], antonyms: ['panas'], etymology: 'Melayu: dingin', relatedWords: [], sourceIds: ['s-demo-1'] }
+  ];
+  D.words = D.words.concat(newWords2);
+
+  
+  var newGrammar2 = [
+    { id: 'g-ind-pronoun', languageId: 'indonesia', category: 'Pronomina', title: 'Kata Ganti', desc: 'Kata ganti Indonesia: saya/aku (formal/akrab), kamu/Anda, dia, kami (eksklusif), kita (inklusif), mereka.', examples: [{ label: 'Contoh', text: 'Saya mahasiswa. / Kami pergi. / Kita semua sama.' }], topics: ['pronomina', 'kelas kata'], exceptions: 'Ragam formal menghindari aku/kamu.' },
+    { id: 'g-jawa-negasi', languageId: 'jawa', category: 'Negasi', title: 'Negasi', desc: 'Negasi Jawa: ora (ngoko), boten (krama). Posisi sebelum verba.', examples: [{ label: 'Ngoko', text: 'Aku ora mangan.' }, { label: 'Krama', text: 'Kula boten nedha.' }], topics: ['negasi', 'speech level'], exceptions: 'Durok/dereng untuk "belum".' },
+    { id: 'g-eng-imperative', languageId: 'english', category: 'Kalimat', title: 'Imperative', desc: 'Perintah Inggris: verb dasar; please untuk halus; let\'s untuk ajakan.', examples: [{ label: 'Perintah', text: 'Sit down.' }, { label: 'Halus', text: 'Please sit down.' }, { label: 'Ajakan', text: 'Let\'s go.' }], topics: ['kalimat', 'imperatif'], exceptions: 'Be + adj untuk perintah keadaan.' },
+    { id: 'g-mandarin-classifier', languageId: 'mandarin', category: 'Kelas Kata', title: 'Classifier (量词)', desc: 'Mandarin memerlukan kata penggolong: 个 (orang/umum), 张 (pipih), 本 (buku), 只 (hewan).', examples: [{ label: 'Orang', text: '一个人 yī gè rén — satu orang' }, { label: 'Buku', text: '一本书 yī běn shū — satu buku' }], topics: ['classifier', 'kelas kata', 'number'], exceptions: 'Pemilihan classifier bergantung pada kategori benda.' },
+    { id: 'g-arab-plural', languageId: 'arab', category: 'Nomina', title: 'Plural (Jama)', desc: 'Arab memiliki plural reguler (sufiks -ūn/-āt) dan broken plural (perubahan internal).', examples: [{ label: 'Reguler', text: 'muslim → muslimūn; madrasa → madrasāt' }, { label: 'Broken', text: 'kitāb → kutub (buku-buku)' }], topics: ['nomina', 'number', 'plural'], exceptions: 'Bentuk dual untuk dua objek.' },
+    { id: 'g-jepang-negation', languageId: 'jepang', category: 'Negasi', title: 'Negasi', desc: 'Negasi Jepang: -nai (kamus), -masen (sopan). Posisi di akhir kalimat.', examples: [{ label: 'Kamus', text: 'taberu → tabenai (tidak makan)' }, { label: 'Sopan', text: 'tabemasu → tabemasen' }], topics: ['negasi', 'verba'], exceptions: 'Ajektiva memiliki pola negasi sendiri (-kunai).' }
+  ];
+  D.grammar = D.grammar.concat(newGrammar2);
+
+  
+  var newCulture2 = [
+    { id: 'c-ind-kekerabatan', languageId: 'indonesia', category: 'Kekerabatan', title: 'Istilah Kekerabatan', desc: 'Sistem kekerabatan Indonesia memakai istilah generasi dan gender: kakek, nenek, paman, bibi, sepupu, ipar, besan.', terms: ['kakek', 'nenek', 'sepupu', 'ipar'], type: 'fact', sourceIds: ['s-demo-1'] },
+    { id: 'c-jawa-paribasan', languageId: 'jawa', category: 'Peribahasa', title: 'Paribasan Jawa', desc: 'Peribahasa Jawa: "Becik ketitik, ala ketara" (kebaikan tampak, kejahatan terbongkar); "Adigang, adigung, adiguna" (mengandalkan kekuasaan, kebesaran, kepandaian).', terms: ['paribasan', 'bebasan'], type: 'tradition', sourceIds: ['s-demo-1'] },
+    { id: 'c-sunda-sapaan', languageId: 'sunda', category: 'Sapaan', title: 'Sapaan Sunda', desc: 'Sapaan Sunda: wilujeng (selamat), punten (permisi), hatur nuhun (terima kasih), kumaha damang (apa kabar — hormat).', terms: ['punten', 'wilujeng', 'hatur nuhun'], type: 'fact', sourceIds: ['s-demo-1'] },
+    { id: 'c-melayu-nama', languageId: 'melayu', category: 'Identitas', title: 'Nama & Gelar Melayu', desc: 'Sistem nama Melayu: nama + bin/binti + nama ayah; gelar (Haji, Datuk, Tengku) menunjukkan status dan agama.', terms: ['bin', 'binti', 'gelar'], type: 'fact', sourceIds: ['s-demo-1'] },
+    { id: 'c-jepang-nama', languageId: 'jepang', category: 'Identitas', title: 'Nama Jepang & Panggilan', desc: 'Nama Jepang: nama keluarga di depan; akhiran panggilan (-san, -kun, -chan, -sama) menunjukkan hubungan sosial.', terms: ['-san', '-kun', '-chan'], type: 'fact', sourceIds: ['s-demo-1'] },
+    { id: 'c-bali-odalan', languageId: 'bali', category: 'Tradisi', title: 'Odalan (Piodalan)', desc: 'Upacara peringatan hari jadi pura, dirayakan setiap 210 hari (wuku). Bahasa Bali dan Sanskerta digunakan dalam mantra.', terms: ['odalan', 'wuku'], type: 'tradition', sourceIds: ['s-demo-1'] }
+  ];
+  D.culture = D.culture.concat(newCulture2);
+
+  
+  var newLiterature2 = [
+    { id: 'l-hikayat-hangtuah', languageId: 'melayu', title: 'Hikayat Hang Tuah', genre: 'Hikayat / Epik', period: 'Klasik (abad ke-17)', creator: 'Anonim', region: 'Melayu', desc: 'Epik Melayu tentang laksamana Hang Tuah dan Kesultanan Melaka, memuat nilai kesetiaan dan kepahlawanan.', excerpt: 'Hikayat ini menjadi salah satu karya sastra Melayu paling penting.', copyrightStatus: 'public domain', copyrightNote: 'Naskah klasik (domain publik)', sourceIds: ['s-demo-1'] },
+    { id: 'l-gurindam-12', languageId: 'melayu', title: 'Gurindam Dua Belas', genre: 'Gurindam / Puisi', period: 'Klasik (1847)', creator: 'Raja Ali Haji', region: 'Melayu (Riau)', desc: 'Kumpulan gurindam yang memuat nasihat agama dan budi pekerti, ditulis oleh Raja Ali Haji.', excerpt: 'Gurindam Dua Belas diakui sebagai Memory of the World (UNESCO).', copyrightStatus: 'public domain', copyrightNote: 'Karya klasik (domain publik)', sourceIds: ['s-demo-1'] },
+    { id: 'l-suluk', languageId: 'jawa', title: 'Suluk (tradisi mistik Jawa)', genre: 'Suluk / Puisi mistik', period: 'Tradisional', creator: 'Tradisi pesantren & keraton', region: 'Jawa', desc: 'Teks mistik keislaman-Jawa dalam bentuk tembang, berkembang di lingkungan pesantren dan keraton.', excerpt: 'Suluk menjadi jembatan antara tradisi Islam dan kebudayaan Jawa.', copyrightStatus: 'public domain', copyrightNote: 'Tradisi lisan/naskah (domain publik)', sourceIds: ['s-demo-1'] }
+  ];
+  D.literature = D.literature.concat(newLiterature2);
+
+  
+  D.courses = D.courses.concat([
+    { id: 'course-jawa-dasar', languageId: 'jawa', title: 'Bahasa Jawa Dasar', level: 'Pemula', desc: 'Sapaan, kosakata dasar, dan tingkat tutur ngoko-krama.', defaultProgress: 0, lessons: ['lesson-jawa-1'] },
+    { id: 'course-indo-lanjutan', languageId: 'indonesia', title: 'Bahasa Indonesia Lanjutan', level: 'Lanjutan', desc: 'Kalimat kompleks, ragam formal, dan wacana.', defaultProgress: 0, lessons: ['lesson-indo-l1'] }
+  ]);
+  D.lessons = D.lessons.concat([
+    { id: 'lesson-jawa-1', courseId: 'course-jawa-dasar', title: 'Sapaan & Tingkat Tutur', type: 'Kosakata', duration: '12 menit', material: 'Sapaan Jawa: sugeng enjing (selamat pagi), sugeng siang, sugeng dalu. Tingkat tutur: ngoko (akrab) vs krama (hormat).', examples: [{ text: 'Sugeng enjing, Pak.', note: 'Sapaan hormat pagi hari' }, { text: 'Piye kabaré? (ngoko)', note: 'Apa kabar — akrab' }], audioWordIds: ['sugeng'], exerciseId: 'ex-jawa-1' },
+    { id: 'lesson-indo-l1', courseId: 'course-indo-lanjutan', title: 'Kalimat Kompleks & Ragam Formal', type: 'Tata Bahasa', duration: '15 menit', material: 'Kalimat kompleks: konjungsi (karena, sehingga, meskipun). Ragam formal untuk surat dan pidato.', examples: [{ text: 'Meskipun hujan, acara tetap berlangsung.', note: 'Konjungsi konsesif' }, { text: 'Kami menghaturkan terima kasih.', note: 'Ragam formal' }], audioWordIds: ['hujan'], exerciseId: 'ex-indo-l1' }
+  ]);
+  D.exercises = D.exercises.concat([
+    { id: 'ex-jawa-1', lessonId: 'lesson-jawa-1', type: 'Pilihan Ganda', questions: [
+      { q: '"Sugeng enjing" berarti...', options: ['Selamat pagi', 'Selamat siang', 'Selamat malam', 'Selamat datang'], answer: 0, explanation: 'Sugeng enjing = selamat pagi.' },
+      { q: 'Tingkat tutur hormat disebut...', options: ['ngoko', 'krama', 'madya', 'basa kasar'], answer: 1, explanation: 'Krama adalah tingkat tutur hormat.' },
+      { q: '"Makan" dalam krama:', options: ['mangan', 'dhahar', 'nedha', 'pangan'], answer: 1, explanation: 'dhahar (krama), nedha (krama inggil).' }
+    ]},
+    { id: 'ex-indo-l1', lessonId: 'lesson-indo-l1', type: 'Pilihan Ganda', questions: [
+      { q: 'Kalimat kompleks yang benar:', options: ['Meskipun hujan, acara tetap berlangsung', 'Meskipun hujan acara tetapi berlangsung', 'Hujan meskipun acara tetap', 'Acara meskipun hujan berlangsung'], answer: 0, explanation: 'Konjungsi "meskipun" di awal klausa konsesif.' },
+      { q: 'Ragam formal yang tepat:', options: ['Kami menghaturkan terima kasih', 'Kami makasih', 'Gue thanks', 'Kita berterima kasih aja'], answer: 0, explanation: '"Menghaturkan terima kasih" adalah ragam formal.' }
+    ]}
+  ]);
+
+  
+  D.transliterations = [
+    { transliteration_id: 'tr-1', source_script: 'jawa', target_script: 'latin', source_text: 'ꦩꦔꦤ꧀', target_text: 'mangan', rule: 'Aksara Jawa ditransliterasikan per bunyi; pangkon menghilangkan vokal.', system: 'Demo — sistem sederhana', language: 'jawa', confidence: 'demo', source_id: 's-demo-1', verification_status: 'DEMO' },
+    { transliteration_id: 'tr-2', source_script: 'latin', target_script: 'jawa', source_text: 'banyu', target_text: 'ꦧꦚꦸ', rule: 'Latin → aksara Jawa dengan sandhangan vokal.', system: 'Demo — sistem sederhana', language: 'jawa', confidence: 'demo', source_id: 's-demo-1', verification_status: 'DEMO' },
+    { transliteration_id: 'tr-3', source_script: 'arab', target_script: 'latin', source_text: 'ب', target_text: 'b', rule: 'Huruf Arab → Latin (sistem umum).', system: 'Demo — sistem sederhana', language: 'arab', confidence: 'demo', source_id: 's-demo-1', verification_status: 'DEMO' },
+    { transliteration_id: 'tr-4', source_script: 'devanagari', target_script: 'latin', source_text: 'क', target_text: 'ka', rule: 'ISO 15919 (contoh).', system: 'ISO 15919 (demo)', language: 'hindi', confidence: 'demo', source_id: 's-demo-1', verification_status: 'DEMO' },
+    { transliteration_id: 'tr-5', source_script: 'thai', target_script: 'latin', source_text: 'ก', target_text: 'k', rule: 'Sistem transkripsi umum Thai.', system: 'Demo', language: 'thai', confidence: 'demo', source_id: 's-demo-1', verification_status: 'DEMO' },
+    { transliteration_id: 'tr-6', source_script: 'hangul', target_script: 'latin', source_text: 'ㄱ', target_text: 'g/k', rule: 'Romanisasi umum Korea (Revised Romanization — contoh).', system: 'Revised Romanization (demo)', language: 'korea', confidence: 'demo', source_id: 's-demo-1', verification_status: 'DEMO' },
+    { transliteration_id: 'tr-7', source_script: 'kana', target_script: 'latin', source_text: 'あ', target_text: 'a', rule: 'Hepburn (contoh).', system: 'Hepburn (demo)', language: 'jepang', confidence: 'demo', source_id: 's-demo-1', verification_status: 'DEMO' },
+    { transliteration_id: 'tr-8', source_script: 'han', target_script: 'latin', source_text: '学', target_text: 'xué', rule: 'Pinyin (contoh).', system: 'Pinyin (demo)', language: 'mandarin', confidence: 'demo', source_id: 's-demo-1', verification_status: 'DEMO' }
+  ];
+
+  
+  var uName = {
+    'latin-a': 'LATIN CAPITAL LETTER A', 'latin-b': 'LATIN CAPITAL LETTER B', 'latin-a-lower': 'LATIN SMALL LETTER A',
+    'jawa-ha': 'JAVANESE LETTER HA', 'jawa-na': 'JAVANESE LETTER NA', 'jawa-ca': 'JAVANESE LETTER CA', 'jawa-ra': 'JAVANESE LETTER RA', 'jawa-ka': 'JAVANESE LETTER KA', 'jawa-da': 'JAVANESE LETTER DA', 'jawa-ta': 'JAVANESE LETTER TA', 'jawa-sa': 'JAVANESE LETTER SA', 'jawa-wa': 'JAVANESE LETTER WA', 'jawa-la': 'JAVANESE LETTER LA', 'jawa-pa': 'JAVANESE LETTER PA', 'jawa-dha': 'JAVANESE LETTER DHA', 'jawa-ja': 'JAVANESE LETTER JA', 'jawa-ya': 'JAVANESE LETTER YA', 'jawa-nya': 'JAVANESE LETTER NYA', 'jawa-ma': 'JAVANESE LETTER MA', 'jawa-ga': 'JAVANESE LETTER GA', 'jawa-ba': 'JAVANESE LETTER BA', 'jawa-tha': 'JAVANESE LETTER THA', 'jawa-nga': 'JAVANESE LETTER NGA',
+    'bali-ha': 'BALINESE LETTER HA', 'bali-na': 'BALINESE LETTER NA', 'bali-ba': 'BALINESE LETTER BA',
+    'sunda-a': 'SUNDANESE LETTER A', 'sunda-ha': 'SUNDANESE LETTER HA',
+    'lontara-ka': 'BUGINESE LETTER KA', 'lontara-ma': 'BUGINESE LETTER MA',
+    'batak-a': 'BATAK LETTER A',
+    'arab-ba': 'ARABIC LETTER BEH', 'arab-ta': 'ARABIC LETTER TEH', 'arab-tsa': 'ARABIC LETTER THEH',
+    'deva-ka': 'DEVANAGARI LETTER KA', 'deva-kha': 'DEVANAGARI LETTER KHA', 'deva-ga': 'DEVANAGARI LETTER GA',
+    'hangul-giyeok': 'HANGUL LETTER KIYEOK', 'hangul-nieun': 'HANGUL LETTER NIEUN', 'hangul-a': 'HANGUL LETTER A',
+    'greek-alpha': 'GREEK SMALL LETTER ALPHA', 'greek-beta': 'GREEK SMALL LETTER BETA',
+    'hebrew-shin': 'HEBREW LETTER SHIN', 'han-xue': 'CJK UNIFIED IDEOGRAPH-5B66', 'kana-a': 'HIRAGANA LETTER A', 'kana-ka': 'HIRAGANA LETTER KA', 'kana-shi': 'HIRAGANA LETTER SHI',
+    'cyr-a': 'CYRILLIC CAPITAL LETTER A', 'thai-ko': 'THAI CHARACTER KO KAI', 'thai-kho': 'THAI CHARACTER KHO KHAI',
+    'pegon-nga': 'ARABIC LETTER NGAH',
+    'arm-ayb': 'ARMENIAN SMALL LETTER AYB', 'geo-ani': 'GEORGIAN LETTER AN', 'syr-alaph': 'SYRIAC LETTER ALAPH',
+    'ben-ka': 'BENGALI LETTER KA', 'guj-ka': 'GUJARATI LETTER KA', 'gur-ka': 'GURMUKHI LETTER KA', 'odi-ka': 'ORIYA LETTER KA', 'tam-ka': 'TAMIL LETTER KA', 'tel-ka': 'TELUGU LETTER KA', 'kan-ka': 'KANNADA LETTER KA', 'mal-ka': 'MALAYALAM LETTER KA',
+    'lao-ko': 'LAO LETTER KO', 'khm-ka': 'KHMER LETTER KA', 'mym-ka': 'MYANMAR LETTER KA', 'eth-ha': 'ETHIOPIC SYLLABLE HA', 'rej-ka': 'REJANG LETTER KA'
+  };
+  var scriptVer = { latin: '1.0', jawa: '5.2', bali: '5.0', sunda: '5.1', lontara: '4.1', batak: '6.0', arab: '1.0', pegon: '1.0', devanagari: '1.1', hangul: '1.1', cyrillic: '1.0', greek: '1.0', hebrew: '1.0', han: '1.1', kana: '1.1', thai: '1.1', rejang: '5.1', armenian: '1.1', georgian: '1.1', syriac: '3.0', bengali: '1.1', gujarati: '1.1', gurmukhi: '1.1', odia: '1.1', tamil: '1.1', telugu: '1.1', kannada: '1.1', malayalam: '1.1', lao: '1.1', khmer: '3.0', myanmar: '3.0', ethiopic: '3.0' };
+  var bidiRTL = { arab: 'AL', pegon: 'AL', hebrew: 'R', syriac: 'AL' };
+  var combiningMarks = { wulu: 0, suku: 0, pepet: 0, taling: 0, talingtarung: 0, cecak: 0, layar: 0, wignyan: 0, pangkon: 0, fatha: 0, damma: 0, kasra: 0, shadda: 0, sukun: 0, aa: 0, i: 0, u: 0, e: 0, o: 0, virama: 0, anusvara: 0, saraaa: 0, sarai: 0, sarau: 0, maiek: 0, maitho: 0, maitri: 0, maichattawa: 0, ha: 0, ka: 0 };
+  D.unicodeData = {};
+  D.characters.forEach(function (c) {
+    var s = D.scriptMap[c.scriptId] || {};
+    var id = c.id;
+    var isMark = /vokal|harakat|matra|nada|sandhangan|tanda|virama|dakuten/i.test(c.type) || /wulu|suku|pepet|taling|pangkon|fatha|damma|kasra|shadda|sukun|matra|sara|mai|virama|anusvara/i.test(id);
+    var isDigit = /angka|digit/i.test(c.type);
+    var cat = isDigit ? 'Nd (Decimal Number)' : isMark ? 'Mn (Nonspacing Mark)' : 'Lo (Letter, Other)';
+    if (id === 'latin-a' || id === 'latin-b' || id === 'cyr-a') cat = 'Lu (Uppercase Letter)';
+    if (id === 'latin-a-lower' || id === 'greek-alpha' || id === 'greek-beta' || id === 'arm-ayb') cat = 'Ll (Lowercase Letter)';
+    D.unicodeData[id] = {
+      unicode_id: 'u-' + id, character_id: id, codepoint: c.unicode || null,
+      unicode_name: uName[id] || (s.name ? (s.name + ' — ' + c.name + ' (' + c.type + ')') : null),
+      block: s.unicodeBlock || null, script: s.name || null, general_category: cat,
+      canonical_combining_class: '0 (Not Reordered)',
+      bidirectional_class: bidiRTL[c.scriptId] || 'L (Left-to-Right)',
+      unicode_version: scriptVer[c.scriptId] || 'Not yet documented',
+      normalization: null, mirrored: 'No', source: 'Unicode Consortium (metadata blok resmi — verifikasi per karakter pada Unicode.org)', content_status: 'DEMO'
+    };
+  });
+
+  
+  var have = {}; D.wordMeanings.forEach(function (m) { have[m.word_id || m.wordId] = 1; });
+  D.words.forEach(function (w) {
+    if (!have[w.id]) D.wordMeanings.push({ meaning_id: 'wm-' + w.id, word_id: w.id, wordId: w.id, definition: w.meaning, sense_number: 1, senseNumber: 1, usage: 'umum', domain: null, example_sentence_ids: [], exampleSentenceIds: [], content_status: 'DEMO' });
+    if (!D.pronunciations.some(function (p) { return p.word_id === w.id || p.wordId === w.id; })) D.pronunciations.push({ pronunciation_id: 'pron-' + w.id, word_id: w.id, wordId: w.id, language_id: w.languageId, languageId: w.languageId, dialect_id: null, ipa: w.ipa, phonetic_description: null, region: null, audio_id: null, source_id: 's-demo-1', sourceId: 's-demo-1', verificationId: 'v-demo', content_status: 'DEMO' });
+    if (!D.audioEntities.some(function (a) { return a.word_id === w.id; }) && w.audio === true) D.audioEntities.push({ audio_id: 'audio-demo-' + w.id, word_id: w.id, language_id: w.languageId, speaker_id: null, recording_date: null, duration: 0.4, format: 'sintetis (DEMO)', transcription: w.word, ipa: w.ipa, source_id: 's-demo-1', verification_id: 'v-demo', available: false, note: 'Audio asli belum tersedia — DEMO.' });
+    w.audio_available = !!w.audio; w.audio_url = null; w.audio_id = w.audio ? 'audio-demo-' + w.id : null;
+    w.verification = 'UNVERIFIED'; w.content_status = 'DEMO'; w.notes = 'Belum diverifikasi';
+    w.wordId = w.id; w.writtenForm = w.word; w.nativeForm = w.nativeScript || w.word; w.lemma = w.baseForm || w.word; w.partOfSpeech = w.pos;
+  });
+
+  
+  D.registry.version = '0.8.0';
+  D.registry.entities = D.registry.entities.concat([
+    { name: 'Transliteration', table: 'transliterations', relations: ['Script N:N'] }
+  ]);
+  var oldValidate = D.validateData;
+  D.validateData = function () {
+    var res = oldValidate();
+    var issues = res.issues.slice();
+    D.characters.forEach(function (c) {
+      var u = D.unicodeData[c.id];
+      if (c.unicode && (!u || u.unicode_name === null)) issues.push('Karakter tanpa Unicode metadata: ' + c.id);
+    });
+    res.issueCount = issues.length; res.issues = issues.slice(0, 20);
+    res.status = issues.length ? 'WARNING' : 'PASS';
+    return res;
+  };
+  D.meta.version = '0.8.0 (real data expansion)';
+  D.meta.dataStatus = 'Demo Data — konten belum diverifikasi; angka penutur = estimasi/Data tidak tersedia; metadata Unicode dari blok resmi (verifikasi di Unicode.org).';
+})(ALFABASA);
+
+
+
 if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA; }
+
 (function () {
   'use strict';
 
@@ -3693,6 +4057,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
   window.App = { State, Store, D, esc, icon, toast, navigate, isBookmarked, toggleBookmark, bookmarkBtn, statusBadge, familyName, progressOf, setProgress, lessonDone, recordHistory, playDemoAudio, audioBtn, globalSearch, initCarousel, initExpandables, initExercise, renderAI, sendAi, applyTheme, init, parseHash, registerRoute: onRoute };
   window.addEventListener('DOMContentLoaded', init);
 })();
+
 
 
 
@@ -5231,6 +5596,7 @@ if (typeof module !== 'undefined' && module.exports) { module.exports = ALFABASA
 
   window.Views = { viewHome, viewExplore, viewLanguages, viewLanguage, viewScripts, viewScript, viewCharacter, viewDictionary, viewWord, viewPronunciation, viewGrammar, viewCulture, viewLiterature, viewLearn, viewCourse, viewLesson, viewSearch, viewSaved, viewProfile, viewSettings, viewFamily, viewFamilyList, viewError, viewMenus, viewMenuDetail, viewCompare, viewNetwork, viewSources };
 })();
+
 
 
 
